@@ -1,0 +1,44 @@
+- class_name: 友情链接
+  class_desc: 那些大佬们
+  link_list:
+    - name: Wankupi's Blog
+      link: https://wankupi.top/
+      avatar: https://wankupi.top/favicon.ico
+      descr: ACM巨犇的博客,快来学习膜拜Orz.
+    - name: Hastin's Blog
+      link: https://zsq259.github.io/
+      avatar: https://zsq259.github.io/favicon.ico
+      descr: hastin佬 Orz. 炒鸡厉害的 OIer !
+    - name: Conless's Blog
+      link: https://conless.dev/blog/
+      avatar: https://conless.dev/blog/images/avatar.jpg
+      descr: 潘老师OI炒鸡强的 Orz.
+
+- class_name: 其他推荐
+  class_desc: 一些些有用的网站
+  link_list:
+    - name: OI-wiki
+      link: https://oi-wiki.org/
+      avatar: https://oi-wiki.org/favicon.ico
+      descr: 目前最好用的OI网站捏
+    - name: Saucenao 找图工具
+      link: https://saucenao.com/
+      avatar: https://saucenao.com/favicon.ico
+      descr: 可以用于从图片找到图源
+
+#- class_name: 网站
+#  class_desc:
+#  link_list:
+#    - name: Youtube
+#      link: https://www.youtube.com/
+#      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
+#      descr: 視頻網站
+#    - name: Weibo
+#      link: https://www.weibo.com/
+#      avatar: https://i.loli.net/2020/05/14/TLJBum386vcnI1P.png
+#      descr: 中國最大社交分享平台
+#    - name: Twitter
+#      link: https://twitter.com/
+#      avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
+#      descr: 社交分享平台
+
