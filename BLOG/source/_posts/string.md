@@ -4,8 +4,7 @@ date: 2022-09-13 18:57:52
 updated: 2022-09-13 18:57:10
 tags: [基础知识,字符串]
 categories: [基础知识]
-cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/String_HelloWorld.png
-top_img: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/String_HelloWorld.png
+cover: https://s2.loli.net/2023/01/28/nutBQS2UcswC3bZ.png
 keywords: [字符串,基础知识]
 description: 适合入门级和普及选手的字符串介绍
 mathjax: false
@@ -184,7 +183,7 @@ int main() {
 #### 用char实现多个字符串读入
 
 很多时候，我们面临着这样一个情景：字符总量巨大，我们明确知道它的上限，有很多组字符串要读入。然而，我们不想用IO(In/Out,指代输入输出)很慢的std::string,甚至有时候字符串组数也未知，用std::vector `<std::string>`则必然会占用大量空间。此时，我们应当考虑使用char*数组代替。
-![Luogu5357](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/Luogu5357.png)
+![Luogu5357](https://s2.loli.net/2023/01/28/UrMbRutfoid4OBq.png)
 
 具体实现可以用一个int类数组记录第i个字符串的起始位置记作int loc[N]，然后用逐个读入字符串，下一个字符串的起始位置为上一个字符串最后一个字符(除了'\0')的位置+2。
 

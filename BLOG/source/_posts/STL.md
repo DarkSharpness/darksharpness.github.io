@@ -21,7 +21,7 @@ What is STL ?
 
 STL 代表的是 Standard Template Library ， 是 C++ 的标准的模板库.
 
-![来自Wikipedia](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/Wikipedia_STL.png)
+![来自Wikipedia](https://s2.loli.net/2023/01/28/UxEwyFIe72suQpi.png)
 
 由上述Wikipedia定义可见，STL中包含了大量的可用容器、算法、函数和迭代器。下面将会具体讨论。
 
@@ -148,7 +148,7 @@ e.g : 不定长度的数组。在程序运行的过程中，在很多情况下�
 
 简单来说，queue就是一个队列，满足基本性质FIFO。具体是每次可以向队列尾部插入一个元素，并从头部访问/取出最早插入的元素，类似于排队。
 
-![瞎画的](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/STL_queue.png)
+![瞎画的](https://s2.loli.net/2023/01/28/IjYKN8Clny1ogum.png)
 
 如上图(画的是有点丑...),当前队伍为 {3,1,4}。你只能访问最前面的3，你也可以在尾部继续插入元素。如果我们取出头部元素3，那么下一个头部元素就是1。
 

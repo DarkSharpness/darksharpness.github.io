@@ -4,9 +4,8 @@ date: 2023-01-23 13:30:10
 updated: 2023-01-25 16:43:55
 tags: [基础知识]
 categories: [基础知识,STL]
-cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_73700097.jpg
-top_img: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_73700097.jpg
 keywords: [基础知识,STL]
+cover: https://s2.loli.net/2023/01/28/HAG6kBYsTN4EKrJ.jpg
 description: 略深入地分析 std::vector
 mathjax : true
 ---
@@ -197,8 +196,9 @@ tmp.resize(tmp.size() + 1);
 
 &emsp;这个函数用来清空 vector 内部的元素，它会使得 size() 减小到0，但是 capacity() 不变，这是为了保证高效的 push_back() 操作。参考之前的实现，有一小部分用户 (比如曾经的我) 可能错以为 clear() 就是移动一个指针事情(tail = head) ，以为是常数复杂度。这样的观点是错误的。事实上，vector的clear()操作其实是线性复杂度，正比于内部元素个数。这是因为内部的元素可能是非平凡类，这种时候内部元素在销毁的时候必须执行析构函数(例如 std::map，析构函数需要释放内部的内存，不然会内存泄漏)。当然，这时候又有小可爱(比如我)想要问: 那么对于简单类，比如 int,double，其不需要析构函数来释放空间，那不是会降低效率吗。然而，cpp的编译器(至少gcc)要求了，对于空的析构(比如 ~int())，其会被优化掉，甚至连循环都会被优化掉。其会被优化为空，所以不用考虑这些细节对于效率的影响。
 
-![写在gcc标准库注释里面的](https://github.com/DarkSharpness/Photos/blob/main/Images/vector/1.png?raw=true)
-![析构单个pointer](https://github.com/DarkSharpness/Photos/blob/main/Images/vector/2.png?raw=true)
+![写在gcc标准库注释里面的](https://s2.loli.net/2023/01/28/Z9kN6oHOedLfMBz.png)
+
+![析构单个pointer](https://s2.loli.net/2023/01/28/E2M41zGa3fyjQHL.png)
 
 ## 参考 vector 实现
 

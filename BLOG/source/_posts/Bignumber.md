@@ -4,8 +4,7 @@ date: 2022-11-19 15:59:10
 updated: 2022-11-19 15:59:10
 tags: [算法,模拟,数学,数论]
 categories: [算法,数学]
-cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_664449380.jpg
-top_img: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_664449380.jpg
+cover: https://s2.loli.net/2023/01/28/cEabmiStHXuUkoY.jpg
 keywords: [算法,数学,高精度]
 description: 用NTT实现乘法的高精度模板.
 mathjax: true
@@ -59,7 +58,7 @@ NTT_base声明了所有NTT相关的函数以及数据，都是静态储存 (相�
 
 值得注意的是，对于编译期常数的除法和取余，编译器会展开优化为一系列更快的位运算。因此，我们需要实现两份 NTT 以及 fastPow(复制黏贴，仅仅模数不同)，这样相比传参数来决定 NTT 是采用 $M_1$ 还是 $M_2$，要快将近一倍(如下图,题目来自交大的[ACMOJ 1754](https://acm.sjtu.edu.cn/OnlineJudge/problem?problem_id=1754) )。
 
-![确实快了不少,当然还是打不过FFT](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/ACMOJ1754.png)
+![确实快了不少,当然还是打不过FFT](https://s2.loli.net/2023/01/28/ny568jCJkdmHpOu.png)
 
 最后是一个小优化:注意到了 NTT 中每次单位根的大小都是固定的(取决于 NTT 长度 $len$ 中 $len = 2^k$ 中的 $k$)，我们可以预处理这些值，一共就 2(INTT/NTT) * 2(两个模数) * 22(最大的k) 个数，故打表处理。逆元同理。
 

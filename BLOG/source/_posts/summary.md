@@ -5,8 +5,8 @@ updated: 2023-01-22 17:49:14
 tags: [随笔]
 categories: [随笔]
 keywords: [随笔]
+cover: https://s2.loli.net/2023/01/28/QkJL4GyBRbPFx6j.jpg
 description: 一个菜狗瞎写的一点也不EMO的文案
-cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_59411218.jpg
 ---
 这学期几乎啥也没干，没啥好总结的。主要讲个人相关，会避免一些敏感话题。
 
@@ -28,30 +28,20 @@ cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_
 
 &emsp;总之，这是最累的一个月，这也是最充实的一个月，也是最快乐的一个月。
 
-![](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/5.jpg)
-![](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/6.jpg)
-
-<center>(刚肝完学子讲坛、学术写作和检查点的我眼睛里看到的)</center>
-
-![红月!](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/4.jpg)
-
-<center>(肝完python解释器后我杀疯的状态，你见过4 a.m.的OJ吗)</center>
-
-![已经获得本人授权](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/2.jpg)
-
-<center>(可爱的"马桶"同学)</center>
+![](https://s2.loli.net/2023/01/28/X1lnctef5WiRTpz.jpg)
+![刚肝完学子讲坛、学术写作和检查点的我belike](https://s2.loli.net/2023/01/28/KS8lOqFUw3XVfxL.jpg)
+![肝完python解释器后我杀疯的状态，你见过4 a.m.的OJ吗](https://s2.loli.net/2023/01/28/Go51y4sPWbJVqIR.jpg)
+![可爱的"马桶"同学(已经获得本人授权)](https://s2.loli.net/2023/01/28/OjxiVsH6MvZyb9n.jpg)
 
 ## 12月
 
 &emsp;虽然才过了几天，但啥事情都有（。印象很深的是12/1号那天下了场雪(上海难得11月下雪)，然后在雪中踢球，可能是这学期玩的最开心的一次。
 
-![拍的不好啊](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/3.jpg)
-
-<center>(虽然照片里一片雪都看不见)</center>
+![拍的不好,照片里一片雪都看不见](https://s2.loli.net/2023/01/28/qfAOp3aRTZCK6HD.jpg)
 
 &emsp;接下来就是很魔幻的第二周，首先是因为混管阳性，东17封楼了。然后在短暂的经历了一天不能堂食的生活后，我校再次回到了线上课的时代，好在打饭还是允许的，楼也没封。目前(2022.12.9)**情况未知**，貌似是鼓励返乡线上学习的(效仿之前清北的先例?)，本来四级要求的做的核酸也不需要了，体测什么也取消了，总之非常的神奇非常的魔幻，我也不太敢评价。
 
-![群里的通知](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/1.jpg)
+![群里的通知](https://s2.loli.net/2023/01/28/1zCl2wjtZmPFdVM.jpg)
 
 &emsp;本人最终于12月18日回家了，然而回家前就已经感觉不太好了，回家不到一周果然阳了。阳了感觉非常不好，高烧了三天，将近一周的课都没听，大作业也一点没动，再加上期末考临近，压力巨大。不过好在后续恢复非常快，而且没有很剧烈的咳嗽等后遗症影响，状态恢复的非常好，并没有太多的影响期末考试。
 
@@ -61,19 +51,17 @@ cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_
 
 &emsp;考试月，事情不多，主要是在复习。对我来说，我只care数分、线代、英语和程设。在这四门中，首先考的是数学分析，这张卷子说实话感觉不太难，但是问题在于我这段时间基本没咋做数分题目，导致做的太慢了，结果2个小时最后两题(含一道附加题)都没看到，考完真的急死了，毕竟理论最高分也就只有90了，更何况前面还没有检查。结果不出所料的裂开了，而且数分卡在了94分这个尴尬的分数，不过确实下半学期数分上的精力花的少，罪有应得。第二个考的好像是英语，英语说实话我也没指望能考多高，前段时间因为新冠导致好长一段时间没听英语听力了，听力也不出意外的出了些意外；阅读选择倒是不难，毕竟我可是大城市做题家(除了应试啥都不会的废物罢了)；作文中规中矩，反正还是和以前一样，即兴发挥，啥句子都不准备，完全靠感觉，然后凑一些老师喜欢听的观点升华一下，大概就能拿高分。最后在10号考了剩下两门，程序设计完全没复习，反正摆就完事了，C++不会的特性太多了，大概扫了一遍书就去考了。这里不得不吐槽下线性代数，考试卷子实在太简单了，而作为一个因为新冠从12月中旬就没听过线代课、作业全靠糊、上课狂发呆的普通学生，我居然都能提前一个小时做完而且没检查出错就能拿100，实在是楽坏了。然后上海下大雪了两天，有点怀念前面12月初那次雪天踢球了qwq。
 
-![](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/7.jpg)
+![](https://s2.loli.net/2023/01/28/sKcqAfyiVUI1uNB.jpg)
 
 &emsp;考完以后基本放飞自我，直接开摆，每天睡眠高达10小时，作息非常健康。除了有几天去走亲访友，基本上每天我都呆在房间里看电脑，当然除了玩minecraft(这是主线!)，我还在写一些 C++ 模板以及研究modern C++ 特性。作为一个 CSP-S 压线一等奖的蒟蒻，我觉得算法已经来不及补课，计划等春节后再去补习。当然考完试，我也终于有时间把以前没好好听过的和新专辑都刷几遍的，比如 IOSYS 那几张 jrock 专辑(墙裂推荐，附 [网易云歌单](https://music.163.com/playlist?id=8063965041&userid=3215760601)) 以及 Demetori 的新专辑 《寂光寂滅 ～ The Truth of the Cessation of Dukkha》，还有可爱的ayo、merami的新歌。说实话，感觉现在车万同人音乐已经基本快要走向其终点了，C101 会场摊位数占比再次破新低，回到了2010年以前东方还未到最火的时候的状况了。感觉很难过，不过好像我也做不了什么，很欣慰还有几个老社团依然在坚持。
 
-![](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/2023-01-16_12.20.10.png)
+![我在minecraft里的前卫小屋(雾)](https://s2.loli.net/2023/01/28/vM5PFD8aEqmjVnS.png)
 
-<center>我在minecraft里的前卫小屋</center>
-
-![](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/2023-01-22_00.01.25.png)
-![](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/2023-01-22_00.01.27.png)
-![](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/2023-01-22_00.28.03.png)
-
-<center>东方Gartic服务器(QQ:329193219)的春节烟火会</center>
+![](https://s2.loli.net/2023/01/22/nl4iJLGsUtzafKx.png)
+![](https://s2.loli.net/2023/01/22/bo9uWGMsqkgvirE.png)
+![](https://s2.loli.net/2023/01/22/HSQ8ZzOx7LeN9dB.png)
+![](https://s2.loli.net/2023/01/28/a9Pcuo3DweG7EZv.png)
+![东方Gartic服务器(QQ:329193219)的春节烟火会](https://s2.loli.net/2023/01/28/9XzaFMyonV5rctB.png)
 
 <!-- 图片 -->
 

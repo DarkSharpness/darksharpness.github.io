@@ -4,7 +4,7 @@ date: 1919-08-10 11:45:14
 updated: 2023-01-27 23:49:52
 tags: [随笔]
 categories: [随笔]
-cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_94505082.jpg
+cover: https://s2.loli.net/2023/01/28/fIdL7iMWpwJTZYq.jpg
 description: 我的第一个blog!!!
 sticky: 1919810
 ---
