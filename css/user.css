@@ -1,0 +1,99 @@
+
+@font-face{
+    font-family: 'HarmonyOS Sans SC';
+    font-display: swap;
+    src: url('../font/HarmonyOS_Sans_SC_Regular.ttf') format("truetype");
+}
+
+/* Body 放大 */ 
+body {
+    zoom: 110%;
+    font-family: 'HarmonyOS Sans SC';
+}
+
+/* MathJax 大小调整 */
+.mathjax-overflow {
+    font-size: 90% !important;
+}
+
+mjx-container.MathJax.CtxtMenu_Attached_0 {
+    position: inherit !important;
+}
+
+/* 首页文章栏背景透明 */
+#recent-posts>.recent-post-item,.layout_page>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post {
+    background: var(--light_bg_color);
+}
+/* 竖屏背景设置 */
+#web_bg {
+    background: url(https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_104376717.png);
+    background-size: cover;
+}
+
+/* 横屏背景设置 */
+@media  (max-width : 768px) {
+    #web_bg {
+        /* filter: grayscale(100%); */
+        background: url(https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_91828134.jpg);
+        background-size: cover;
+    }
+}
+
+/* 导航页面,文章,archive(特别处理) 透明 */
+div#page,div#post,div#archive {
+    opacity: 72% !important;
+}
+
+/* 侧边栏透明 */
+#aside-content .card-widget {
+    background: var(--light_bg_color);
+}
+
+/* 底部透明 + 背景无色透明  */
+footer#footer {
+    opacity: 60%;
+    background: transparent; /* 透明背景 */
+}
+
+
+
+/* 头图部分透明 */
+header {
+   opacity: 0.92;
+}
+
+/* 歌词不显示 */
+.aplayer-lrc {
+    opacity: 0;
+}
+
+/* 自定义图标部分 */
+
+@font-face {
+    font-family: "iconfont"; /* Project id 3870791 */
+    src: url('//at.alicdn.com/t/c/font_3870791_3urrm8c5o5m.woff2?t=1674898949174') format('woff2'),
+         url('//at.alicdn.com/t/c/font_3870791_3urrm8c5o5m.woff?t=1674898949174') format('woff'),
+         url('//at.alicdn.com/t/c/font_3870791_3urrm8c5o5m.ttf?t=1674898949174') format('truetype');
+  }
+  
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-zhihu:before {
+    content: "\e60d";
+  }
+  
+  .icon-shejiaotubiao-46:before {
+    content: "\e64b";
+  }
+  
+  .icon-bilibili:before {
+    content: "\e609";
+  }
+  
+  
