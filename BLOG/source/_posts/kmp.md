@@ -7,7 +7,7 @@ categories: [算法,字符串]
 cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/Luogu3375.png
 top_img: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_81371906.jpg
 keywords: [KMP,字符串Hash]
-decription: 一个简单的普及难度算法:KMP
+description: 一个简单的普及难度算法:KMP
 mathjax: true
 ---
 ## 问题引入

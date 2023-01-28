@@ -7,10 +7,9 @@ categories: [基础知识,STL]
 cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_73700097.jpg
 top_img: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_73700097.jpg
 keywords: [基础知识,STL]
-decription: 略深入地分析 std::vector
+description: 略深入地分析 std::vector
 mathjax : true
 ---
-
 &emsp;本文将更加细致的分析 std::vector 的具体原理以及实现。关于vector 的基础功能，请点击[这里](https://darksharpness.github.io/2022/10/23/%E6%B5%85%E8%B0%88C++STL/STL/#std-vector)。需要注意的是，vector &lt;bool&gt; 是一个特化的模板，其实现不同于其他的vector类，本文将不会讨论这一个特殊的实现，感兴趣可自行查询相关信息: [cppreference](https://en.cppreference.com/w/cpp/container/vector_bool)
 
 &emsp;本文重点分析 vector 的底层实现以及其运用到的 C++ 11 以后的特性等等，会讲到一部分但不是全部vector的功能，对于 OIer 可能帮助不大，这里先提醒一下。
@@ -18,7 +17,8 @@ mathjax : true
 ## std::vector 的功能
 
 ### 模板和声明
-&emsp;首先，我们可以在 `#include<vector>` 之后，通过`std::vector <T> vec` 来声明一个存储了 T 类型变量的动态数组，初始为空。其中，用户还可以提供一个 allocator type 作为模板的第二个参数，但是一般情况下不会用到，本文也不会分析这一个参数。
+
+&emsp;首先，我们可以在 `#include<vector>` 之后，通过 `std::vector <T> vec` 来声明一个存储了 T 类型变量的动态数组，初始为空。其中，用户还可以提供一个 allocator type 作为模板的第二个参数，但是一般情况下不会用到，本文也不会分析这一个参数。
 
 ### 初始化
 
@@ -55,6 +55,7 @@ vector <int> vec4 = vec0; // 同类型vector 也可用于初始化
 ### 元素相关
 
 &emsp;vector 还有很多的管理内部元素的成员函数。clear()可以清空所有的元素 ；insert() , emplace() 可以在指定位置(用迭代器表示) 插入一个元素 ；erase() 则类似的可以在指定位置删除元素  ；assign()可以重新初始化 vector 内部的元素，统一赋值 ； resize() 可以改变 vector 的 size() ；reserve() 可以为 vector 预留一定的空间 ；；shrink_to_fit() 可以把capacity()降低到和size()一样 ；swap() 可以交换两个同类型 vector 内部的元素，并且只要常数的时间复杂度。附代码:
+
 ```C++
 
 vector <int> vec = {1,2,3};
@@ -133,6 +134,7 @@ $$
 &emsp;两者在用 T 类型、单个参数初始化的时候表现几乎一致，但是在非 T 类型或者多个参数初始化的时候，emplace_back() 效率显著高于 push_back()。具体来说，如果往尾部添加一个左值 T 对象，那么两者完全一致，都是执行一次拷贝构造。同理，传入一个右值 T 类型的对象，那么两者也同样，都是执行一次移动构造。但是，当传入一系列参数作为新元素的构造参数时，push_back()需要显式的调用 T() 在外部构造，然后vector 内部还会移动构造一次。而emplace_back()则直接在内部构造，只有一次构造，可以省去一次移动构造。
 
 下面将举例分析。
+
 ```C++
 
 struct temp {
@@ -163,7 +165,7 @@ vec.emplace_back("DarkSharpness",1.99);
 &emsp;在 C++ 11 之后，笔者认为应当用 emplace_back()替代push_back()以追求更高的效率。如果要减少模板的实例化(emplace_back是模板)并且对象易于移动(例如 std::string)，或者
 追求旧版本的兼容性，那么再用push_back()。
 
-### emplace() 和 insert() 
+### emplace() 和 insert()
 
 &emsp;两者都是在指定的 iterator 前面插入一个元素，具体区别类似 emplace_back() 与 push_back()。当元素在尾部的时候，其同样有一定的强异常保证，即在 vector 尾部插入元素的异常表现完全等同 emplace_back() 与 push_back()。复杂度也是线性的，而且有多种变种，具体请参考cppreference: [insert](https://en.cppreference.com/w/cpp/container/vector/insert)，[emplace](https://en.cppreference.com/w/cpp/container/vector/emplace)。
 
@@ -187,7 +189,7 @@ tmp.resize(tmp.size() + 1);
 
 &emsp;就笔者个人经验而言，一般情况下会在 vector 一开始的时候 reserve() 到最大可能的size() 然后 push_back() 不超过这个size() ； 或者 resize() 到指定大小，然后对小于size()的下标的元素，进行读/写操作，类似对一个定长 array 操作。总之，一般要避免连续的 reserve() 和 resize()。
 
-### shrink_to_fit() 
+### shrink_to_fit()
 
 &emsp;这是一个比较玄学的函数，用来使 capacity() 缩小到 size()，减小空间占用。除非你明确释放内存(比如之后的vector的 size() 不会再增长只会减小，并且想要节约空间)，否则请不要使用这个函数，其会使得 vector 的优化(即多预留空间)带来的高效率 push_back() 失效。
 
@@ -202,7 +204,7 @@ tmp.resize(tmp.size() + 1);
 
 &emsp;笔者在寒假也写了一个类似 std::vector 的实现，其大致如下，具体可见 [github仓库](https://github.com/DarkSharpness/DarkSharpness/blob/main/Template/Dark/Container/dynamic_array.h)。注意，没有任何可信的保证，程序可能存在很多 bug! 而且没有任何异常处理，push_back() emplace_back() 没有任何异常保证。总之，仅供学习、参考，没有任何保证! 以下是 2023/01/25 16:42 UTC+8 的参考版本，附加了一点点注释。
 
-``` C++
+```C++
 #ifndef _DARK_DYNAMIC_ARRAY_H_
 #define _DARK_DYNAMIC_ARRAY_H_
 
@@ -575,7 +577,7 @@ class dynamic_array : private std::allocator <value_t> {
             while(count--) this->construct(tail++,val);
         }
     }
-    
+  
     /**
      * @brief Copy elements from a range [first,last).
      * Note that the Iterator must be random access iterator.

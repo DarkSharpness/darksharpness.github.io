@@ -5,10 +5,9 @@ updated: 2023-01-22 17:49:14
 tags: [随笔]
 categories: [随笔]
 keywords: [随笔]
-decription: 一个菜狗瞎写的一点也不EMO的文案
+description: 一个菜狗瞎写的一点也不EMO的文案
 cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_59411218.jpg
 ---
-
 这学期几乎啥也没干，没啥好总结的。主要讲个人相关，会避免一些敏感话题。
 
 ## 9月
@@ -31,20 +30,23 @@ cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_
 
 ![](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/5.jpg)
 ![](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/6.jpg)
+
 <center>(刚肝完学子讲坛、学术写作和检查点的我眼睛里看到的)</center>
 
-![红月!](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/4.jpg) 
+![红月!](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/4.jpg)
+
 <center>(肝完python解释器后我杀疯的状态，你见过4 a.m.的OJ吗)</center>
 
 ![已经获得本人授权](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/2.jpg)
-<center>(可爱的"马桶"同学)</center>
 
+<center>(可爱的"马桶"同学)</center>
 
 ## 12月
 
 &emsp;虽然才过了几天，但啥事情都有（。印象很深的是12/1号那天下了场雪(上海难得11月下雪)，然后在雪中踢球，可能是这学期玩的最开心的一次。
 
 ![拍的不好啊](https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/awa/3.jpg)
+
 <center>(虽然照片里一片雪都看不见)</center>
 
 &emsp;接下来就是很魔幻的第二周，首先是因为混管阳性，东17封楼了。然后在短暂的经历了一天不能堂食的生活后，我校再次回到了线上课的时代，好在打饭还是允许的，楼也没封。目前(2022.12.9)**情况未知**，貌似是鼓励返乡线上学习的(效仿之前清北的先例?)，本来四级要求的做的核酸也不需要了，体测什么也取消了，总之非常的神奇非常的魔幻，我也不太敢评价。

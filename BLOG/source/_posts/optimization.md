@@ -7,7 +7,7 @@ categories: [基础知识,优化]
 cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_101512274.jpg
 top_img: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_101512274.jpg
 keywords: [基础知识,优化]
-decription: 玄学优化，谨慎使用!后果自负。
+description: 玄学优化，谨慎使用!后果自负。
 mathjax: true
 ---
 注意，本文提到的优化大多是在基于程序复杂度正确的情况下对于一些常数的优化，本质是只是一种奇淫技巧，请勿滥用。所有测试数据全都是基于笔者的破电脑，且受随机因素影响，仅供参考。

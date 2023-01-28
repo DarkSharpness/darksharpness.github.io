@@ -7,7 +7,7 @@ categories: [基础知识,STL]
 cover: https://oi-wiki.org/lang/csl/images/container1.png
 top_img: https://oi-wiki.org/lang/csl/images/container1.png
 keywords: [基础知识,算法,STL]
-decription: 入门级 STL 介绍
+description: 入门级 STL 介绍
 mathjax: true
 ---
 ![OIWIKI_STL](https://oi-wiki.org/lang/csl/images/container1.png)
@@ -52,7 +52,6 @@ rend()   反向终点迭代器(即指向第一个元素前一个的元素,不可
 ### std::string
 
 具体内容参考 [字符串基础](https://darksharpness.github.io/2022/09/13/String/string/#std-string)。
-
 
 ### std::vector
 
@@ -177,7 +176,6 @@ q.empty() // 判断队伍是不是空
 
 e.g 经典场景:bfs的实现。为了保证是一层层的访问遍历，需要用一个queue记录之后要访问的结点(或节点编号)，由于队列FIFO的性质，只有在遍历完了某一次的节点后才会再遍历下一层。
 
-
 ### std::map
 
 加入头文件 #include &lt;map&gt; 后即可使用
@@ -187,6 +185,7 @@ e.g 经典场景:bfs的实现。为了保证是一层层的访问遍历，需要
 简单来说是一种映射的数据结构，其可以由一种类型作为键值(key)，每个键对应一个值(value)。
 
 #### map 的常用功能
+
 我们可以用 map &lt;key_type,value_type&gt; 来声明一个变量。值得一提的是，对于map中的key_type，你必须提供 < (小于号) 的比较方式，因为 map 内部是维护的是一颗[红黑树](https://baike.baidu.com/item/%E7%BA%A2%E9%BB%91%E6%A0%91/2413209)，元素是从小到大的排列。(所以指针一般来说不能作为key_type，因为指针比较默认是基于指针本身的值(即地址的大小))
 
 当然，你也可以自定义一个比较类 comp_class 来进行自定义的比较(该comp_class需重载()运算符，括号内可以接受两个key_type类来自定义比较)。

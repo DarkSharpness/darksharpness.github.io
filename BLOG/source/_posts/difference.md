@@ -7,7 +7,7 @@ categories: [随笔,作业]
 cover: https://www.computerhistory.org/babbage/_media/bckgnd/babbage-header.jpg
 top_img: https://www.computerhistory.org/babbage/_media/bckgnd/babbage-header.jpg
 keywords: [差分机]
-decription: 关于差分机小作业的感想
+description: 关于差分机小作业的感想
 mathjax: true
 ---
 写在前面的:

@@ -7,7 +7,7 @@ categories: [算法,数学]
 cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_664449380.jpg
 top_img: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_664449380.jpg
 keywords: [算法,数学,高精度]
-decription: 用NTT实现乘法的高精度模板.
+description: 用NTT实现乘法的高精度模板.
 mathjax: true
 ---
 由于作业要求，我需要写一个压位的高精度的模板，并且需要通过FFT / NTT对于乘法进行优化。

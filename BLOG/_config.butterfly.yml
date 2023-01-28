@@ -178,7 +178,7 @@ wordcount:
 # 3: auto_excerpt (default)
 # false: do not show the article introduction
 index_post_content:
-  method: 3
+  method: 2
   length: 500 # if you set method to 2 or 3, the length need to config
 
 # anchor
@@ -282,7 +282,7 @@ addtoany:
 comments:
   # Up to two comments system, the first will be shown as default
   # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
-  use: # Valine,Disqus
+  use: Giscus # Valine,Disqus
   text: true # Display the comment name next to the button
   # lazyload: The comment system will be load when comment element enters the browser's viewport.
   # If you set it to true, the comment count will be invalid
@@ -368,11 +368,16 @@ twikoo:
 # Giscus
 # https://giscus.app/
 giscus:
-  repo:
-  repo_id:
-  category_id:
+  repo: DarkSharpness/DarkSharpness.github.io
+  repo_id: MDEwOlJlcG9zaXRvcnkzNDE1Nzc5NDY=
+  category_id: DIC_kwDOFFwQ2s4CT2jG
+  loading: lazy
+  lang: zh-CN
+  input-position: top
+  strict: 1
+  mapping: pathname
   theme:
-    light: light
+    # light: light
     dark: dark
   option:
 

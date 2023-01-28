@@ -5,6 +5,7 @@ updated: 2023-01-27 23:49:52
 tags: [随笔]
 categories: [随笔]
 cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_94505082.jpg
+description: 我的第一个blog!!!
 sticky: 1919810
 ---
 ### 如果你能看到这篇文章，表明我的博客已经顺利建立。

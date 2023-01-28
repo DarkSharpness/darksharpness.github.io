@@ -7,7 +7,7 @@ categories: [基础知识]
 cover: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/String_HelloWorld.png
 top_img: https://raw.githubusercontent.com/DarkSharpness/Photos/main/Images/String_HelloWorld.png
 keywords: [字符串,基础知识]
-decription: 适合入门级和普及选手的字符串介绍
+description: 适合入门级和普及选手的字符串介绍
 mathjax: false
 ---
 ## 字符串基础
