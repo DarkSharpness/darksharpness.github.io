@@ -79,6 +79,14 @@ html[data-theme="dark"] header {
     opacity: 0.89;
 }
 
+/* 导航页面,文章,archive(特别处理),头图 透明度 */
+html[data-theme="light"] div#page,
+html[data-theme="light"] div#post,
+html[data-theme="light"] div#archive,
+html[data-theme="light"] header {
+    opacity: 0.96;
+}
+
 /* 深色主题 */
 html[data-theme="dark"]
 div#page, /* 主页 */
