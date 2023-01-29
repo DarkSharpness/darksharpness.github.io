@@ -103,7 +103,7 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: git@github.com:DarkSharpness/darksharpness.github.io.git
+  repository: git@github.com:DarkSharpness/DarkSharpness.github.io.git
   branch: master
 
 aplayer:
