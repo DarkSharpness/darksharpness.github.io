@@ -1,15 +1,9 @@
-
-@font-face{
-    font-family: 'HarmonyOS Sans SC';
-    font-display: swap;
-    src: url('../font/HarmonyOS_Sans_SC_Regular.ttf') format("truetype");
-}
-
 /* Body 放大 */ 
 body {
-    zoom: 110%;
-    font-family: 'HarmonyOS Sans SC';
+    zoom: 109%;
+    /* font-family: 'HarmonyOS Sans SC'; */
 }
+
 
 /* MathJax 大小调整 */
 .mathjax-overflow {
@@ -20,10 +14,6 @@ mjx-container.MathJax.CtxtMenu_Attached_0 {
     position: inherit !important;
 }
 
-/* 首页文章栏背景透明 */
-#recent-posts>.recent-post-item,.layout_page>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post {
-    background: var(--light_bg_color);
-}
 /* 竖屏背景设置 */
 #web_bg {
     background: url(https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_104376717.png);
@@ -39,28 +29,98 @@ mjx-container.MathJax.CtxtMenu_Attached_0 {
     }
 }
 
-/* 导航页面,文章,archive(特别处理) 透明 */
-div#page,div#post,div#archive {
-    opacity: 72% !important;
+/* 浅色主题 部分透明 */
+html[data-theme="light"]
+#recent-posts>.recent-post-item, /* 最近文章 */
+html[data-theme="light"]
+.layout_page>div:first-child:not(.recent-posts),
+html[data-theme="light"]
+.layout_post>#page, /* 主页 */
+html[data-theme="light"]
+.layout_post>#post, /* 正文 */ 
+html[data-theme="light"]
+.read-mode, /* 阅读模式 */
+html[data-theme="light"]
+#aside-content .card-widget, /* 侧边 */
+html[data-theme="light"]
+div#page, /* 主页 */
+html[data-theme="light"]
+div#post, /* 正文 */
+html[data-theme="light"] 
+div#archive/* Archieve 特殊处理*/
+{
+    background-color: rgba(255, 255, 255, 0.67);
 }
 
-/* 侧边栏透明 */
-#aside-content .card-widget {
+
+/* 深色主题 首页文章栏 侧边栏 背景完全透明 */
+html[data-theme="dark"]
+#recent-posts>.recent-post-item, /* 最近文章 */
+html[data-theme="dark"]
+.layout_page>div:first-child:not(.recent-posts),
+html[data-theme="dark"]
+.layout_post>#page, /* 主页 */
+html[data-theme="dark"]
+.layout_post>#post, /* 正文 */ 
+html[data-theme="dark"]
+.read-mode, /* 阅读模式 */
+html[data-theme="dark"]
+#aside-content .card-widget /* 侧边 */
+{
     background: var(--light_bg_color);
 }
 
-/* 底部透明 + 背景无色透明  */
+
+/* 导航页面,文章,archive(特别处理),头图 透明度 */
+html[data-theme="dark"] div#page,
+html[data-theme="dark"] div#post,
+html[data-theme="dark"] div#archive,
+html[data-theme="dark"] header {
+    opacity: 0.89;
+}
+
+/* 导航页面,文章,archive(特别处理),头图 透明度 */
+html[data-theme="light"] div#page,
+html[data-theme="light"] div#post,
+html[data-theme="light"] div#archive,
+html[data-theme="light"] header {
+    opacity: 0.96;
+}
+
+/* 深色主题 */
+html[data-theme="dark"]
+div#page, /* 主页 */
+html[data-theme="dark"]
+div#post, /* 正文 */
+html[data-theme="dark"] 
+div#archive /* Archieve 特殊处理*/ 
+{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* 浅色色主题 底部透明 + 背景无色透明  */
+html[data-theme="light"]
+footer#footer {
+    background-color: rgba(255, 255, 255, 0.5);
+    /* opacity: 0.3; */
+}
+
+html[data-theme="light"] #footer-wrap>*,
+html[data-theme="light"] .framework-info>a {
+    color: rgba(0, 0, 0, 0.67) !important;
+}
+
+
+
+/* 深色主题 底部透明 + 背景无色透明  */
+html[data-theme="dark"]
 footer#footer {
     opacity: 60%;
     background: transparent; /* 透明背景 */
 }
 
-
-
-/* 头图部分透明 */
-header {
-   opacity: 0.92;
-}
 
 /* 歌词不显示 */
 .aplayer-lrc {

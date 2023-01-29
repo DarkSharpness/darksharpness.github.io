@@ -246,12 +246,12 @@
     <link href="http://example.com/1919/08/10/firstBLOG/"/>
     <id>http://example.com/1919/08/10/firstBLOG/</id>
     <published>1919-08-10T03:45:14.000Z</published>
-    <updated>2023-01-27T15:49:52.000Z</updated>
+    <updated>2023-01-29T07:52:52.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="如果你能看到这篇文章，表明我的博客已经顺利建立。"><a href="#如果你能看到这篇文章，表明我的博客已经顺利建立。" class="headerlink" title="如果你能看到这篇文章，表明我的博客已经顺利建立。"></a>如果你能看到这篇文章，表明我的博客已经顺利建立。</h3><p>&emsp;本博客基于<a href="https://hexo.io/zh-cn/index.html">Hexo</a>，运用了 <a href="https://butterfly.js.org/">butterfly主题 </a>进行美化。由于作者本人对前端不太了解，在博客中可能出现各种奇怪的bug，也有许多页面可能尚未实装(例如评论系统)，如遇到问题欢迎向我汇报，鄙人将不胜感激。</p><h3 id="注意-由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN"><a href="#注意-由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN" class="headerlink" title="注意:由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)"></a><strong>注意:由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)</strong></h3><p>&emsp;该博客以后主要将用于记录我学过的一些知识，也欢迎各位来与我交流切磋，共同进步。</p><p>&emsp;我尽量做到能<del>周更</del>月更(？反正也没人看)，尽量把每个问题都讲的透彻，方便大家能更好的理解，也有助于我自己更深入了解每个问题。我会尽力做到图文并茂，结合一定的代码。</p><p>&emsp;由于”Dark”Sharpness的加成，本blog将强制使用深色主题，请不要尝试通过 F12 修改data-theme 为 light，那会看起来非常丑陋 <del>(其实是我懒得做light/dark两种不同的css)</del>。</p><p><strong>关于这个blog，其中非作者原创的二次元图片来自Pixiv/Seiga/Twitter，<a href="https://github.com/DarkSharpness/Photos/">图床</a>  标明了图片出处。如果实在找不到可以通过 <a href="https://saucenao.com/">https://saucenao.com/</a>  找到图片出处。具体请以原作者要求为准。其他非原创图片会标明引用链接。如侵权将立即删除。</strong></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="如果你能看到这篇文章，那么我的博客已经顺利建立。"><a href="#如果你能看到这篇文章，那么我的博客已经顺利建立。" class="headerlink" title="如果你能看到这篇文章，那么我的博客已经顺利建立。"></a>如果你能看到这篇文章，那么我的博客已经顺利建立。</h3><p>&emsp;本博客基于<a href="https://hexo.io/zh-cn/index.html">Hexo</a>，运用了 <a href="https://butterfly.js.org/">butterfly主题</a> 进行美化。由于作者本人对前端不太了解，在博客中可能出现各种奇怪的bug，也有许多页面可能尚未实装 <del>(例如评论系统)</del> ，如遇到问题欢迎向我汇报，鄙人将不胜感激。</p><h3 id="注意-由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN"><a href="#注意-由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN" class="headerlink" title="注意:由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)"></a><strong>注意:由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)</strong></h3><p>&emsp;该博客以后主要将用于记录我学过的一些知识，也欢迎各位来与我交流切磋，共同进步。</p><p>&emsp;我尽量做到能<del>周更</del>月更(？反正也没人看)，尽量把每个问题都讲的透彻，方便大家能更好的理解，也有助于我自己更深入了解每个问题。我会尽力做到图文并茂，结合一定的代码。</p><p>&emsp;<del>由于”Dark”Sharpness的加成，本blog将强制使用深色主题，请不要尝试通过 F12 修改data-theme 为 light，那会看起来非常丑陋 (其实是我懒得做light/dark两种不同的css)</del>。现在已经支持浅色模式了，切换按钮在右下角，默认是跟随系统偏好 <del>,但是”Dark”Sharpness还是推荐你用dark</del>。</p><p>&emsp;以后更新日志写在”关于”页面。</p><p><strong>关于这个blog，其中非作者原创的二次元图片来自Pixiv/Seiga/Twitter，<a href="https://github.com/DarkSharpness/Photos/">图床</a>  标明了图片出处。如果实在找不到可以通过 <a href="https://saucenao.com/">https://saucenao.com/</a>  找到图片出处。具体请以原作者要求为准。其他非原创图片会标明引用链接。如侵权将立即删除。</strong></p>]]></content>
     
     
-    <summary type="html">我的第一个blog!!!</summary>
+    <summary type="html">我的第一个blog!!! 请一定不要错过!(雾)</summary>
     
     
     
