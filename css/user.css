@@ -16,7 +16,7 @@ mjx-container.MathJax.CtxtMenu_Attached_0 {
 
 /* 竖屏背景设置 */
 #web_bg {
-    background: url(https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_104376717.png);
+    background: url(https://s2.loli.net/2023/01/28/a6sJTtogVkqUOBj.png);
     background-size: cover;
 }
 
@@ -24,7 +24,7 @@ mjx-container.MathJax.CtxtMenu_Attached_0 {
 @media  (max-width : 768px) {
     #web_bg {
         /* filter: grayscale(100%); */
-        background: url(https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_91828134.jpg);
+        background: url(https://s2.loli.net/2023/01/28/lHUXh2WbwDj9qGx.jpg);
         background-size: cover;
     }
 }

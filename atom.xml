@@ -270,11 +270,11 @@
     
     <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-    <category term="字符串" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
     <category term="KMP" scheme="http://example.com/tags/KMP/"/>
     
     <category term="字符串Hash" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2Hash/"/>
+    
+    <category term="字符串" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
