@@ -164,11 +164,11 @@
     <category term="STL" scheme="http://example.com/categories/C/STL/"/>
     
     
-    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
     <category term="C++" scheme="http://example.com/tags/C/"/>
     
     <category term="基础知识" scheme="http://example.com/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
     
     <category term="STL" scheme="http://example.com/tags/STL/"/>
     
