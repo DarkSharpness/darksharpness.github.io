@@ -56,14 +56,17 @@ prismjs:
   line_number: true
   tab_replace: ''
 
-# Home page setting
-# path: Root path for your blogs index page. (default = '')
-# per_page: Posts displayed per page. (0 = disable pagination)
-# order_by: Posts order. (Order by date descending by default)
+# Hexo自带
 index_generator:
   path: ''
-  per_page: 10
-  order_by: -date
+  per_page: 20
+  order_by: -updated
+
+# 添加-归档页面
+archive_generator: 
+  per_page: 20  # 根据实际配置调整即可
+  yearly: true
+  monthly: true
 
 # Category & Tag
 default_category: uncategorized

@@ -3,7 +3,7 @@ title: 一些关于常数的玄学优化
 date: 2022-12-1 13:37:35
 updated: 2022-12-3 18:04:10
 tags: [基础知识,优化]
-categories: [基础知识,优化]
+categories: [C++,基础知识,优化]
 cover: https://s2.loli.net/2023/01/28/mBk9lPWMvwZVQxC.jpg
 keywords: [基础知识,优化]
 description: 玄学优化，谨慎使用!后果自负。
@@ -26,7 +26,6 @@ mathjax: true
 &emsp;常数优化在OI中意义并不大，在大多情况下OI追求的是算法的正确性，而不会刻意去卡常数。但在实际运用中，一些细节处的常数可能会导致巨大的时间差异。例如作业[ICPC管理系统中](https://github.com/ACMClassCourse-2022/ICPC-Management-System-2022)，若不进行适当优化，则很容易使得程序运行常数增加 $m$ (最大为26，故可视作常数) 倍，这会使得 AC->TLE
 
 ![笔者瞎优化过后code稳定在2750ms上下](https://s2.loli.net/2023/01/28/dtUnQEphYKXGJbF.png)
-
 
 ![对比以下比较慢的实现。](https://s2.loli.net/2023/01/28/O6qZJ9wEpzedki3.png)
 

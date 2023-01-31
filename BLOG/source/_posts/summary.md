@@ -3,7 +3,7 @@ title: 2022学年上半学期总结
 date: 2022-12-09 14:28:18
 updated: 2023-01-22 17:49:14
 tags: [随笔]
-categories: [随笔]
+categories: [随笔,总结]
 keywords: [随笔]
 cover: https://s2.loli.net/2023/01/28/QkJL4GyBRbPFx6j.jpg
 description: 一个菜狗瞎写的一点也不EMO的文案
@@ -31,7 +31,7 @@ description: 一个菜狗瞎写的一点也不EMO的文案
 ![](https://s2.loli.net/2023/01/28/X1lnctef5WiRTpz.jpg)
 ![刚肝完学子讲坛、学术写作和检查点的我belike](https://s2.loli.net/2023/01/28/KS8lOqFUw3XVfxL.jpg)
 ![肝完python解释器后我杀疯的状态，你见过4 a.m.的OJ吗](https://s2.loli.net/2023/01/28/Go51y4sPWbJVqIR.jpg)
-![可爱的"马桶"同学(已经获得本人授权)](https://s2.loli.net/2023/01/28/OjxiVsH6MvZyb9n.jpg)
+![可爱的](https://s2.loli.net/2023/01/28/OjxiVsH6MvZyb9n.jpg)
 
 ## 12月
 

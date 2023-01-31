@@ -3,7 +3,7 @@ title: 字符串基本知识与约定
 date: 2022-09-13 18:57:52
 updated: 2022-09-13 18:57:10
 tags: [基础知识,字符串]
-categories: [基础知识]
+categories: [C++,基础知识]
 cover: https://s2.loli.net/2023/01/28/nutBQS2UcswC3bZ.png
 keywords: [字符串,基础知识]
 description: 适合入门级和普及选手的字符串介绍

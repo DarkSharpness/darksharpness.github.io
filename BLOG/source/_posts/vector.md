@@ -2,9 +2,9 @@
 title: STL_vector简析
 date: 2023-01-23 13:30:10
 updated: 2023-01-25 16:43:55
-tags: [基础知识]
-categories: [基础知识,STL]
-keywords: [基础知识,STL]
+tags: [基础知识,STL]
+categories: [C++,STL]
+keywords: [STL,vector]
 cover: https://s2.loli.net/2023/01/28/HAG6kBYsTN4EKrJ.jpg
 description: 略深入地分析 std::vector
 mathjax : true

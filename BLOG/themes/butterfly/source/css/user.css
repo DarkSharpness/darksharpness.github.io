@@ -16,7 +16,7 @@ mjx-container.MathJax.CtxtMenu_Attached_0 {
 
 /* 竖屏背景设置 */
 #web_bg {
-    background: url(https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_104376717.png);
+    background: url(https://s2.loli.net/2023/01/28/a6sJTtogVkqUOBj.png);
     background-size: cover;
 }
 
@@ -24,7 +24,7 @@ mjx-container.MathJax.CtxtMenu_Attached_0 {
 @media  (max-width : 768px) {
     #web_bg {
         /* filter: grayscale(100%); */
-        background: url(https://raw.githubusercontent.com/DarkSharpness/Photos/main/Touhou/pixiv_91828134.jpg);
+        background: url(https://s2.loli.net/2023/01/28/lHUXh2WbwDj9qGx.jpg);
         background-size: cover;
     }
 }
@@ -47,9 +47,26 @@ div#page, /* 主页 */
 html[data-theme="light"]
 div#post, /* 正文 */
 html[data-theme="light"] 
-div#archive/* Archieve 特殊处理*/
+div#archive,/* Archieve 特殊处理*/
+html[data-theme="light"]
+div#tag, /* 标签页的具体标签 */
+html[data-theme="light"]
+div#category /* 分类的具体分类 */
 {
     background-color: rgba(255, 255, 255, 0.67);
+}
+
+/* 深色主题 */
+html[data-theme="dark"]
+div#page, /* 主页 */
+html[data-theme="dark"]
+div#post, /* 正文 */
+html[data-theme="dark"] 
+div#archive, /* Archieve 特殊处理*/ 
+html[data-theme="dark"] div#tag,     /* 标签页的具体标签 */
+html[data-theme="dark"] div#category /* 分类的具体分类 */ 
+{
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 
@@ -70,12 +87,14 @@ html[data-theme="dark"]
     background: var(--light_bg_color);
 }
 
-
 /* 导航页面,文章,archive(特别处理),头图 透明度 */
 html[data-theme="dark"] div#page,
 html[data-theme="dark"] div#post,
 html[data-theme="dark"] div#archive,
-html[data-theme="dark"] header {
+html[data-theme="dark"] header,
+html[data-theme="dark"] div#tag,     /* 标签页的具体标签 */
+html[data-theme="dark"] div#category /* 分类的具体分类 */ 
+{
     opacity: 0.89;
 }
 
@@ -83,22 +102,15 @@ html[data-theme="dark"] header {
 html[data-theme="light"] div#page,
 html[data-theme="light"] div#post,
 html[data-theme="light"] div#archive,
-html[data-theme="light"] header {
+html[data-theme="light"] header,
+html[data-theme="light"] div#tag,     /* 标签页的具体标签 */
+html[data-theme="light"] div#category /* 分类的具体分类 */
+{
     opacity: 0.96;
 }
 
-/* 深色主题 */
-html[data-theme="dark"]
-div#page, /* 主页 */
-html[data-theme="dark"]
-div#post, /* 正文 */
-html[data-theme="dark"] 
-div#archive /* Archieve 特殊处理*/ 
-{
-    background-color: rgba(0, 0, 0, 0.5);
-}
 
-
+/* 底部处理 */
 
 /* 浅色色主题 底部透明 + 背景无色透明  */
 html[data-theme="light"]
@@ -111,8 +123,6 @@ html[data-theme="light"] #footer-wrap>*,
 html[data-theme="light"] .framework-info>a {
     color: rgba(0, 0, 0, 0.67) !important;
 }
-
-
 
 /* 深色主题 底部透明 + 背景无色透明  */
 html[data-theme="dark"]

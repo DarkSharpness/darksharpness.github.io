@@ -2,11 +2,11 @@
 title: 浅谈C++STL
 date: 2022-10-23 15:32:55
 updated: 2022-11-10 13:30:10
-tags: [基础知识,算法]
-categories: [基础知识,STL]
+tags: [C++,基础知识,算法,STL]
+categories: [C++,STL]
 cover: https://oi-wiki.org/lang/csl/images/container1.png
 top_img: https://oi-wiki.org/lang/csl/images/container1.png
-keywords: [基础知识,算法,STL]
+keywords: [C++,基础知识,算法,STL]
 description: 入门级 STL 介绍
 mathjax: true
 ---
