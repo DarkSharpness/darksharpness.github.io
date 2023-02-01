@@ -53,13 +53,13 @@ int son[N];     // 重儿子节点，必须维护
 int top[N];     // 重链最顶部的节点，必须维护
 int fat[N];     // 父亲节点，必须维护
 int siz[N];     // 子树大小，必须维护
+int dep[N];     // 节点深度，有需要就维护
 int dfn[N];     // dfs 序，必须维护
 int rev[N];     /*
     dfn 的反函数(reverse)，即满足:
     dfn[rev[i]] = rev[dfn[i]] = i;
     在有节点初始权值即线段树需要build的时候，才需要维护
 */
-int dep[N];     // 节点深度，一般不用维护
 
 // 处理出 son,fat,siz,dep信息
 void dfs1(int u) { // u 为当前节点
@@ -67,10 +67,10 @@ void dfs1(int u) { // u 为当前节点
     siz[u] = 1;      // 至少包含当前节点的 siz
     for(int v : g[u]) { // C++11特性。此处用来遍历 u 所有边，v为指向的点
         if(v == fat[u]) continue; // 父节点不重复遍历
-        dfs1(v);
-        fat[v] = u;
-        siz[u] += siz[v];
         dep[v] = dep[u] + 1;
+        fat[v] = u;
+        dfs1(v);
+        siz[u] += siz[v];
         if(siz[v] > maxsiz) {
             maxsiz = siz[v];
             son[u] = v;
@@ -164,7 +164,7 @@ void addTree(int x,int val) {
     t.add(dfn[x],dfn[x] + siz[x] - 1,val);
 }
 
-int sumPath(int x) {
+int sumTree(int x) {
     return t.sum(dfn[x],dfn[x] + siz[x] - 1);
 }
 
