@@ -3,7 +3,7 @@ title: KMP算法
 date: 2022-09-09 20:59:52
 updated: 2022-09-13 17:02:10
 tags: [KMP,字符串Hash,字符串,算法]
-categories: [算法,字符串]
+categories: [算法,字符串,KMP]
 cover: https://s2.loli.net/2023/01/28/iUjK4Ef7sGDzZCl.png
 keywords: [KMP,字符串Hash]
 description: 一个简单的普及难度字符串算法:KMP
