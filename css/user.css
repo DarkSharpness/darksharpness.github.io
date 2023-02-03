@@ -1,6 +1,7 @@
 /* Body 放大 */ 
 body {
-    zoom: 109%;
+    /* zoom: 109%; */
+    /* transform: scale(1.09); */
     /* font-family: 'HarmonyOS Sans SC'; */
 }
 
@@ -73,30 +74,35 @@ html[data-theme="dark"]
     background: var(--light_bg_color);
 }
 
-/* 导航页面,文章,archive(特别处理),头图 透明度 */
+/* 导航页面,文章,archive(特别处理) 透明度 */
+/* html[data-theme="dark"] header, */
 html[data-theme="dark"] div#page,
 html[data-theme="dark"] div#post,
 html[data-theme="dark"] div#archive,
-html[data-theme="dark"] header,
 html[data-theme="dark"] div#tag,     /* 标签页的具体标签 */
 html[data-theme="dark"] div#category /* 分类的具体分类 */ 
 {
     opacity: 0.89;
 }
 
-/* 导航页面,文章,archive(特别处理),头图 透明度 */
+header {
+    opacity: 0.99;
+}
+
+/* 导航页面,文章,archive(特别处理) 透明度 */
+/* html[data-theme="light"] header, */
 html[data-theme="light"] div#page,
 html[data-theme="light"] div#post,
 html[data-theme="light"] div#archive,
-html[data-theme="light"] header,
 html[data-theme="light"] div#tag,     /* 标签页的具体标签 */
 html[data-theme="light"] div#category /* 分类的具体分类 */
 {
-    opacity: 0.96;
+    opacity: 0.97;
 }
 
 
 /* 底部处理 */
+
 
 /* 浅色色主题 底部透明 + 背景无色透明  */
 html[data-theme="light"]
@@ -168,3 +174,9 @@ footer#footer {
         background-size: cover;
     }
 }
+
+/* 浅色模式标签设置 */
+/* html[data-theme="light"] 
+a.post-meta__tags {
+    color:rgb(255, 0, 0)
+} */
