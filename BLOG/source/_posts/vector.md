@@ -13,13 +13,13 @@ mathjax : true
 
 &emsp;本文重点分析 vector 的底层实现以及其运用到的 C++ 11 以后的特性等等，会讲到一部分但不是全部vector的功能，对于 OIer 可能帮助不大，这里先提醒一下。
 
-## std::vector 的功能
+# std::vector 的功能
 
-### 模板和声明
+## 模板和声明
 
 &emsp;首先，我们可以在 `#include<vector>` 之后，通过 `std::vector <T> vec` 来声明一个存储了 T 类型变量的动态数组，初始为空。其中，用户还可以提供一个 allocator type 作为模板的第二个参数，但是一般情况下不会用到，本文也不会分析这一个参数。
 
-### 初始化
+## 初始化
 
 &emsp;vector 不仅可以初始化为空，也可以用同类型的vector初始化。除此之外，vector还支持初始化列表(要求C++11)，也可以在构造的时候直接设置初始数组的大小以及元素的值。如下所示:
 
@@ -37,21 +37,21 @@ vector <int> vec4 = vec0; // 同类型vector 也可用于初始化
 
 ```
 
-### 常用功能
+## 常用功能
 
 &emsp;vector 的功能有很多。最基础的就是通过成员函数push_back() 或 emplace_back() 往 vector 尾部添加一个元素，push_back() 仅支持一个元素作为参数，而emplace_back() 可以传入多个参数，把这些参数作为新添加的元素的构造函数的参数。需要注意的是，我们应当区分 emplace_back() 和 push_back()的本质，两者虽然都是往尾部添加一个元素，但是底层机制不太一样，笔者将会在后文着重讨论。当然，有push_back()也自然会有pop_back()函数。
 
 &emsp;类似原生数组，vector 也可以通过下标访问元素，进行读/写操作。而对于下标越界的情况，直接通过下标访问并不会进行任何检查，带来一些未定义行为。如果你的确需要含有越界检查的访问，请使用at()成员函数，其对于下标越界的情况会抛出错误。vector也可以用back()和front()成员函数访问最后一个/第一个元素，并且是一个读/写访问。当然，你也可以通过data()直接的得到vector的第一个元素的地址。由于vector内部数据是连续储存，这相当于就是指向vector内部数组的指针，但是该指针在vector进行改变容量的操作后会失效。
 
-### 迭代器
+## 迭代器
 
 &emsp;vector也支持迭代器，既有成员函数版本的begin(),end(),cbegin(),cend()，也有非成员函数版的。也有反向迭代器 (即在正向迭代器前面加一个r,例如rbegin(),crend())。同时，其内存连续存储，所以其也是随机访问迭代器。
 
-### 容积相关
+## 容积相关
 
 &emsp;vector还有许多关于容量的成员函数。首先是empty()用于判断vector()是否为空，size()返回 vector 内部元素的个数。除了以上两个常用的函数，其实还有一个capacity()，其返回的是，vector 已经申请的空间中可以存放元素的个数。这点可能比较绕，笔者将举例子阐释。例如 `class T` 在内存中占有字节数 $32$ Byte，vector 内部假设已经有了 $3$ 个 T 类型的元素，但是已经了申请 $128=32 \cdot 4$ Byte 的空间，那么其size()毫无疑问就是3，而capacity() 就是4。显然的，一个 vector 内部申请的可以存放元素的个数不少于其已经存放元素的个数。当然，用户不用担心这点，vector 内部会自动动态扩容的。
 
-### 元素相关
+## 元素相关
 
 &emsp;vector 还有很多的管理内部元素的成员函数。clear()可以清空所有的元素 ；insert() , emplace() 可以在指定位置(用迭代器表示) 插入一个元素 ；erase() 则类似的可以在指定位置删除元素  ；assign()可以重新初始化 vector 内部的元素，统一赋值 ； resize() 可以改变 vector 的 size() ；reserve() 可以为 vector 预留一定的空间 ；；shrink_to_fit() 可以把capacity()降低到和size()一样 ；swap() 可以交换两个同类型 vector 内部的元素，并且只要常数的时间复杂度。附代码:
 
@@ -102,7 +102,7 @@ tmp.swap(vec); // 常数时间交换两个 vector 元素
 
 &emsp;最后，vector 还有一些常见的运算符操作，例如 = 赋值以及 == , &lt; , &gt; 等基本逻辑运算符。
 
-## std::vector 的底层原理
+# std::vector 的底层原理
 
 &emsp;vector 是一个动态的数组，拥有自动扩容的能力(push_back操作)，而且具有均摊 $O(1)$ 的添加元素时间复杂度，常常用于各类程序中。
 
@@ -116,17 +116,17 @@ $$
 
 &emsp;这样一来，$n$ 次扩容就只要均摊 $O(n)$ 的时间复杂度，而且最多只会用两倍的空间，这在时空复杂度上都是十分高效的。以上便是 std::vector 最根本的原理。
 
-## std::vector 的实现细节
+# std::vector 的实现细节
 
-### 构造函数赋值和swap()
+## 构造函数赋值和swap()
 
 &emsp;由于是指针管理内部数据，因此交换两个容器就只需要交换3个指针即可，所以是常数时间复杂度。同时，在 C++ 11 以后，移动构造函数、移动赋值函数也只需要移动三个指针即可，因此也是常数时间复杂度，其十分高效。而拷贝构造、拷贝赋值等操作则是一个一个的拷贝元素，时间复杂度为线性。
 
-### size() 和 capacity()
+## size() 和 capacity()
 
 &emsp;前面有讲过，size() 返回的是内部存放的元素的个数，而capacity() 则是已经预留空间的元素数，也已经举例讲过。更详细的说，我们可以把 vector 内部看作维护了三个指针 head,tail,end。其中 head 指向申请的内存块的首地址，end 指向了申请的内存块的尾地址(0-base，所以其实是在最后一个可用元素后面一个的位置)，tail 则是指向当前存放最后一个元素后面一个的位置。此时，size() 就等于 tail - head，而 capacity() 就等于 end - head，满足 head $\lt$ tail $\le$ end 。需要注意的是，[head,tail) 之间的元素都是执行过一次构造函数的，但是 [tail,end) 之间的元素的都是未初始化的，没有执行过构造函数。对于一些复杂类，这样的初始构造函数是十分重要的。
 
-### push_back() 和 emplace_back()
+## push_back() 和 emplace_back()
 
 &emsp;前面提到的 push_back() 和 emplace_back()，不同便是在于 emplace_back() 极大地利用了 C++ 11 的特性。push_back() 只能接受一个 T 类型参数，可以是左值或者右值。对于左值，新的元素将通过拷贝构造初始化；对于右值，将会执行移动构造函数来初始化新的元素。而emplace_back()可以接受多个参数，其可以通过完美转发，直接用这些参数作为新元素的构造函数，来构造尾部的新元素。
 
@@ -164,11 +164,11 @@ vec.emplace_back("DarkSharpness",1.99);
 &emsp;在 C++ 11 之后，笔者认为应当用 emplace_back()替代push_back()以追求更高的效率。如果要减少模板的实例化(emplace_back是模板)并且对象易于移动(例如 std::string)，或者
 追求旧版本的兼容性，那么再用push_back()。
 
-### emplace() 和 insert()
+## emplace() 和 insert()
 
 &emsp;两者都是在指定的 iterator 前面插入一个元素，具体区别类似 emplace_back() 与 push_back()。当元素在尾部的时候，其同样有一定的强异常保证，即在 vector 尾部插入元素的异常表现完全等同 emplace_back() 与 push_back()。复杂度也是线性的，而且有多种变种，具体请参考cppreference: [insert](https://en.cppreference.com/w/cpp/container/vector/insert)，[emplace](https://en.cppreference.com/w/cpp/container/vector/emplace)。
 
-### reserve() 和 resize()
+## reserve() 和 resize()
 
 &emsp;这两个函数比较特殊，其均有改变 vector 的的大小的作用，只不过 reserve() 会预留空间，但是resize() 在预留空间(如果是扩容)的同时，还会对超过原来size()部分新建的元素执行构造函数。
 
@@ -188,11 +188,11 @@ tmp.resize(tmp.size() + 1);
 
 &emsp;就笔者个人经验而言，一般情况下会在 vector 一开始的时候 reserve() 到最大可能的size() 然后 push_back() 不超过这个size() ； 或者 resize() 到指定大小，然后对小于size()的下标的元素，进行读/写操作，类似对一个定长 array 操作。总之，一般要避免连续的 reserve() 和 resize()。
 
-### shrink_to_fit()
+## shrink_to_fit()
 
 &emsp;这是一个比较玄学的函数，用来使 capacity() 缩小到 size()，减小空间占用。除非你明确释放内存(比如之后的vector的 size() 不会再增长只会减小，并且想要节约空间)，否则请不要使用这个函数，其会使得 vector 的优化(即多预留空间)带来的高效率 push_back() 失效。
 
-### clear()
+## clear()
 
 &emsp;这个函数用来清空 vector 内部的元素，它会使得 size() 减小到0，但是 capacity() 不变，这是为了保证高效的 push_back() 操作。参考之前的实现，有一小部分用户 (比如曾经的我) 可能错以为 clear() 就是移动一个指针事情(tail = head) ，以为是常数复杂度。这样的观点是错误的。事实上，vector的clear()操作其实是线性复杂度，正比于内部元素个数。这是因为内部的元素可能是非平凡类，这种时候内部元素在销毁的时候必须执行析构函数(例如 std::map，析构函数需要释放内部的内存，不然会内存泄漏)。当然，这时候又有小可爱(比如我)想要问: 那么对于简单类，比如 int,double，其不需要析构函数来释放空间，那不是会降低效率吗。然而，cpp的编译器(至少gcc)要求了，对于空的析构(比如 ~int())，其会被优化掉，甚至连循环都会被优化掉。其会被优化为空，所以不用考虑这些细节对于效率的影响。
 
@@ -200,7 +200,7 @@ tmp.resize(tmp.size() + 1);
 
 ![析构单个pointer](https://s2.loli.net/2023/01/28/E2M41zGa3fyjQHL.png)
 
-## 参考 vector 实现
+# 参考 vector 实现
 
 &emsp;笔者在寒假也写了一个类似 std::vector 的实现，其大致如下，具体可见 [github仓库](https://github.com/DarkSharpness/DarkSharpness/blob/main/Template/Dark/Container/dynamic_array.h)。注意，没有任何可信的保证，程序可能存在很多 bug! 而且没有任何异常处理，push_back() emplace_back() 没有任何异常保证。总之，仅供学习、参考，没有任何保证! 以下是 2023/01/25 16:42 UTC+8 的参考版本，附加了一点点注释。
 

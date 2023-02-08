@@ -49,8 +49,9 @@ copy:
 #   icon: link || the description
 social:
   fab fa-github: https://github.com/DarkSharpness || Github
-  iconfont icon-bilibili: https://space.bilibili.com/1844450145 || Bilibili
+  iconfont icon-bilibili: https://space.bilibili.com/396961987 || Bilibili
   iconfont icon-zhihu: https://www.zhihu.com/people/darksharpness || Zhihu
+  fa-solid fa-music: https://music.163.com/#/user/home?id=8335592513 || Cloudmusic
 
 # search (搜索)
 # see https://butterfly.js.org/posts/ceeb73f/#搜索系統
@@ -895,7 +896,7 @@ inject:
     - <script src="js/meting.min.js"></script>
     # - <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
     - <script src="js/user.js"></script>
-    - <div class="aplayer no-destroy" data-volume="0.5" data-id="7833228605"  data-autoplay="true" data-server="netease" data-type="playlist" data-loop = "all" data-order="random" data-fixed="true" mutex = "true"> </div>
+    - <div class="aplayer no-destroy" data-volume="0.5" data-id="8149615949"  data-autoplay="true" data-server="netease" data-type="playlist" data-loop = "all" data-order="random" data-fixed="true" mutex = "true"> </div>
 
 # CDN
 # Don't modify the following settings unless you know how they work

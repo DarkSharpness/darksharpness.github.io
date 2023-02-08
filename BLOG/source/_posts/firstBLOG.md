@@ -6,7 +6,7 @@ tags: [随笔]
 categories: [随笔]
 
 cover: https://s2.loli.net/2023/01/28/fIdL7iMWpwJTZYq.jpg
-description: 我的第一个blog!!! 请一定不要错过!(雾) 不定期会更新一些 blog 的说明事项，请留意!
+description: 我的第一个blog!!! 请一定不要错过!(雾) 不定期会更新一些 blog 的注意事项，请留意!
 sticky: 1919810
 ---
 ## 如果你能看到这篇文章，那么我的博客已经顺利建立。
