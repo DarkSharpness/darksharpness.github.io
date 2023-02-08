@@ -1,20 +1,11 @@
-/* Body 放大 */ 
-body {
-    /* zoom: 109%; */
-    /* transform: scale(1.09); */
-    /* font-family: 'HarmonyOS Sans SC'; */
-}
-
-
 /* MathJax 大小调整 */
 .mathjax-overflow {
-    font-size: 90% !important;
+    font-size: 91% !important;
 }
 
 mjx-container.MathJax.CtxtMenu_Attached_0 {
     position: inherit !important;
 }
-
 
 /* 浅色主题 部分透明 */
 html[data-theme="light"]
@@ -129,34 +120,6 @@ footer#footer {
     opacity: 0;
 }
 
-/* 自定义图标部分 */
-
-@font-face {
-    font-family: "iconfont"; /* Project id 3870791 */
-    src: url('//at.alicdn.com/t/c/font_3870791_3urrm8c5o5m.woff2?t=1674898949174') format('woff2'),
-    url('//at.alicdn.com/t/c/font_3870791_3urrm8c5o5m.woff?t=1674898949174') format('woff'),
-    url('//at.alicdn.com/t/c/font_3870791_3urrm8c5o5m.ttf?t=1674898949174') format('truetype');
-}
-
-.iconfont {
-    font-family: "iconfont" !important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-zhihu:before {
-    content: "\e60d";
-}
-
-.icon-shejiaotubiao-46:before {
-    content: "\e64b";
-}
-
-.icon-bilibili:before {
-    content: "\e609";
-}
 
 /* 背景部分  */
 
@@ -175,8 +138,36 @@ footer#footer {
     }
 }
 
-/* 浅色模式标签设置 */
-/* html[data-theme="light"] 
-a.post-meta__tags {
-    color:rgb(255, 0, 0)
-} */
+/* 自定义图标部分 */
+
+@font-face {
+    font-family: "iconfont"; /* Project id 3870791 */
+    src: url('//at.alicdn.com/t/c/font_3870791_uqwyuj83tu.woff2?t=1675867134473') format('woff2'),
+            url('//at.alicdn.com/t/c/font_3870791_uqwyuj83tu.woff?t=1675867134473') format('woff'),
+            url('//at.alicdn.com/t/c/font_3870791_uqwyuj83tu.ttf?t=1675867134473') format('truetype');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wangyiyunyinle:before {
+    content: "\e63c";
+}
+
+.icon-zhihu:before {
+    content: "\e60d";
+}
+
+.icon-shejiaotubiao-46:before {
+    content: "\e64b";
+}
+
+.icon-bilibili:before {
+    content: "\e609";
+}
+
