@@ -373,7 +373,7 @@ $$
 {I_0}^2 = \int_0^{{+\infty}}\int_0^{{+\infty}} \mathrm{e}^{-\alpha(x^2 + y^2)} \mathrm{d}x\mathrm{d}y
 $$
 
-将 $x,y$ 看作平面上正交的两个方向，利用极坐标，记 $x = r \cos\theta , y = r \sin\theta $ 。此时:
+将 $x,y$ 看作平面上正交的两个方向，积分范围就是第一象限。将积分转化为极坐标下的形式，记 $x = r \cos\theta , y = r \sin\theta $ 。此时:
 
 $$
 \begin{aligned}
