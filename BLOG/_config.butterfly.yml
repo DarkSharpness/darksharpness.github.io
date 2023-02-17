@@ -213,8 +213,8 @@ post_copyright:
 reward:
   enable: true
   QR_code:
-    - img: https://s2.loli.net/2023/01/28/NnrVfgIw9ilL6Ct.png
-      link: https://www.bilibili.com/video/BV1GJ411x7h7/
+    - img: https://s2.loli.net/2023/02/17/bNFrOglBCW6ZaUq.png
+      link: https://vdse.bdstatic.com//192d9a98d782d9c74c96f09db9378d93.mp4
       text: wechat
 
 # Post edit
