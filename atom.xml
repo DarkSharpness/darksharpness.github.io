@@ -220,11 +220,11 @@
     <category term="STL" scheme="http://darksharpness.github.io/categories/C/STL/"/>
     
     
+    <category term="算法" scheme="http://darksharpness.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
     <category term="C++" scheme="http://darksharpness.github.io/tags/C/"/>
     
     <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    <category term="算法" scheme="http://darksharpness.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
     <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
     
@@ -274,9 +274,9 @@
     <category term="竞赛" scheme="http://darksharpness.github.io/categories/%E7%89%A9%E7%90%86/%E7%AB%9E%E8%B5%9B/"/>
     
     
-    <category term="物理竞赛" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86%E7%AB%9E%E8%B5%9B/"/>
-    
     <category term="物理" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86/"/>
+    
+    <category term="物理竞赛" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86%E7%AB%9E%E8%B5%9B/"/>
     
   </entry>
   
