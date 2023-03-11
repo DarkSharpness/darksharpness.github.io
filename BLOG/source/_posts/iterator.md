@@ -1,7 +1,7 @@
 ---
 title: 关于 STL iterator 的那些事
 date: 2023-03-08 18:11:37
-updated: 2023-03-08 21:38:37
+updated: 2023-03-11 14:17:20
 tags: [基础知识,STL]
 categories: [C++,STL]
 keywords: [STL,iterator]
@@ -136,6 +136,101 @@ j->x; // 同上,但类型为 const int &
 
 而对于其他的迭代器，一般都不会支持除了 != 和 = 之外的比较运算符。
 
+
+
 ## iterator_traits
 
-咕咕咕...(待更新，欢迎催更)
+~~咕咕咕...(待更新，欢迎催更)没人催也更新~~
+
+std::iterator_traits 本质上是一种模板类，用来提供一个统一的接口，便于标准库基于迭代器的类型来实现不同的算法。而作为用户，只需提供一个含有一些特定的 typedef 的 iterator 类，或者是手动模板偏特化。
+
+其定义大致如下:
+```C++
+template <class Iter>
+struct iterator_traits;
+```
+
+对于提供的 Iter 类，其必须要有以下五个成员类
+1. difference_type
+1. value_type
+4. pointer
+5. reference
+1. iterator_category
+
+其中，difference_type 是两个 iterator 做差后的类型(如果可以做差的话)。value_type 是解引用后得到的 value 类型。pointer 是指向 value 的指针类型。reference 是 value 类的引用类型。而 iterator_category 是 iterator 的类型。
+
+这里有必要单独讲一讲 iterator_category 。其具体分为 input_iterator_tag , input_iterator_tag , forward_iterator_tag , bidirectional_iterator_tag , random_access_iterator_tag 。其含义比较直观，分别对应的是只读，只写，只能向前迭代，可以双向迭代，和可随机访问迭代。不难看出后面三个是一个比一个更强的，都至少需要前面一级作为基础，因此后三者应该呈继承关系。事实上，STL 里面也是这么实现的，下面是标准库的一些片段。(注释没改，来自 gcc 12.2.0 的原始片段)
+
+```C++
+  ///  Marking input iterators.
+  struct input_iterator_tag { };
+
+  ///  Marking output iterators.
+  struct output_iterator_tag { };
+
+  /// Forward iterators support a superset of input iterator operations.
+  struct forward_iterator_tag : public input_iterator_tag { };
+
+  /// Bidirectional iterators support a superset of forward iterator
+  /// operations.
+  struct bidirectional_iterator_tag : public forward_iterator_tag { };
+
+  /// Random-access iterators support a superset of bidirectional
+  /// iterator operations.
+  struct random_access_iterator_tag : public bidirectional_iterator_tag { };
+```
+
+基于以上的知识，我们也可以为我们自己写的容器的 iterator 加上一些成员类型，从而使得其可以被 iterator_traits 识别。例如对于一个存储 int 的 array 类的 iterator ，其定义应该大致如下:
+
+```C++
+class iterator {
+  public: // 注意，成员类需要 public! 否则无法识别
+    // 为了C++ 11 之前的兼容性，可以用typedef 代替 using
+
+    using difference_type   = std::ptrdiff_t;
+    using value_type        = int;
+    using pointer           = int *;
+    using reference         = int &;
+    using iterator_category = std::random_access_iterator_tag ;
+
+  private:
+    // 后面是实现部分,省略
+    // ...
+};
+
+```
+
+可以看出，比起原本的实现，只需额外 typedef 或 using 声明几个模板类，即可满足迭代器被 iterator_traits 识别，从而可以用于标准库里面的某些函数。
+
+这时候，聪明的您可能又要问了，那么原生指针不就没法支持了吗。您说得对，但是标准库对于原生的指针有模板特化，依然可以被 iterator_traits 所识别。
+
+总结下来，iterator_traits 是对于原生指针和自定义的 iterator 的一层包装，用来提供一个统一的接口，便于 STL 实现针对性的算法。
+
+而作为用户，也可以利用这一特性，实现针对性的算法。举例: 让迭代器前进 n 步。对于随机访问迭代器，只需 += 即可，但其他的迭代器需要一步一步的向前走。这时，可以借助 iterator_traits。
+
+```C++
+/* 如果是其他 input_iterator, 可以转换为基类 */
+template <class Iter>
+void advance_n(Iter &i,size_t __n,std::input_iterator_tag) {
+    while(__n--) ++i;
+}
+
+/* 随机访问迭代器要特殊重载 */ 
+template <class Iter>
+void advance_n(Iter &i,size_t __n,std::random_access_iterator_tag) {
+    i += __n;
+}
+
+template <class Iter>
+void advance_n(Iter &i,size_t __n) {
+    return advance_n(i,__n,typename iterator_traits <Iter>::iterator_category ());
+    // 空类型 iterator_category 无开销
+}
+
+```
+
+如果您对这个感兴趣，可以去看看 cppreference 上关于 [iterator_traits](https://en.cppreference.com/w/cpp/iterator/iterator_traits) 的解释。
+
+# END
+
+感谢 [yyu](https://apex.sjtu.edu.cn/members/yyu) 的~~友情~~客串，感谢您认真看到了最后！
