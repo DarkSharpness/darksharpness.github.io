@@ -6,6 +6,7 @@
         "charconv": "cpp",
         "inout": "cpp",
         "cstddef": "cpp",
-        "climits": "cpp"
+        "climits": "cpp",
+        "iostream": "cpp"
     }
 }
