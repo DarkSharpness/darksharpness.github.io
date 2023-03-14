@@ -6,7 +6,7 @@
   <link href="http://darksharpness.github.io/atom.xml" rel="self"/>
   
   <link href="http://darksharpness.github.io/"/>
-  <updated>2023-03-11T06:17:20.000Z</updated>
+  <updated>2023-03-14T15:01:16.000Z</updated>
   <id>http://darksharpness.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>红黑树的一种实现 &amp; 剖析</title>
+    <link href="http://darksharpness.github.io/2023/03/14/RBT1/"/>
+    <id>http://darksharpness.github.io/2023/03/14/RBT1/</id>
+    <published>2023-03-14T08:42:16.000Z</published>
+    <updated>2023-03-14T15:01:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>红黑树是一个非常高效的数据结构。其本质是一颗平衡的二叉搜索树，可以在 $O(logn)$ 的时间内完成一次插入或者删除操作，支持在最坏 $O(logn)$ 的时间内树上进行二分查找的操作。在各种编程语言中，往往也会用红黑树算法来实现最基础的 map 类(或者其他类似的名字，例如 python 字典类)，可以通过一个 key 来查询对应的 value 。</p><p>本文不会过分地讨论红黑树平衡相关的算法，而是会具体讨论下红黑树实现的底层架构，算法问题请左转百度自行学习。本文希望能够从一些最简单的想法出发，引出一个复杂而高效的红黑树实现。</p><p><strong>在开始阅读文章前，请牢记以下这些核心问题与要求!</strong></p><p><strong>在开始阅读文章前，请牢记以下这些核心问题与要求!</strong></p><p><strong>在开始阅读文章前，请牢记以下这些核心问题与要求:</strong></p><p>Questions:<br>-</p><ul><li>如何简化繁多的边界判定以及分支 ?</li><li>如何减少不必要的重复代码 ?</li><li>如何尽可能地减小空间占用 ?</li><li>如何避免模板导致的代码膨胀 ?</li></ul><p>Requirements:<br>-</p><ul><li>最坏 $O(n)$ 的遍历树(用迭代器)，复制另外一颗树</li><li>最坏 $O(logn)$ 的插入、删除、二分查找操作等等</li><li>均摊 $O(1)$ 的迭代器自迭代操作(++ 和 — 双向迭代)</li><li>最坏 $O(1)$ 取得 begin() 和 end() 迭代器、迭代器解引用</li></ul><h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p>先简单回顾下二叉搜索树。</p><h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><p>一颗二叉树的节点会保留一些必要信息。一般来说，一个节点必须要有指向左儿子和右儿子的两个指针，还有节点保存的数据，大致如下:</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    Node *left;</span><br><span class="line">    Node *right;</span><br><span class="line">    value_type data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>对于红黑树，其特别地还需要保留一个节点的颜色(Color)。不难发现，保存红黑树的节点只需要 1bit 即可，但是如果用一个 bool 变量来保存，那么由于 C++ 的对齐，其将会被拓展到 8bit 甚至更多 (一般来说至少会被对齐到 4Byte 或 8Byte)。因此，存在一种节约内存的优化，即把颜色嵌入某个指针的最低或者最高位 (事实上，在 64 位机器上，指针有很多bit 都是无效信息，因为指针只需 40bit 就可以唯一标号一个 1T 内存中每一个位置，一般多余的 bit 内存管理器会用来保存其他的信息，例如内存块的大小) ，当然这涉及程序甚至是系统底层 allocator 的具体实现，一般只有非常底层、贴近操作系统 (例如Linux内核) 的代码中才会考虑。</p><p>同时，若要实现迭代器遍历的功能，则必须额外存一个指向父亲节点的指针 parent ，原因也很显然，这里举一个最简单的例子(不是说只有这个情况) : 如果当前迭代器指向叶子节点 (即当前节点左右儿子指向空) ，那么向前或向后迭代该迭代器的时候，其必须要往父节点方向走，这就需要父亲指针 parent 的存在。(你可能想问为啥迭代器不能单独存一些额外信息来避免存 parent 指针，但是容易证明这需要额外保存最长 $O(logn)$ 级别的 parent 链，这样的开销对一个本应 simple 的迭代器是不可接受的)</p><p>下面是一个演示实现代码:</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 颜色 变量，只需一个 bit 即可 */</span> </span><br><span class="line"><span class="keyword">enum class</span> <span class="title class_">Color</span> : <span class="type">bool</span> &#123; BLACK,RED &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 节点主体 */</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    Node *parent;</span><br><span class="line">    Color color;</span><br><span class="line">    Node *left;</span><br><span class="line">    Node *right;</span><br><span class="line">    value_type data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="搜索树"><a href="#搜索树" class="headerlink" title="搜索树"></a>搜索树</h2><p>对于一颗搜索树，其显然需要保留一个根节点，或者说是指向根节点的指针。不仅如此，其也需要提供一个 allocator 来管理节点占用空间的申请与释放，还需要一个 Compare 类来负责比较两个 key-value pair 的 key (因为搜索树内部一般是按照 key 的大小顺序构建的)。当然，如果你的容器需要记录节点总数，那么还需要额外存一个 count 变量。</p><p>*题外话: 如果你还不知道如何啥是 allocator，说明你可能没怎么写过工程代码，但是别急，你可以理解为用来申请/释放内存空间的一个类，提供类似 new/delete,malloc/free 的功能。</p><p>因此，一个典型的基于搜索树类可以大致写成如下的形式:</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tree</span> &#123;</span><br><span class="line">    allocator Alloc;</span><br><span class="line">    Compare comp;</span><br><span class="line">    Node *root;</span><br><span class="line">    <span class="type">size_t</span> count;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="亿朵乌云"><a href="#亿朵乌云" class="headerlink" title="亿朵乌云"></a>亿朵乌云</h2><blockquote><p>动力理论肯定了热和光是运动的两种方式，现在，它的美丽而晴朗的天空却被两朵乌云笼罩了。</p><p>现在，红黑树那看似美丽而晴朗的应用前景，也被亿朵乌云所笼罩。</p></blockquote><p>现在我们已经基本定义了红黑树的最核心的两个类 (好吧，应该是三个，算上 enum class Color 的话)。然而，问题真的解决了吗 ? 还有些许边界细节没有讨论清楚吧 ?</p><p>以下是一些是实现红黑树时常见的问题 (至少 DarkSharpness遇到了部分) :</p><ol><li>当树为空的时候，root 指向什么? 空?</li><li>allocator 和 Compare 往往是空类型，但是由于 C++ 要求至少会占用 1 Byte，对齐后可能就是 8 Byte，空间浪费如何解决?</li><li>iterator 类里面存什么? 一个指针? 还是两个?</li><li>如何保证获得 begin() 和 end() 都是最坏 O(1) 的?</li><li>end() 迭代器理论上指向的不是这个 map 中的元素。此时如何保证 —end() 能回到 map 中?</li><li>红黑树主体如此繁杂，如何尽可能避免模板类带来的代码膨胀? <a href="https://blog.csdn.net/zhizhengguan/article/details/113384008">(see this)</a></li></ol><p>事实上，仔细思考，这里面还是有很多细节的。下面将从具体实现入手，加以分析。</p><h1 id="深入"><a href="#深入" class="headerlink" title="深入"></a>深入</h1><p>为了尽可能地优化，我们需要结合一些 C++ 和 红黑树 的 Feature 进行针对性的优化。</p><h2 id="空基类优化"><a href="#空基类优化" class="headerlink" title="空基类优化"></a>空基类优化</h2><p><strong>针对前面的第 2 个问题</strong>，我们可以利用C++ 中的<strong>空基类优化</strong> (<a href="https://en.cppreference.com/w/cpp/language/ebo">Empty base optimization</a>)。简单来说，虽然 C++ 要求任何类型的 sizeof 至少为 1 来保证两个不同的对象有不同的地址 (想想sizeof()是 0 的时候，数组里面不同的对象的地址情况) 。但是对于空基类 (即没有虚函数和非 static 的变量)，如果衍生类除去基类的部分 sizeof() 不是 0，且满足一些特殊的条件 (详见前面的link)，那么可以把空基类的地址设置的和衍生类第一个 sizeof 不是 0 的变量一样，这样就可以避免空类型占用空间。本例中，由于要记录树节点数量 count，所以将其 allocator 和 Compare 压缩到 count 上。</p><p>参考实现如下:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Utilizing EBO</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">implement</span> : allocator,Compare &#123;</span><br><span class="line">    <span class="type">size_t</span> count;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p><p><strong>由此，我们借助了 EBO 空类型优化，解决了问题 2。</strong></p><h2 id="节点和树的关系"><a href="#节点和树的关系" class="headerlink" title="节点和树的关系"></a>节点和树的关系</h2><p>节点 Node 是树 tree 的重要组成部分，而 tree 又是必须依赖于模板里面的 Compare 和 allocator的，但是，这真的意味着两者不可分离吗? 难道所有的原子操作都是依赖模板参数的? 模板代码膨胀 <del>dssq</del> 不可避免了?</p><p>最简单的，我们粗糙地考虑下红黑树的一次成功的插入 insert 操作: 首先通过树，定位到对应的插入的位置，构造并插入一个 Node，然后开始调整树的红黑关系。</p><p><strong>现在给你半分钟。仔细思考以上的步骤中，哪些是必须依赖模板类 tree 的，哪些是可以独立于 tree 而只依赖于 Node 而进行的。在这里，我们假设 Node 和 tree 是分离的。</strong> 你可以带着问题先看下去。</p><p><strong>我们考虑前面的第 1 个问题</strong>: root 存什么。事实上，root 是一个很特殊的指针，其指向的是红黑树的根节点。而当 root 所指向的节点改变，例如在 红黑树旋转 rotate 操作后，root 的值也应当随之改变。然而 rotate 操作修改的是相关 Node 的指针，而不能修改 root 这一个属于 tree 的指针。这便会导致如果 rotate 旋转后改变了根节点，那么你将必须要回到 tree 去修改 root，或者在 rotate 参数传入 root 指针引用。这样的代码显然是不好的，将导致 rotate 过多依赖于 tree 。事实上，如果把 root 指针嵌入某个 Node，即 root 其实是某个 Node 的指针，那么我们在 rotate 中就可以直接通过修改 Node 的指针来修改 root，从而达到脱离 tree 只借助 Node 来 rotate。</p><p><strong>一分钟差不多也到了吧(笑)。</strong>从上面这个例子，我们不难看出，在把 root 嵌入 Node 以后，我们可以把 rotate 操作直接独立于 tree，只借助 Node 之间的修改操作 (一般是通过Node *间接修改)，来实现。再回到前面那个问题，在 insert 中，定位到插入位置依赖于比较函数 Compare，而构造并插入 Node 依赖于 allocator，但是调整树的红黑关系，它只需要知道 Node 的颜色，修改 Node 的属性即可了。因此，我们可以认为调整 Node 颜色这一步是独立于 tree 进行的。</p><p>但是，别忘记了，我们的 Node 目前还是依赖于树的 value_type 呢，两者独立只是我们的假设，重新看看节点最原始的定义:</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 节点主体 */</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    Node *parent;</span><br><span class="line">    Color color;</span><br><span class="line">    Node *left;</span><br><span class="line">    Node *right;</span><br><span class="line">    value_type data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>这就很 annoying 了。但是，仔细思索前面提及的 Node 的操作 : rotate 和 insert 后调整颜色。两者似乎…似乎有什么共性? <strong>两者都不依赖于 value_type !</strong> 是的，当你完成插入以后，他已经是一颗标准的二叉树了，无论怎么 rotate ，怎么调整颜色，都不会影响到 value_type。不仅如此，value_type 也不会影响到后续核心的 insert 后调整颜色。说到这，你是不是有一种感觉，感觉 Node 是一个不够原子不够本质的东西? 好像还能再提取些什么出来，其完全不依赖于 tree 所提供的模板。由此，DarkSharpness 想出了两种不同的思路: </p><ul><li>将 value_type 换成一个 void * 指针，需要时指针类型强转。</li><li>将 Node 拆成一个不含 value_type 的基类 Node_base 和继承了 Node_base、依赖于模板 的 Node 类。进行不依赖 tree 操作时，Node 指针安全退化为基类 Node_base 指针。</li></ul><p>显然的，后者会略好于前者。首先，前者会多存一个指针的大小，这个开销时完全可以避免的。同时，后者用到了隐性类型转化 (派生类退化为基类) 会更加安全。最后，前者用指针简介访问存储的数据，其实会带来一定的性能开销 (访问数据相当于再经过了一层指针，而指针寻址不是很高效)。</p><p>所以，在综合多种考虑后，DarkSharpness 决定采用第二种实现: 将 Node 拆成一个不含 value_type 的基类 Node_base 和继承了 Node_base、依赖于模板 的 Node 类。进行不依赖 tree 操作时，Node 指针安全退化为基类 Node_base 指针。如下所示:</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 基类 */</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node_base</span> &#123;</span><br><span class="line">    Node_base *parent;</span><br><span class="line">    Color color;</span><br><span class="line">    Node_base *left;</span><br><span class="line">    Node_base *right;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 派生类 */</span> </span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> : Node_base &#123;</span><br><span class="line">    T data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>而 rotate 等部分红黑树操作也就可以独立于模板，从而避免代码膨胀了。大致如下:</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 将当前节点旋转到父节点位置</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(Node_base *ptr)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入当前节点后，完成红黑树的修复(调整颜色，改变相对位置rotate)</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert_fix</span><span class="params">(Node_base *ptr)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>总结一下，通过综合考虑红黑树的 tree 和 Node 的关系，我们把之前朴素想法的 Node 类拆成了更加本质的 Node_base 和模板派生类 Node ，从而将部分的函数直接独立于模板类 tree 实现。事实上，这部分函数占据的是红黑树的主体部分，这样的实现方式非常有助于减少代码膨胀。</p><h1 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h1><p><del>不会真的没人催更吧</del></p><p><del>评论区没人催更就不写咯</del></p><p><del>两周三更了，还不快打赏Orz</del></p>]]></content>
+    
+    
+    <summary type="html">红黑树的一种高效架构及实现。</summary>
+    
+    
+    
+    <category term="算法" scheme="http://darksharpness.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="树形结构" scheme="http://darksharpness.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="平衡树" scheme="http://darksharpness.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+    
+    
+    <category term="树形结构" scheme="http://darksharpness.github.io/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="平衡树" scheme="http://darksharpness.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+    
+    <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
+    
+  </entry>
   
   <entry>
     <title>关于 STL iterator 的那些事</title>
@@ -35,9 +64,9 @@
     <category term="STL" scheme="http://darksharpness.github.io/categories/C/STL/"/>
     
     
-    <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
     <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
+    
+    <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
@@ -141,9 +170,9 @@
     <category term="STL" scheme="http://darksharpness.github.io/categories/C/STL/"/>
     
     
-    <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
     <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
+    
+    <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
@@ -247,11 +276,11 @@
     
     <category term="算法" scheme="http://darksharpness.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
+    <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
+    
     <category term="C++" scheme="http://darksharpness.github.io/tags/C/"/>
     
     <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
     
   </entry>
   
@@ -299,9 +328,9 @@
     <category term="竞赛" scheme="http://darksharpness.github.io/categories/%E7%89%A9%E7%90%86/%E7%AB%9E%E8%B5%9B/"/>
     
     
-    <category term="物理" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86/"/>
-    
     <category term="物理竞赛" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86%E7%AB%9E%E8%B5%9B/"/>
+    
+    <category term="物理" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86/"/>
     
   </entry>
   
@@ -366,12 +395,12 @@
     <link href="http://darksharpness.github.io/1919/08/10/firstBLOG/"/>
     <id>http://darksharpness.github.io/1919/08/10/firstBLOG/</id>
     <published>1919-08-10T03:45:14.000Z</published>
-    <updated>2023-02-01T04:52:52.000Z</updated>
+    <updated>2023-03-14T15:18:32.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="如果你能看到这篇文章，那么我的博客已经顺利建立。"><a href="#如果你能看到这篇文章，那么我的博客已经顺利建立。" class="headerlink" title="如果你能看到这篇文章，那么我的博客已经顺利建立。"></a>如果你能看到这篇文章，那么我的博客已经顺利建立。</h2><p>&emsp;本博客基于<a href="https://hexo.io/zh-cn/index.html">Hexo</a>，运用了 <a href="https://butterfly.js.org/">butterfly主题</a> 进行美化。由于作者本人对前端不太了解，在博客中可能出现各种奇怪的bug，也有许多页面可能尚未实装 <del>(例如评论系统)</del> ，如遇到问题欢迎向我汇报，鄙人将不胜感激。</p><h2 id="注意-由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN"><a href="#注意-由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN" class="headerlink" title="注意:由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)"></a><strong>注意:由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)</strong></h2><p>&emsp;该博客以后主要将用于记录我学过的一些知识，也欢迎各位来与我交流切磋，共同进步。</p><p>&emsp;我尽量做到能<del>周更</del>月更(？反正也没人看)，尽量把每个问题都讲的透彻，方便大家能更好的理解，也有助于我自己更深入了解每个问题。我会尽力做到图文并茂，结合一定的代码。</p><p>&emsp;<del>由于”Dark”Sharpness的加成，本blog将强制使用深色主题，请不要尝试通过 F12 修改data-theme 为 light，那会看起来非常丑陋 (其实是我懒得做light/dark两种不同的css)</del>。现在已经支持浅色模式了，切换按钮在右下角，默认是<del>跟随系统偏好</del> 深色 <del>,但是”Dark”Sharpness还是墙裂推荐你用dark</del>。</p><p>&emsp;以后更新日志写在”关于”页面。</p><p><strong>关于这个blog，其中非作者原创的二次元图片来自Pixiv/Seiga/Twitter，<a href="https://github.com/DarkSharpness/Photos/">图床</a>  标明了图片出处。如果实在找不到可以通过 <a href="https://saucenao.com/">https://saucenao.com/</a>  找到图片出处。具体请以原作者要求为准。其他非原创图片会标明引用链接。如侵权将立即删除。</strong></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="再次声明，本页是一些注意事项，随缘更新"><a href="#再次声明，本页是一些注意事项，随缘更新" class="headerlink" title="再次声明，本页是一些注意事项，随缘更新"></a>再次声明，本页是一些注意事项，随缘更新</h1><h2 id="如果你能看到这篇文章，那么我的博客已经顺利建立。"><a href="#如果你能看到这篇文章，那么我的博客已经顺利建立。" class="headerlink" title="如果你能看到这篇文章，那么我的博客已经顺利建立。"></a>如果你能看到这篇文章，那么我的博客已经顺利建立。</h2><p>&emsp;本博客基于<a href="https://hexo.io/zh-cn/index.html">Hexo</a>，运用了 <a href="https://butterfly.js.org/">butterfly主题</a> 进行美化。由于作者本人对前端不太了解，在博客中可能出现各种奇怪的bug，也有许多页面可能尚未实装 <del>(例如评论系统)</del> ，如遇到问题欢迎向我汇报，鄙人将不胜感激。</p><h2 id="注意-由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN"><a href="#注意-由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN" class="headerlink" title="注意:由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)"></a>注意:由于图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)</h2><p>&emsp;该博客以后主要将用于记录我学过的一些知识，也欢迎各位来与我交流切磋，共同进步。</p><p>&emsp;我尽量做到能<del>周更</del>月更(？反正也没人看)，尽量把每个问题都讲的透彻，方便大家能更好的理解，也有助于我自己更深入了解每个问题。我会尽力做到图文并茂，结合一定的代码。</p><p>&emsp;<del>由于”Dark”Sharpness的加成，本blog将强制使用深色主题，请不要尝试通过 F12 修改data-theme 为 light，那会看起来非常丑陋 (其实是我懒得做light/dark两种不同的css)</del>。现在已经支持浅色模式了，切换按钮在右下角，默认是<del>跟随系统偏好</del> 深色 <del>,但是”Dark”Sharpness还是墙裂推荐你用dark</del>。</p><p>&emsp;以后更新日志写在”关于”页面。</p><p><strong>关于这个blog，其中非作者原创的二次元图片来自Pixiv/Seiga/Twitter，<a href="https://github.com/DarkSharpness/Photos/">图床</a>  标明了图片出处。如果实在找不到可以通过 <a href="https://saucenao.com/">https://saucenao.com/</a>  找到图片出处。具体请以原作者要求为准。其他非原创图片会标明引用链接。如侵权将立即删除。</strong></p><h1 id="3月14日更新-注意事项"><a href="#3月14日更新-注意事项" class="headerlink" title="3月14日更新 注意事项"></a>3月14日更新 注意事项</h1><ul><li><p>博客字号好像有小，调起来不太方便，如果有需要请自行缩放。(本人pc端调的是 110%)</p></li><li><p>希望能多评论点 qwq ,好没动力啊啊啊啊~</p></li><li><p>深色模式如果感到不适，请右下角切换为浅色。</p></li><li><p>文章可以随便转发，但是请保留本网站出处。谢谢。</p></li><li><p>我就知道你不会看这篇文章的，杂鱼❤。</p></li><li><p>好吧其实打赏是假的，我觉得我个人还不配被打赏，如要支持我请对我说加油努力。</p></li><li><p>定期查看 music 页面和 about 页面有惊喜。</p></li></ul>]]></content>
     
     
-    <summary type="html">我的第一个blog!!! 请一定不要错过!(雾) 不定期会更新一些 blog 的注意事项，请留意!</summary>
+    <summary type="html">最近一次更新于 2023 年 3 月 14 日。这是我的第一个一个blog!!! 请一定不要错过!(雾) 内含一些注意事项。</summary>
     
     
     
