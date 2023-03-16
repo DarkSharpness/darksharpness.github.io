@@ -684,7 +684,7 @@ aside:
       link: https://github.com/DarkSharpness
   card_announcement:
     enable: true
-    content: 我宣布个事，我是个伞兵。
+    content: Keep your momentum going! The distant journey will continue forever.
   card_recent_post:
     enable: true
     limit: 6 # if set 0 will show all
