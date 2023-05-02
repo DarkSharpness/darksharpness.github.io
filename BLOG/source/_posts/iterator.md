@@ -1,13 +1,13 @@
 ---
 title: 关于 STL iterator 的那些事
 date: 2023-03-08 18:11:37
-updated: 2023-03-11 14:17:20
+updated: 2023-03-17 11:15:20
 tags: [基础知识,STL]
 categories: [C++,STL]
 keywords: [STL,iterator]
 cover: https://s2.loli.net/2023/03/08/v39f5zd4pEeSlQc.jpg
 mathjax: false
-description: 关于 iterator 的实现的一些想法
+description: 关于 iterator 的一些想法
 ---
 
 希望您在阅读本文前对于迭代器、容器等概念已经略有了解，如果您不了解好像也没啥大关系。
@@ -41,7 +41,7 @@ iterator，迭代器，顾名思义就是一个可以支持迭代的工具类，
 
 基于以上的这些原则，便有了 iterator 这个产物。以上三个功能，在 iterator 上分别对应的是
 
-1. 类似指针,用 * 或 -> 访问
+1. 类似指针,用 \* 或 -> 访问
 2. 支持 ++ (有时包括 --) 运算符
 3. 可以对同类的 iterator 进行 == 或 != 运算符比较
 
@@ -57,7 +57,7 @@ iterator，迭代器，顾名思义就是一个可以支持迭代的工具类，
 
 由此可见，iterator 并不仅仅是对于指针操作的一些包装，其还利用了 traits 和 模板技术，允许在编译期检测 iterator 的信息，便于用户能够针对性的写出不同的函数。
 
-当然，指针的思想也深深地影响了迭代器的设计，目前STL的迭代器大部分在访问元素的操作上都极其类似指针，并且线性容器的迭代器几乎拥有指针所具有的所有性质(例如支持 * ->)。
+当然，指针的思想也深深地影响了迭代器的设计，目前STL的迭代器大部分在访问元素的操作上都极其类似指针，并且线性容器的迭代器几乎拥有指针所具有的所有性质(例如支持 \* ->)。
 
 ## 小总结
 
@@ -88,7 +88,7 @@ i == j, i != j; // 3. 判断是否相等,有的支持比较( < 等)
 
 ```
 
-对于常见 STL 容器，我们一般可以通过成员函数 begin() 或 end() 来获得其头部迭代器和尾部迭代器，分别指向 第一个元素的位置 和 最后一个元素后面的位置(这也是为什么不能访问 end() 指向的元素) 。其类型为 容器名字::iterator ，例如对于 ```vector <int>``` ，其迭代器类型为 ```std::vector <int>::iterator``` 。对于 const 的容器，其 begin() 和 end() 返回的是const元素迭代器，即容器名字::const_iterator，其本身可以修改，迭代(不同于 const iterator)，但是其指向的元素不能被修改(类似 const 数据类 的 非const 指针，例如 const int *)。
+对于常见 STL 容器，我们一般可以通过成员函数 begin() 或 end() 来获得其头部迭代器和尾部迭代器，分别指向 第一个元素的位置 和 最后一个元素后面的位置(这也是为什么不能访问 end() 指向的元素) 。其类型为 容器名字::iterator ，例如对于 ```vector <int>``` ，其迭代器类型为 ```std::vector <int>::iterator``` 。对于 const 的容器，其 begin() 和 end() 返回的是const元素迭代器，即容器名字::const_iterator，其本身可以修改，迭代(不同于 const iterator)，但是其指向的元素不能被修改(类似 const 数据类 的 非const 指针，例如 const int \*)。
 
 这时，肯定有小可爱要问了: 那么对于非 const 的容器，我们怎么获得 const_iterator 来安全访问呢？这非常简单，只需要用 cbegin() 和 cend() 成员函数来访问即可。
 
@@ -231,6 +231,107 @@ void advance_n(Iter &i,size_t __n) {
 
 如果您对这个感兴趣，可以去看看 cppreference 上关于 [iterator_traits](https://en.cppreference.com/w/cpp/iterator/iterator_traits) 的解释。
 
+# 迭代器的特殊实现
+
+听了 DarkSharpness 讲了这么多，你难道不想要给自己写的容器实现一个迭代器吗。先别急，先看看我们要实现哪些:
+
+- iterator
+- const_iterator
+- reverse_iterator (bonus)
+- const_reverse_iterator (bonus)
+
+先不考虑 bonus，你静下心来想想，便会发现 iterator 和 const_iterator 的行为几乎一模一样，唯一的区别在于，后者指向的对象是不可修改。仔细想想，如此重复的代码该如何提高复用 ? 你可以先思考，也可以直接看下去。
+
+一开始，DarkSharpness 的想法是用 const_cast 等手段，先实现一个 iterator_base ，通过让两种 iterator 继承 iterator_base，来实现代码复用。这样子的弊端是，存在一个不太安全的 const_cast，以及还有额外实现 const_iterator 和 iterator 两个类型之间的比较函数，转换函数，这样子还是很不美观的。
+
+这时候，神一般的 Wankupi 降临了。他使用了模板的思路，优化了 iterator_base ，通过传递模板参数 bool is_const 来判断是不是 const_iterator ，并且用到 C++ 11 以后的模板推导工具 std::conditional_t (不会自行百度qwq) 来实现当模板参数 is_const 为 false ，指针为 T \* ，反之为 const T \* ，其中 T 为解引用后的类型。
+
+不过 Wankupi 的实现还是用来 iterator_base 和 iterator_common 两种类，这实在是太麻烦了。事实上，我们可以重新思考并抽象 iterator 的三个核心操作。
+
+- 访问当前位置
+- 移动到下一个位置
+- 判断是否在同一位置
+
+访问当前位置的操作，已经通过前面的 std::conditional_t 来解决了 const 与否的问题。
+
+移动到下一个位置，其实本质上就是一个前进/后退函数。例如对于原生指针作为迭代器，其 advance 函数大致如下:
+
+```C++
+using pointer = int *;
+void advance(pointer &__p,bool dir) {
+    if(dir) ++p;
+    else    --p;
+    /* dir = 1 前进 || dir = 0 后退 */
+}
+```
+
+当然，也可以借助模板以及 C++ 11 以后的一些工具 (std::true_type 之类) ，将 dir 传入模板参数，让 dir 不同的时候进入不同的重载，进而生成更优的代码，效率上完全等价于真实指针，这里暂时不多提了，感兴趣可以看看 DarkSharpness 是如何实现随机访问迭代器的 advance 函数 [点我点我点我](https://github.com/DarkSharpness/DarkSharpness/blob/main/Template/Dark/Container/iterator.h)。
+
+判断是否在同一位置，其实本质上是判断指针指向的变量地址是不是同一个，此时不用成员函数实现反而会更优雅而简洁，只需对 iterator 类提供一个对外访问内部指针的接口即可。
+
+事实上，一旦把前进过程用一个函数 advance 抽象化了以后，你会发现，四种 iterator (包括反向的两种) 的操作竟然是出奇的一致 :
+
+- 访问当前位置 (const / non-const)
+- 移动到下一个位置 (reverse / normal)
+- 判断是否在同一位置 (同类型比较)
+
+参考之前 const 模板化的过程，我们不难联想到 : 我们可不可以把 reverse 与否也扔到模板里面? 这个主意真的是太妙了。在把移动过程抽象为一个函数 advance 之后，这样的实现变得可行，其可以使得代码复用四次，复用率高了不是一点点。
+
+参考代码如下:
+
+```C++
+
+
+/* Advance 函数需要自己实现，取决于容器内部结构 */
+template <bool dir> /* 0 后退 || 1 前进 */
+void advance(pointer &ptr);
+
+
+/* 
+    is_const 是否是 const 版本的迭代器
+    dir = 0 反向迭代器 || 1 正向迭代器
+*/
+template <class T,class is_const,bool dir>
+class iterator {
+  public:
+    using U = std::conditional_t <is_const,const T,T>;
+    using pointer = U *;
+    pointer ptr;
+
+    /* 这里以 ++ 和 -- 为例,其他都差不多 */
+
+    iterator &operator ++ (void) 
+    { advance <dir>  (ptr); return *this; }
+
+    iterator &operator -- (void) 
+    { advance <!dir> (ptr); return *this; }
+
+    /* 同向迭代器,允许non-const -> const,赋值同理 */
+    iterator(const iterator <T,false,dir> &rhs) :
+        ptr(rhs.ptr) {}
+
+
+    /* 用于 iterator 比较或其他操作 */
+    pointer base() const { return ptr; }
+
+};
+
+
+/* 同向迭代器可以比较，const 情况无所谓 */
+template <class T,bool k1,bool k2,bool dir>
+bool operator == (const iterator <T,k1,dir> &lhs,
+                  const iterator <T,k2,dir> &rhs) {
+    return lhs.base() == rhs.base();
+}
+
+```
+
+就笔者个人而言，这样的写法真的是简洁而清晰，即使是对于原生指针的包装，在运行效率上也几乎完全等价于未包装的情况(模板)，没有任何开销。事实上，这些代码编译器大概率会直接 inline 掉，此时就真的完美等价于原生指针了。
+
 # END
 
-感谢 [yyu](https://apex.sjtu.edu.cn/members/yyu) 的~~友情~~客串，感谢您认真看到了最后！
+感谢 [yyu](https://apex.sjtu.edu.cn/members/yyu) 的~~友情~~客串。
+
+感谢 [Wankupi](https://www.wankupi.top) 提供的关于 iterator 和 const_iterator 模板化的思想。
+
+感谢您认真看到了最后！
