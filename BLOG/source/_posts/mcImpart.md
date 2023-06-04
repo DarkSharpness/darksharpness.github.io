@@ -1,7 +1,7 @@
 ---
 title: 关于 Minecraft Impart 服务器
 date: 2023-04-09 16:12:36
-updated: 2023-05-22 20:12:52
+updated:
 tags: [游戏,Minecraft]
 categories: [Minecraft,随笔]
 keywords: [游戏,Minecraft,随笔]
@@ -11,7 +11,7 @@ description: Minecraft Impart 服务器的历史，以及活动策划的心路�
 ---
 2023 年 2 月，大一下学期刚开学。由于开学实在是太无聊了，于是在一群同学商量之后，便有了 Minecraft Impart 服务器。原始 idea 由 photoshopcc 和 chayso 想出 (疑似)，而服务器主体由 photoshopcc 维护 (其实就是租了一个服务器)。
 
-## Impart 0 周目
+# Impart 0 周目
 
 在最初的时候，Impart 只是一个生存 only 的 minecraft 服务器。当然，单纯的原版生存实在是太简单了，于是笔者便提议在原版的基础下做出了如下这些的改动:
 
@@ -26,7 +26,7 @@ description: Minecraft Impart 服务器的历史，以及活动策划的心路�
 
 这次企划只持续了短短一周，便在不知所措中草草收尾。笔者也由此不禁开始反思，究竟是 Minecraft 里面的什么吸引着我一直去玩它 ，而又是为什么，我们会不再被其所吸引 ? Minecraft 本身是一个极其开放的游戏，其有着几乎无限的可能。然而，许多玩家在通关以后却会茫然不知所措。笔者认为，这背后其实是一个游玩目的缺失。围绕着游戏的主线 —— 生存和成就 去玩的确是一种常见的玩法，但是主线任务是有限的，这相当于把游戏无限的可能局限在了一个很小的范围，自然容易让人厌烦。
 
-## Impart 1 ~ 6 周目
+# Impart 1 ~ 6 周目
 
 由于缺乏足够的记录 ~~其实笔者懒得翻记录，哼~~ ，所以前几周的活动就没具体记录了haha。
 
@@ -44,7 +44,22 @@ description: Minecraft Impart 服务器的历史，以及活动策划的心路�
 
 ~~由于星穹铁道的影响，服务器快倒闭了，没玩家了，速来 qq 群: 808813297~~
 
-## Rules
+# Impart 的未来,何去何从
+
+现在是 2023 年 6 月 4 号。Impart 已经顺利地度过了前 11 周目。目前，服务器的 EHC 项目的指令部分已经就几乎完成，经过了两周的测试之后也基本稳定。本学期基本已经结束，Impart 的活动恐怕也要告一段落了。
+
+在暑假，由于愚蠢的 PPCA 项目，我们将不得不在学校待到 8 月份。好消息是，伴随着 [xun_ying](https://github.com/xunying123) 的装机，我们暑期服务器有着落了，平时可以开着台式电脑，作为常用服务器。
+
+因此，DarkSharpness 首先的规划是开一个中长期的生存档，具体内容可以是原版养老，也可以玩红石(生存电路/数字电路)，也可以玩玩建筑和跑酷什么的。当然，既然暑假有一点时间，Dark 也考虑过玩某些大型的 pve 地图，例如 Terra Restore。说起来，它可是承载了我半个初中的回忆啊，那时候一下课就回家打开电视，看搬运的舞秋风的大地复苏(Terra Restore)的视频。当然，大型的景观类生存地图，也是很不错的啦!
+
+然后呢，Dark 还计划开一个小游戏项目。除了 Impart 的保留节目 EHC，可以重拾 manhunt,bingo,parkour tower 这些经典项目。当然，Dark 也想引入一些更加新颖的小游戏，例如烟花弩 pvp，又比如说mc fps(快速填充 V 的秒射箭)，或者是火球 pvp，鞘翅 pvp 等等......
+
+
+值得一提的是，在这段时间里面，我也认识了 lytDark，另外一个服务器的腐竹。他们服务器也没人，所以现在有在打算合并(真的不是吞并吗)两个服务器啦......
+
+总之，期待一下新的 Impart !
+
+# Rules
 
 具体规则请转向 [Github](https://github.com/DarkSharpness/DarkSharpness/blob/main/Game/Minecraft/Impart/rules.md)。
 
