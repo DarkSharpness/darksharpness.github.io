@@ -2,8 +2,8 @@
 title: 关于 Minecraft Impart 服务器
 date: 2023-04-09 16:12:36
 updated:
-tags: [游戏,Minecraft]
-categories: [Minecraft,随笔]
+tags: [Minecraft,随笔]
+categories: [Minecraft,服务器]
 keywords: [游戏,Minecraft,随笔]
 cover: https://s2.loli.net/2023/05/02/ADN2qy5uVxX4wWK.jpg
 mathjax: false
@@ -53,7 +53,6 @@ description: Minecraft Impart 服务器的历史，以及活动策划的心路�
 因此，DarkSharpness 首先的规划是开一个中长期的生存档，具体内容可以是原版养老，也可以玩红石(生存电路/数字电路)，也可以玩玩建筑和跑酷什么的。当然，既然暑假有一点时间，Dark 也考虑过玩某些大型的 pve 地图，例如 Terra Restore。说起来，它可是承载了我半个初中的回忆啊，那时候一下课就回家打开电视，看搬运的舞秋风的大地复苏(Terra Restore)的视频。当然，大型的景观类生存地图，也是很不错的啦!
 
 然后呢，Dark 还计划开一个小游戏项目。除了 Impart 的保留节目 EHC，可以重拾 manhunt,bingo,parkour tower 这些经典项目。当然，Dark 也想引入一些更加新颖的小游戏，例如烟花弩 pvp，又比如说mc fps(快速填充 V 的秒射箭)，或者是火球 pvp，鞘翅 pvp 等等......
-
 
 值得一提的是，在这段时间里面，我也认识了 lytDark，另外一个服务器的腐竹。他们服务器也没人，所以现在有在打算合并(真的不是吞并吗)两个服务器啦......
 

@@ -8,5 +8,6 @@
         "cstddef": "cpp",
         "climits": "cpp",
         "iostream": "cpp"
-    }
+    },
+    "window.zoomLevel": -0.6
 }
