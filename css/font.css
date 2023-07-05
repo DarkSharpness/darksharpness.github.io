@@ -1,10 +1,10 @@
 /* 字体部分 */
 
-/* @font-face{
+@font-face{
     font-family: 'JetBrains Mono';
     font-display: swap;
     src: url('../font/JetBrainsMono-Regular.ttf') format("truetype");
-} */
+}
 
 /* @font-face{
     font-family: 'HarmonyOS Sans SC';
