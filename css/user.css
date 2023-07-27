@@ -42,8 +42,8 @@ div#post, /* 正文 */
 html[data-theme="dark"] 
 div#archive, /* Archieve 特殊处理*/ 
 html[data-theme="dark"] div#tag,      /* 标签页的具体标签 */
-html[data-theme="dark"] div#category, /* 分类的具体分类 */
-html[data-theme="dark"] header        /* 头图透明  */
+html[data-theme="dark"] div#category /* 分类的具体分类 */
+/* html[data-theme="dark"] header        头图透明  */
 {
     background-color: rgba(0, 0, 0, 0.5);
 }
