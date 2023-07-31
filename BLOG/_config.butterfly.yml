@@ -215,7 +215,7 @@ reward:
   QR_code:
     - img: https://s2.loli.net/2023/02/17/bNFrOglBCW6ZaUq.png
       link: https://vdse.bdstatic.com//192d9a98d782d9c74c96f09db9378d93.mp4
-      text: wechat
+      text: Wechat
 
 # Post edit
 # Easily browse and edit blog source code online.
@@ -618,14 +618,14 @@ beautify:
 font:
   global-font-size: 15px
   code-font-size:
-  font-family:
-  code-font-family:
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif
+  code-font-family: JetBrains Mono
 
 # Font settings for the site title and site subtitle
 # 左上角網站名字 主頁居中網站名字
 blog_title_font:
   font_link:
-  font-family:
+  font-family: sans-serif
 
 # The setting of divider icon (水平分隔線圖標設置)
 hr_icon:
@@ -684,7 +684,7 @@ aside:
       link: https://github.com/DarkSharpness
   card_announcement:
     enable: true
-    content: Keep your momentum going! The distant journey will continue forever.
+    content: Keep your momentum going! The distant journey will continue forever!
   card_recent_post:
     enable: true
     limit: 6 # if set 0 will show all
