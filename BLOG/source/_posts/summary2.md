@@ -9,10 +9,9 @@ cover: https://s2.loli.net/2023/06/19/8DqN4va3YxfUzSl.png
 mathjax: false
 description: 不知道该说啥，又是胡言乱语的一天
 ---
-
 没想到我这个破烂还能坚持写 blog 到今天......或许 tomorrow we die alive ?
 
-这次不写 <a href="{% post_path summary %}"> 上次 </a> 那种流水账了，看着就恶心。
+这次不写 `<a href="{% post_path summary %}">` 上次 `</a>` 那种流水账了，看着就恶心。
 
 说实话，这学期真的没啥好总结的，开学就基本决定好要好好摆烂一学期了，结果连摆烂都没坚持下去，中间死活放不下。最后摆烂也没摆成，卷也没卷成，学习一事无成，身体每况愈下。只能说，自己选择的破路，走到底。
 
@@ -44,7 +43,7 @@ description: 不知道该说啥，又是胡言乱语的一天
 
 # Impart
 
-<a href="{% post_path mcImpart %}"> Impart </a> ，一个 Minecraft 游戏企划。这里就不多介绍了，想必能看到这里的小朋友肯定是有所耳闻的啦。
+`<a href="{% post_path mcImpart %}">` Impart `</a>` ，一个 Minecraft 游戏企划。这里就不多介绍了，想必能看到这里的小朋友肯定是有所耳闻的啦。
 
 这个计划呢，其实是我童年回忆的一部分...... Impart 最初的活动 EHC，几乎完全就是仿照我初中和高中时(主要是初中)看的那些台湾实况主的 UHC 活动而设定的。在以前，我看到了他们的视频，真的很想自己也能参加这样的活动，但是身边的条件并不允许这一点。到了大学，终于有机会能够补上童年的这块碎片了......
 
@@ -64,6 +63,94 @@ Minecraft，真的是最喜欢的一款游戏。具体是什么时候也忘记�
 
 总之，希望大家开心就好。
 
-# 未完待续
+目前 Dark 已经不再是 Impart 的群管理了，只能算得上半个策划罢了。不过这个企划，我还是会坚持下去的。
 
-由于某些科目成绩还没出，加上本人太懒了，所以暂时先咕咕了。不过，我想讲的还真挺多。
+# 未完待续?
+
+算了，实在是憋不住了，某些老师的某些课程分数还没出来，但是我还是等不及了。直接端上来罢 !
+
+由于一些奇怪的原因，下半学期的 DLC 从 6 周延长到了 10 周，这多少令人会有点恼火。说实话，我是不喜欢暑假的时候做正事的。我希望能给自己的内心留下一个思考的时间，能让自己无拘无束的幻想...... 当然，我也能大致能猜到 yyu 这么做的原因啦 : 把编译器这个项目迁移到暑假，能让我们下学期的课业压力减轻，然后顺理成章的把之后的课程前移，这样可以大大加快整体进度，培养加速。当然，只是一个猜测罢了。
+
+首先是长达 6 周的 PPCA。在前两周的时候，写了一个 Risc-V 的 CPU 模拟器。作为一个~~毒瘤~~coder，我的想法是迫真去模拟这个 CPU，因此用到了大量的 bit field (C 语言特性)，用来压位，进而更加逼真地模拟 CPU 内部信息传输。包括指令等一系列的存储解析，我也是使用了结构体 + bit field 的方法来实现。虽然这么写的确废了我不少时间，差点还没写完，不过也的确让我能对其有一个更加深入的理解。不得不说，tomasulo 的设计确实精妙，乱序执行的正确性搞了我好久......现在真的觉得 CPU 流水真的是顶尖人类智慧。
+
+然后是有趣的自选主题。Dark 选的是 Networking ，因为这是今年新出的项目，然后感觉非常有趣，于是就选了。通过这玩意，我接触了非常有意思的 go 语言 ，也接触了携程(goroutines)这个概念。go 写携程真的方便 ! 这简直就是为了携程而设计的语言 ! 在将近一个月的时间内呢，写了一些有趣的东西，比如 TCP 代理客户端，支持 UDP 的 DLC ，TLS 劫持以及 HTTP 的各种处理解析。确实，学到了很多我完全不会的东西，也真的让我觉得网络是一个非常有意思的东西，也见识到了网络的人类智慧之处。感觉现代科技真的处处是人类智慧啊......
+
+不过要说令我印象最深刻的，那莫过于在 PPCA 的时候打过了《东方星莲船》的 Easy (是的，这是一款非常”简单“的游戏~) 。作为一个 STG 手残党，在某天偶然的摸鱼中掌握了开碟的技巧，然后瞬间打的无比通畅...... 不过这或许也和我的心态有点关系，在正常学期内的时候，我电动可没有现在这种悠闲的心态。总之，也不知道为什么，7 月 20 日下午，我就莫名过了星莲船 Easy 。这是值得纪念的一天，因为这意味着我打通了从永夜抄到鬼形兽(除花映冢)之间所有的正作 Easy 了 ! 或许，以后可以挑战挑战 Normal 了吧。
+
+# 编译器
+
+编译器是个有意思的东西，写的是一个类 C 的 Mx 语言的 Compiler 。花了大概三周，完成了从 MX 到 AST 到类 llvm IR 到 ASM(on Risc-V 32bit) 的过程。
+
+不过这几周，除了 Compiler 的实现，我倒是也干了不少其他的事情了。比如说混入某 [Modern C++ Loser 群](https://github.com/Mq-b/Loser-HomeWork)，开始学 Modern C++ 了。这的确是一个有意思的群，我也的确从中学到了不少的 tricks。然后，我也的确有把部分所学用到 Compiler 代码里面啦，比如有趣的 intellisense-friendly 的字符串拼接函数:
+
+```C++
+
+inline constexpr size_t __string_length(std::string_view __view)
+{ return __view.size(); }
+
+inline constexpr size_t __string_length(const char *__str) {
+    const char *__tmp = __str;
+    while(*__tmp) ++__tmp;
+    return __tmp - __str;
+}
+
+inline size_t __string_length(const std::string &__str) {
+    return __str.length();
+}
+
+inline size_t __string_length(char) { return 1; }
+template <class ...T>
+inline size_t __string_length_sum(const T &...__args) {
+    return (__string_length(__args) + ...);
+}
+
+/* Empty join will be invalid. */
+inline std::string string_join() = delete;
+
+/* Check whether this type is string or char type. */
+template <class ...T>
+inline constexpr bool __is_string_v = (
+    (std::is_convertible_v <T,std::string_view> 
+    || std::__is_char <T> ::__value) && ...
+);
+
+/* Join strings together , safe and fast ! */
+template <class ...T>
+inline auto string_join(T &&...__args)
+-> std::enable_if_t <__is_string_v <T...>,std::string> {
+    std::string __ans;
+    __ans.reserve(__string_length_sum(__args...));
+    (__ans += ... += std::forward <T> (__args));
+    return __ans;
+}
+
+/* Join strings together , safe and fast ! */
+template <class T>
+inline auto string_join_array(T __beg,T __end)
+-> std::enable_if_t <__is_string_v <decltype (*__beg)>,std::string> {
+    size_t __cnt = 0;
+    for(auto __cur = __beg ; __cur != __end ; ++__cur)
+        __cnt += __string_length(*__cur);
+    std::string __ans;
+    __ans.reserve(__cnt);
+    for(auto __cur = __beg ; __cur != __end ; ++__cur)
+        __ans += *__cur;
+    return __ans;
+}
+
+```
+
+不得不感慨，真的处处是人类智慧。
+
+当然，这段时间里，我也干了超级多 Compiler 之外的事情，这很不符合我 ~~致远卷王~~ 的一贯作风。其实也不是我不想学~卷不动了~，只是我不觉得这么内卷很有意义，而且我已经一个学期 + 6 周没有好好休息过了，我精神上也有点受不了。有的时候，特别是深夜 EMO 的时候，我也真的会怀疑自己是不是太菜了，是不是不适合这个班，就这点破意志力。但我还是坚信，还有更多有意义的事情等着我去做，如果找不到自己的本心所在，一昧地像以前那样不知道为啥去学，那我地内心最终也会麻木吧。而我，真的很不想，也很害怕自己变得麻木。如果现在都不能坚持自己的本心去做自己想做的事情，那么我有何理由去相信未来的自己能坚持自己所选的道路。
+
+在这段时间里呢，我刷了不少东方相关的经典作品，主要以手书为主。在重新审视这些作品的时候呢，我也产生了不少新的感触，思考了许多第一次看的时候没去思考的东西。这种感觉在我两年前刚接触音频处理后，重新去听我曾经喜欢的音乐时也出现过，那种从熟悉事物中收获更多，如同从一个被榨干的柠檬中挤出更多的汁水的复杂情感(奇怪的比喻)。
+
+这四周，压轴戏想必是 8 月 19 号和 20 号两天的 THO 了! 作为一个入坑将近 5 年的车万人，第一次去 THO ，自然是非常激动。而这短短的两天，也让我有了许多感触，打算单独开一篇文章来写。 
+
+{% post_link 'SHTHO11' %}
+
+# 摸了
+
+摸了，正在等学子讲坛 && PPCA 评分 ，不过说实话，时至今日，结果貌似对我没有那么重要，至少我感觉如此。不知道是我是真的不再期待当初那份努力的回报，还是我真的太过疲倦而麻木了。管他呢
+

@@ -123,6 +123,7 @@ footer#footer {
 #web_bg {
     background: url(https://s2.loli.net/2023/01/28/a6sJTtogVkqUOBj.png);
     background-size: cover;
+    filter: blur(6px); /* 应用模糊效果 */
 }
 
 

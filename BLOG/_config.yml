@@ -109,6 +109,7 @@ deploy:
   type: git
   repository: git@github.com:DarkSharpness/DarkSharpness.github.io.git
   branch: master
+  message: Update hidden page ~~~
 
 aplayer:
   meting: true
