@@ -1,6 +1,6 @@
 ---
-title: KMP算法
-date: 2022-09-09 20:59:52
+title: KMP算法 (已失效，请勿参考)
+date: 1900-01-01 00:59:52
 updated: 2022-09-13 17:02:10
 tags: [KMP,字符串Hash,字符串,算法]
 categories: [算法,字符串,KMP]
@@ -9,6 +9,9 @@ keywords: [KMP,字符串Hash]
 description: 一个简单的普及难度字符串算法:KMP
 mathjax: true
 ---
+
+这篇文章写的很烂，请不要作为参考! 仅留档用!
+
 ## 问题引入
 
 前置知识与记号约定：[字符串基本知识与约定](/2022/09/13/String/index/)
