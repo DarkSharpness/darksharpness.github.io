@@ -112,6 +112,15 @@ footer#footer {
     background: transparent; /* 透明背景 */
 }
 
+html[data-theme="dark"]
+nav#nav {
+    opacity: 80%;
+}
+
+html[data-theme="light"]
+nav#nav {
+    opacity: 90%;
+}
 
 /* 歌词不显示 */
 .aplayer-lrc { opacity: 0; }
@@ -122,10 +131,9 @@ footer#footer {
 /* 横屏背景设置 */
 #web_bg {
     background: url(https://s2.loli.net/2023/01/28/a6sJTtogVkqUOBj.png);
-    background-size: cover;
     filter: blur(6px); /* 应用模糊效果 */
+    background-size: cover;
 }
-
 
 /* 竖屏背景设置 */
 @media  (max-width : 768px) {
