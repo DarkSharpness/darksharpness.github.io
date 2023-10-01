@@ -29,10 +29,13 @@ mixin rightsideItem(array)
         if commentsJsLoad
           a#to_comment(href="#post-comment" title=_p("rightside.scroll_to_comment"))
             i.fas.fa-comments
+      when 'opacity'
+        button#blur_toggle(type = "button" , title = "切换背景模糊")
+          i.fas.fa-cloud
 
 #rightside
   - const { enable, hide, show } = theme.rightside_item_order
-  - const hideArray = enable ? hide && hide.split(',') : ['readmode','translate','darkmode','hideAside']
+  - const hideArray = enable ? hide && hide.split(',') : ['readmode','translate','darkmode','hideAside','opacity']
   - const showArray = enable ? show && show.split(',') : ['toc','chat','comment']
 
   
