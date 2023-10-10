@@ -231,9 +231,9 @@
     
     <category term="树形结构" scheme="http://darksharpness.github.io/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/"/>
     
-    <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
-    
     <category term="平衡树" scheme="http://darksharpness.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+    
+    <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
     
   </entry>
   
@@ -256,9 +256,9 @@
     <category term="STL" scheme="http://darksharpness.github.io/categories/C/STL/"/>
     
     
-    <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
     <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
+    
+    <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
@@ -362,9 +362,9 @@
     <category term="STL" scheme="http://darksharpness.github.io/categories/C/STL/"/>
     
     
-    <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
     <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
+    
+    <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
@@ -466,11 +466,11 @@
     
     <category term="算法" scheme="http://darksharpness.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
+    <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
+    
     <category term="C++" scheme="http://darksharpness.github.io/tags/C/"/>
     
     <category term="基础知识" scheme="http://darksharpness.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-    <category term="STL" scheme="http://darksharpness.github.io/tags/STL/"/>
     
   </entry>
   
@@ -518,9 +518,9 @@
     <category term="竞赛" scheme="http://darksharpness.github.io/categories/%E7%89%A9%E7%90%86/%E7%AB%9E%E8%B5%9B/"/>
     
     
-    <category term="物理" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86/"/>
-    
     <category term="物理竞赛" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86%E7%AB%9E%E8%B5%9B/"/>
+    
+    <category term="物理" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86/"/>
     
   </entry>
   
