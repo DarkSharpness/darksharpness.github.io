@@ -518,9 +518,9 @@
     <category term="竞赛" scheme="http://darksharpness.github.io/categories/%E7%89%A9%E7%90%86/%E7%AB%9E%E8%B5%9B/"/>
     
     
-    <category term="物理竞赛" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86%E7%AB%9E%E8%B5%9B/"/>
-    
     <category term="物理" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86/"/>
+    
+    <category term="物理竞赛" scheme="http://darksharpness.github.io/tags/%E7%89%A9%E7%90%86%E7%AB%9E%E8%B5%9B/"/>
     
   </entry>
   
