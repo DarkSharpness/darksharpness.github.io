@@ -130,7 +130,7 @@ nav#nav {
 
 /* 横屏背景设置 */
 #web_bg {
-    background: url(https://s2.loli.net/2023/01/28/a6sJTtogVkqUOBj.png);
+    background: url(https://s2.loli.net/2023/11/12/zbGQgmRr1pExdTL.png);
     background-size: cover;
     transition: filter 0.6s ease;
 }
@@ -1679,6 +1679,12 @@ img:not([src]) {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
+}
+img[data-lazy-src]:not(.loaded) {
+  filter: blur(8px) brightness(1);
+}
+img[data-lazy-src].error {
+  filter: none;
 }
 .img-alt {
   margin: -10px 0 10px;
@@ -5763,7 +5769,7 @@ blockquote.pullquote.right {
   filter: brightness(0.8);
 }
 [data-theme='dark'] img {
-  filter: brightness(0.8);
+  filter: blur(0) brightness(0.8);
 }
 [data-theme='dark'] #aside-content .aside-list > .aside-list-item:not(:last-child) {
   border-bottom: 1px dashed rgba(255,255,255,0.1);
