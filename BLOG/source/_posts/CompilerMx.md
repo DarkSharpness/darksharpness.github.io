@@ -1,11 +1,11 @@
 ---
 title: Compiler for Mx* 编译器随笔
 date: 2023-09-29 12:48:43
-updated:
+updated: 2023-10-01 12:48:43
 tags: [编译器,优化]
 categories: [编译器,优化]
 keywords: [编译器]
-cover: https://s2.loli.net/2023/09/29/qrFUdf4W9awANPu.png
+cover: https://s3.bmp.ovh/imgs/2023/12/22/178d87936dac3770.png
 mathjax: false
 description: 一个简单语言的编译器的实现
 ---

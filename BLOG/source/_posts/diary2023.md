@@ -4,17 +4,18 @@ date: 1145-01-04 19:19:08
 tags: [随笔]
 categories: [随笔]
 keywords: [随笔]
-cover: https://s2.loli.net/2023/06/05/RvWMecJBHDLN6xO.jpg
+cover: https://s3.bmp.ovh/imgs/2023/12/22/c7ada8de1e63e10f.jpg
 mathjax: false
 description: 感谢你能找到这里呢!
 hide: true
 ---
-
 感谢您能坚持找到这里呢! 本文将长期记载 DarkSharpness 的生活见闻，目标做到每周更新......(保底月更，如果没更新，请你一定要提醒我!)
 
 前排提示: 全都是垃圾话，当看小丑就行了，别乱传，发电言论略多。
 
 # 12
+
+年末了。发现距离周更的目标有点远，于是打算补一点。
 
 ## 17
 

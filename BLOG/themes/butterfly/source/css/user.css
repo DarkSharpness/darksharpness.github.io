@@ -130,7 +130,7 @@ nav#nav {
 
 /* 横屏背景设置 */
 #web_bg {
-    background: url(https://s2.loli.net/2023/11/12/zbGQgmRr1pExdTL.png);
+    background: url(https://s3.bmp.ovh/imgs/2023/12/22/36431d16c60646d1.png);
     background-size: cover;
     transition: filter 0.6s ease;
 }
@@ -138,7 +138,7 @@ nav#nav {
 /* 竖屏背景设置 */
 @media  (max-width : 768px) {
     #web_bg {
-        background: url(https://s2.loli.net/2023/01/28/lHUXh2WbwDj9qGx.jpg);
+        background: url(https://s3.bmp.ovh/imgs/2023/12/22/d9d0545f532e058f.png);
         background-size: cover;
         transition: filter 0.6s ease;
     }

@@ -5,7 +5,7 @@ updated: 2023-01-22 17:49:14
 tags: [随笔]
 categories: [随笔,总结]
 keywords: [随笔]
-cover: https://s2.loli.net/2023/01/28/QkJL4GyBRbPFx6j.jpg
+cover: https://s3.bmp.ovh/imgs/2023/12/22/d8b1f2f5828fe8bd.jpg
 description: 一个菜狗瞎写的一点也不EMO的文案
 ---
 这学期几乎啥也没干，没啥好总结的。主要讲个人相关，会避免一些敏感话题。

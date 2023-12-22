@@ -2,7 +2,7 @@
 title: 相关链接
 date: 2022-09-11 16:38:55
 type: "link"
-top_img: https://s2.loli.net/2023/01/30/lZVxM1nsPjW6StL.jpg
+top_img: https://s3.bmp.ovh/imgs/2023/12/22/ae04dd93de9bc8e3.jpg
 ---
 
 ## 注意！深色背景下网站标签可能不是很清楚，如有需要请切换到浅色模式。

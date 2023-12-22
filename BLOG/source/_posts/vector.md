@@ -5,7 +5,7 @@ updated: 2023-01-25 16:43:55
 tags: [基础知识,STL]
 categories: [C++,STL]
 keywords: [STL,vector]
-cover: https://s2.loli.net/2023/01/28/HAG6kBYsTN4EKrJ.jpg
+cover: https://s3.bmp.ovh/imgs/2023/12/22/a9cade886bb2746c.jpg
 description: 略深入地分析 std::vector
 mathjax : true
 ---

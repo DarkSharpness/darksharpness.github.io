@@ -5,7 +5,7 @@ updated: 2023-02-03 12:11:31
 tags: [物理,热学,基础知识]
 categories: [物理,热学]
 keywords: [物理,热学,基础知识]
-cover: https://s2.loli.net/2023/02/02/PaNO1boG6lKLkix.jpg
+cover: https://s3.bmp.ovh/imgs/2023/12/22/3393cff98696241e.jpg
 mathjax: true
 description: 一些非常基础的热学基本知识。
 ---

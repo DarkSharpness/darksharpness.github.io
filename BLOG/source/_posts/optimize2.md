@@ -3,7 +3,7 @@ title: 玄学优化和语言知识 2.0
 date: 2023-11-11 11:11:11
 tags: [C++,基础知识,优化]
 categories: [C++,优化]
-cover: https://s2.loli.net/2023/11/11/1UuFxI2iGSdPK6h.jpg
+cover: https://s3.bmp.ovh/imgs/2023/12/22/1a16727b353555b1.jpg
 keywords: [基础知识,优化]
 description: 编译器写的。
 mathjax: true

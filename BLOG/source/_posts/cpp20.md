@@ -1,11 +1,11 @@
 ---
 title: C++ 20 部分特性尝鲜
 date: 2023-07-06 16:00:37
-updated:
+updated: 2023-07-28 16:00:37
 tags: [C++,基础知识]
 categories: [C++,基础知识]
 keywords: [C++,C++20,语言特性]
-cover: https://s2.loli.net/2023/07/07/1PlsBUTDrJ7gGNe.jpg
+cover: https://s3.bmp.ovh/imgs/2023/12/22/366cfd25c96ee172.jpg
 mathjax: false
 description: C++17 都没学明白，C++20 就来了。
 ---

@@ -1,11 +1,11 @@
 ---
 title: 第十一届上海 THO · 东方露明境 游记
 date: 2023-08-24 01:01:49
-updated:
+updated: 2023-08-24 02:01:49
 tags: [随笔]
 categories: [随笔]
 keywords: [随笔]
-cover: https://s2.loli.net/2023/07/10/95wpRAs7lT3gLoj.jpg
+cover: https://s3.bmp.ovh/imgs/2023/12/22/403f04fec31e5b99.jpg
 mathjax: false
 description: 新人，第一次参加 THO~
 ---

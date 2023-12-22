@@ -5,7 +5,7 @@ updated: 2023-02-01 13:17:59
 tags: [树形结构,线段树,树链剖分]
 categories: [算法,树形结构,树链剖分]
 keywords: 树形结构,线段树,树链剖分
-cover: https://s2.loli.net/2023/02/01/rNHAESxDgcOJL1B.jpg
+cover: https://s3.bmp.ovh/imgs/2023/12/22/c6e54f1a4c2a9fc6.jpg
 mathjax: true
 description: 一个基于树形结构和区间维护数据结构的启发式算法。
 ---

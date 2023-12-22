@@ -1,7 +1,7 @@
 ---
 title: 关于 & 更新日志
 date: 2022-09-11 16:38:55
-top_img: https://s2.loli.net/2023/01/28/qTk14Q6RWGMPEvH.jpg
+top_img: https://s3.bmp.ovh/imgs/2023/12/22/abe977765d80ba0e.jpg
 type : "about"
 ---
 # 我是谁？
@@ -20,10 +20,9 @@ QQ      2040703891
 Email   2040703891@qq.com
 Wechat  Dark_Sharpness
 // 申请好友请注明原因!!!
-
 ```
 
-*****附注：关于这个非商业blog，其中非作者原创的二次元图片来自Pixiv/Seiga/Twitter，[图床](https://github.com/DarkSharpness/Photos/)标明了图片出处。如果实在找不到可以通过 https://saucenao.com/ 找到图片出处。如侵权将立即删除。**
+*****附注：关于这个非商业blog，其中非作者原创的二次元图片来自Pixiv/Seiga/Twitter，[图床](https://darksharpness.github.io/photo/)标明了图片出处。如果实在找不到可以通过 https://saucenao.com/ 找到图片出处。如侵权将立即删除。**
 
 # 更新日志:
 
@@ -41,3 +40,4 @@ Wechat  Dark_Sharpness
 * 2023-06-03 修复了头导航被覆盖的bug ; 现在不会强制深色模式了
 * 2023-09-29 背景加了点模糊(避免喧宾夺主) ; 改了一点点 CSS (美化)
 * 2023-10-02 添加了背景模糊的切换按钮(虽然有 bug) ; 默认是背景不模糊
+* 2023-12-22 更换图床，国内节点有加速 ; 为部分图片附加出处链接。

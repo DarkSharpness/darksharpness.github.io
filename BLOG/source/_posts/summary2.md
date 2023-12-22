@@ -1,11 +1,11 @@
 ---
 title: 2022学年下半学期总结
 date: 2023-06-18 22:24:44
-updated:
+updated: 2023-10-02 10:14:44
 tags: [随笔]
 categories: [随笔,总结]
 keywords: [随笔]
-cover: https://s2.loli.net/2023/06/19/8DqN4va3YxfUzSl.png
+cover: https://s3.bmp.ovh/imgs/2023/12/22/d2cae6cc8038c9da.png
 mathjax: false
 description: 不知道该说啥，又是胡言乱语的一天
 ---

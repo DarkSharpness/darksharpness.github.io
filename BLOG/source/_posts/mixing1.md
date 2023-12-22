@@ -1,11 +1,11 @@
 ---
 title: 混音学习笔记1
 date: 2023-06-05 14:51:47
-updated:
+updated: 2023-06-05 14:51:47
 tags: [音乐,随笔]
 categories: [音乐,笔记]
 keywords: [音乐,笔记]
-cover: https://s2.loli.net/2023/05/02/x2QMW8dOCbGLP4r.jpg
+cover: https://s3.bmp.ovh/imgs/2023/12/22/bf948e226affabad.jpg
 mathjax:
 description: 混音学习笔记，啥都没有
 ---
