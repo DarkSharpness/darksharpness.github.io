@@ -281,9 +281,9 @@
             
             <tag> 树形结构 </tag>
             
-            <tag> 平衡树 </tag>
-            
             <tag> STL </tag>
+            
+            <tag> 平衡树 </tag>
             
         </tags>
       
@@ -310,9 +310,9 @@
       
         <tags>
             
-            <tag> STL </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> STL </tag>
             
         </tags>
       
@@ -432,9 +432,9 @@
       
         <tags>
             
-            <tag> STL </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> STL </tag>
             
         </tags>
       
@@ -552,11 +552,11 @@
             
             <tag> 算法 </tag>
             
-            <tag> STL </tag>
-            
             <tag> C++ </tag>
             
             <tag> 基础知识 </tag>
+            
+            <tag> STL </tag>
             
         </tags>
       
@@ -704,6 +704,31 @@
             <tag> 字符串Hash </tag>
             
             <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>小丑日记 2024 占坑中......</title>
+      <link href="/diary2024/"/>
+      <url>/diary2024/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><h2 id="21"><a href="#21" class="headerlink" title="21"></a>21</h2><p>睡不着，连续三天起来发电。状态真的很不对。感觉像是被干了一样，困倦而无力。</p><h2 id="20"><a href="#20" class="headerlink" title="20"></a>20</h2><p>苟使寒假，必须得做点事情了。再不干正事，下学期真的要爆炸了。这学期的状态明显不对，感觉是过度疲劳之后的代偿。寒假必须终止一会儿了，或许我应该多出去走走，把脑子完全放空。现在我的思绪真的是无比混乱…… 所以我到底在为了什么而学习。我不知道。</p><h2 id="19"><a href="#19" class="headerlink" title="19"></a>19</h2><p>终于把所有事情都干完了…… 可以停下来思考了。</p><p>愚蠢的一学期大概是完全结束了，老实说这学期令人真的是血压飙升，我受够了。这学期的专业课数目令人窒息，再加上我平时喜欢花东西捣鼓，以及学习效率不是很高，结果就是完全没有空闲时间。更糟糕的是，我双选了选修课，而且还选了 CPU SIMD 架构的大作业 bonus (虽然只是设计了架构…但确实也浪费了不少时间)。后果非常直接，期末考试全科爆炸，险些要 qualify 。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
             
         </tags>
       
