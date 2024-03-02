@@ -2,8 +2,8 @@
   class_desc: 那些大佬们
   link_list:
     - name: Wankupi's Blog
-      link: https://wankupi.top/
-      avatar: https://wankupi.top/favicon.ico
+      link: https://www.wankupi.top/
+      avatar: https://www.wankupi.top/favicon.ico
       descr: ACM 爷，前后端全部精通
     - name: Hastin's Blog
       link: https://zsq259.github.io/
@@ -13,6 +13,10 @@
       link: https://conless.dev/blog/
       avatar: https://conless.dev/blog/images/avatar.jpg
       descr: 潘老师称第二，没人敢称第一
+    - name: Radioheading's blog
+      link: https://radioheading.github.io/
+      avatar: https://avatars.githubusercontent.com/u/115439175?v=4
+      descr: 小李😍
 
 - class_name: 其他推荐
   class_desc: 一些些有用的网站
@@ -20,11 +24,15 @@
     - name: OI-wiki
       link: https://oi-wiki.org/
       avatar: https://oi-wiki.org/favicon.ico
-      descr: 目前最好用的OI网站捏
+      descr: 目前最好用的 OI 网站捏
     - name: Saucenao 找图工具
       link: https://saucenao.com/
       avatar: https://saucenao.com/favicon.ico
       descr: 可以用于从图片找到图源
+    - name: Banana Space 香蕉♂空间
+      link: https://www.bananaspace.org/wiki/
+      avatar: https://www.bananaspace.org/favicon.ico
+      descr: 常用的数学知识查询网站
 
 #- class_name: 网站
 #  class_desc:
