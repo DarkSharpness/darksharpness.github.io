@@ -3,13 +3,12 @@ title: Compiler for Mx* 编译器随笔
 date: 2023-09-29 12:48:43
 updated:
 tags: [编译器,优化]
-categories: [计算机原理,编译器]
+categories: [计算机,编译器]
 keywords: [编译器]
 cover: https://s3.bmp.ovh/imgs/2023/12/22/178d87936dac3770.png
 mathjax: false
 description: 一个简单语言的编译器的实现
 ---
-
 注: 本文于 2024-03-02 更新循环相关优化部分，其他部分稍作修改。
 
 课程要求，写了一个简单语言 Mx* 的编译器，语法规则[请点击这里](https://github.com/ACMClassCourses/Compiler-Design-Implementation) 。笔者写的很烂，而且项目还烂尾了，所以不放自己写的链接了。
@@ -333,7 +332,7 @@ int main() {
 
 因此，我们可以简单的寻找所有的 back-edge (即从一个块 A ，跳到一个支配块 A 的块 B) ，记录所有的 B ，即为所有的 loop header，同时把 A 记录为 loop body 的一部分。然后，对于所有的 loop header ，我们从目前 loop body 开始，沿着 **反向流图** bfs/dfs ，直到遇到 loop header ，这样我们就找到了这个循环所有的 loop body 块。
 
-循环之间可能存在嵌套关系，我们可以用一个树形结构来表征这种关系。注意到，两个循环只可能嵌套或完全不相交，不存在其他的情况。因此，我们之前得到的 loop body 两两之间，要么一个完全被另一个包含，要么完全不相交。通过简单的枚举 (但实际笔者的实践借助了支配关系稍稍优化) 即可构建出嵌套关系的树，即为 loop-nest-tree 。 
+循环之间可能存在嵌套关系，我们可以用一个树形结构来表征这种关系。注意到，两个循环只可能嵌套或完全不相交，不存在其他的情况。因此，我们之前得到的 loop body 两两之间，要么一个完全被另一个包含，要么完全不相交。通过简单的枚举 (但实际笔者的实践借助了支配关系稍稍优化) 即可构建出嵌套关系的树，即为 loop-nest-tree 。
 
 ### loop-invariant-code-motion
 
