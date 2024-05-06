@@ -6,7 +6,7 @@
   <link href="http://darksharpness.github.io/atom.xml" rel="self"/>
   
   <link href="http://darksharpness.github.io/"/>
-  <updated>2024-03-02T16:53:02.373Z</updated>
+  <updated>2024-05-06T16:42:42.981Z</updated>
   <id>http://darksharpness.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++ 中的多线程</title>
+    <link href="http://darksharpness.github.io/thread/"/>
+    <id>http://darksharpness.github.io/thread/</id>
+    <published>2024-05-06T16:39:34.000Z</published>
+    <updated>2024-05-06T16:42:42.981Z</updated>
+    
+    <content type="html"><![CDATA[<p>操作系统课上学了点多线程, 知道了最基本的 <code>spinlock</code>, <code>mutex</code>, <code>semaphore</code>, <code>condition variable</code> 等等. 挺有意思的, 故作为一个记录.</p><h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2>]]></content>
+    
+    
+    <summary type="html">操作系统课中的一些所学.</summary>
+    
+    
+    
+    <category term="C++" scheme="http://darksharpness.github.io/categories/C/"/>
+    
+    <category term="多线程" scheme="http://darksharpness.github.io/categories/C/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+    
+    <category term="C++" scheme="http://darksharpness.github.io/tags/C/"/>
+    
+    <category term="多线程" scheme="http://darksharpness.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>GDB 使用笔记</title>
@@ -161,31 +186,6 @@
     
     
     <category term="随笔" scheme="http://darksharpness.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>混音学习笔记1</title>
-    <link href="http://darksharpness.github.io/mixing1/"/>
-    <id>http://darksharpness.github.io/mixing1/</id>
-    <published>2023-06-05T06:51:47.000Z</published>
-    <updated>2023-06-05T06:51:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>DarkSharpness 的赛博笔记本……由于 DarkSharpness 纯纯是一个新手没有鉴别力，因此里面记得东西啥都有，孩子不懂写着玩的。里面可能夹带了奇怪的私货，例如电路和信号的东西，毕竟曾经学过物理竞赛。</p><p>开坑ing……计划考完后补全。</p><h1 id="基本效果器的原理"><a href="#基本效果器的原理" class="headerlink" title="基本效果器的原理"></a>基本效果器的原理</h1><h2 id="EQ"><a href="#EQ" class="headerlink" title="EQ"></a>EQ</h2><p>EQ ，均衡器，即 equalizer，顾名思义就是让频率分布更加均衡的一个器件。为了避免过多的讨论，这里指的 EQ 不含有任何的染色。</p><p>EQ 的本质是通过改变声音在某些频率段的能量强度，进而整体上调整声音的频率特征。特别地，一个声音分为 时域 和 频域 两个方面，其中 EQ 主要会改变频域上的分布，但是其也会稍稍改动时域上的分布。</p><p>下面将会以 Fabfilter Pro Q3 为例进行分析</p><h3 id="Bell"><a href="#Bell" class="headerlink" title="Bell"></a>Bell</h3><h3 id="Shelf"><a href="#Shelf" class="headerlink" title="Shelf"></a>Shelf</h3><h3 id="Notch"><a href="#Notch" class="headerlink" title="Notch"></a>Notch</h3><h3 id="Cut"><a href="#Cut" class="headerlink" title="Cut"></a>Cut</h3><h3 id="Band-Pass"><a href="#Band-Pass" class="headerlink" title="Band Pass"></a>Band Pass</h3><h3 id="Linear-vs-Zero-latency-mode"><a href="#Linear-vs-Zero-latency-mode" class="headerlink" title="Linear vs Zero latency mode"></a>Linear vs Zero latency mode</h3><h2 id="Compressor"><a href="#Compressor" class="headerlink" title="Compressor"></a>Compressor</h2><p>Compressor ，即压缩器，顾名思义可以让声音被压缩，即让某些响的地方更轻 和 某些轻的地方更加响，其往往用来控制动态 (声音最响和最轻的地方的差) ，即可以让乐器的动态增大，也可以让动态减小。为了避免过多的讨论，这里指的 Compressor 不含有任何的染色。</p><p>Compressor 的本质是通过改变声音在时间上的强度变化，进而整体上调整声音的动态。特别地，一个声音分为 时域 和 频域 两个方面，其中 Compressor 主要会改变时域上的分布，但是其也会稍稍改动频域上的分布。</p><p>下面将会以 Fabfilter Pro C2 为例进行分析</p><h3 id="Threshold"><a href="#Threshold" class="headerlink" title="Threshold"></a>Threshold</h3><h3 id="Ratio"><a href="#Ratio" class="headerlink" title="Ratio"></a>Ratio</h3><h3 id="Knee"><a href="#Knee" class="headerlink" title="Knee"></a>Knee</h3><h3 id="Gain"><a href="#Gain" class="headerlink" title="Gain"></a>Gain</h3><h3 id="Attack"><a href="#Attack" class="headerlink" title="Attack"></a>Attack</h3><h3 id="Release"><a href="#Release" class="headerlink" title="Release"></a>Release</h3><h3 id="Hold"><a href="#Hold" class="headerlink" title="Hold"></a>Hold</h3><h3 id="Side-Chain"><a href="#Side-Chain" class="headerlink" title="Side Chain"></a>Side Chain</h3><h2 id="Gate"><a href="#Gate" class="headerlink" title="Gate"></a>Gate</h2><h2 id="Saturation"><a href="#Saturation" class="headerlink" title="Saturation"></a>Saturation</h2><h2 id="Limiter-amp-Clipper"><a href="#Limiter-amp-Clipper" class="headerlink" title="Limiter &amp; Clipper"></a>Limiter &amp; Clipper</h2><h2 id="Reverb"><a href="#Reverb" class="headerlink" title="Reverb"></a>Reverb</h2><h2 id="Delay"><a href="#Delay" class="headerlink" title="Delay"></a>Delay</h2>]]></content>
-    
-    
-    <summary type="html">混音学习笔记，啥都没有</summary>
-    
-    
-    
-    <category term="音乐" scheme="http://darksharpness.github.io/categories/%E9%9F%B3%E4%B9%90/"/>
-    
-    <category term="笔记" scheme="http://darksharpness.github.io/categories/%E9%9F%B3%E4%B9%90/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="随笔" scheme="http://darksharpness.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-    <category term="音乐" scheme="http://darksharpness.github.io/tags/%E9%9F%B3%E4%B9%90/"/>
     
   </entry>
   
