@@ -1,11 +1,11 @@
 ---
-title: (Modern) C++ 小知识汇总
+title: (Modern) C++ 小技巧汇总
 date: 2024-06-09 23:01:00
 updated:
 tags: [C++,基础知识]
 categories: [C++,基础知识]
 keywords: [C++, Modern C++,基础知识]
-cover:
+cover: https://s3.bmp.ovh/imgs/2024/06/10/16be8fd59a1768c7.jpg
 mathjax: false
 description: 本文是笔者写 C++ 代码得出的一些实践经验，会长期更新
 ---
@@ -138,7 +138,7 @@ struct assert {
         if (condition) return;
         std::cerr << "assert failed: "
             << location.file_name() << ":" << location.line() << ": " << location.function_name() << ": ";
-        if constexpr (sizeof...(args) == 0)
+        if constexpr (sizeof...(args) != 0)
             ((std::cerr << args), ...) << std::endl;
     }
 };
@@ -151,4 +151,26 @@ void test() {
 }
 ```
 
-为了避免使用危险的宏, 我们最后只能选择了这种扭曲的方式实现了我们的 `assert`. 但是, 这种方式也有一些优点. 首先, 我们可以自定义输出信息, 其次, 我们可以在运行时生成输出信息, 而不会有性能开销. 如果你觉得太丑了, 你甚至可以借助 `format` 来实现更加优雅的格式化输出. 其自由度还是非常高的, 比起 C 的 `assert`.
+为了避免使用危险的宏, 我们最后只能选择了这种扭曲的方式实现了我们的 `assert`. 但是, 这种方式也有一些优点. 首先, 我们可以自定义输出信息, 而且只有在错误时才会生成输出字符串, 而不会有性能开销. 如果你觉得太丑了, 你甚至可以借助 `format` 来实现更加优雅的格式化输出. 其自由度还是非常高的, 比起 C 原生的 `assert`. 最后, 附上一个使用了 `format` 的实现:
+
+```cpp
+template <typename _Tp, typename... _Args>
+struct assert {
+    assert(_Tp &&condition, std::format_string <_Args...> fmt = "", _Args &&...args,
+        std::source_location location = std::source_location::current()) {
+        if (condition) return;
+        std::cerr << "assert failed: "
+            << location.file_name() << ":" << location.line() << ": " << location.function_name() << ": ";
+        std::cerr << std::format(fmt, std::forward<_Args>(args)...) << std::endl;
+    }
+};
+
+template <typename _Tp, typename _Fmt, typename... _Args>
+assert(_Tp &&, _Fmt &&, _Args &&...) -> assert<_Tp, _Args...>;
+
+void test() {
+    assert(false);
+    assert(1 + 1 == 3, "wtf {} {}", 1 + 1, 3);
+    assert(0.1 + 0.2 == 0.3, "Hello, World!");
+}
+```
