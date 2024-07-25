@@ -12,6 +12,99 @@ description: 本文是笔者写 C++ 代码得出的一些实践经验，会长�
 
 众所周知, 笔者 (DarkSharpness) 是一个 Modern C++ 的狂热爱好者. 笔者自高中信息竞赛以来, 主力编程语言一直都是 C++, 在大学的学习过程中, 积累了不少的实践经验, 故开一个帖子计划长期维护. 每次更新会在头部显示.
 
+## bit-field
+
+这个其实算不上 modern C++ 的部分, 这是 C 继承下来的一个重要 feature.
+
+在一些偏底层且空间/性能敏感的领域, 我们可能需要把多个数据压缩存储到一起. 举个例子, int4 量化的时候, 我们可能需要把 8 个 4 bit 的数(表示范围是 -8 ~ 7)压缩到一个 int 中 (4 * 8 = 32). 再比如说, 在嵌入式开发中, 某些硬件寄存器每个 bit 可能对应不同的 flag, 我们在读出这个寄存器的值的时候, 可能需要把这些 flag 读出来.
+
+以上这些需求, 最容易想到的做法是使用位运算, 取出一个数字的特定几位. 然而, 这样的代码难以维护, 各种左右移, 以及掩码操作, 稍微复杂一点代码就会变得难以阅读, 即使设计了对应接口, 其直观性还是一般, 如下所示.
+
+```cpp
+struct int4_8 {
+    int data;
+};
+
+// 获取第 i 个 4 bit 数
+template <int which>
+int get(const int4_8 &x) {
+    return (x.data >> (which * 4)) & 0xf;
+}
+
+// 把第 i 个 4 bit 数设置为 value
+template <int which>
+void set(int4_8 &x, int value) {
+    x.data &= ~(0xf << (which * 4));
+    x.data |= (value & 0xf) << (which * 4);
+}
+```
+
+我们希望我们能想操纵一个普通的变量那样, 操控一些 bit. 遗憾的是, 计算机中的最小寻址单元是 byte, 我们并不存在 bit 的引用. 但是, C++ 提供了一个很好的解决方案: bit-field. 我们可以使用 bit-field 来定义一个结构体, 其中的成员变量可以指定其占用的 bit 数, 如下所示.
+
+```cpp
+struct int4_8 {
+    int x0 : 4; // 0 ~ 3 bit
+    int x1 : 4; // 4 ~ 7 bit
+    int x2 : 4; // 8 ~ 11 bit
+    int x3 : 4; // 12 ~ 15 bit
+    int x4 : 4; // 16 ~ 19 bit
+    int x5 : 4; // 20 ~ 23 bit
+    int x6 : 4; // 24 ~ 27 bit
+    int x7 : 4; // 28 ~ 31 bit
+};
+
+void test() {
+    int4_8 x;
+    x.x0 = 1;
+    x.x1 = -3;
+    std::cout << x.x0 << " " << x.x1 << std::endl;
+}
+```
+
+通过这样的方式, 我们可以直接访问到一个 int 中的特定几位, 而不需要手动进行位运算. 我们可以在 [cppreference](https://en.cppreference.com/w/cpp/language/bit_field#:~:text=The%20type%20of%20a%EE%80%80%20bit-field%EE%80%81) 上查看到更多关于 bit-field 的细节.
+
+在笔者的实践中, 一般不会太在意 cppreference 上说到的所有细节, 但是笔者认为以下这些还是比较重要的:
+
+首先, bit-field 的类型必须是整数类型. 这还是比较好理解的, 因为其本质就是对于整数位运算的某种语法糖.
+
+其次, 如果希望达到节约空间的目的, 被压缩在同一个 int 中的 bit-field 之和显然不能超过 int 的 bit 数量, 超过的 bit-field 部分一般来说会被放到下一个 int 中. 自然, 这中间可能存在一些 padding, 以保证对齐.
+
+```cpp
+struct bit_pack {
+    int x : 16;
+    int y : 14;
+
+    // 这里有 2 bit 的 padding,
+    // 因为下一个 z : 16 放不下了, 第一个 int 只剩下2 bit
+    // 请注意, 这是一个实现定义行为, 不同的编译器可能会有不同的行为.
+    // 一般的编译器还是会选择不要让 z 跨越两个 int
+    // 因为如果跨越 int 存储, 会导致访问效率降低, 性能下降
+
+    int z : 16;
+    int   : 15; // 手动添加 padding, 不需要名字
+
+    // 这里有 1 bit 的 padding, 因为无论如何都要对齐到 int
+    int w;
+};
+```
+
+当然, bit-field 也支持类型混用, 即不一定要是同一种整数类型, 但是要求整数的位宽相同, 否则会先把前面的类型 padding 到整数位宽, 然后再放入后面的类型.
+
+```cpp
+struct bit_pack_2 {
+    int x       : 16; // 16 bit
+    unsigned y  : 16; // OK, 和 x 在同一个 int 中
+    int      z  : 8;
+    // 这里有 24 bit 的 padding,
+    // 因为 uint8_t 只有 8 bit, 和 int 不一样
+    // 因此, 前一个 int 会先被 padding 到 32 bit
+    // 再放入 uint8_t
+    uint8_t w : 3;
+};
+```
+
+说到这里, 就不得不提 C++ 中的 `<bit>` 这个头文件了. 这个头文件是 C++ 20 新增的, 其提供了一些 bit 操作的函数, 如 `std::bit_cast`, `std::rotl`, `std::rotr`, `std::countr_zero`, `std::countr_one` 等等. 这些函数可以帮助我们更加方便地进行 bit 操作. 基本上, 你能想到的 bit 操作, 这个头文件都有.
+
 ## string switch
 
 在 C/C++ 中, 你应该用过 `switch` 语句, 其可以高效而直观地表示多分支的逻辑. 但是, `switch` 语句只能接受整数类型的参数, 不能接受字符串类型的参数.
