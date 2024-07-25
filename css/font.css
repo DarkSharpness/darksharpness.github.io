@@ -1,0 +1,52 @@
+/* 字体部分 */
+
+@font-face{
+    font-family: 'JetBrains Mono';
+    font-display: swap;
+    src: url('../font/JetBrainsMono-Regular.ttf') format("truetype");
+}
+
+/* @font-face{
+    font-family: 'HarmonyOS Sans SC';
+    font-display: swap;
+    src: url('../font/HarmonyOS_Sans_SC_Regular.ttf') format("truetype");
+}
+
+body {
+    font-family: 'HarmonyOS Sans SC';
+} */
+
+
+
+/* 自定义图标部分 */
+
+@font-face {
+    font-family: "iconfont"; /* Project id 3870791 */
+    src:    url('//at.alicdn.com/t/c/font_3870791_uqwyuj83tu.woff2?t=1675867134473') format('woff2'),
+            url('//at.alicdn.com/t/c/font_3870791_uqwyuj83tu.woff?t=1675867134473') format('woff'),
+            url('//at.alicdn.com/t/c/font_3870791_uqwyuj83tu.ttf?t=1675867134473') format('truetype');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wangyiyunyinle:before {
+    content: "\e63c";
+}
+
+.icon-zhihu:before {
+    content: "\e60d";
+}
+
+.icon-shejiaotubiao-46:before {
+    content: "\e64b";
+}
+
+.icon-bilibili:before {
+    content: "\e609";
+}
