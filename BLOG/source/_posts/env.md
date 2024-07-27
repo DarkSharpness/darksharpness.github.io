@@ -5,7 +5,7 @@ updated:
 tags: [基础知识]
 categories: [计算机, 工具]
 keywords: [cuda, gpg, Python]
-cover:
+cover: https://s3.bmp.ovh/imgs/2024/07/27/3a45622b731f9c3d.png
 mathjax: false
 description: 配环境, 然后破防.
 ---
@@ -158,6 +158,17 @@ gpg --armor --export 3AA5C34371567BD2
 ```
 
 此时, 复制以 -----BEGIN PGP PUBLIC KEY BLOCK----- 开头并以 -----END PGP PUBLIC KEY BLOCK----- 结尾的 GPG 密钥. 将 GPG 密钥新增到 GitHub 帐户, 即可.
+
+当然, github 的教程是到此为止了, 但是本地的配置其实还不够. 为了让我们在 git commit 时自动跳出窗口, 并且强制输入密码采用 gpg 签名, 我们还需要一些额外的设置.
+
+```shell
+# 强制每次 commit 都要 gpg 签名
+git config --global commit.gpgsign true
+# 修改 ~/.zshrc 或者 ~/.bashrc
+# 这是为了让 gpg 在 git commit 的时候弹出窗口
+# 否则会报错, 只能通过命令行签名.
+export GPG_TTY=$(tty)
+```
 
 ## Small summary
 

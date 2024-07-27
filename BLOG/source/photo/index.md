@@ -108,6 +108,10 @@ top_img: https://s3.bmp.ovh/imgs/2023/12/22/3ab69aa9e9b64942.jpg
 
 <center><font color=grey><a href="https://www.pixiv.net/artworks/114498589"> Artwork 114498589 by endlesscat </a></font></center><br/>
 
+![](https://s3.bmp.ovh/imgs/2024/07/27/3a45622b731f9c3d.png)
+
+<center><font color=grey><a href="https://www.pixiv.net/artworks/120719040"> Artwork 120719040 by 洗濯船 </a></font></center><br/>
+
 ## Twitter part
 
 ![https://twitter.com/TeruTeruKp/status/1437370153792991242/photo/1](https://s3.bmp.ovh/imgs/2023/12/22/d2cae6cc8038c9da.png)
