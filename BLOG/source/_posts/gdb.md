@@ -1,7 +1,7 @@
 ---
 title: GDB 使用笔记
 date: 2024-03-02 12:05:14
-updated:
+updated: 2024-05-24 12:05:14
 tags: [调试]
 categories: [计算机, 工具]
 keywords: [调试工具]
@@ -38,12 +38,12 @@ riscv64-unknown-elf-gdb \
 | enable     | (num)   | 启用第 num 个/所有断点        | e   |
 | info       | ...     | 显示具体信息                  | i    |
 | print      | expr    | 显示表达式的值                | p    |
-| stepi      | (num)   | 执行 num条/单个汇编指令       | si   |
 | x          | addr    | 显示内存地址 addr 的内容      | x    |
-| nexti      | (num)   | 执行 num条/单个程序的行       | ni   |
-| list       | -       | 显示当前执行的代码是哪个文件  | l    |
+| list       | -       | 显示当前执行的代码是哪个文件   | l    |
+| step       | (num)   | 执行 num/单行代码, 会进入函数 | s    |
+| next       | (num)   | 执行 num/单行代码, 会跳过函数 | n    |
 
-需要注意的是, nexti 不会跳入函数内部，而 stepi 会。
+需要注意的是, 如果 `next` 和 `step` 后添加后缀 `i`, 即 `nexti` 和 `stepi`, 则对应的是汇编指令级别的执行 (即一条汇编指令), 而不是 C 代码级别的执行 (即一行 C 代码), 遇到函数的处理和 `next` 和 `step` 是类似的, 缩写对应的是 `ni` 和 `si`.
 
 以下是一些常用指令:
 
