@@ -56,6 +56,10 @@ top_img: https://s3.bmp.ovh/imgs/2023/12/22/3ab69aa9e9b64942.jpg
 
 <center><font color=grey><a href="https://www.pixiv.net/artworks/94505082"> Artwork 94505082 by ぢせ </a></font></center><br/>
 
+![](https://s3.bmp.ovh/imgs/2024/11/27/3e28dd3239526ce1.jpg)
+
+<center><font color=grey><a href="https://www.pixiv.net/artworks/96724231"> Artwork 96724231 by ねっちー </a></font></center><br/>
+
 ![](https://s3.bmp.ovh/imgs/2023/12/22/bf948e226affabad.jpg)
 
 <center><font color=grey><a href="https://www.pixiv.net/artworks/98482634"> Artwork 98482634 by きらまるこう </a></font></center><br/>
@@ -118,3 +122,6 @@ top_img: https://s3.bmp.ovh/imgs/2023/12/22/3ab69aa9e9b64942.jpg
 
 ![https://twitter.com/pikumin_jr/status/1323577456729600000](https://s3.bmp.ovh/imgs/2023/12/22/abe977765d80ba0e.jpg)
 
+## Unknown list
+
+![unknown source](https://static.zerochan.net/Hatsune.Miku.full.1661213.jpg)
