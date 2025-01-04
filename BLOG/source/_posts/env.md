@@ -1,7 +1,7 @@
 ---
 title: 我讨厌配环境
 date: 2024-07-25 20:51:42
-updated:
+updated: 2024-07-27 21:50:59
 tags: [基础知识]
 categories: [计算机, 工具]
 keywords: [cuda, gpg, Python]

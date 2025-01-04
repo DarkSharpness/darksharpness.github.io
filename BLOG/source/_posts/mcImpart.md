@@ -1,7 +1,7 @@
 ---
 title: 关于 Minecraft Impart 服务器
 date: 2023-04-09 16:12:36
-updated:
+updated: 2023-06-05 14:56:29
 tags: [Minecraft,随笔]
 categories: [Minecraft,服务器]
 keywords: [游戏,Minecraft,随笔]

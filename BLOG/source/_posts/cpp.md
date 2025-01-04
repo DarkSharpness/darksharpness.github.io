@@ -1,7 +1,7 @@
 ---
 title: (Modern) C++ 小技巧汇总
 date: 2024-06-09 23:01:00
-updated:
+updated: 2024-07-26 01:38:02
 tags: [C++,基础知识]
 categories: [C++,基础知识]
 keywords: [C++, Modern C++,基础知识]
