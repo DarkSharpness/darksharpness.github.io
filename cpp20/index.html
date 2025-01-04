@@ -1,0 +1,506 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>C++ 20 部分特性尝鲜 | DarkSharpness's Dougen</title><meta name="author" content="DarkSharpness"><meta name="copyright" content="DarkSharpness"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="C++17 都没学明白，C++20 就来了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 20 部分特性尝鲜">
+<meta property="og:url" content="http://darksharpness.github.io/cpp20/index.html">
+<meta property="og:site_name" content="DarkSharpness&#39;s Dougen">
+<meta property="og:description" content="C++17 都没学明白，C++20 就来了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2023/12/22/366cfd25c96ee172.jpg">
+<meta property="article:published_time" content="2023-07-06T08:00:37.000Z">
+<meta property="article:modified_time" content="2023-07-28T08:00:37.000Z">
+<meta property="article:author" content="DarkSharpness">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="基础知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.bmp.ovh/imgs/2023/12/22/366cfd25c96ee172.jpg"><link rel="shortcut icon" href="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png"><link rel="canonical" href="http://darksharpness.github.io/cpp20/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C++ 20 部分特性尝鲜',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-28 16:00:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/user.css"><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="DarkSharpness's Dougen" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/photo/"><i class="fa-fw fas fa-video"></i><span> 图床</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.bmp.ovh/imgs/2023/12/22/366cfd25c96ee172.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="DarkSharpness's Dougen"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png"/><span class="site-name">DarkSharpness's Dougen</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/photo/"><i class="fa-fw fas fa-video"></i><span> 图床</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C++ 20 部分特性尝鲜</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-06T08:00:37.000Z" title="发表于 2023-07-06 16:00:37">2023-07-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-28T08:00:37.000Z" title="更新于 2023-07-28 16:00:37">2023-07-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C/">C++</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>24分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C++ 20 部分特性尝鲜"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2023 年了，C++ 23 都要出了，各大编译器厂家对 C++ 20 的支持终于有点进展了。在 GCC 最近(截止 2023-07-06) 的一次版本更新中，终于添加了对于 std::format 的支持。作为一个坚定的 GCC 追随者，笔者自然是选择 g++ 13.1 作为自己的编译器。(笑)</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>CPU: 12th Gen Intel(R) Core(TM) i7-12700H</p>
+<p>操作系统: Microsoft Windows 版本22H2<br>(OS内部版本22621.1848)</p>
+<p>GCC version 13.1.0 (x86_64-posix-seh-rev1, Built by MinGW-Builds project)</p>
+<h2 id="其他的话"><a href="#其他的话" class="headerlink" title="其他的话"></a>其他的话</h2><p>笔者希望读者在正式阅读之前，能够记住以下几个要点:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/07/07/pljTPKDe12JAmxt.png" alt="Codemate? Codegpt!"></p>
+<p>当然，不排除以上是 Codemate 瞎扯的，但是笔者自己的确能很强烈地体会到，C++ 这门语言讲究的就是高效性和包装性。它既要求能拥有和 C 一样的性能，接近底层，也希望能在此基础上提供尽可能多的包装，从而降低方便程序员更好高效的写代码。</p>
+<p>简而言之，性能优先，在此基础上提供尽可能多的便利。这大概就是笔者经历了这一年的 coding 后对于 C++ 的理解罢。欢迎各位讨论~</p>
+<h1 id="concept-amp-requires"><a href="#concept-amp-requires" class="headerlink" title="concept&amp;requires"></a>concept&amp;requires</h1><p>说是话，这可能是我最期待的一个功能了，要想真的想要深入了解，请参考 <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/constraints">cpprefence</a></p>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>可能的前置知识: <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/sfinae">SFINAE</a></p>
+<p>在 concept 出现之前，设想一下，你需要设计一个 sort 函数。一般情况下，你期望用户传入的是一个连续的序列，即数组之类的。很不幸的是，你的用户不一定有这样的觉悟。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::list &lt;<span class="type">int</span>&gt; l &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    std::<span class="built_in">sort</span>(l.<span class="built_in">begin</span>(),l.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>对于标准库的 sort 函数，当用户试图传入不支持随机访问的迭代器，就会出现类似下面的报错信息。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/07/07/eGMABEJKSi7ahZT.png" alt="超过 100 行了哦~~~"></p>
+<p>这看起来就令人十分的恼火，<del>太长不看!</del>。而更加令人恼火的是，如果代码补全是 VScode 默认的 C/C++ intellisense ，这破玩意甚至不会提示有错! 原因很简单，因为用户传入的参数匹配上了这个函数模板，而这个模板出错是在编译的时候才发现的，因此你的代码补全机器很多时候不会察觉到这个问题。这时候，聪明的你可能想要对其做出一些针对性的优化。于是，你想到了 SFINAE ，这个 C++ 14 就出现的特性。你把 sort 函数进行了巧妙的包装:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>,std::<span class="type">enable_if_t</span> &lt;std::__is_random_access_iter &lt;T&gt;::value,<span class="type">int</span> *&gt; = <span class="literal">nullptr</span>&gt;</span><br><span class="line"><span class="type">void</span> <span class="built_in">my_sort</span>(T __beg,T __end) &#123;</span><br><span class="line">    <span class="keyword">return</span> std::<span class="built_in">sort</span>(__beg,__end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::list &lt;<span class="type">int</span>&gt; l &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    std::vector &lt;<span class="type">int</span>&gt; a &#123;<span class="number">1</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">my_sort</span>(l.<span class="built_in">begin</span>(),l.<span class="built_in">end</span>());</span><br><span class="line">    <span class="built_in">my_sort</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这下好了，对于传入非随机访问迭代器的参数，其在匹配函数的时候就完全匹配不上这个函数模板，因此在编译之前，你的代码补全工具应该就会告诉你: 没有与参数列表匹配的 函数模板 “my_sort” 实例。而编译后的报错信息也会短不少。不仅如此，有了 SFINAE，你可以为其他不满足的类型提供特定的重载。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/07/07/zPJtmoSVXwpZbi9.png" alt="短了不少"></p>
+<p>但是这样的问题也是很明显的。对于每个需要验证传入参数时随机访问迭代器的类，你都要写一个又臭又长的 std::enable_if_t…… 这真的太蠢了！完全不符合代码复用和简洁性！</p>
+<p>不仅如此，SFINAE 还存在自己的问题: SFINAE 必须占据函数签名/函数返回值的一部分参数，例如模板参数，函数参数，函数返回值等等。而 SFINAE 占据的参数不能是在函数内部的，本质上还是因为它是在模板进行替换(substitution)操作的时候才检查模板是否可以的。如下是三种常见的 SFINAE 实现方式。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>,std::<span class="type">enable_if_t</span> &lt;std::__is_random_access_iter &lt;T&gt;::value,<span class="type">int</span> *&gt; = <span class="literal">nullptr</span>&gt;</span><br><span class="line"><span class="type">void</span> <span class="built_in">my_sort1</span>(T __beg,T __end) &#123;</span><br><span class="line">    <span class="keyword">return</span> std::<span class="built_in">sort</span>(__beg,__end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">my_sort2</span><span class="params">(T __beg,T __end,std::<span class="type">enable_if_t</span> &lt;std::__is_random_access_iter &lt;T&gt;::value,<span class="type">int</span> *&gt; = <span class="literal">nullptr</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> std::<span class="built_in">sort</span>(__beg,__end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line">std::<span class="type">enable_if_t</span> &lt;std::__is_random_access_iter &lt;T&gt;::value,<span class="type">void</span>&gt;</span><br><span class="line"><span class="built_in">my_sort3</span>(T __beg,T __end) &#123;</span><br><span class="line">    <span class="keyword">return</span> std::<span class="built_in">sort</span>(__beg,__end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更加 modern 的写法</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">my_sort3_1</span><span class="params">(T __beg,T __end)</span> -&gt;std::<span class="type">enable_if_t</span> &lt;std::__is_random_access_iter &lt;T&gt;::value,<span class="type">void</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> std::<span class="built_in">sort</span>(__beg,__end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当然，你可以用 void_t 等方式来解决此类问题。但这样的模式还是太麻烦了点，特别是当这个东西耦合入代码，就会使得代码的可读性大大下降，直观性也不足，尽管解决了编译报错信息过长的问题。</p>
+<p>最后呢，SFINAE 必须结合模板食用，而很多函数是不能模板化的(例如构造函数等等)。</p>
+<p>这时候，concept 和 requires 作为一个替代方案，它出现了。其把函数的约束条件抽象出来，从而极大地增加了代码的可读性直观性，也让重复的工作得以极大的减少。</p>
+<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>concept 最基本的形式如下:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;...&gt;</span><br><span class="line"><span class="keyword">concept</span> ... = constraints......</span><br></pre></td></tr></table></figure>
+<p>其中，等号右边 concept 是一个可以在编译期就能被估值为 bool 类的一系列函数或表达式，其非常像 constexpr bool 变量。举例:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断是不是原生浮点类型,即是不是 float/double</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="keyword">concept</span> is_floating_type = std::is_same_v &lt;T,<span class="type">float</span>&gt; || std::is_same_v &lt;T,<span class="type">double</span>&gt;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 输出 true false */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; std::boolalpha;</span><br><span class="line">    std::cout &lt;&lt; is_floating_type &lt;<span class="type">float</span>&gt; &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    std::cout &lt;&lt; is_floating_type &lt;<span class="type">long</span>&gt; &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">bool_true</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="comment">// 注意，这个 constexpr 是必须的!</span></span><br><span class="line">    <span class="function"><span class="keyword">constexpr</span> <span class="keyword">operator</span> <span class="title">bool</span><span class="params">()</span> <span class="keyword">noexcept</span> </span>&#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="keyword">concept</span> always_true = <span class="built_in">bool</span>(bool_true&#123;<span class="number">3</span>&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>而使用一个 concept 有很多种方法。虽然这有点像茴香豆的四种写法，但我觉得还是有必要都了解一下的，当然平时只要会用就行了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="keyword">concept</span> signed_integer = std::is_integral_v &lt;T&gt; &amp;&amp; std::is_signed_v &lt;T&gt;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;signed_integer T&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">lowbit1</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="comment">// 这里可以 requires 很多个 constexpr bool/concept 哦</span></span><br><span class="line"><span class="keyword">requires</span> signed_integer &lt;T&gt; &amp;&amp; <span class="function"><span class="literal">true</span> </span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">lowbit2</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">lowbit3</span><span class="params">(T x)</span> <span class="keyword">requires</span> signed_integer &lt;T&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">lowbit4</span><span class="params">(signed_integer <span class="keyword">auto</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 如果你把下面这些整数变为 10f(float 类)/ 10u(unsigned)，</span></span><br><span class="line"><span class="comment"> * 你的 intellisense 应该会报错，编译也不会通过。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout </span><br><span class="line">        &lt;&lt; <span class="built_in">lowbit1</span>(<span class="number">10</span>) &lt;&lt; <span class="string">&#x27; &#x27;</span></span><br><span class="line">        &lt;&lt; <span class="built_in">lowbit2</span>(<span class="number">12</span>) &lt;&lt; <span class="string">&#x27; &#x27;</span></span><br><span class="line">        &lt;&lt; <span class="built_in">lowbit3</span>(<span class="number">14</span>) &lt;&lt; <span class="string">&#x27; &#x27;</span></span><br><span class="line">        &lt;&lt; <span class="built_in">lowbit4</span>(<span class="number">16</span>) &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>而 requires ，顾名思义就是 要求 (require) 对于函数模板产生一定的约束(误)。确实是这么一回事，但 requires 不只是这些，其不仅可以后接 constexpr 变量和定义好的 concept (正如前面 lowbit2 函数演示的那样)，作为标识符检查值是否为 true，其还可以添加任意的表达式，检验内部表达式是否存在，自身充当一个 constexpr bool 变量。下为伪代码:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">requires</span> <span class="comment">//含 concept 和 constexpr bool 逻辑表达式，相当于一个完整的语句</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下两种 requires 则更像是一个表达式</span></span><br><span class="line"><span class="keyword">requires</span> &#123; <span class="comment">/* 具体约束,只会判断能否过编译，不会真实执行。 */</span> &#125;</span><br><span class="line"><span class="built_in">requires</span> (<span class="comment">/* 参数表，类似函数参数 */</span>) &#123; <span class="comment">/* 具体约束 */</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>当然，这么说还是太抽象了点，下面举一些简单的例子:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 注意，concept 也可以有默认参数，虽然一般没啥用</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span> = <span class="type">void</span>&gt;</span><br><span class="line"><span class="keyword">concept</span> A = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// requires 最基础的用法，检测后面表达式是否为 constexpr true</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="built_in">requires</span> (<span class="literal">true</span> &amp;&amp; A &lt;T&gt;) || <span class="function"><span class="literal">false</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func1</span><span class="params">(T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span>;</span><br><span class="line">    <span class="built_in">static_assert</span>(<span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意区分下面两个 requires 的区别</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="keyword">requires</span> <span class="keyword">requires</span> &#123;</span><br><span class="line">    <span class="built_in">func1</span>(<span class="number">114514</span>);</span><br><span class="line">&#125; &amp;&amp; (<span class="built_in">sizeof</span>(T) == <span class="number">4</span>)</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">tester</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="keyword">concept</span> arithable = A &lt;&gt; &amp;&amp; A &lt;T&gt; &amp;&amp; <span class="built_in">requires</span>(T x,T y) &#123;</span><br><span class="line">    x + y;</span><br><span class="line">    x - y;</span><br><span class="line">    x * y;</span><br><span class="line">    x / y;</span><br><span class="line">    <span class="keyword">typename</span> tester &lt;T&gt;; <span class="comment">// 检测类型是否存在</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="keyword">concept</span> is_container = <span class="built_in">requires</span> (T x) &#123;</span><br><span class="line">    x.<span class="built_in">size</span>();  <span class="comment">// 检测成员函数/成员变量</span></span><br><span class="line">    x.<span class="built_in">empty</span>();</span><br><span class="line">    x.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="keyword">typename</span> T::iterator; <span class="comment">// 检测类型是否存在</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意区分下面的两个 requires</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="keyword">concept</span> is_custom = <span class="built_in">requires</span> (T x) &#123;</span><br><span class="line">    <span class="comment">// 这里的 requires 是 requires 语句</span></span><br><span class="line">    <span class="keyword">requires</span> is_container &lt;<span class="keyword">decltype</span>(x.x)&gt;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">custom_t</span> &#123; std::vector &lt;<span class="type">int</span>&gt; x; &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>简而言之，存在两类 requires: 第一种 requires 是 requires 语句， 它检测其后的表达式是否为 constexpr bool true ，如果不满足则直接<del>原地爆炸</del>认为是匹配失败，可以继续尝试匹配其他的模板。第二种 requires 则是 requires 表达式，带有约束列表(以及可能带有参数)，其本身会在编译时被替换为 constexpr bool 变量。</p>
+<p>什么，你不信? 看看输出的是啥类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span> = <span class="type">void</span>&gt;</span><br><span class="line"><span class="keyword">concept</span> nothing = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print_type</span><span class="params">(T)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;others\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;&gt;</span><br><span class="line"><span class="type">void</span> print_type &lt;<span class="type">bool</span>&gt; (<span class="type">bool</span>) &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;bool\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constexpr</span> <span class="keyword">auto</span> __r = <span class="keyword">requires</span> &#123; <span class="built_in">sizeof</span>(<span class="type">int</span>); &#125;;</span><br><span class="line">    <span class="built_in">print_type</span>(__r);</span><br><span class="line">    <span class="built_in">print_type</span>(nothing &lt;&gt;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，concept 不能递归其本身，而 concept 也不能被约束。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;</span><br><span class="line"><span class="keyword">concept</span> A = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不可以递归!</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>,<span class="keyword">class</span> <span class="title class_">V</span>&gt;</span><br><span class="line"><span class="keyword">concept</span> Recursive = std::is_same_v &lt;T,V&gt; ||</span><br><span class="line"><span class="built_in">requires</span> (T x) &#123;</span><br><span class="line">    <span class="keyword">requires</span> Recursive &lt;<span class="keyword">decltype</span>(x.x),V&gt;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;A T&gt;</span><br><span class="line"><span class="keyword">concept</span> Error1 = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="keyword">requires</span> A &lt;T&gt;</span><br><span class="line"><span class="keyword">concept</span> Error2 = <span class="literal">true</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以看出，concept 和 requires 表达式本质上就是一个 constexpr bool 模板变量，而 requires 语句则是用来辅助 SFINAE 来约束模板类型。在用了 concept 和 requires 之后，代码逻辑变得更加清晰了，SFINAE 不会再和模板逻辑耦合了，再也不用在模板里面放一个又臭又长的 SFINAE 专用参数了(笑)。</p>
+<h1 id="Threeway-Comparision"><a href="#Threeway-Comparision" class="headerlink" title="Threeway_Comparision"></a>Threeway_Comparision</h1><p>在看这个之前，简单回顾下笔者所认为的 C++ 的核心: 性能优先，包装性其次。OK，那我们来考虑一下以下的情景作为引入:</p>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>现在，假设你实现了一个简单的、支持动态扩容的字符串类，如下所示:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> dark &#123;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">string</span> &#123;</span><br><span class="line">    <span class="comment">/* 具体实现...... */</span></span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>作为一个字符串类，除了常见的如 size(),下标访问等接口，自然也是需要支持比较的，而比较的运算符有 &gt;,&lt;,&le;,&ge;,&ne;,== 这些，于是 string 类型直接的比较就需要重载 6 个函数。当然，字符串比较非常简单，你可以直接调用 strcmp 函数进行比较。看到这里，比较仔细且特别关注性能的读者这里可能已经察觉到了一丝异常，你先别急，后面会分析的。</p>
+<p>然而，最麻烦的还不是这个。作为字符串类型，自然要为原生的字符数组类型 char <em> 提供支持，具体体现在可以由原生的 char </em> 数组构造 string，且 string 必须支持和 char <em>进行比较等操作。然而，重载 string 和 char </em> 的比较有两种情况，string (比较运算符) char <em>，以及 char </em> (比较运算符) string 。在 C++ 中，你必须为这两种情况都分别提供特殊的重载，否则，string 和 char <em> 在比较的时候，char </em> 可能会调用隐式构造函数，转化为 string 类型，而这多了一层不必要的开销!</p>
+<p>这样的话，不出意外，你需要写 6 <em> 3 个比较函数。这也太重复了吧! 事实上，对于任意两个字符串的比较，其总是可以归结为两个 const char </em> 进行比较，因此我们可以借助 strcmp 函数来实现，代码类似如下:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">Compare_Less</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *x,<span class="type">const</span> <span class="type">char</span> *y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">strcmp</span>(x,y) &lt; <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>事实上，这背后还有不少的小麻烦。当你将两个字符串绑在一起，作为一个 pair 的时候，你的比较函数的重载将会非常麻烦。如果按照传统的写法，那可能是这样。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> pair = std::pair &lt;std::string,std::string&gt;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">Compare_Less</span><span class="params">(<span class="type">const</span> pair &amp;lhs,<span class="type">const</span> pair &amp;rhs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(lhs.first &lt; rhs.first) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(rhs.first &lt; lhs.first) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> lhs.second &lt; rhs.second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此类写法有一个巨大的问题，那就是前两次比较其实可以一次完成: 如果某个比较操作可以直接明确地返回两个数的相对大小关系，并且开销和一次比较差不多，那么我们用这个比较的结果就可以直接代替前两次比较，将开销较大的两次 string 类转化为一次 string 类比较加上开销较小的若干次 int 值比较，如下所示:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> pair = std::pair &lt;<span class="type">char</span> *,<span class="type">char</span> *&gt;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">Compare_Less</span><span class="params">(<span class="type">const</span> pair &amp;lhs,<span class="type">const</span> pair &amp;rhs)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> cmp = <span class="built_in">strcmp</span>(lhs.first,rhs.first);</span><br><span class="line">    <span class="keyword">if</span>(cmp != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> cmp &lt; <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">strcmp</span>(lhs.second,rhs.second) &lt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，这种写法对于数据的要求略高，不是所有类型都像 string 那样，有一个统一的比较函数接口。</p>
+<p>究其根本，其实是语言上缺少一种一个通用的接口，可以直接返回两个类的明确的相对大小 (即一次性不花费额外开销，得到究竟是小于，还是等于，还是大于的大小关系) 。小插曲，DarkSharpness 在写 map 的时候就意识到了这个问题，只可惜大部分的 map 要求的是 &lt; 重载。为此，Dark 在后续 B+ 树作业中就要求传入的类自带 Compare 函数，可以返回确定的大小关系，当然这么写很不自然也很丑陋……</p>
+<p>总之，过去的 C++ 比较存在如下问题: 需要重载很多的运算符，且不存在统一的可以一次比较出两个数相对大小的方法。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>在 C++ 20 里面，终于推出了<del>宇宙飞船</del>三路比较运算符，作为比较相对大小的统一接口吗，可以说是一个最为优雅的解决方案。</p>
+<p>当然，标准库在此基础上还加强了这一比较运算符。其返回的不是 int 参数，而是返回特殊的比较类别: std::strong_ordering / std::weak_ordering / std::partial_ordering ，对应的是强序关系，弱序关系 和 偏序关系。</p>
+<p><strong>强序关系</strong>表示任何两个该类的对象都可以比较得出相对大小，且等价(equivalent)的两个对象完全相等(equal)，即<strong>这两个对象的值是不可辨别的</strong>。整数类型便是典型的强序关系。</p>
+<p><strong>弱序关系</strong>表示任何两个该类的对象都可以比较得出相对大小，但等价的两个对象<strong>不一定是不可辨认的</strong>。例如，将整数按照二进制位中 1 的个数排序，其满足的就是弱序关系。</p>
+<p><strong>偏序关系</strong>表示两个该类的对象不一定可以比较得出相对大小。例如浮点类型，因为 NaN(not a number) 不能和其他任何东西比较。</p>
+<p>需要注意的是，<strong>等价</strong>(equivalent)和<strong>相等</strong>(equal)往往会被混淆，这可能是因为各位平时都习惯了强序结构……偶尔看看英文还是有好处的，有助于区分某些概念(好吧当年学英语的时候，这两个词也搞了 Dark 一段时间)。</p>
+<p>在使用三目运算符的时候，可以简单的将三目运算符的返回结果和 0 进行比较。如果 &lt; 0 ，那就是小于关系。如果 = 0 ，那就是等价(或相等)关系。否则，就是大于关系。其用法类似 strcmp 函数，这里就不多阐释了。代码如下:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">custom</span> &#123;</span><br><span class="line">    <span class="type">int</span> x,y;</span><br><span class="line">    std::strong_ordering <span class="keyword">operator</span> &lt;=&gt; (<span class="type">const</span> custom &amp;rhs) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> x == rhs.x ? y &lt;=&gt; rhs.y : x &lt;=&gt; rhs.x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h2><p>如果只有三目运算符，并不能称得上什么大革新，只能说为了性能做出的一个统一接口罢了。C++ 20 在三目运算符的基础上，还推出了自动生成运算符的方法。</p>
+<p>是的，只要类里面实现了三目运算符，C++ 就会自动为我们生成包括 &gt;,&lt;,&le;,&ge; 这四个常见的 operator 。同时，C++ 也提供了默认的三目运算符的方法，其讲按照变量定义的顺序，数组的下标从小到大，逐一去比较两个类的成员，类似字典序。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">conless</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    std::string y;</span><br><span class="line">    <span class="type">double</span> z[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> <span class="keyword">operator</span> &lt;=&gt; (<span class="type">const</span> conless &amp;,<span class="type">const</span> conless &amp;) = <span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，当你使用 default 三目运算符的时候，最好将返回参数设置为 auto ，编译器会自动地决定其返回类型。返回类型当然取得是比较类型中最弱的那个，比如上面例子中 conless 类中，最弱的是 double 数组的 double 变量，是 std::partial_ordering ，因此 auto 推导的类型就是 std::partial_ordering 。特别地，如果存在一个成员类型，其是不可比较的，那么 default 生成的该函数返回类型是 void，因此编译器不会自动生成其他的几个比较函数。</p>
+<p>讲到这里，细心的你肯定已经发现了: 为什么不会帮我们自动生成 == 和 &ne; ? 这背后其实隐藏着一个性能问题:</p>
+<p>在你比较两个 std::string 类型变量是否相等的时候，思考一下你会怎么做? 你会先比较长度! 是的。你不会统一的按照字典序的方法去比较，你当然会先比较长度，如果长度不同那么其显然不会相等。这是一个非常显著的优化。</p>
+<p>因此为了性能，C++ 不会让默认的三目运算符生成 == 和 &ne; ，即使你依然可以通过 <code>(x &lt;=&gt; y) &lt; 0</code> 来判断两个变量是否相等。当然，为了便利性，C++ 也提供了 == 的默认生成方式来生成默认的 == 和 &ne; 运算符。</p>
+<h2 id="Implement"><a href="#Implement" class="headerlink" title="Implement"></a>Implement</h2><p>不得不说 gcc 对于三目运算符的实现还是非常有意思的。首先，要使用三目运算符，需要一个 &lt;compare &gt; 头文件，这个头文件里面有关于 std::strong_ordering 等序结构类的定义。</p>
+<p>通过查看头文件，我们不难发现，其实所谓的大于小于等于的关系，都是用一个 char 变量来表示，其值可以是 -1 (less) 或 0 (equal/equivalent) 或 1 (greater) 或 2 (unordered)。</p>
+<p>不过问题出现了: 你要支持序结构和整数 0 之间比较的操作，例如 <code>(x &lt;=&gt; y) == 0</code> 。但是，如果为序结构提供一个转化为整数的接口，或者为整数提供一个转化为序结构的接口，都会带来各种不安全。那么，如何不依赖编译器，只借用库文件就能实现一个好的序比较呢? 这里就用到了一个 C 语言的 trick:</p>
+<p>字面量 0 ， 其在语言中可以被隐式的转换为空指针类型，类似于 nullptr 。事实上，这一设计存在某些问题，经常被人诟病，这也是为什么我们有了 nullptr。但是，在这里，比较的实现用到了这个 trick。标准库实现了一个虚空代理类 __unspec ，其没有任何成员，唯一的构造函数是传入自己的指针:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">__unspec</span> &#123;</span><br><span class="line">    <span class="keyword">constexpr</span> __unspec(__unspec*) <span class="keyword">noexcept</span> &#123; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>而众所周知，0 可以隐式的转换为空指针类型……因此，事实上，你在比较的不是 0 ， 而是一个 __unspec 对象，通过这个对象和序对象的比较，我们间接的得到了内部的大小关系信息。</p>
+<p>当然，你可能觉得这样太过奇怪。没有关系，标准库也提供了其他的接口来提取出大小关系，如下:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> cmp = <span class="number">1</span> &lt;=&gt; <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">std::<span class="built_in">is_eq</span>(cmp);    <span class="comment">// == </span></span><br><span class="line">std::<span class="built_in">is_neq</span>(cmp);   <span class="comment">// !=</span></span><br><span class="line">std::<span class="built_in">is_lt</span>(cmp);    <span class="comment">// &lt;</span></span><br><span class="line">std::<span class="built_in">is_gt</span>(cmp);    <span class="comment">// &gt;</span></span><br><span class="line">std::<span class="built_in">is_lteq</span>(cmp);  <span class="comment">// &lt;=</span></span><br><span class="line">std::<span class="built_in">is_gteq</span>(cmp);  <span class="comment">// &gt;=</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="format"><a href="#format" class="headerlink" title="format"></a>format</h1><p>感谢 g++ 13.1 提供的对于 format 的支持，终于可以用了!</p>
+<h2 id="Past"><a href="#Past" class="headerlink" title="Past"></a>Past</h2><p>在过去，标准的输入输出一般有两种途径，一种是 C 语言风格的 scanf/printf ，另一种是 C++ 风格的 std::cin 和 std::cout 。前者可以根据格式串输入输出，后者则是通过类的重载进行输入输出。</p>
+<p>但是，两者都存在一定的问题。相信大家在作为初学者的时候，肯定有遇到 scanf/printf 格式串写错，参数写错等一系列的问题吧。比如:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="type">long</span> x;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,x); <span class="comment">// 应该是 &amp;x</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,x);  <span class="comment">// 应该是 &quot;%lld&quot;</span></span><br></pre></td></tr></table></figure>
+<p>这样的错误并不会有任何报错，甚至可能不会在运行时有任何的异常出现，直到遇到一些极端情况，出现莫名其妙的错误……</p>
+<p>此类错误 debug 起来并不是非常容易，特别是当程序非常庞大的时候，由于编译器没有报错信息，定位到输入输出出错需要相当长的时间。</p>
+<p>然后是 std::cin 和 std::cout 。尽管其做到了 typesafe，但其性能问题被诟病已久，即使在关闭了流同步以后，表现依然不是非常好。</p>
+<p>然后是可读性，很难理解为了给输出表达式加括号，你需要在两边单独输出两个字符……</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::string str = <span class="string">&quot;Hello World!&quot;</span></span><br><span class="line">std::cout &lt;&lt; <span class="string">&#x27;&#123;&#x27;</span> &lt;&lt; str &lt;&lt; <span class="string">&#x27;&#125;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>因此，长久以来，C++ 社区就存在呼声，要有 scanf/printf, std::cin/std::cout 之外的标准 inout 手段，不仅要高效，而且要 typesafe。</p>
+<p>事实上，对于 OIer，他们中的很大一部分，甚至都手写了快速读写函数，而不屑用标准库的输入输出，这就已经足以说明一部分问题了。</p>
+<h2 id="fmtlib"><a href="#fmtlib" class="headerlink" title="fmtlib"></a>fmtlib</h2><p><a target="_blank" rel="noopener" href="https://github.com/fmtlib/fmt">fmtlib</a>，一个现代的第三方 C++ 库，其提供了格式化输出字符串更加高效的写法。由于其完美兼顾了 typesafe 和高效的两方面特点，其也因此被部分的并入了 C++ 20 的标准库中。</p>
+<p>由于功能过于繁多，这里挑取其部分特点进行介绍。</p>
+<h3 id="Basic-Usage"><a href="#Basic-Usage" class="headerlink" title="Basic-Usage"></a>Basic-Usage</h3><p>首先，我们来讲讲他怎么用吧。非常简单，他和 printf 非常像，要提供一个格式串和参数列表。但是格式串，其远简单于 printf ， 其没有必要加上 %d %f 之类的参数 ，只需要用 {} 即可。输出的则是 std::string，又有点像是 sprintf。如下:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// str = &quot;1 2&quot; </span></span><br><span class="line">std::string str = std::format(<span class="string">&quot;&#123;&#125; &#123;&#125;&quot;</span>,<span class="number">1</span>,<span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>特别地，当你要输出一个字符 { 或 } 的时候，只要重复一遍即可，如下:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// str = &quot;&#123;1 2&#125;&quot; </span></span><br><span class="line">std::string str = std::format(<span class="string">&quot;&#123;&#123;&#123;&#125; &#123;&#125;&#125;&#125;&quot;</span>,<span class="number">1</span>,<span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>当然，其功能不止如此。如果你想要进一步的操纵输出的变量，你可以在 {} 内部添加新的参数。形如: {index : rule} 。第一个 index 表示输出的变量所在的下标。当默认括弧内无参数的时候，其输出顺序就是从左往右。当括弧内存在 index 参数的时候，所有括弧必须都有 index 参数，且输出顺序按照 index 顺序。当只有 index，冒号可写可不写。特别地，这玩意甚至支持复用! 如下:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// str = &quot;1919810&quot;</span></span><br><span class="line">std::string str = std::format(<span class="string">&quot;&#123;1&#125;&#123;1:&#125;&#123;0&#125;&quot;</span>,<span class="number">810</span>,<span class="string">&quot;19&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>而冒号后面的内容，则是具体格式串的要求。如下:</p>
+<p>整数:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>d</td>
+<td>十进制整数</td>
+</tr>
+<tr>
+<td>x</td>
+<td>小写十六进制整数</td>
+</tr>
+<tr>
+<td>o</td>
+<td>八进制整数</td>
+</tr>
+<tr>
+<td>b</td>
+<td>二进制整数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; std::format(<span class="string">&quot;&#123;0:d&#125; &#123;0:x&#125; &#123;0:X&#125; &#123;0:o&#125; &#123;0:b&#125;\n&quot;</span>, <span class="number">114514</span>);</span><br></pre></td></tr></table></figure>
+<p>浮点数:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f</td>
+<td>固定点表示法</td>
+</tr>
+<tr>
+<td>e</td>
+<td>小写科学计数法</td>
+</tr>
+<tr>
+<td>E</td>
+<td>大写科学计数法</td>
+</tr>
+<tr>
+<td>g</td>
+<td>选择最简表示法(f/e)</td>
+</tr>
+<tr>
+<td>G</td>
+<td>选择最简表示法(f/E)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; std::format(<span class="string">&quot;&#123;0:f&#125; &#123;0:e&#125; &#123;0:E&#125; &#123;0:g&#125; &#123;0:G&#125;\n&quot;</span>, <span class="number">1919.810</span>);</span><br></pre></td></tr></table></figure>
+<p>字符串:<br>s   表示字符串……  </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; std::format(<span class="string">&quot;&#123;:s&#125; &#123;:s&#125;\n&quot;</span>,std::<span class="built_in">string</span>(<span class="string">&quot;yyu&quot;</span>),<span class="string">&quot;yyu&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>其他输出设置:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;</td>
+<td>左对齐</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>右对齐</td>
+</tr>
+<tr>
+<td>^</td>
+<td>居中对齐</td>
+</tr>
+<tr>
+<td>数字</td>
+<td>指定输出宽度</td>
+</tr>
+<tr>
+<td>字符</td>
+<td>指定填充字符(用来填充到指定宽度)</td>
+</tr>
+<tr>
+<td>.数字</td>
+<td>设置输出精度/最大字符串长度</td>
+</tr>
+<tr>
+<td>+</td>
+<td>正数输出 + 号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; std::format(<span class="string">&quot;&#123;0:_^10s&#125;\n&#123;0:_&lt;10s&#125;\n&#123;0:_&gt;10s&#125;\n&quot;</span>,<span class="string">&quot;yyu&quot;</span>);</span><br><span class="line">std::cout &lt;&lt; std::format(<span class="string">&quot;&#123;:.3s&#125;\n&#123;:.3f&#125;\n&quot;</span>,<span class="string">&quot;yyuyyu&quot;</span>,<span class="number">1.0</span>);</span><br></pre></td></tr></table></figure>
+<p>除了 format，标准库还提供了 format_to 函数，其可以把格式化的结果输出到一个 char 数组当中。其功能类似 sprintf，但是性能更优，且支持自定义解析，而且类型安全。</p>
+<h3 id="Compile-Time-Parse"><a href="#Compile-Time-Parse" class="headerlink" title="Compile-Time-Parse"></a>Compile-Time-Parse</h3><p>format 库最大的特点是它支持的是编译期解析，也就是其解析格式串的过程是 0 运行时开销的!</p>
+<p>这是因为其传入的参数必须是 constexpr 的，或者说 consteval 的字符串，即必须在编译期间确定值的字符串。因此，其可以借助 constexpr 函数以及模板，</p>
+<p>由于 Dark 实在是太<del>菜</del>懒了，所以具体的实现咕咕了。感兴趣的可以去看看 std::basic_format_string 这个类 qwq。</p>
+<p>当然，你可能会想: 我们如何为自定义的类型使用自己的 format 格式呢? 这就需要用到自定义的 formatter 类。</p>
+<p>由于时间问题，这里留给读者自行研究 qwq。</p>
+<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><p>这部分是关于 constexpr,consteval 和 constinit 的。由于 DarkSharpness 太咕咕了，于是这部分就没了。<del>v 我 50现在就写</del></p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>想看啥直接发评论区，有啥讲的不好的欢迎来喷 Dark 教授，真的都可以说的，Dark 教授非常欢迎您指出错误 Orz!</p>
+<p>当前计划列表: std::span , consteval/constinit ……</p>
+<p>参考资料: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1r8411N75b/">C++20 STL Cookbook 2023</a> , <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/">cppreference</a></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a></div><div class="post_share"><div class="social-share" data-image="https://s3.bmp.ovh/imgs/2023/12/22/366cfd25c96ee172.jpg" data-sites="twitter,wechat,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://vdse.bdstatic.com//192d9a98d782d9c74c96f09db9378d93.mp4" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/02/17/bNFrOglBCW6ZaUq.png" alt="Wechat"/></a><div class="post-qr-code-desc">Wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/SHTHO11/" title="第十一届上海 THO · 东方露明境 游记"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2023/12/22/403f04fec31e5b99.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">第十一届上海 THO · 东方露明境 游记</div></div></a></div><div class="next-post pull-right"><a href="/summary2/" title="2022学年下半学期总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2023/12/22/d2cae6cc8038c9da.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2022学年下半学期总结</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">DarkSharpness</div><div class="author-info__description">逸一时，误一世!</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/DarkSharpness" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/396961987" target="_blank" title="Bilibili"><i class="iconfont icon-bilibili"></i></a><a class="social-icon" href="https://www.zhihu.com/people/darksharpness" target="_blank" title="Zhihu"><i class="iconfont icon-zhihu"></i></a><a class="social-icon" href="https://music.163.com/#/user/home?id=8335592513" target="_blank" title="Cloudmusic"><i class="fa-solid fa-music"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">we will go certainly, till the end !</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9A%84%E8%AF%9D"><span class="toc-number">1.2.</span> <span class="toc-text">其他的话</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#concept-amp-requires"><span class="toc-number">2.</span> <span class="toc-text">concept&amp;requires</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Background"><span class="toc-number">2.1.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Definition"><span class="toc-number">2.2.</span> <span class="toc-text">Definition</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Threeway-Comparision"><span class="toc-number">3.</span> <span class="toc-text">Threeway_Comparision</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Intro"><span class="toc-number">3.1.</span> <span class="toc-text">Intro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number">3.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bonus"><span class="toc-number">3.3.</span> <span class="toc-text">Bonus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implement"><span class="toc-number">3.4.</span> <span class="toc-text">Implement</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#format"><span class="toc-number">4.</span> <span class="toc-text">format</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Past"><span class="toc-number">4.1.</span> <span class="toc-text">Past</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fmtlib"><span class="toc-number">4.2.</span> <span class="toc-text">fmtlib</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Basic-Usage"><span class="toc-number">4.2.1.</span> <span class="toc-text">Basic-Usage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compile-Time-Parse"><span class="toc-number">4.2.2.</span> <span class="toc-text">Compile-Time-Parse</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#const"><span class="toc-number">5.</span> <span class="toc-text">const</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">6.</span> <span class="toc-text">后记</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/torch/" title="dispatcher is all you need"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2024/11/27/3e28dd3239526ce1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="dispatcher is all you need"/></a><div class="content"><a class="title" href="/torch/" title="dispatcher is all you need">dispatcher is all you need</a><time datetime="2024-11-26T18:08:43.000Z" title="发表于 2024-11-27 02:08:43">2024-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/misc/" title="杂七杂八的东西 - 大三上小结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://static.zerochan.net/Hatsune.Miku.full.1661213.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="杂七杂八的东西 - 大三上小结"/></a><div class="content"><a class="title" href="/misc/" title="杂七杂八的东西 - 大三上小结">杂七杂八的东西 - 大三上小结</a><time datetime="2024-11-04T09:10:49.000Z" title="发表于 2024-11-04 17:10:49">2024-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/env/" title="我讨厌配环境"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2024/07/27/3a45622b731f9c3d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我讨厌配环境"/></a><div class="content"><a class="title" href="/env/" title="我讨厌配环境">我讨厌配环境</a><time datetime="2024-07-25T12:51:42.000Z" title="发表于 2024-07-25 20:51:42">2024-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/cpp/" title="(Modern) C++ 小技巧汇总"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2024/06/10/16be8fd59a1768c7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="(Modern) C++ 小技巧汇总"/></a><div class="content"><a class="title" href="/cpp/" title="(Modern) C++ 小技巧汇总">(Modern) C++ 小技巧汇总</a><time datetime="2024-06-09T15:01:00.000Z" title="发表于 2024-06-09 23:01:00">2024-06-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/gdb/" title="GDB 使用笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2024/02/19/42c9a6adfd88c991.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GDB 使用笔记"/></a><div class="content"><a class="title" href="/gdb/" title="GDB 使用笔记">GDB 使用笔记</a><time datetime="2024-03-02T04:05:14.000Z" title="发表于 2024-03-02 12:05:14">2024-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/optimize2/" title="玄学优化和语言知识 2.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2023/12/22/1a16727b353555b1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="玄学优化和语言知识 2.0"/></a><div class="content"><a class="title" href="/optimize2/" title="玄学优化和语言知识 2.0">玄学优化和语言知识 2.0</a><time datetime="2023-11-11T03:11:11.000Z" title="发表于 2023-11-11 11:11:11">2023-11-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025 By DarkSharpness</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">DarkSharpness welcomes you!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="blur_toggle" type="button" title="切换背景模糊"><i class="fas fa-cloud"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadGiscus () {
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  const config = Object.assign({
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'DarkSharpness/DarkSharpness.github.io',
+    'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzNDE1Nzc5NDY=',
+    'data-category-id': 'DIC_kwDOFFwQ2s4CT2jG',
+    'data-mapping': 'pathname',
+    'data-theme': nowTheme,
+    'data-reactions-enabled': '1',
+    crossorigin: 'anonymous',
+    async: true
+  },null)
+
+  let ele = document.createElement('script')
+  for (let key in config) {
+    ele.setAttribute(key, config[key])
+  }
+  document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function changeGiscusTheme () {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
+  sendMessage({
+    setConfig: {
+      theme: theme
+    }
+  });
+}
+
+if ('Giscus' === 'Giscus' || !true) {
+  if (true) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+  else loadGiscus()
+} else {
+  function loadOtherComment () {
+    loadGiscus()
+  }
+}</script></div><script src="/js/meting.min.js"></script><script src="/js/user.js"></script><div class="aplayer no-destroy" data-volume="0.5" data-id="8149615949"  data-autoplay="true" data-server="netease" data-type="playlist" data-loop = "all" data-order="random" data-fixed="true" mutex = "true"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["link[rel=\"canonical\"]","meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

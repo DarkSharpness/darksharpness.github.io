@@ -1,0 +1,521 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>热学复习(上) | DarkSharpness's Dougen</title><meta name="author" content="DarkSharpness"><meta name="copyright" content="DarkSharpness"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="一些非常基础的热学基本知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="热学复习(上)">
+<meta property="og:url" content="http://darksharpness.github.io/thermodynamics1/index.html">
+<meta property="og:site_name" content="DarkSharpness&#39;s Dougen">
+<meta property="og:description" content="一些非常基础的热学基本知识。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2023/12/22/3393cff98696241e.jpg">
+<meta property="article:published_time" content="2023-02-02T08:20:50.000Z">
+<meta property="article:modified_time" content="2023-02-03T04:11:31.000Z">
+<meta property="article:author" content="DarkSharpness">
+<meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="物理">
+<meta property="article:tag" content="热学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s3.bmp.ovh/imgs/2023/12/22/3393cff98696241e.jpg"><link rel="shortcut icon" href="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png"><link rel="canonical" href="http://darksharpness.github.io/thermodynamics1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '热学复习(上)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-03 12:11:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/user.css"><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="DarkSharpness's Dougen" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/photo/"><i class="fa-fw fas fa-video"></i><span> 图床</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.bmp.ovh/imgs/2023/12/22/3393cff98696241e.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="DarkSharpness's Dougen"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png"/><span class="site-name">DarkSharpness's Dougen</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/photo/"><i class="fa-fw fas fa-video"></i><span> 图床</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">热学复习(上)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-02T08:20:50.000Z" title="发表于 2023-02-02 16:20:50">2023-02-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-03T04:11:31.000Z" title="更新于 2023-02-03 12:11:31">2023-02-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%89%A9%E7%90%86/">物理</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%89%A9%E7%90%86/%E7%83%AD%E5%AD%A6/">热学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="热学复习(上)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>本文大概会整理一些常用的热力学知识和公式，逻辑<del>比较</del>非常混乱，主要是复习，还有发表一些错误的感想(段首会用*标识，完全不具有可信度)。笔者水平有限，欢迎在评论区<del>嘲讽他</del>一起讨论吧。</p>
+<p><strong>注意，本页公式较多，渲染较慢，如有能力建议挂梯子加速。</strong></p>
+<h1 id="热力学-统计"><a href="#热力学-统计" class="headerlink" title="热力学? 统计?"></a>热力学? 统计?</h1><p>热力学研究的对象是由大量微观的粒子分子组成的宏观物质系统。我们称与之作用的其他物体为外界。经验指出，一个孤立系统，无论其初态如何，其在足够长的事件后都会达到一种状态，其宏观性质在长时间内不发生改变，我们称之为热力学平衡态。有如下几个重要的概念或性质需要阐明:</p>
+<ol>
+<li>对于一个系统，其由最初的一个状态转变成平衡状态所经历的时间称为弛豫时间。</li>
+<li>平衡态只是宏观性质稳定，但是微观下大量的微粒依然在不断地运动着，宏观量只是微观量平均的结果。</li>
+<li>因为一般体系微粒数量巨大，尽管有大量偶然事件，其最后体现出来的结果几乎完全由统计规律决定。</li>
+<li>因为上述性质，宏观量在平衡后也会有涨落，在极端条件下可以观察到，但是一般热力学里面不用考虑。</li>
+</ol>
+<h1 id="温度和热力学第零定律"><a href="#温度和热力学第零定律" class="headerlink" title="温度和热力学第零定律"></a>温度和热力学第零定律</h1><p>温度的概念最初来自生活，来自人体对于冷热的感知。温度，通俗意义上就是冷热程度。而测量温度，最朴素的方法就是接触法，温度计就是基于这样的原理设计。而这背后则暗含了一个前提，即用两个温度计测量同一个温度的物体，得到的温度是一样，这便引出了<strong>热力学第零定律 : 若两个热力学系统中的每一个都与第三个热力学系统处于热平衡(温度相同)，则它们彼此也必定处于热平衡。</strong></p>
+<p>*我们再仔细一想，这背后其实也暗含着一种逻辑：存在一种对于冷热程度的刻画标准，其不依赖一任何物质而独立存在。而在这个刻画标准下相同的任意两种物体或者是热力学体系，其处于热平衡状态而不存在热交换。当然，这样的标准可能有很多种。假设一个温度度量体系为 $T$ ，即满足 $T_1 = T _2$ 的2个物体或者热力学体系热平衡。那么考虑 $f(T)$ 这个衡量标准，$f$  在定义域上单调。此时，只需 $f(T_1) = f(T_2)$ ，我们同样可以说两个物体热平衡。所以，其实温度的标准选取并没有一个绝对标准，热力学第0定律只是暗含了其存在性，而目前我们用的热力学温标 $T$ 则是其中一种而已，为对于理想气体可以表示为 </p>
+<script type="math/tex; mode=display">\frac1{T} = (\frac {\partial{S}}{\partial{U}})_{V,N}</script><p>其中 $V,N$ 分别为体积和分子数，$S$ 是熵，$U$ 是内能，后面会讲到。而其单位 1K 则是由水三相点温度的 $1/273.16$ (倍数标准参考前面的方程) 定义。总之，对于温度这一相对比较抽象的概念，其严格定义与刻画比起可视的长度什么物理量，还是要复杂不少，我们目前的热力学温标还是很大程度上受到了理想气体温标 (其大小比较标准，倍数关系等) 和摄氏度温标 (单位温度 1K 的定义) 的影响。</p>
+<h1 id="理想气体复习"><a href="#理想气体复习" class="headerlink" title="理想气体复习"></a>理想气体复习</h1><p>理想气体，是一种极其理想化的气体模型，是通过波意耳定律、盖吕萨克定律、查理定律这三条实验定律的结论，结合理想化模型得到。</p>
+<p>我们假设气体的温度为 $t$ (不是热力学定义 $T$，这是常见的摄氏温标)，体积为 $V$，压强为 $p$ ，那么上面三条定律可以分别表示为:</p>
+<script type="math/tex; mode=display">
+pV = const</script><script type="math/tex; mode=display">
+V = V_0(1 + \alpha t)</script><script type="math/tex; mode=display">
+p = p_0(1 + \beta t)</script><p>特别的，在较低温度、较稀气体的情况下，通过实验得到</p>
+<script type="math/tex; mode=display">
+\lim_{p\rightarrow0} \alpha = \lim_{p\rightarrow0} \beta = 1 / t_0</script><p>因此，我们重新定义 $ T = t + t_0 $ 为绝对温度(后来改称热力学温度)，并且假设理想气体满足以上的两个条件，这样以上三个公式就可以总结为一个经典的公式</p>
+<script type="math/tex; mode=display">
+\frac{pV}{T} = const</script><p>更进一步的，我们需要知道还有哪些气体状态参数会影响公式右边 const 。根据阿伏伽德罗定律，相同的温度和压强下，摩尔数相等的各种气体的体积相同。考虑以下情景：当我们有一团气体，往中间任何的位置插入隔板，那么他们变成了两团，但是单独考虑任何一团，其状态应该和放入隔板之前完全一致，这也意味着在 $p,T$ 固定的情况，$V$ 应该正比气体摩尔数 $\nu$ 。(题外话: 这个问题的反向问题，即合并两团气体非常经典，气体分子是否同类还会与是否会熵增有关，有兴趣可以查查吉布斯佯谬。)</p>
+<p>因此，对于任意理想气体，我们可以得出 $\frac{pV}{\nu T} = const $ ，而右边这个常数记作 R ，为普适气体常数。<strong>理想气体方程常写作</strong>:</p>
+<script type="math/tex; mode=display">
+pV = \nu RT</script><p>其中 $p,V,\nu,T$ 分别为气体压强、体积、摩尔数 和 绝对温度。</p>
+<h1 id="物质与物态方程"><a href="#物质与物态方程" class="headerlink" title="物质与物态方程"></a>物质与物态方程</h1><p>一个热力学系统一般由很多参数来描述。对于简单的，无物质交换的体系，我们一般可以用 $p,V,T$ 三个参量来描述，而描述其的状态方程则可以记作 $f(p,V,T) = 0$，称作物态方程。其在研究具体的问题的时候非常重要，其展现了物体的状态参量之间内在的联系，反映的是物体本身的性质。同样重要的还有几个与物态方程有关的物理量:</p>
+<ul>
+<li>体膨胀系数 $\alpha$</li>
+</ul>
+<script type="math/tex; mode=display">
+\alpha = \frac1{V}(\frac{\partial V}{\partial T})_p</script><ul>
+<li>压强系数 $\beta$</li>
+</ul>
+<script type="math/tex; mode=display">
+\beta = \frac1{p}(\frac{\partial p}{\partial T})_V</script><ul>
+<li>定温压缩系数 $\kappa$</li>
+</ul>
+<script type="math/tex; mode=display">
+\kappa = -\frac1{V}(\frac{\partial V}{\partial p})_T</script><p>由偏微分知识易知: $\alpha = \beta \kappa p$ 。此处给出一个不太严谨的证明: 将物态方程求一阶微分，得到 $ a \mathrm{d}p + b \mathrm{d}V + c \mathrm{d}T  = 0$ 。然后用偏导数定义，代入即可。</p>
+<p>下面将大致介绍一下比较基础的物态方程。</p>
+<h2 id="气体"><a href="#气体" class="headerlink" title="气体"></a>气体</h2><p>理想气体物态方程便是前面已经介绍过的</p>
+<script type="math/tex; mode=display">
+pV = \nu RT</script><p>但是真实世界的气体并不是这样的，为了更加准确的描述气体的行为，人们还找到了其他更加贴近真实气体的物态方程，其中最常见就是范德瓦尔兹方程。其为:</p>
+<script type="math/tex; mode=display">
+(p + \frac{a\nu^2}{V^2})(V - \nu b) = \nu RT</script><p>其中 $a,b$ 为常量，其值取决于具体的气体。</p>
+<p>事实上，理想气体方程、范式气体方程不仅是经验公式，其也可以由对应统计物理的理论在一定条件下导出。</p>
+<h2 id="液体和固体"><a href="#液体和固体" class="headerlink" title="液体和固体"></a>液体和固体</h2><p>相较于气体，我们能很直观的感受到一个区别: 对于一个实心的固体/液体，我们很难对其进行压缩。这便是因为其定温压缩系数 $\kappa$ 以及 体膨胀系数 $\alpha$ 特别小，即我们需要更大的压强/温度才能将液体/固体压缩/膨胀到同样的程度。从微观上来看，这是因为液体/固体分子之间的空隙更加小了。因此，在一定的范围内，液/固体的状态方程中体积随压强/温度变化很小，而其非线性项就更小了，体积变化大致满足以下线性方程:</p>
+<script type="math/tex; mode=display">
+V(T,p) \approx V(T_0,p_0) (1 + \alpha(T - T_0) - \kappa (p - p_0) )</script><script type="math/tex; mode=display">
+\frac{\Delta V}{V} \approx \alpha \Delta T - \kappa \Delta p</script><h2 id="顺磁性固体"><a href="#顺磁性固体" class="headerlink" title="顺磁性固体"></a>顺磁性固体</h2><p>*这部分需要一点点电磁学基础，但了解即可。</p>
+<p>不仅传统的固液气可以作为一种物态，顺磁性的固体在外磁场中也可以看作一个热力学体系。此时，对应的状态参量 $p,V$ 则变为 $M,H$ ，对应的是固体的磁化强度和外界的磁场强度。实验测得顺磁性固体的物态方程大致可以写作:</p>
+<script type="math/tex; mode=display">
+M = \frac{C}{T}H</script><p>上式为居里定律，是一种类似理想气体模型的公式。对应的，还有对居里定律修正的居里-外丝公式</p>
+<script type="math/tex; mode=display">
+M = \frac{C}{T - \theta}H</script><p>上述两个公式同样可以运用一些统计物理理论导出。</p>
+<h2 id="光子气体"><a href="#光子气体" class="headerlink" title="光子气体"></a>光子气体</h2><p>是的。你没有看错。光子也可以看作是一团气体！由纯光子构成的体系也可以具有物态方程。实际上，光子气体是<del>物竞</del>物理学里面很经典的模型。</p>
+<p>对于光子气体，其物态方程为</p>
+<script type="math/tex; mode=display">
+p = \frac{4\sigma}{3c} T^4</script><p>其中 $c$ 为光速，$\sigma$ 是黑体辐射中的斯忒蕃-玻尔兹曼常数。</p>
+<h1 id="麦克斯韦速率分布"><a href="#麦克斯韦速率分布" class="headerlink" title="麦克斯韦速率分布"></a>麦克斯韦速率分布</h1><p>前文讲到，在大量微粒的情况下，统计规律几乎完全决定了宏观性质。因此理论上，我们只需推导出一个微粒处于某种状态的概率，那么就能很好的描述该体系的宏观表现。而麦克斯韦速度分布律就是对于分子运动速度的刻画。</p>
+<p>首先，从最简单的入手。考虑一个离散的、只和单变量 $x$ 相关的概率分布函数的时候，我们可能会这样描述 “x 为 0 的概率为 10% , x 为 1 的概率为 40% ， x 为 3 的 概率为 30% , x 为 4 的概率为 20 % 。”。而这样的描述法可以记作一个数列，即 $a_n$ 为 $x = n$ 发生的概率，且满足归一化条件</p>
+<script type="math/tex; mode=display">
+\sum_{i = 0}^{+\infty}a_i = 1</script><p>类比数列到函数的推广，我们可以将离散的概率函数推广为连续函数 $f(x)$ ，其中处在 $x$ 位置的概率就是 $f(x)dx$ 。相应的，归一化条件就转变为(积分上下限取决于情况):</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} {f(x)\mathrm{d}x} = 1</script><p>然后，我们应当认识一个新的概念叫做速度空间，其不同于我们正常生活的三维空间，其三个方向的坐标分别为速度在三个方向上的分量 $v_x,v_y,v_z$ 。麦克斯韦速度分布律则是给出气体微粒速度为 $\vec{v} = (v_x,v_y,v_z)$ 时的概率函数 $ f(v_x,v_y,v_z) $ 。此时，处于速度 $\vec{v}$ 的概率就是 $ f(v_x,v_y,v_z) \mathrm{d}v_x \mathrm{d}v_y \mathrm{d}v_z $</p>
+<p>通过统计物理的知识，我们可以导出理想气体的麦克斯韦速率分布，由于篇幅限制<del>作者懒得写</del>，本文将不会介绍如何严格推导，这里给出一种简单但不本质的推导:</p>
+<p>因为理想气体忽略气体分子之间的相互作用(即前文说的气体足够稀薄的前提)，所以当分子速度为 $\vec{v}$ 的时候，其能量为 $ \frac{mv^2}{2} $ ，其中 $m$ 为分子质量。因此，借助<strong>玻尔兹曼分布</strong>，微粒在能量为 E 的状态的概率正比于 $\exp(\frac{-E}{kT})$ ，其中 $k$ 为玻尔兹曼常数。因此，可以设 $f(\vec{v}) = C \exp(-\frac{mv^2}{2kT}) $</p>
+<p>最后归一化，确定常数可得公式:</p>
+<script type="math/tex; mode=display">
+f(\vec{v}) = (\frac{m}{2\pi kT}) ^ {3/2} \mathrm{e}^{-\frac{mv^2}{2kT}}</script><p>由三个方向运动的独立性，速度概率密度函数也可以写作:</p>
+<script type="math/tex; mode=display">
+f(\vec{v}) \mathrm{d}v_x \mathrm{d}v_y \mathrm{d}v_z =
+f_x(v_x) \mathrm{d}v_x\cdot f_y(v_y) \mathrm{d}v_y \cdot f_z(v_z) \mathrm{d}v_z</script><p>需要注意的是，应当区分<strong>速度分布概率密度</strong>和<strong>速率分布概率密度</strong>。前者是 $f(\vec{v})$ ，而后者一般记作 $F(v)$。速率是不含有方向的，而且速率为 $v$ 的情况可以看作速度空间中的一个半径为 $v$ 的薄球壳，其面积为 $4\pi v^2$，因此，应当满足 $F(v) = f(\vec{v}) \cdot 4\pi v^2$。因此，速率分布函数为:</p>
+<script type="math/tex; mode=display">
+F(v) = 4\pi v^2 f(\vec{v}) = 4\pi (\frac{m}{2\pi kT}) ^ {3/2}v^2 \mathrm{e}^{-\frac{mv^2}{2kT}}</script><p>容易验证其也满足归一性即:</p>
+<script type="math/tex; mode=display">
+\int_{0}^{\infty} F(v) \mathrm{d}v = 1</script><p>*笔者习惯记 $\alpha = \frac{m}{2kT} $ ，并将原式写成根据启发性的形式(或许):</p>
+<script type="math/tex; mode=display">
+F(v) = \frac4{\sqrt\pi} \alpha^{3/2} \mathrm{e} ^{-\alpha v^2} v^2</script><p>借助麦克斯韦速度分布以及速率分布，我们可以得到一些重要数值，例如平均速率 $\overline{v} = \frac2{\sqrt{\pi\alpha}} = \sqrt{\frac{8kT}{\pi m}} $ ，气体方均速率 $v_{rms} = \sqrt{\overline{v^2}} = \sqrt{\frac{3kT}{m}}$，可用于推导单原子气体理想气体内能，结合泻流推导气体压强公式等等。</p>
+<p>*如果您真的很认真在看并且更加认真的去算了，你会发现前面有几个定积分并不能通过求出原函数来计算，这就涉及一些奇怪的积分技巧了，在文章的最后会讲到的啦！你先别急。这是物理复习，不是数学复习。</p>
+<h1 id="热力学第一定律相关"><a href="#热力学第一定律相关" class="headerlink" title="热力学第一定律相关"></a>热力学第一定律相关</h1><p>热力学第一定律本质是就是能量守恒定律，其描述为 : 体系内能的增加量 等于 外界对其做的功 以及 体系从外界吸热的总和。</p>
+<h2 id="广义功"><a href="#广义功" class="headerlink" title="广义功"></a>广义功</h2><p>*(注:在本小节中，您可能好奇为啥笔者将 $\mathrm{d}$ 和 $\delta$ 混用 ，后面讲内能的时候会阐明原因)</p>
+<p>在力学里面，功被定义为力对位移的积分。对于一个体系，我们同样可以用类似的方法来拓展定义功，例如在气体系统，在面积微元 $dA$ 上发生了 $\mathrm{d}x$ 的位移(定义向外为正)，那么外界做功 $ \delta W = F \cdot \mathrm{d}x = -p \cdot \mathrm{d}A \cdot \mathrm{d}x = -p \mathrm{d}V $。类似的，对于一个闭合电路体系，外界(电流源) 对一个电子元件在 $\mathrm{d} t$ 的时间内也会做功 $\delta W = UI\mathrm{d}t = U \mathrm{d}q$ 。</p>
+<p>在以上的例子中，我们总是可以可以把所做的功 $\delta W$ 写成一个 $X \mathrm{d}Y $ 的形式。更进一步的，我们可以发现 $X$ 的量往往是一种表征强度的量(例如压力、电压、压强等等)，而 $Y$ 则往往是一些可以线性的、可积累的量(例如位移、电荷量、体积变化)。事实上在物理上，这一类 $X$ 均是强度量，而 $Y$ 则是广度量，详细信息可以问<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BC%BA%E5%BA%A6%E9%87%8F/9832051?fr=aladdin">度娘</a>，这里就不多介绍了。在热力学中，我们把这个 $X$ 定义为<strong>广义力</strong> ，$Y$ 定义为<strong>广义位移</strong>，而 $X \mathrm{d}Y $ 就是广义功。</p>
+<h2 id="内能"><a href="#内能" class="headerlink" title="内能"></a>内能</h2><p>内能，记作 $U$ ，即为一个系统内部的能量。对于气体分子，其内能主要由分子动能和分子势能构成。而对于理想气体，其有”足够稀薄”的前提，因此不用考虑分子间作用力，就没有分子势能，内能完全由分子动能组成。</p>
+<p>需要注意的是，<strong>内能作为一种能量，也是一种状态量，即内能可以由气体的某些状态参数决定</strong>，其可能包括压强、体积、温度、摩尔数等等。因此，在变化的过程中，其只和始末态有关，与中间的过程完全无关。正因如此，我们才能对内能做微分，即 $\mathrm{d}U$ 。而对于功 $W$ 和 热量 $Q$ ，其变化量取决于中间的过程，并不是一个状态量，因此只能用 $\delta U , \delta Q $ 来表示微小的改变量。</p>
+<h2 id="准静态过程"><a href="#准静态过程" class="headerlink" title="准静态过程"></a>准静态过程</h2><p>准静态过程指的是，系统变化的过程中进行的足够缓慢，以至于其经历的每一个中间态都可以近似看作平衡态。需要注意的是: <strong>只有准静态才能在相图上画出来</strong> (例如 p-V,V-T 图等等)。</p>
+<p>*笔者认为，我们也应当明确区分准静态过程和可逆过程。笔者理解的可逆过程 = 准静态过程 + 无损耗(例如摩擦力等耗散力)。首先，不平衡的过程必然会带来损耗，因此系统变化过程必须是准静态过程。其次，也不能有其他损耗，因为可逆过程要求过程可以反过来进行，但是损耗是不可逆的，其本质是一个总体系(所有外界 + 当前体系)熵增的过程，而熵增不可逆(后面热力学第二定律会讲到)。</p>
+<h2 id="热一的公式表述"><a href="#热一的公式表述" class="headerlink" title="热一的公式表述"></a>热一的公式表述</h2><p>有了以上的前置知识以后，我们便可以把热力学第一定律写成如下的形式:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{d} U &= \delta W + \delta Q  \\
+             &= -p_{外界}\mathrm{d}V + \delta Q 
+\end{aligned}</script><p>其中 U 为体系内能，W为外界对其做功，Q为外界对其传递的热量。</p>
+<h2 id="热量和热容"><a href="#热量和热容" class="headerlink" title="热量和热容"></a>热量和热容</h2><p>热量，在热力学第一定律中主要指的是因为温差热传递而被传递的能量，其是由温差驱动。(有一些小例外，比如摩擦生热)</p>
+<p>热容，是指在一个过程中，体系每升高一定温度所改变的能量，记为:</p>
+<script type="math/tex; mode=display">
+C = \lim_{\Delta T \rightarrow 0}{\frac{\Delta Q}{\Delta T}}</script><p>显然的，一般体系的热容是要正比于其内部摩尔数的，我们也因此可以定义摩尔热容:</p>
+<script type="math/tex; mode=display">
+C_m = \frac{C}{\nu}</script><p>在热力学中，比较重要的两个热容量是定体热容 $C_V$ 和定压热容 $C_p$。在固定体积的情况下，做功量为0，结合热力学第一定律可得:</p>
+<script type="math/tex; mode=display">
+C_V = (\frac{\partial U}{\partial T})_V</script><p>在固定压强的情况下，我们同样可以导出:</p>
+<script type="math/tex; mode=display">
+C_p = (\frac{\partial U}{\partial T})_p + p(\frac{\partial V}{\partial T})_p</script><p>物理学家<del>为了好看</del>引入了新的状态参量焓，定义为:</p>
+<script type="math/tex; mode=display">
+H = U + pV</script><p> 因为右边所有参数都是状态量，所以焓也是一个状态量。引入焓以后，定压热容可以记作:</p>
+<script type="math/tex; mode=display">
+C_p = (\frac{\partial H}{\partial T})_p</script><h1 id="又见理想气体"><a href="#又见理想气体" class="headerlink" title="又见理想气体"></a>又见理想气体</h1><p>对于理想气体，在准静态过程中，其热力学第一定律可以表述为有:</p>
+<script type="math/tex; mode=display">
+\mathrm{d}U = -p\mathrm{d}V + \delta Q</script><p>*如果你知道熵 $S$，那么其实可以将理想气体的热力学第一定律写为:</p>
+<script type="math/tex; mode=display">
+\mathrm{d}U = -p\mathrm{d}V + T \mathrm{d}S</script><h2 id="理想气体的内能和焓"><a href="#理想气体的内能和焓" class="headerlink" title="理想气体的内能和焓"></a>理想气体的内能和焓</h2><p>对于理想气体，其内能 $U$ 完全由分子动能决定，前面的麦克斯韦分布律一章已经推导出 $\overline{v^2} = \frac{3kT}{m}$ ，其可以看作 $x,y,z$ 每个自由度分到了 $\frac{kT}2$ 的分子平动动能。对于单原子分子，其分子动能就等于 $\frac{3kT}{2}$ 。但是对于多个原子的分子，其还有更多的自由度(例如转动、振动等等)，每个自由度也会类似速度，有自己的概率分布函数，而这也会带来转动动能、振动动能等其他动能。一般来说，双原子分子的分子动能等于 $\frac{5kT}{2}$ (多了转动两个自由度，仔细详细为啥转动是2个)，多原子分子的分子动能一般等于 $3kT$ (一共三个转动自由度)。(*笔者补充: 在室温下其实分子的振动自由度并未完全解锁，而也不是每个自由度正好能分到 $\frac{kT}2$ 的动能，其是关于自由度解锁程度的一个函数，而自由度解锁程度和温度有关。以上表述非常业余，但笔者~懒得想~想不出更好的描述方法了).</p>
+<p>由上，我们可以求出理想气体的内能。利用 $R = N_Ak$ 这一公式，我们可以得出对于单原子气体，其内能 $U = \frac32 \nu R T$ ，双原子 $\frac52 \nu R T$ ，多原子一般是 $3 \nu R T$ 。当然，具体还是以题目/给定条件为准。假设某理想气体分子自由度的个数为 $\alpha$，那么气体内能 $U = \frac\alpha2 \nu RT $，而焓 $H = (\frac\alpha2 + 1) \nu RT$ 。</p>
+<p>可以看出，理想气体的内能 $U$ 只和气体的温度 $T$ 和气体摩尔数 $\nu$ 相关，和体积压强无关。因此，我们可以通过实验来验证真实气体是否是理想气体。若气体的内能和体积有关，那么该气体必然不可能是理想气体。然而，1852年焦耳和汤姆孙通过节流过程发现真实气体的内能的确是和体积有关的，否定了这真实气体是理想气体的可能。然而，很大的范围内，理想气体模型依然近似适用，其依然值得我们研究。</p>
+<h2 id="理想气体的热容与过程"><a href="#理想气体的热容与过程" class="headerlink" title="理想气体的热容与过程"></a>理想气体的热容与过程</h2><p>由定体热容以及定压热容的定义，结合前文理想气体的内能公式，以及理想气体状态方程，我们不难求出:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+C_V &= \frac\alpha2 R \\
+C_p &= (\frac\alpha2 + 1)R
+\end{aligned}</script><p>更进一步地，我们还可以求出理想气体在各种情况下热容。我们引入一个概念叫做<strong>多方过程</strong>，其定义为 $pV^n = const$ 的一个过程。通过简单的微积分的知识，我们容易求出:</p>
+<script type="math/tex; mode=display">
+C_n = C_V + \frac{R}{1 - n}</script><p>当 $n = 0$ ，为定压过程，即 $C_p = C_V + R$。</p>
+<p>当 $n = \infty$ ，为定容过程，即 $C_V = C_V$。</p>
+<p>当 $n = 1$ ，为定温过程，温度不变，热容无意义。</p>
+<p>特别地，当 $n = \frac{R}{C_V} + 1 $ 其热容为0，表明该过程中没有热交换，属于 <strong>绝热过程</strong>，我们记此时的 $n$ 为泊松比，记作 $\gamma$，满足性质 $\gamma = \frac{C_p}{C_V}$</p>
+<h1 id="Ending-附录"><a href="#Ending-附录" class="headerlink" title="Ending + 附录"></a>Ending + 附录</h1><p>由于笔者太懒了，暂时就写到这里了。计划下半部分介绍一下相变、卡诺热机、熵、热力学第二定律、以及一些偏统计物理的知识。</p>
+<p>附: 麦克斯韦速率分布积分相关。</p>
+<script type="math/tex; mode=display">
+F(v) = 4\pi (\frac{m}{2\pi kT}) ^ {3/2}v^2 \mathrm{e}^{-\frac{mv^2}{2kT}}</script><p>*笔者习惯记 $\alpha = \frac{m}{2kT} $ ，并将原式写成根据启发性的形式(或许):</p>
+<script type="math/tex; mode=display">
+F(v) = \frac4{\sqrt\pi} \alpha^{3/2} \mathrm{e} ^{-\alpha v^2} v^2</script><p>在积分的时候，我们常常遇到一个如下形式的定积分(常数已经忽略)</p>
+<script type="math/tex; mode=display">
+\int_{0}^{+\infty}{v^n\mathrm{e}^{-\alpha v^2} \mathrm {d}v}</script><p>方便起见，我们记录上式为 $I_n$ 。</p>
+<p>当 $n$ 为奇数的时候，我们容易通过分部积分化为 $n = 1$ 的情况，而对于 $n = 1$，我们可以通过换元积分求出 $I_1 = \frac1{2\alpha} $ 。</p>
+<p>比较困难的是，当 $n$ 为偶数的时候，分部积分会转化为 $n = 0$ 的情况，而当 $I_0$ 被积的函数没有初等的原函数。这就比较麻烦了。但是，我们依然可以巧妙地求出其值。我们可以考虑 ${I_0}^2$ 这个式子，其积分变元看作 $x,y$ ,如下:</p>
+<script type="math/tex; mode=display">
+{I_0}^2 = \int_0^NaN\int_0^NaN \mathrm{e}^{-\alpha(x^2 + y^2)} \mathrm{d}x\mathrm{d}y</script><p>将 $x,y$ 看作平面上正交的两个方向，积分范围就是第一象限。将积分转化为极坐标下的形式，记 $x = r \cos\theta , y = r \sin\theta $ 。此时:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+{I_0}^2 &= \int_0^NaN\int_0^NaN \mathrm{e}^{-\alpha(x^2 + y^2)} \mathrm{d}x\mathrm{d}y \\
+& = \int_{\theta=0}^{\theta=\frac\pi2}\int_{r = 0}^{r = +\infty} \mathrm{e}^{-\alpha r^2} \mathrm{d}r \cdot r\mathrm{d}\theta \\
+& = I_1 \cdot \frac\pi 2 
+\end{aligned}</script><p>显然，$I_0$ 非负，因此，</p>
+<script type="math/tex; mode=display">
+I_0 = \frac{\sqrt\pi}{2\sqrt\alpha}</script><p>*然而，在考试和比赛的时候，你可能根本没有时间去一次次的分布积分求解 $I_n$ 。笔者在这里提供一个可以简化的方法:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial I_n}{\partial \alpha} &= \frac{\partial }{\partial \alpha}\int_{0}^{+\infty}{v^n\mathrm{e}^{-\alpha v^2} \mathrm {d}v} \\
+&= -\int_{0}^{+\infty}{v^{n + 2}\mathrm{e}^{-\alpha v^2} \mathrm {d}v} \\
+&= -I_{n+2}
+\end{aligned}</script><p>因此，我们可以借助 $I_{n+2}  = \frac{\partial I_n}{\partial \alpha}$ 来更快地求出 $I_n$ 。</p>
+<p>附积分表:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$n$</th>
+<th>$I_n$</th>
+<th>$n$</th>
+<th>$I_n$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>$\frac{\sqrt\pi}{2\sqrt\alpha}$</td>
+<td>1</td>
+<td>$\frac{1}{2\alpha}$</td>
+</tr>
+<tr>
+<td>2</td>
+<td>$\frac{\sqrt\pi}{4\sqrt\alpha^3}$</td>
+<td>3</td>
+<td>$\frac{1}{2\alpha^2}$</td>
+</tr>
+<tr>
+<td>4</td>
+<td>$\frac{3\sqrt\pi}{8\sqrt\alpha^5}$</td>
+<td>5</td>
+<td>$\frac{1}{\alpha^3}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>END!</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a><a class="post-meta__tags" href="/tags/%E7%89%A9%E7%90%86/">物理</a><a class="post-meta__tags" href="/tags/%E7%83%AD%E5%AD%A6/">热学</a></div><div class="post_share"><div class="social-share" data-image="https://s3.bmp.ovh/imgs/2023/12/22/3393cff98696241e.jpg" data-sites="twitter,wechat,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://vdse.bdstatic.com//192d9a98d782d9c74c96f09db9378d93.mp4" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/02/17/bNFrOglBCW6ZaUq.png" alt="Wechat"/></a><div class="post-qr-code-desc">Wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/iterator/" title="关于 STL iterator 的那些事"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/03/08/v39f5zd4pEeSlQc.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">关于 STL iterator 的那些事</div></div></a></div><div class="next-post pull-right"><a href="/treecut/" title="树链剖分入门教学"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2023/12/22/c6e54f1a4c2a9fc6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">树链剖分入门教学</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">DarkSharpness</div><div class="author-info__description">逸一时，误一世!</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/DarkSharpness" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/396961987" target="_blank" title="Bilibili"><i class="iconfont icon-bilibili"></i></a><a class="social-icon" href="https://www.zhihu.com/people/darksharpness" target="_blank" title="Zhihu"><i class="iconfont icon-zhihu"></i></a><a class="social-icon" href="https://music.163.com/#/user/home?id=8335592513" target="_blank" title="Cloudmusic"><i class="fa-solid fa-music"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">we will go certainly, till the end !</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%83%AD%E5%8A%9B%E5%AD%A6-%E7%BB%9F%E8%AE%A1"><span class="toc-number">1.</span> <span class="toc-text">热力学? 统计?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%A9%E5%BA%A6%E5%92%8C%E7%83%AD%E5%8A%9B%E5%AD%A6%E7%AC%AC%E9%9B%B6%E5%AE%9A%E5%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">温度和热力学第零定律</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%90%86%E6%83%B3%E6%B0%94%E4%BD%93%E5%A4%8D%E4%B9%A0"><span class="toc-number">3.</span> <span class="toc-text">理想气体复习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E8%B4%A8%E4%B8%8E%E7%89%A9%E6%80%81%E6%96%B9%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">物质与物态方程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B0%94%E4%BD%93"><span class="toc-number">4.1.</span> <span class="toc-text">气体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%B2%E4%BD%93%E5%92%8C%E5%9B%BA%E4%BD%93"><span class="toc-number">4.2.</span> <span class="toc-text">液体和固体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%BA%E7%A3%81%E6%80%A7%E5%9B%BA%E4%BD%93"><span class="toc-number">4.3.</span> <span class="toc-text">顺磁性固体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%89%E5%AD%90%E6%B0%94%E4%BD%93"><span class="toc-number">4.4.</span> <span class="toc-text">光子气体</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E9%80%9F%E7%8E%87%E5%88%86%E5%B8%83"><span class="toc-number">5.</span> <span class="toc-text">麦克斯韦速率分布</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%83%AD%E5%8A%9B%E5%AD%A6%E7%AC%AC%E4%B8%80%E5%AE%9A%E5%BE%8B%E7%9B%B8%E5%85%B3"><span class="toc-number">6.</span> <span class="toc-text">热力学第一定律相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E5%8A%9F"><span class="toc-number">6.1.</span> <span class="toc-text">广义功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E8%83%BD"><span class="toc-number">6.2.</span> <span class="toc-text">内能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E9%9D%99%E6%80%81%E8%BF%87%E7%A8%8B"><span class="toc-number">6.3.</span> <span class="toc-text">准静态过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%AD%E4%B8%80%E7%9A%84%E5%85%AC%E5%BC%8F%E8%A1%A8%E8%BF%B0"><span class="toc-number">6.4.</span> <span class="toc-text">热一的公式表述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%AD%E9%87%8F%E5%92%8C%E7%83%AD%E5%AE%B9"><span class="toc-number">6.5.</span> <span class="toc-text">热量和热容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%88%E8%A7%81%E7%90%86%E6%83%B3%E6%B0%94%E4%BD%93"><span class="toc-number">7.</span> <span class="toc-text">又见理想气体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E6%83%B3%E6%B0%94%E4%BD%93%E7%9A%84%E5%86%85%E8%83%BD%E5%92%8C%E7%84%93"><span class="toc-number">7.1.</span> <span class="toc-text">理想气体的内能和焓</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E6%83%B3%E6%B0%94%E4%BD%93%E7%9A%84%E7%83%AD%E5%AE%B9%E4%B8%8E%E8%BF%87%E7%A8%8B"><span class="toc-number">7.2.</span> <span class="toc-text">理想气体的热容与过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ending-%E9%99%84%E5%BD%95"><span class="toc-number">8.</span> <span class="toc-text">Ending + 附录</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/torch/" title="dispatcher is all you need"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2024/11/27/3e28dd3239526ce1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="dispatcher is all you need"/></a><div class="content"><a class="title" href="/torch/" title="dispatcher is all you need">dispatcher is all you need</a><time datetime="2024-11-26T18:08:43.000Z" title="发表于 2024-11-27 02:08:43">2024-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/misc/" title="杂七杂八的东西 - 大三上小结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://static.zerochan.net/Hatsune.Miku.full.1661213.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="杂七杂八的东西 - 大三上小结"/></a><div class="content"><a class="title" href="/misc/" title="杂七杂八的东西 - 大三上小结">杂七杂八的东西 - 大三上小结</a><time datetime="2024-11-04T09:10:49.000Z" title="发表于 2024-11-04 17:10:49">2024-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/env/" title="我讨厌配环境"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2024/07/27/3a45622b731f9c3d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我讨厌配环境"/></a><div class="content"><a class="title" href="/env/" title="我讨厌配环境">我讨厌配环境</a><time datetime="2024-07-25T12:51:42.000Z" title="发表于 2024-07-25 20:51:42">2024-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/cpp/" title="(Modern) C++ 小技巧汇总"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2024/06/10/16be8fd59a1768c7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="(Modern) C++ 小技巧汇总"/></a><div class="content"><a class="title" href="/cpp/" title="(Modern) C++ 小技巧汇总">(Modern) C++ 小技巧汇总</a><time datetime="2024-06-09T15:01:00.000Z" title="发表于 2024-06-09 23:01:00">2024-06-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/gdb/" title="GDB 使用笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2024/02/19/42c9a6adfd88c991.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GDB 使用笔记"/></a><div class="content"><a class="title" href="/gdb/" title="GDB 使用笔记">GDB 使用笔记</a><time datetime="2024-03-02T04:05:14.000Z" title="发表于 2024-03-02 12:05:14">2024-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/optimize2/" title="玄学优化和语言知识 2.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s3.bmp.ovh/imgs/2023/12/22/1a16727b353555b1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="玄学优化和语言知识 2.0"/></a><div class="content"><a class="title" href="/optimize2/" title="玄学优化和语言知识 2.0">玄学优化和语言知识 2.0</a><time datetime="2023-11-11T03:11:11.000Z" title="发表于 2023-11-11 11:11:11">2023-11-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025 By DarkSharpness</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">DarkSharpness welcomes you!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="blur_toggle" type="button" title="切换背景模糊"><i class="fas fa-cloud"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadGiscus () {
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  const config = Object.assign({
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'DarkSharpness/DarkSharpness.github.io',
+    'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzNDE1Nzc5NDY=',
+    'data-category-id': 'DIC_kwDOFFwQ2s4CT2jG',
+    'data-mapping': 'pathname',
+    'data-theme': nowTheme,
+    'data-reactions-enabled': '1',
+    crossorigin: 'anonymous',
+    async: true
+  },null)
+
+  let ele = document.createElement('script')
+  for (let key in config) {
+    ele.setAttribute(key, config[key])
+  }
+  document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function changeGiscusTheme () {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
+  sendMessage({
+    setConfig: {
+      theme: theme
+    }
+  });
+}
+
+if ('Giscus' === 'Giscus' || !true) {
+  if (true) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+  else loadGiscus()
+} else {
+  function loadOtherComment () {
+    loadGiscus()
+  }
+}</script></div><script src="/js/meting.min.js"></script><script src="/js/user.js"></script><div class="aplayer no-destroy" data-volume="0.5" data-id="8149615949"  data-autoplay="true" data-server="netease" data-type="playlist" data-loop = "all" data-order="random" data-fixed="true" mutex = "true"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["link[rel=\"canonical\"]","meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
