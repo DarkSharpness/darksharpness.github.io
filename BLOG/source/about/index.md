@@ -23,7 +23,7 @@ Wechat  DarkSharp
 // 申请好友请注明原因!!!
 ```
 
-*****附注：关于这个非商业blog，其中非作者原创的二次元图片来自Pixiv/Seiga/Twitter，[图床](https://darksharpness.github.io/photo/)标明了图片出处。如果实在找不到可以通过 https://saucenao.com/ 找到图片出处。如侵权将立即删除。**
+*****附注：关于这个非商业blog，其中非作者原创的二次元图片来自Pixiv/Seiga/Twitter，[图床](https://darksharpness.github.io/photo/)标明了图片出处。如果实在找不到可以通过 [saucenao](https://saucenao.com/) 找到图片出处。如侵权将立即删除。**
 
 ## 更新日志
 
@@ -42,3 +42,4 @@ Wechat  DarkSharp
 * 2023-09-29 背景加了点模糊(避免喧宾夺主) ; 改了一点点 CSS (美化)
 * 2023-10-02 添加了背景模糊的切换按钮(虽然有 bug) ; 默认是背景不模糊
 * 2023-12-22 更换图床，国内节点有加速 ; 为部分图片附加出处链接。
+* 2025-01-05 完成小重构; 版本从 butterfly 4.6.1 平滑 (?) 升级到 5.2.2
