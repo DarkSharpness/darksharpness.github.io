@@ -9,7 +9,7 @@ mjx-container.MathJax.CtxtMenu_Attached_0 {
 
 /* 浅色主题 部分透明 */
 html[data-theme="light"]
-#recent-posts>.recent-post-item, /* 最近文章 */
+.recent-post-items>.recent-post-item, /* 最近文章 */
 html[data-theme="light"]
 .layout_page>div:first-child:not(.recent-posts),
 html[data-theme="light"]
@@ -31,7 +31,7 @@ div#tag, /* 标签页的具体标签 */
 html[data-theme="light"]
 div#category /* 分类的具体分类 */
 {
-    background-color: rgba(255, 255, 255, 0.67);
+    background-color: rgba(255, 255, 255, 0.67) !important;
 }
 
 /* 深色主题 */
@@ -45,13 +45,13 @@ html[data-theme="dark"] div#tag,      /* 标签页的具体标签 */
 html[data-theme="dark"] div#category /* 分类的具体分类 */
 /* html[data-theme="dark"] header        头图透明  */
 {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 
 /* 深色主题 首页文章栏 侧边栏 背景完全透明 */
 html[data-theme="dark"]
-#recent-posts>.recent-post-item, /* 最近文章 */
+.recent-post-items>.recent-post-item, /* 最近文章 */
 html[data-theme="dark"]
 .layout_page>div:first-child:not(.recent-posts),
 html[data-theme="dark"]
@@ -63,7 +63,7 @@ html[data-theme="dark"]
 html[data-theme="dark"]
 #aside-content .card-widget /* 侧边 */
 {
-    background: var(--light_bg_color);
+    background: var(--light_bg_color) !important;
 }
 
 /* 导航页面,文章,archive(特别处理) 透明度 */
@@ -74,7 +74,7 @@ html[data-theme="dark"] div#archive,
 html[data-theme="dark"] div#tag,     /* 标签页的具体标签 */
 html[data-theme="dark"] div#category /* 分类的具体分类 */ 
 {
-    opacity: 0.89;
+    opacity: 0.89 !important;
 }
 
 
@@ -86,7 +86,7 @@ html[data-theme="light"] div#archive,
 html[data-theme="light"] div#tag,     /* 标签页的具体标签 */
 html[data-theme="light"] div#category /* 分类的具体分类 */
 {
-    opacity: 0.97;
+    opacity: 0.97 !important;
 }
 
 
@@ -96,7 +96,7 @@ html[data-theme="light"] div#category /* 分类的具体分类 */
 /* 浅色色主题 底部透明 + 背景无色透明  */
 html[data-theme="light"]
 footer#footer {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.5) !important;
     /* opacity: 0.3; */
 }
 
@@ -108,38 +108,43 @@ html[data-theme="light"] .framework-info>a {
 /* 深色主题 底部透明 + 背景无色透明  */
 html[data-theme="dark"]
 footer#footer {
-    opacity: 60%;
-    background: transparent; /* 透明背景 */
+    opacity: 60% !important;
+    background: transparent !important; /* 透明背景 */
 }
 
 html[data-theme="dark"]
 nav#nav {
-    opacity: 80%;
+    opacity: 80% !important;
 }
 
 html[data-theme="light"]
 nav#nav {
-    opacity: 90%;
+    opacity: 90% !important;
 }
 
 /* 歌词不显示 */
-.aplayer-lrc { opacity: 0; }
+.aplayer-lrc { opacity: 0 !important; }
 
 
 /* 背景部分  */
 
 /* 横屏背景设置 */
 #web_bg {
-    background: url(https://s3.bmp.ovh/imgs/2023/12/22/36431d16c60646d1.png);
-    background-size: cover;
+    background: url(https://s3.bmp.ovh/imgs/2023/12/22/36431d16c60646d1.png) !important;
+    background-size: cover !important;
     transition: filter 0.6s ease;
 }
 
 /* 竖屏背景设置 */
 @media  (max-width : 768px) {
     #web_bg {
-        background: url(https://s3.bmp.ovh/imgs/2023/12/22/d9d0545f532e058f.png);
-        background-size: cover;
+        background: url(https://s3.bmp.ovh/imgs/2023/12/22/d9d0545f532e058f.png) !important;
+        background-size: cover !important;
         transition: filter 0.6s ease;
     }
+}
+
+/* 首页 abstract 部分字体缩写 */
+div.article-meta-wrap {
+    font-size: .85em !important;
 }

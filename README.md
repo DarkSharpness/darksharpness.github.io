@@ -1,3 +1,3 @@
-# 这是DarkSharpnessのblog,基于hexo,使用butterfly进行主题优化。
+# DarkSharpness 的 blog
 
-主要用来记点废话和学习笔记，水平有限还请各位巨犇多多指点 Orz。
+本来打算当作学习笔记, 最终成为了日记本 x

@@ -720,9 +720,9 @@
       
         <tags>
             
-            <tag> 物理 </tag>
-            
             <tag> 物理竞赛 </tag>
+            
+            <tag> 物理 </tag>
             
         </tags>
       
@@ -764,7 +764,7 @@
       <link href="/firstBLOG/"/>
       <url>/firstBLOG/</url>
       
-        <content type="html"><![CDATA[<p>本页是一些注意事项，随缘更新</p><h2 id="如果你能看到这篇文章，那么我的博客已经顺利建立。"><a href="#如果你能看到这篇文章，那么我的博客已经顺利建立。" class="headerlink" title="如果你能看到这篇文章，那么我的博客已经顺利建立。"></a>如果你能看到这篇文章，那么我的博客已经顺利建立。</h2><p>本博客基于<a href="https://hexo.io/zh-cn/index.html">Hexo</a>，运用了 <a href="https://butterfly.js.org/">butterfly主题</a> 进行美化。由于作者本人对前端不太了解，在博客中可能出现各种奇怪的bug，也有许多页面可能尚未实装 <del>(例如评论系统)</del> ，如遇到问题欢迎向我汇报，鄙人将不胜感激。</p><h2 id="注意-由于部分图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN"><a href="#注意-由于部分图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN" class="headerlink" title="注意:由于部分图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)"></a>注意:由于部分图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)</h2><p><strong>更新日志已经移至”关于”页面</strong>!</p><p>该博客以后主要将用于记录我学过的一些知识，也欢迎各位来与我交流切磋，共同进步。</p><p>我尽量做到能<del>周更</del>月更(？反正也没人看)，尽量把每个问题都讲的透彻，方便大家能更好的理解，也有助于我自己更深入理解每个问题。我会尽力做到图文并茂，结合一定的代码。</p><p><strong>关于这个blog，其中非作者原创的二次元图片来自Pixiv/Seiga/Twitter，<a href="https://darksharpness.github.io/photo/">图床</a> 标明了图片出处。如果实在找不到可以通过 <a href="https://saucenao.com/">https://saucenao.com/</a>  找到图片出处。具体请以原作者要求为准。其他非原创图片会标明引用链接。如侵权将立即删除。</strong></p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul><li>博客字号好像有小，调起来不太方便，如果有需要请自行缩放。(本人pc端调的是 100~110%)</li><li>希望能多评论点 qwq ,好没动力啊啊啊啊~</li><li>深色模式如果感到不适，请右下角切换为浅色。</li><li>文章可以随便转发，但是请保留本网站出处。谢谢。</li><li><del>我就知道你不会看这篇文章的，杂鱼❤</del>。</li><li>好吧其实打赏是假的，我觉得我个人还不配被打赏，如要支持我请对我说加油努力。</li><li>定期查看 music 页面和 about 页面有惊喜。</li><li>2023 年之前的文章基本不用看了，都是垃圾。</li><li>2023 年后的辩证地看，不保证有用。</li><li>努力寻找被隐藏起来的页面吧 ~</li><li>提示: 点击右下角云朵可以切换背景模糊。</li><li>图床已经更新。现在部分图片不再使用 smms 图床。</li></ul>]]></content>
+        <content type="html"><![CDATA[<p>本页是一些注意事项，随缘更新</p><h2 id="如果你能看到这篇文章，那么我的博客已经顺利建立"><a href="#如果你能看到这篇文章，那么我的博客已经顺利建立" class="headerlink" title="如果你能看到这篇文章，那么我的博客已经顺利建立"></a>如果你能看到这篇文章，那么我的博客已经顺利建立</h2><p>本博客基于<a href="https://hexo.io/zh-cn/index.html">Hexo</a>，运用了 <a href="https://butterfly.js.org/">butterfly主题</a> 进行美化。由于作者本人对前端不太了解，在博客中可能出现各种奇怪的bug，也有许多页面可能尚未实装 <del>(例如评论系统)</del> ，如遇到问题欢迎向我汇报，鄙人将不胜感激。</p><h2 id="注意-由于部分图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN"><a href="#注意-由于部分图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。-推荐使用加速器-VPN" class="headerlink" title="注意:由于部分图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)"></a>注意:由于部分图床是SMMS，国内加载可能比较缓慢，请耐心等待orz。(推荐使用加速器/VPN)</h2><p><strong>更新日志已经移至”关于”页面</strong>!</p><p>该博客以后主要将用于记录我学过的一些知识，也欢迎各位来与我交流切磋，共同进步。</p><p>我尽量做到能<del>周更</del>月更(？反正也没人看)，尽量把每个问题都讲的透彻，方便大家能更好的理解，也有助于我自己更深入理解每个问题。我会尽力做到图文并茂，结合一定的代码。</p><p><strong>关于这个blog，其中非作者原创的二次元图片来自Pixiv/Seiga/Twitter，<a href="https://darksharpness.github.io/photo/">图床</a> 标明了图片出处。如果实在找不到可以通过 <a href="https://saucenao.com/">saucenao</a> 找到图片出处。具体请以原作者要求为准。其他非原创图片会标明引用链接。如侵权将立即删除。</strong></p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul><li>博客字号好像有小，调起来不太方便，如果有需要请自行缩放。(本人pc端调的是 100~110%)</li><li><del>希望能多评论点 qwq，好没动力啊啊啊啊</del></li><li>深色模式如果感到不适，请右下角切换为浅色。</li><li>文章可以随便转发，但是请保留本网站出处。谢谢。</li><li><del>我就知道你不会看这篇文章的，杂鱼❤</del>。</li><li>好吧其实打赏是假的，我觉得我个人还不配被打赏，如要支持我请对我说加油努力。</li><li>定期查看 music 页面和 about 页面有惊喜。</li><li>2023 年之前的文章基本不用看了，都是垃圾。</li><li>2023 年后的辩证地看，不保证有用。</li><li>努力寻找被隐藏起来的页面吧 ~</li><li>提示: 点击右下角云朵可以切换背景模糊。</li><li>图床已经更新。现在部分图片不再使用 smms 图床。</li><li>更新日志 -&gt; <a href="https://darksharpness.github.io/about/">about</a></li></ul>]]></content>
       
       
       <categories>
