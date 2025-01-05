@@ -32,7 +32,7 @@ menu:
 code_blocks:
   # Code block theme: darker / pale night / light / ocean / false
   theme: darker
-  macStyle: false
+  macStyle: true
   # Code block height limit (unit: px)
   height_limit: 400
   word_wrap: false
@@ -130,7 +130,7 @@ post_meta:
     label: true
   post:
     # Choose: left / center
-    position: left
+    position: center
     # Choose: created / updated / both
     date_type: both
     # Choose: date / relative
@@ -801,10 +801,10 @@ beautify:
 # Global font settings
 # Don't modify the following settings unless you know how they work
 font:
-  global_font_size: 15px
-  code_font_size: 13px
-  font_family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif
-  code_font_family: JetBrains Mono
+  global_font_size:
+  code_font_size:
+  font_family:
+  code_font_family:
 
 # Font settings for the site title and site subtitle
 blog_title_font:

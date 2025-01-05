@@ -1,3 +1,4 @@
 [submodule "BLOG/themes/butterfly"]
 	path = BLOG/themes/butterfly
 	url = git@github.com:DarkSharpness/hexo-theme-butterfly.git
+	branch = main
