@@ -1,7 +1,7 @@
 ---
 title: (Modern) C++ 小技巧汇总
 date: 2024-06-09 23:01:00
-updated: 2024-07-26 01:38:02
+updated:
 tags: [C++,基础知识]
 categories: [C++,基础知识]
 keywords: [C++, Modern C++,基础知识]
@@ -11,6 +11,30 @@ description: 本文是笔者写 C++ 代码得出的一些实践经验，会长�
 ---
 
 众所周知, 笔者 (DarkSharpness) 是一个 Modern C++ 的狂热爱好者. 笔者自高中信息竞赛以来, 主力编程语言一直都是 C++, 在大学的学习过程中, 积累了不少的实践经验, 故开一个帖子计划长期维护. 每次更新会在头部显示.
+
+## small size optimization
+
+C++ 人最喜欢的一点就是优化性能. 既然要优化性能, 少不了的一点就是数据的局部化. 众所周知, 指针间接访问是一件不太好的事情, 一般来说连续的内存访问显然要好于不连续的, 这是体系结构告诉我们的.
+
+那么, 基于 `locality`, 我们能做哪些优化呢? 最 naive 的想法就是: 直接把数据存在自己的结构体里面. 这样面临着一个问题: 如果数据的大小是未知的, 比如 `std::string` 长度是可变的, 那你不可能开一个无穷大的结构体. 但是没关系, small size optimization 的核心就在于, 对于大小比较小, 能在结构体内放得下的, 就尽量放在里面.
+
+在笔者的 `gcc 13.2` 中, `std::string` 的实现就采用了 SSO 的优化, 即对于长度不超过 15 的字符串, 开在自己内部的一个 buffer 里面.
+
+```cpp
+// a sample code 
+struct string {
+    char *ptr;
+    std::size_t length;
+    union {
+        char buffer[16];
+        std::size_t capacity;
+    };
+};
+```
+
+~~这就是全部~~ 这当然不是全部. `std::any` 也采用了类似的优化, 对于不超过 8 byte 的小对象, 就放在自己的结构体内部. 不仅如此, 在工程实践中, SSO 也被广泛运用. 在 llvm 中, 有一个模板类 `small_vector`, 顾名思义就是一个针对一般大小比较小的 `vector` 进行了优化. 比如 `llvm::small_vector<int, 8>` 即表示一个最多可以在内部存储 8 个 int 的小 vector, 如果通过 profiling 发现程序中确实基本上 `vector` 大小不会超过 8, 那么就可以享受几乎和数组一样的性能 (局部存储, 连续访问). 在 `PyTorch 2.5.0` 源码中, `IValue` 类型 (Interpreter Value) 也采用了类似的优化 (类似 std::any). `IValue` 作为 `python` 解释器中的动态类型, 具有很强的动态性, 但是 `PyTorch` 涉及的类型基本上只有 `Tensor` (一个指针大小), `int`, `float`, `device` 等等, 这些实际都不会超过 `8 byte`. 因此, 使用 `IValue` 来表示解释器中的某个值, 可以尽可能地避免间接引用, 并且可以减少潜在的堆内存分配.
+
+总结一句话: 当数据不大的时候, 尽可能放结构体内的 buffer 里来增强数据局部性.
 
 ## bit-field
 
