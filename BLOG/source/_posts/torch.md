@@ -16,6 +16,8 @@ description: pytorch 写的是真的好. 本文会简单分析 torch 的 dispatc
 
 具体的实验配置请参考 [环境配置](#环境配置) 章节.
 
+> 小插曲: 由于原网站只支持 http, 而大部分浏览器默认的是禁止 mix http with https, 本网站又是强制 https 的, 所以图片链接全炸了. 笔者因此把那部分图片全部传到自己的图床了.
+
 ## 前言
 
 在你使用 PyTorch 的时候, 你是否有想过, 对应的函数例如 `torch.add` 具体是如何操纵数据的? 更进一步, 在你调用 `with torch.no_grad()` 的时候, 究竟是什么机制使得所有的 kernel 都不会保留 gradient?
@@ -71,7 +73,7 @@ struct DispatchTable {
 };
 ```
 
-![关于 box 的示意图](http://blog.ezyang.com/img/pytorch-dispatcher/slide-18.png).
+![关于 box 的示意图](https://s3.bmp.ovh/imgs/2025/01/26/1cc1d873b86666a1.png).
 
 通过 boxing, 我们就可以很方便的中心化管理一个大 mapping, 其本质上是 C++ 中类型擦除的思想, 在 `std::any` 和 `std::variant` 中都有涉及.
 
@@ -231,7 +233,7 @@ private:
 
 > Remark: 如果仔细看一眼 DispatchKeySet 的构造函数的逻辑, 你会发现 functionality 的 key 的优先级是高于 device 的 key 的. 这很合理, 功能性一般都是 override 在 function 之上的.
 
-![Which kernel shall i call?](http://blog.ezyang.com/img/pytorch-dispatcher/slide-07.png)
+![Which kernel shall i call?](https://s3.bmp.ovh/imgs/2025/01/26/6cdc40305760d4f9.png)
 
 ## 实验部分
 
@@ -355,10 +357,10 @@ x = my_test.hello_world(1)
 
 这里引用一下原文的图来解释:
 
-![new op](http://blog.ezyang.com/img/pytorch-dispatcher/slide-15.png)
-![functionality](http://blog.ezyang.com/img/pytorch-dispatcher/slide-16.png)
-![op + functionality](http://blog.ezyang.com/img/pytorch-dispatcher/slide-14.png)
-![summary](http://blog.ezyang.com/img/pytorch-dispatcher/slide-17.png)
+![new op](https://s3.bmp.ovh/imgs/2025/01/26/d3a8536f4417a26d.png)
+![functionality](https://s3.bmp.ovh/imgs/2025/01/26/36b6a8c526527abf.png)
+![op + functionality](https://s3.bmp.ovh/imgs/2025/01/26/4777ef735747bbe1.png)
+![summary & priority](https://s3.bmp.ovh/imgs/2025/01/26/059407e79872f76c.png)
 
 下面, 我们用一些简单的代码来演示这些功能.
 

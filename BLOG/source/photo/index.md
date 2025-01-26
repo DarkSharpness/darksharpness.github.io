@@ -7,10 +7,16 @@ top_img: https://s3.bmp.ovh/imgs/2023/12/22/3ab69aa9e9b64942.jpg
 ---
 
 以下是本 Blog 用到的所有 pixiv 图片以及出处，如有遗漏请指出！
+
 ## Pixiv part
+
 ![](https://s2.loli.net/2023/01/30/NTQevOjLCIDX4z3.jpg)
 
 <center><font color=grey><a href="https://www.pixiv.net/artworks/34844544"> Artwork 34844544 by c7肘 </a></font></center><br/>
+
+![](https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png)
+
+<center><font color=grey><a href="https://www.pixiv.net/artworks/34844544"> Artwork 48252328 by 見えない生活 </a></font></center><br/>
 
 ![](https://s2.loli.net/2023/03/15/OXWIVYlLGuJDkNF.jpg)
 
