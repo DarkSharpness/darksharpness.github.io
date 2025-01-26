@@ -10,117 +10,61 @@ top_img: https://s3.bmp.ovh/imgs/2023/12/22/3ab69aa9e9b64942.jpg
 
 ## Pixiv part
 
-![](https://s2.loli.net/2023/01/30/NTQevOjLCIDX4z3.jpg)
+{% pixiv 34844544 c7肘 https://s2.loli.net/2023/01/30/NTQevOjLCIDX4z3.jpg %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/34844544"> Artwork 34844544 by c7肘 </a></font></center><br/>
+{% pixiv 48252328 見えない生活 https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png %}
 
-![](https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png)
+{% pixiv 56884409 ke-ta https://s2.loli.net/2023/03/15/OXWIVYlLGuJDkNF.jpg %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/34844544"> Artwork 48252328 by 見えない生活 </a></font></center><br/>
+{% pixiv 59411218 ふぁみ https://s3.bmp.ovh/imgs/2023/12/22/d8b1f2f5828fe8bd.jpg %}
 
-![](https://s2.loli.net/2023/03/15/OXWIVYlLGuJDkNF.jpg)
+{% pixiv 66444938 rokusai https://s2.loli.net/2023/01/28/cEabmiStHXuUkoY.jpg %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/56884409"> Artwork 56884409 by ke-ta </a></font></center><br/>
+{% pixiv 73700097 帰らぬ蛙 https://s3.bmp.ovh/imgs/2023/12/22/a9cade886bb2746c.jpg %}
 
-![](https://s3.bmp.ovh/imgs/2023/12/22/d8b1f2f5828fe8bd.jpg)
+{% pixiv 77108212 山桃 https://s3.bmp.ovh/imgs/2023/12/22/ae04dd93de9bc8e3.jpg %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/59411218"> Artwork 59411218 by ふぁみ </a></font></center><br/>
+{% pixiv 81371906 endlesscat https://s3.bmp.ovh/imgs/2023/12/22/4263aa94d54ca3fb.jpg %}
 
-![](https://s2.loli.net/2023/01/28/cEabmiStHXuUkoY.jpg)
+{% pixiv 87228898 Sachisu https://s3.bmp.ovh/imgs/2023/12/22/b18b37dad5236fb7.png %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/66444938"> Artwork 66444938 by rokusai </a></font></center><br/>
+{% pixiv 88932842 透和すず໒꒱˖˚ https://s3.bmp.ovh/imgs/2023/12/22/c7ada8de1e63e10f.jpg %}
 
-![](https://s3.bmp.ovh/imgs/2023/12/22/a9cade886bb2746c.jpg)
+{% pixiv 91828134 はるときくれ https://s3.bmp.ovh/imgs/2023/12/22/d9d0545f532e058f.png %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/73700097"> Artwork 73700097 by 帰らぬ蛙 </a></font></center><br/>
+{% pixiv 91999833 c7肘 https://s2.loli.net/2023/03/08/v39f5zd4pEeSlQc.jpg %}
 
-![](https://s3.bmp.ovh/imgs/2023/12/22/ae04dd93de9bc8e3.jpg)
+{% pixiv 94505082 ぢせ https://s3.bmp.ovh/imgs/2023/12/22/94d91e459eb742db.jpg %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/77108212"> Artwork 77108212 by 山桃 </a></font></center><br/>
+{% pixiv 96724231 ねっちー https://s3.bmp.ovh/imgs/2024/11/27/3e28dd3239526ce1.jpg %}
 
-![](https://s3.bmp.ovh/imgs/2023/12/22/4263aa94d54ca3fb.jpg)
+{% pixiv 98482634 きらまるこう https://s3.bmp.ovh/imgs/2023/12/22/bf948e226affabad.jpg %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/81371906"> Artwork 81371906 by endlesscat </a></font></center><br/>
+{% pixiv 100058203 花本 https://s3.bmp.ovh/imgs/2023/12/22/c6e54f1a4c2a9fc6.jpg %}
 
-![](https://s3.bmp.ovh/imgs/2023/12/22/b18b37dad5236fb7.png)
+{% pixiv 101512274 ぢせ https://s2.loli.net/2023/01/28/mBk9lPWMvwZVQxC.jpg %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/87228898"> Artwork 87228898 by Sachisu </a></font></center><br/>
+{% pixiv 102256941 下田将也 https://s3.bmp.ovh/imgs/2024/02/19/42c9a6adfd88c991.jpg %}
 
-![](https://s3.bmp.ovh/imgs/2023/12/22/c7ada8de1e63e10f.jpg)
+{% pixiv 104376717 Uroam https://s3.bmp.ovh/imgs/2023/12/22/36431d16c60646d1.png %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/88932842"> Artwork 88932842 by 透和すず໒꒱˖ ˚ </a></font></center><br/>
+{% pixiv 104973494 民◆joeManyODw https://s3.bmp.ovh/imgs/2023/12/22/3393cff98696241e.jpg %}
 
-![](https://s3.bmp.ovh/imgs/2023/12/22/d9d0545f532e058f.png)
+{% pixiv 108970342 Primavista https://s3.bmp.ovh/imgs/2023/12/22/403f04fec31e5b99.jpg %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/91828134"> Artwork 91828134 by はるときくれ </a></font></center><br/>
+{% pixiv 109663902 endlesscat https://s3.bmp.ovh/imgs/2023/12/22/366cfd25c96ee172.jpg %}
 
-![](https://s2.loli.net/2023/03/08/v39f5zd4pEeSlQc.jpg)
+{% pixiv 111415400 カンパ https://s3.bmp.ovh/imgs/2023/12/22/178d87936dac3770.png %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/91999833"> Artwork 91999833 by c7肘 </a></font></center><br/>
+{% pixiv 111688767 endlesscat https://s3.bmp.ovh/imgs/2023/12/22/3ab69aa9e9b64942.jpg %}
 
-![](https://s3.bmp.ovh/imgs/2023/12/22/94d91e459eb742db.jpg)
+{% pixiv 112111307 すずしな綺雪 https://s3.bmp.ovh/imgs/2024/06/10/16be8fd59a1768c7.jpg %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/94505082"> Artwork 94505082 by ぢせ </a></font></center><br/>
+{% pixiv 112421150 ぢせ https://s3.bmp.ovh/imgs/2023/12/22/1a16727b353555b1.jpg %}
 
-![](https://s3.bmp.ovh/imgs/2024/11/27/3e28dd3239526ce1.jpg)
+{% pixiv 114498589 endlesscat https://s3.bmp.ovh/imgs/2024/01/19/1d88e2436576d55c.jpg %}
 
-<center><font color=grey><a href="https://www.pixiv.net/artworks/96724231"> Artwork 96724231 by ねっちー </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2023/12/22/bf948e226affabad.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/98482634"> Artwork 98482634 by きらまるこう </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2023/12/22/c6e54f1a4c2a9fc6.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/100058203"> Artwork 100058203 by 花本 </a></font></center><br/>
-
-![](https://s2.loli.net/2023/01/28/mBk9lPWMvwZVQxC.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/101512274"> Artwork 101512274 by ぢせ </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2024/02/19/42c9a6adfd88c991.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/102256941"> Artwork 102256941 by 下田将也 </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2023/12/22/36431d16c60646d1.png)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/104376717"> Artwork 104376717 by Uroam </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2023/12/22/3393cff98696241e.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/104973494"> Artwork 104973494 by 民◆joeManyODw </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2023/12/22/403f04fec31e5b99.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/108970342"> Artwork 108970342 by Primavista </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2023/12/22/366cfd25c96ee172.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/109663902"> Artwork 109663902 by endlesscat </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2023/12/22/178d87936dac3770.png)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/111415400"> Artwork 111415400 by カンパ </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2023/12/22/3ab69aa9e9b64942.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/111688767"> Artwork 111688767 by endlesscat </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2024/06/10/16be8fd59a1768c7.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/112111307"> Artwork 112111307 by すずしな綺雪 </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2023/12/22/1a16727b353555b1.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/112421150"> Artwork 112421150 by ぢせ </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2024/01/19/1d88e2436576d55c.jpg)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/114498589"> Artwork 114498589 by endlesscat </a></font></center><br/>
-
-![](https://s3.bmp.ovh/imgs/2024/07/27/3a45622b731f9c3d.png)
-
-<center><font color=grey><a href="https://www.pixiv.net/artworks/120719040"> Artwork 120719040 by 洗濯船 </a></font></center><br/>
+{% pixiv 120719040 洗濯船 https://s3.bmp.ovh/imgs/2024/07/27/3a45622b731f9c3d.png %}
 
 ## Twitter part
 
