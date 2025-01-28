@@ -24,7 +24,7 @@ menu:
   关于: /about/ || fas fa-heart
   杂物||fas fa-ellipsis-h:
     音乐: /music/ || fas fa-music
-    图床: /photo/ || fas fa-video
+    图床: /photo/ || fas fa-image
     日记: /diary/ || fas fa-book
 
 # --------------------------------------
