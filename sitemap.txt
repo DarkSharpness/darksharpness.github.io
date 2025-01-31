@@ -1,15 +1,15 @@
 http://darksharpness.github.io/diary/index.html
+http://darksharpness.github.io/about/index.html
 http://darksharpness.github.io/photo/index.html
 http://darksharpness.github.io/torch/
-http://darksharpness.github.io/about/index.html
 http://darksharpness.github.io/cpp/
 http://darksharpness.github.io/misc/
 http://darksharpness.github.io/firstBLOG/
 http://darksharpness.github.io/diary2023/
 http://darksharpness.github.io/link/index.html
 http://darksharpness.github.io/music/index.html
-http://darksharpness.github.io/tags/index.html
 http://darksharpness.github.io/photo/test.html
+http://darksharpness.github.io/tags/index.html
 http://darksharpness.github.io/categories/index.html
 http://darksharpness.github.io/draft/thread.html
 http://darksharpness.github.io/diary2024/
