@@ -1039,7 +1039,7 @@ inject:
   bottom:
     - <script src="/js/meting.min.js"></script>
     - <script src="/js/user.js"></script>
-    - <div class="aplayer no-destroy" data-volume="0.5" data-id="8149615949"  data-autoplay="true" data-server="netease" data-type="playlist" data-loop = "all" data-order="random" data-fixed="true" mutex = "true"> </div>
+    - <div class="aplayer no-destroy" data-volume="0.1" data-id="8149615949" data-autoplay="false" data-server="netease" data-type="playlist" data-loop="all" data-order="random" data-fixed="true" mutex="true"> </div>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
