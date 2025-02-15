@@ -11,8 +11,8 @@
       descr: 可爱 Hastin ❤
     - name: Conless's Blog
       link: https://conless.dev/blog/
-      avatar: https://q1.qlogo.cn/g?b=qq&nk=1422972985&s=640
-      descr: 潘老师称第二，没人敢称第一，中国系统第一人 (bushi)
+      avatar: https://conless.dev/assets/img/favicon.ico
+      descr: 潘老师称第二，没人敢称第一
     - name: Radioheading's blog
       link: https://radioheading.github.io/
       avatar: https://avatars.githubusercontent.com/u/115439175?v=4
@@ -33,20 +33,3 @@
       link: https://www.bananaspace.org/wiki/
       avatar: https://www.bananaspace.org/favicon.ico
       descr: 常用的数学知识查询网站
-
-#- class_name: 网站
-#  class_desc:
-#  link_list:
-#    - name: Youtube
-#      link: https://www.youtube.com/
-#      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
-#      descr: 視頻網站
-#    - name: Weibo
-#      link: https://www.weibo.com/
-#      avatar: https://i.loli.net/2020/05/14/TLJBum386vcnI1P.png
-#      descr: 中國最大社交分享平台
-#    - name: Twitter
-#      link: https://twitter.com/
-#      avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
-#      descr: 社交分享平台
-
