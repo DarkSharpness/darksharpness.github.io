@@ -11,6 +11,14 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法.
 
+## 02/19
+
+10:00 起床. 14:00 meeting. 18:00 和同学出去吃饭. 没写的时间不是在写 C++, 就是在摆.
+
+今天几乎没干啥事情, 算是休息一天, structural tag 的 PR 还没 merge, function call 暂时还没启动. 不过 hierarchical cache 看完了, 而且 meeting 也聊的差不多了, summer internship 的事情看起来非常乐观, 那么该联系第二段 intership 了.
+
+稍微有点负罪感了, 啥都没做, 晚上研究 C++ 宏, 发现非常有意思, 可惜功能太弱了. 被指派去给小朋友讲 modern C++ 了, 挺期待的, 也挺没底的. 明天争取把 function calling 写完吧, 感觉想的差不多了, 希望没啥问题 (当然, 也希望 structural tag 能快点 merge).
+
 ## 02/18
 
 忘记写日记了. 8:00 model checking, 16:00 视觉内容生成, 18:00 区块链. 晚上出去绕学校骑行一圈, 回来后把小圆补了, 然后睡了.
