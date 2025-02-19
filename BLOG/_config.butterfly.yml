@@ -9,6 +9,10 @@
 # Navigation Settings
 # --------------------------------------
 
+custom_cfg:
+  # max width of the post (unit: px)
+  post_max_width: 1300
+
 nav:
   logo: https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png
   display_title: true
