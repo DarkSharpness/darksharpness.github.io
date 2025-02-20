@@ -11,6 +11,14 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法.
 
+## 02/20
+
+07:45 起床. 08:00 model checking. 下午纯摆烂. 晚上写了点 C++ 以及把 function call 的部分写了很多, 估计明天 structural tag merge 了以后应该能写完, 睡前看 Ave Mujica.
+
+不是哥们, 怎么还没 merge. 第一周似乎有点摆出天际了... 核心原因: 看少女乐队太多 + 写 C++ 上头.
+
+明天试着不看这些东西 + 把 function call 写完, 以及回家, 一周没弹琴手痒了.
+
 ## 02/19
 
 10:00 起床. 14:00 meeting. 18:00 和同学出去吃饭. 没写的时间不是在写 C++, 就是在摆.
