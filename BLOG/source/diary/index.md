@@ -11,6 +11,32 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法.
 
+## 02/23
+
+11:30 起床. 下午主要是在配 os-2024 的环境, 以及帮仓库加 ci, 中途顺便给集群的机器配了个 latex 环境, 处理 latex 报错花了很多的时间. 晚上先是 boyu 聚餐, 然后是帮 advanced compiler 课程配置了一下环境, 支持 rv32-gcc toolchain. 然后 follow 了手册基本配好了环境.
+
+早上做了一个非常离奇的梦, 梦到了去世的奶奶, 离别也是将近十年前的事情了. 还有很多更加光怪陆离的场景, 总之非常诡异.
+
+今天没干什么有生产力的事, 主要都是在配环境. 上周的计划有点破产, 主要原因是执行力不够强, 这周得更新一下了.
+
+感慨小朋友非常努力, 希望他们都能成为比笔者更厉害的人, 也希望笔者能尽自己所能帮到他们.
+
+明天得早点起来了. 每当想要摆的时候, 多想想还有多少事情没做吧.
+
+睡前看到一个有意思的 [draft](https://github.com/sgl-project/sglang/issues/3554), 关于 RDMA 的, 想去学一学.
+
+| Item                      | DDL(assumed)  | Urgency   |
+| ----                      | -----------   | -------   |
+| Model Checking HW         | 1 day         | high      |
+| summer intern follow      | 1 day         | high      |
+| hierarchical cache        | 3 days        | high      |
+| read sys papers           | 3 days        | high      |
+| misc cuda kernel          | 5 days        | mid       |
+| function calling          | 7 days        | mid       |
+| RDMA for sys2             | 1 week        | low       |
+
+> misc: 原来笔者的老板每天都在视监笔者... 如果 "你" 看到了这句话, 请联系笔者 :)
+
 ## 02/22
 
 11:00 起床. 下午和晚上主要在写 kernel + 看 sglang issues, 同时看了点 jyy 的课, 也写了一点 Model Checking 的作业. 睡前弹琴.
