@@ -11,11 +11,25 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法.
 
+## 02/28
+
+今天 09:30 起来, 吃了早饭后去上课, 上完课基本全在倒腾 benchmark. 下午 17:00 和同学去 4 餐吃饭, 然后坐 5 号线回家. 回到家以后弹琴, 顺便把 TRT 的环境配出来了. 睡前写完了这篇日记.
+
+不知不觉, 二月份过去了. 目前 LMcache + vllm 跑起来遇到问题, 会直接爆显存, 重复了好几次应该不是误判. vllm 自然是可以跑起来, 不过在某些 benchmark 上和 sglang 的表现完全不同. TensorRT-LLM 的环境是真的难配啊, 最后用 make docker build 解决了, 中途还因为爆 /home 了把 docker 的临时路径改到了数据盘 /data. 不过基本已经搞明白了 benchmark 代码, TRT 也总算跑起来了.
+
+在过去的一个月内, 笔者似乎并没有获得什么显著的成果. 下一个月得更加专注了. TOEFL 结束后稍微有点松懈. 最近睡眠又坏起来了, 今天必须早点睡了. 弹琴好.
+
+明天计划把 benchmark 初步结果跑出来, 然后继续玩玩 OS 的作业.
+
+> Remark: 以下是一些看起来不该出现在日记的东西
+
+今天读了一篇有趣的文章, [CRAQ](https://www.usenix.org/legacy/event/usenix09/tech/full_papers/terrace/terrace.pdf), 是在看 deepseek 的 3FS 的时候看到的. 很有意思的启发式优化. simple yet effective. 核心思想是, 本来只有 tail 节点支持读, 现在每个节点都支持读, 为了保证 strong consistency, 在中间节点收到 write, 但是尚未 ack 的时候 (也就是 dirty 的时候), 如果收到了读请求, 就问 tail 节点当前 object 的最新版本号. 如果一致, 则说明 tail 已经 commit, 则返回最新副本. 反之, 说明 tail 尚未 commit write 请求, 因此返回老的副本. 依然是通过 tail 节点的 access order 来保证 strong consistency. 通信量很少, 只有一个版本号, 代价是每个节点要维护老的副本. 在读多写少的情况下, 可以让读性能大大提升.
+
 ## 02/27
 
 今天 08:00 起来, 早上有课. 中饭吃完又遇到了 yyu, 这周遇到好几次了. 下午先是睡了一觉, 15:00 醒来后把 NSDI 23 的 [ARK](https://www.usenix.org/system/files/nsdi23-hwang.pdf) 读了一遍, 写了一篇 notes. 晚上吃了饭, 尝试配置 TensorRT-LLM 的环境但是未果, 有 vllm 和 sglang 的 benchmark 试图跑起来, 但是失败. 睡前和室友一起看了一集 Ave mujica.
 
-很散慢的一天, 因为完全不了解怎么跑 benchmark, 完全没进入状态, 效率不是很高. 优秀的学弟学妹让我非常自闭, 但是不可否认的是, 他们的努力以及更多的帮助, 配得上他们的成功. 总结了一下, 效率低的原因是东张西望, 一会儿想看看 xgrammar 代码, 一会儿想看看 benchmark. 还有就是对跑 benchmark 的代码不熟, 上手花了点时间. 还有就是睡太久了... 以后午睡不能再不定闹铃了.
+很散慢的一天, 因为完全不了解怎么跑 benchmark, 完全没进入状态, 效率不是很高. 优秀的学弟学妹让笔者非常自闭, 但是不可否认的是, 他们的努力以及更多的帮助, 配得上他们的成功. 总结了一下, 效率低的原因是东张西望, 一会儿想看看 xgrammar 代码, 一会儿想看看 benchmark. 还有就是对跑 benchmark 的代码不熟, 上手花了点时间. 还有就是睡太久了... 以后午睡不能再不定闹铃了.
 
 明天还是 focus on 把 dataset 跑起来吧, 不能拖后腿了. 等跑起来了之后, 再去想 xgrammar 和 OS 作业的事情吧.
 
