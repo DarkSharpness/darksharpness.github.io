@@ -11,6 +11,16 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法.
 
+## 03/02
+
+今天 11:00 起来. 下午继续和 trtllm-serve 进行斗争. 晚上出去跑个步, 吃了个饭, 然后 focus on 学校的一些事情, 以及看了一下 function calling 的 PR.
+
+越来越认可 linus 的一句话: F**k you Nvidia. 最近笔者在配置 TensorRT-LLM (后简称 trtllm) 的环境, 作为 baseline, 结果发现这玩意是真的难跑, 虽然功能强大的, 但是文档极其不友好. 可能是因为笔者先前被 sglang/vllm 这类开源框架惯坏了, 当笔者期望用 trtllm-serve 作为另一个 OpenAI API compatible server 的时候, 问题重重, 很多 config option 并没有在前端暴露. 幸运的是, 它的前端主要都是 python 写的, 因此笔者通过修改 docker 内的 `serve.py` 对应的代码, 稍微拓展了一下前端的设置. 只能说这玩意没有那么开箱即用, 但是如果好好封装一下前端, 应该还是能提供不少功能的. 笔者主要关心的是 KVcache offload to host 的功能, 而 python 前端似乎没有直接暴露 `host_cache_size` 这个接口. 不过注意到 `KVCacheConfig` 这个类其实是 C++ 实现的, 所以笔者推测其大概率是 pybind 实现的, 而构造函数中提供了相关的参数, 于是笔者经过尝试, 发现确实只是没有暴露出来, 但是如果主动设置的话依然有效.
+
+![实际上还是有的](https://s3.bmp.ovh/imgs/2025/03/02/875a59834c2b70fc.png)
+
+除此之外, build config 也需要稍微修改, 总体侵入修改的不是很多, 只需要把 `serve.py` 的前端配置硬塞几个即可. 笔者很难理解的是, 明明功能如此强大, 却不愿多包装几层, 还是说 Nvidia 把用户默认都当作可以自己调用 Python API 甚至 C++ API 的大师, 只可惜笔者只想跑个 OpenAI server, 笔者没有那么多时间. anyway, benchmark 还是跑起来了.
+
 ## 03/01
 
 今天 12:00 起来. 下午先是帮小朋友改了一个 `std::vector` 的 benchmark, 然后重构代码, 把 sglang 的某个 hierarchy cache 的 benchmark 的代码清理了一下, 彻底搞明白了测评逻辑, 支持了任意 OpenAI API compatible 的后端的测试. 晚上吃好饭出去理了个头, 然后回来抢救了一下模型检验作业, 花了一个半小时写完.
