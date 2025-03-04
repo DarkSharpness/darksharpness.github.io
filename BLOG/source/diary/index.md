@@ -40,6 +40,8 @@ generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法,
 | lesson time               | 18:00 ~ 20:20 |  Low      |
 | check what i forget to do | 20:00 ~ 23:00 |  Low      |
 
+> Remark: 睡前迷思, 听 EMO hardcore 是真的爽, 直接的情绪宣泄在这种独特的音乐风格里面体现的淋漓尽致, 暴力的 breakdown 和 screaming 加上高亢的旋律融合度非常高. 有时候觉得中后期 Foreground Eclipse 作为一支商业乐队也是合格的, 也难怪能开这么多演唱会 (笑).
+
 ## 03/03
 
 今天 06:45 起来, 从家里返回学校. 大约 08:15 到校, 吃好早饭后遇上大雨, 湿透了之前骑回了 D19. 早上先写了一个 PR, 然后继续研究 vllm 代码, 发现并没有很好的支持 KV Cache offload, 遂放弃. 中午吃好饭睡了一会儿, 下午先是组会, 结束后和老板和学弟 meeting. 晚上 17:20 吃饭. 饭后交了一发 PR, 然后稍微跑了一些简单的 setting 的 benchmark.
