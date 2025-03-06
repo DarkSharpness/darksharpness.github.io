@@ -11,6 +11,16 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法, 最后一段可能会附带对未来几天的日程规划.
 
+## 03/06
+
+今天 08:15 起来. 上课. 早上的课结束之后, 中午睡了挺久, 然后下午修完了 benchmark, 并且看了一眼 issue. 晚上 OSDI 出分了, 导致后面稍微有点心神不宁, 后来基本写完了 Model Checking Homework, 然后睡觉.
+
+意料之中的失败, 做的时候就感觉不是那么的 novelty, 更像是一个 engineering trick. 不过 reviewer 也很离谱, 完全不是人, 能说出 "ML community has moved away from adapters" 这种话, 笔者辛苦额外支持的 LoRA 被别人一句话否定确实也很令人难受. 有几个 review opinion, 笔者只能认为是 mean 导致的. 这件事对笔者心情还是稍微有点影响, 不过吃完饭基本恢复一半了. 昨天没睡好, 今天早点睡.
+
+明天得把 Earley parser 写完了, 有空多学学 cuda kernel 吧, 还一点没开始. 等卡 available 了也得赶紧开始 hierarchical cache 的实验了. 失败并不可怕, 毕竟在过程中笔者非常沉浸也非常开心, 只要能一直学到新东西就行. 笔者作为舒适圈大户, 还是需要有勇气尝试新的事物.
+
+> もう何も怖くない
+
 ## 03/05
 
 今天 09:20 起来, 吃早饭. 早上基本全在看 sglang 社区反馈的一个 bug, 本来以为只是哪里的小 bug, 没想到似乎有更多一连串的问题... 下午 meeting 前修了一下 Model checking 作业, 然后 meeting 的时候讨论了一下 roadmap, 修了一下 benchmark. 晚上通识课, 结束后 all in Model Checking 作业.
