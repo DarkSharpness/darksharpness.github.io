@@ -19,7 +19,7 @@ type : "about"
 Github  DarkSharpness
 QQ      2040703891
 Email   2040703891@qq.com
-Wechat  DarkSharp
+Wechat  _4461726B_
 // 申请好友请注明原因!!!
 ```
 
@@ -45,3 +45,4 @@ Wechat  DarkSharp
 * 2025-01-05 完成小重构; 版本从 butterfly 4.6.1 平滑 (?) 升级到 5.2.2
 * 2025-01-24 开了一个日记本, 开始记日记.
 * 2025-01-30 更新域名为 darksharpness.top
+* 2025-03-11 修复之前背景模糊的 bug, 重写了 user.js
