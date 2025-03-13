@@ -11,6 +11,64 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法, 最后一段可能会附带对未来几天的日程规划.
 
+## 03/13
+
+今天 08:15 起来. 早上模型检验. 下午 OJ 随便找了一道题做, 然后发现 OJ 一个 bug 打了一个 PR. 晚上继续跑 benchmark, 被老版本 vllm 坑了好久. 结束后和学弟聊了聊高级编译器的任务. 结束后看了一集 Ave Mujica, 然后摆了一个小时, 回来后先把实验结果画了图, 然后发现 submit to ASPLOS26 的论文里面的若干 typo, 但是来不及改了. 睡前看微信发现有消息, 发了一封邮件, 然后讨论了一个 PR.
+
+好累的一天. 下午才发现自己 OI 水平严重下滑, 简单 dp 题半天写不对 (虽然感谢算法课, 算法还是很快就想出来了). 写题的时候发现题目 input 量很大, 遂结合 OS 的一些知识写了一个简单的 `fastio`. 大概也是学了 OS 和 compiler 很久之后才能真正的融会贯通吧.
+
+```cpp
+#include <iostream>
+#include <optional>
+#include <sstream>
+#include <sys/stat.h>
+
+namespace fastio {
+
+static auto get_input_size() -> std::optional<std::size_t> {
+    struct stat st;
+    if (fstat(fileno(stdin), &st) == 0) {
+        if (S_ISREG(st.st_mode)) {
+            return st.st_size;
+        } else {
+            return std::nullopt;
+        }
+    } else {
+        throw std::runtime_error("Cannot determine the type of input stream");
+    }
+}
+
+[[nodiscard]]
+auto get_istream() -> std::istream & {
+    static std::stringstream ss;
+    static auto &is = []() -> std::istream & {
+        if (const auto size = get_input_size()) {
+            auto buffer = std::string(*size, '\0');
+            auto read   = std::fread(buffer.data(), 1, *size, stdin);
+            if (read != *size)
+                throw std::runtime_error("Cannot read the input");
+            ss.str(std::move(buffer));
+            return ss;
+        } else {
+            return std::cin;
+        }
+    }();
+    return is;
+}
+
+} // namespace fastio
+```
+
+明天早上继续修 sglang 那边的 PR, 计划晚上早点回家 (虽然要帮一个学长看班 x). 然后 hi cache 那边多想想 schedule, 以及注意一下 stf 那边签证的事情. 最近事情很多, 笔者感到无比的充实和劳累.
+
+笔者再次于深夜怀疑自己的动机, 害怕自己的短视会害死自己, 厌恶自己的虚荣心, 笔者一直希望多了解一点科研的东西. 但是笔者又不禁思考, 科研又是什么. 了解别人 novel 的 idea, 它也不是什么神圣的事情. 过去的教育让笔者以为 "唯有读书高", 大学以来对 "纯粹的研究" 又有了很多的渴望, 以至于经常会有点看不起 "工程". 但事实上两者也并非绝对的对立, 工业界不见得就比学术界蠢, 从部分学长口中得知学术界的黑暗面又让笔者的 "纯粹的美好" 的幻想破灭. 感慨一年前自己曾说过, 自己的偏见会害死自己, 没想到今天的笔者依然没有改变.
+
+说到底, 为啥确立自己的价值就一定要建立在踩在别人的头上呢? 笔者似乎从小到大从未逃离这个悲伤的因果循环. 无论如何, 还是希望有朝一日, everything must be equal.
+
+不过无论如何, 还是要多看多学多写, 学习点新的东西. 思考的时间太少了.
+
+> misc: 生活就是一个巨大的 asyncio, 笔者没有两个大脑, 笔者只有 DSP (audio) + GPU (vision) + CPU(brain), 如果没有 OS, 那就只能让用户主动做调度, 用 coroutine 实现 user-mode thread-like time sharing.
+
 ## 03/12
 
 今天 11:00 起来. 吃中饭. 然后下午修了一下脚本, 作图. 晚上在新的 setting 下跑了点新数据, 重新做了一张图. 睡前推进了一下签证的事情.
