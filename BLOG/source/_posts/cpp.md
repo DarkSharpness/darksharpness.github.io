@@ -12,6 +12,163 @@ description: 本文是笔者写 C++ 代码得出的一些实践经验，会长�
 
 众所周知, 笔者 (DarkSharpness) 是一个 Modern C++ 的狂热爱好者. 笔者自高中信息竞赛以来, 主力编程语言一直都是 C++, 在大学的学习过程中, 积累了不少的实践经验, 故开一个帖子计划长期维护. 每次更新会在头部显示.
 
+## coroutine
+
+最近 (2025/03/14) 笔者 python 写的非常多, 大量用到了 asyncio, 遂打算写写 C++ 的 coroutine. 其实本来去年就想 mark 一下的, 奈何事情太多了, 再加上太摆了, 拖了很久.
+
+一句话概括, user-level 的 thread, 允许函数在执行过程中任意挂起, 或者恢复执行, 由用户来执行多个函数之间的调度. 当然和 os thread 还是有区别的, 不同实现的 coroutine 也完全不一样. 比如 coroutine 可以分为有栈和无栈. 协程的好处是, 可以在等待某些事件的时候, 主动交出控制权, 并且随后可以恢复当前的状态, 继续执行当前的函数.
+
+由于笔者需要给部分同学讲高级编译器的东西, 所以这里简单讨论一下笔者对两者设计哲学的一些思考.
+
+### stackful coroutine
+
+有栈协程就是堆上 `new` 一块空间来取代当前的 stack pointer (简称 sp, 在 x86 上是 esp, 在 rv 上就是 sp), 在调用 coroutine 的时候把 sp 切过去. 对下面执行的函数来说, 他们几乎不需要做任何改变, 只需在交出控制权/结束执行的时候, 把 sp 切回原来的 sp 即可.
+
+这么做有一个明显的坏处: 这个 coroutine 可能会调用递归函数, 而递归函数需要的栈可能很大, 如果一开始开的不够多, 那么存在爆栈的风险. 笔者能想出以下的解决方案:
+
+1. 一开始开一个 1MB 以上的很大的栈空间, 尽量保证不会爆栈.
+2. 在发现栈空间不够的时候, 主动/被动扩张 (主动: codegen/runtime 插入检查; 被动: 例如在 linux 上, 捕获越界访问的 segfualt)
+
+但是这些方案都有问题. 对于开一个巨大的栈, 首先是在有海量的协程的时候, 内存的占用会非常夸张. 经常听说用协程 + 线程实现 "百万并发", 如果百万个协程每个都有一个 1MB 的栈, 那么总共需要的栈空间需要大约 1TB, 非常不现实. 系统栈一般就一个, 开的很大也无所谓, 但协程显然是不能如此. 其次, 就是究竟多大算是够的一个问题, 这个问题也很烦, 会带来巨大的不确定性, 而笔者认为这对于一个 system design 是不好的.
+
+还有就是动态扩张, 首先主动检查一定会引入运行时开销. 这时候, 被动触发 (类似 page fault 的机制) 一定程度上可以缓解这个 overhead. 同时, 扩张可能会带来栈空间的浪费, 可能在执行完一个递归函数之后, 栈立刻就缩小到很小的值了, 这时候还需要一定的回收机制, 给是实现上带来了不少的挑战. 再次, 扩张还有一个致命的问题: 扩张可能导致 stack 需要迁移到一块新的空间, 因为 stack top 和 stack bottom 附近的空间都已经被申请了, 当前堆段无法扩张, 只能把换一块更大的地方, 这会带来一系列问题:
+
+1. 大量的拷贝会花费巨量的时间. 而且这个开销很难均摊, 巨大的停顿可能类似 GC stop the world.
+2. 迁移的之后, 指向原先的栈空间的指针全部都失效了. 这是最致命的问题, 尤其是没有 runtime 的语言, 你无法知道到底有哪些对象还持有这个空间的指针, 而且基于地址的比较也会失效. 笔者设想过利用 mmap 把原先的栈和新栈 map 到同一个物理页, 但这又带来了一致性问题: 两个虚拟地址对应同一个物理地址. 笔者怀疑 (但是没有证据) 这会给编译器的 memory aliasing 分析带来巨大的难题 (编译器不会管两个 va -> 同一个 pa, 编译器是 oblivious to page table 的, 在判断 memory 相等的时候用的自然是程序看得到的 va).
+
+简而言之, 这些问题笔者认为静态语言无法非常优雅的解决, 这可能也是为啥 C++/Python 并没有选择有栈协程.
+
+> Remark: 笔者也不喜欢 dirty design
+
+在 go 语言里面, 就是通过 go runtime 来支持了有栈协程, 的确这极大的降低了用户的心智负担, 只要 go 就可以启动一个 coroutine, 但是代价就是潜在的 runtime overhead. 在 io 等待时间 dominate 的时候, 这些 overhead 会被等待 io 的时间 overlap 住. 但是一旦并发量起来之后, 潜在的 cost 就不一定藏得住了.
+
+### stackless coroutine
+
+无栈协程, 就是开一块临时空间 frame, 在交出控制权的时候, 把要恢复的时候还会用到的局部变量, 本来要 spill 到 stack 上的, 现在 spill 到 frame 上. 你可能会说: 这和有栈协程有什么区别, 不是还要 spill 吗? 这个 frame 不就是 stack 吗? 你先别急, 我们还是考虑下面这个最简单的递归函数的例子.
+
+```cpp
+auto recursive(int x) {
+    if (x == 0)
+        return 0;
+    return recursive(x - 1) + 1;
+}
+
+auto f(int x) -> coroutine {
+    int y = x * 10;
+    co_return recursive(y);
+}
+```
+
+在有栈的例子中, 后面的 recursive 依然是用你新开的 stack. 但在 stackless version 中, 只有局部变量 `y` 和入参 `x` 是存在新开的 frame 上, 这时候请注意, 你的 stack pointer 依然是原来的 stack. 因此, 在调用 `recursive` 的时候, 用到的还是原来的 stack. 注意到区别没有. 在 stackless 的版本, 你只需要把当前函数的局部变量 spill 到 frame (或者说, 新开的空间) 上, 而调用的子函数不会有任何影响.
+
+这么做自然绕开了 stackful 遇到的几个重大难题, 那么代价呢? 代价就是几乎不能在多层嵌套中随便的交出控制权. 比如还是这个例子, 如果你希望在 `recursive` 调用到最后一层的时候, 先交出一次控制权, 这对于 stackful 非常简单, 保存一下当前的寄存器状态, 然后切换回老的 sp 就行了. 递归的状态都已经自动保存在了新开的 stack 里面. 然而无栈做不到, 无论是 stackless 还是 stackful, 在交还给调用方的时候, 要保证 sp 恢复到原来的位置, 而无栈复用的是原来的 sp, 所以如果想要从递归深层中退出, 就必须每层开一个 frame, 在退出前先保存到自己的 frame 上. 这个就显得非常麻烦了.
+
+### symmetric or asymmetric
+
+笔者最近才知道原来还有对称/非对称协程.
+
+对称的协程, 简单来说就是任何任何一个协程都是平等的, 调度权可以在任意协程之间转移. 而非对称协程则是, 协程只能把调度权交给它的调用者, 从调用者/被调用者这一个角度来看, 其更像是一个一般的函数调用.
+
+### C++ detail
+
+具体还是参考 [cppreference](https://en.cppreference.com/w/cpp/language/coroutines), 感觉写的还是能看. 细节很多.
+
+首先, 最重要的是搞明白 coroutine 对象的生命周期. 合法 coroutine 的对象首先需要一个 promise_type 类, 用来存储 coroutine 产生的结果 (yield, return). 事实上, coroutine 并不会被直接构造, 而是先拿到编译器生成的 `std::coroutine_handle` (其实就是一个存了 frame pointer 的值), 然后通过 promise 的 `get_return_object` 成员函数来返回一个 coroutine, 实际构造的过程发生在这个成员函数内. 只有在拿到了 handle 的情况下, 调用者才能通过 `resume` 恢复 coroutine 的执行. 具体流程如下 (完全参考 cppreference):
+
+1. allocates the coroutine state object using `operator new`.
+2. copies all function parameters to the coroutine state: by-value parameters are moved or copied, by-reference parameters remain references (thus, may become dangling, if the coroutine is resumed after the lifetime of referred object ends).
+3. calls the constructor for the promise object. If the promise type has a constructor that takes all coroutine parameters, that constructor is called, with post-copy coroutine arguments. Otherwise the default constructor is called.
+4. calls `promise.get_return_object()` and keeps the result in a local variable. The result of that call will be returned to the caller when the coroutine first suspends. Any exceptions thrown up to and including this step propagate back to the caller, not placed in the promise.
+5. calls `promise.initial_suspend()` and co_awaits its result. Typical Promise types may return a `std::suspend_always`, for lazily-started coroutines, or `std::suspend_never`, for eagerly-started coroutines.
+6. when `co_await promise.initial_suspend()` resumes, starts executing the body of the coroutine.
+
+主体逻辑就是, 构造一个 frame (即 handle), 构造一个 promise, 把 handle 传给 promise 用来构造一个新的 coroutine 变量, 再这个变量返回给调用方. 需要注意的是类成员返回一个 coroutine (包括 lambda), 这部分可以参考 cppreference 的例子.
+
+```C++
+#include <coroutine>
+#include <iostream>
+ 
+struct promise;
+ 
+struct coroutine : std::coroutine_handle<promise> {
+    using promise_type = ::promise;
+};
+ 
+struct promise {
+    coroutine get_return_object() {
+        return {coroutine::from_promise(*this)};
+    }
+    std::suspend_always initial_suspend() noexcept {
+        return {};
+    }
+};
+
+auto f() -> coroutine {
+    std::cout << "Hello\n";
+    co_return;
+}
+
+auto main() -> int {
+    auto coro = f(); // a coroutine object.
+                     // since the initial suspend is `always`
+                     // "Hello" will not be printed here
+                     // if `never`, then when we reach here,
+                     // "Hello" has been printed.
+}
+```
+
+当然, 除了有 initial 时候的设置, 自然还有生命周期结束时候的设置. 当通过 handle 的 `resume` 到了 coroutine 内部, 并且执行到 `co_return` 的时候, 首先会通过 promise 的 `return_value` 或者 `return_void` 成员函数来存储结果, 并且根据 promise 的 `final_suspend` 成员函数来决定是否要挂起. 但是结束之后的挂起显然是不能再恢复的, 这里的语义发生了一些细微的改变, 表示是否析构掉 promise object, 即调用 handle 的 `destroy` 成员函数.
+
+1. calls `promise.return_void()` for `co_return; co_return expr;` where expr has type void, or calls `promise.return_value(expr)` for `co_return expr`; where expr has non-void type
+2. destroys all variables with automatic storage duration in reverse order they were created.
+3. calls `promise.final_suspend()` and co_awaits the result.
+
+```C++
+#include <coroutine>
+#include <iostream>
+ 
+struct promise;
+ 
+struct coroutine : std::coroutine_handle<promise> {
+    using promise_type = ::promise;
+};
+ 
+struct promise {
+    coroutine get_return_object() {
+        return {coroutine::from_promise(*this)};
+    }
+    std::suspend_always initial_suspend() noexcept { return {}; }
+    std::suspend_always final_suspend() noexcept { return {}; }
+    void return_void() {}
+    void unhandled_exception() {}
+};
+
+auto f() -> coroutine {
+    std::cout << "Hello\n";
+    co_return;
+}
+
+auto main() -> int {
+    auto coro = f(); // a coroutine object.
+                     // since the initial suspend is `always`
+                     // "Hello" will not be printed here
+                     // if `never`, then when we reach here,
+                     // "Hello" has been printed.
+
+    f.resume(); // print "Hello" and reach the end
+                // since we choose `suspend_always`
+                // the promise object is not destructed
+                //
+                // note that the resume member function is inherited
+                // from `std::coroutine_handle<promise>`
+
+    f.destroy(); // since we suspended finally, we need to manually destory
+                 // if `suspend_never`, then we can't call this function
+}
+```
+
+<!-- 再介绍复杂的 `await` 机制之前, 先讲一讲简单的 -->
+
 ## small size optimization
 
 C++ 人最喜欢的一点就是优化性能. 既然要优化性能, 少不了的一点就是数据的局部化. 众所周知, 指针间接访问是一件不太好的事情, 一般来说连续的内存访问显然要好于不连续的, 这是体系结构告诉我们的.
