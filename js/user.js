@@ -1,46 +1,26 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const webBg     = document.getElementById('web_bg');
-    const address   = 'my_blur_state'; // The address of the item.
+"use strict";
 
-    // Read the current state from local storage.
-    let current = localStorage.getItem(address);
-    let button  = document.getElementById('blur_toggle');
+document.addEventListener('DOMContentLoaded', () => {
+    const webBg = document.getElementById('web_bg');
 
-    function toggle() {
-        if (current === 'off') {
-            current = 'on';
-            webBg.style.filter = 'blur(7px)';
-        } else {
-            current = 'off';
-            webBg.style.filter = 'blur(0px)';
-        }
-        localStorage.setItem(address, current);
-    }
+    const on = () => localStorage.getItem('my_blur_state') === 'on';
+    const set = (on) => localStorage.setItem('my_blur_state', on ? 'on' : 'off');
+    const update = () => {
+        webBg.style.filter = `blur(${on() ? 25 : 0}px)`;
+    };
+    const toggle = () => {
+        set(!on());
+        update();
+    };
 
-    function set_listener() {
-        button = document.getElementById('blur_toggle');
-        if (button) {
-            button.addEventListener('click', toggle, false);
-        }
-    }
+    // Initialize the state.
+    webBg.style.animation = 'none'; // Disable the animation.
+    webBg.style.transition = 'filter 1s ease-out';
+    set(on());
+    update();
 
-    function global_init() {
-        // If not set, set the default value.
-        if (current === null) {
-            current = 'off'; // Default off.
-            localStorage.setItem(address, current);
-        }
-
-        // Load for the first time
-        if (current === 'on') {
-            webBg.style.filter = 'blur(0px)';
-            webBg.style.filter = 'blur(7px)';
-        }
-
-        // Set the first listener.
-        set_listener();
-    }
-
-    global_init();
-    document.addEventListener('pjax:complete', set_listener);
+    document.getElementById('blur_toggle')?.addEventListener('click', toggle, false);
+    document.addEventListener('pjax:complete', () => {
+        document.getElementById('blur_toggle')?.addEventListener('click', toggle, false);
+    });
 });

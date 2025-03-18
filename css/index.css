@@ -132,7 +132,6 @@ nav#nav {
 #web_bg {
     background: url(https://s3.bmp.ovh/imgs/2023/12/22/36431d16c60646d1.png) !important;
     background-size: cover !important;
-    transition: filter 0.6s ease;
 }
 
 /* 竖屏背景设置 */
@@ -140,7 +139,6 @@ nav#nav {
     #web_bg {
         background: url(https://s3.bmp.ovh/imgs/2023/12/22/d9d0545f532e058f.png) !important;
         background-size: cover !important;
-        transition: filter 0.6s ease;
     }
 }
 
