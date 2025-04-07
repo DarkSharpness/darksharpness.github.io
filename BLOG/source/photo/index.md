@@ -62,6 +62,8 @@ top_img: https://s3.bmp.ovh/imgs/2023/12/22/3ab69aa9e9b64942.jpg
 
 {% pixiv 112421150 ぢせ https://s3.bmp.ovh/imgs/2023/12/22/1a16727b353555b1.jpg %}
 
+{% pixiv 112663193 MOIEKO https://s3.bmp.ovh/imgs/2025/04/07/52e46b1c151e1b77.jpg %}
+
 {% pixiv 114498589 endlesscat https://s3.bmp.ovh/imgs/2024/01/19/1d88e2436576d55c.jpg %}
 
 {% pixiv 120719040 洗濯船 https://s3.bmp.ovh/imgs/2024/07/27/3a45622b731f9c3d.png %}
