@@ -254,9 +254,89 @@ auto func(int &x, int &y) -> auto & {
 [](const auto &x) { return x; } (1); // lambda, auto deduced as `int`, return `int`.
 ```
 
-## 语法糖
+## 语言特性
 
-众所周知, C++ 这个语言充满了语法盐, 写起来一点都不舒服, 没法像 python 那样写的非常简洁. 真的是这样的吗?
+### inline 和 static
+
+`inline` 和 `static` 都属于是语言中存在很久的关键词了, 早在 C 里面就已经存在. 然而, 很多人对这两个关键词存在一定的误区.
+
+`inline` 关键词 在 C++ 中和所谓的内联优化可以说没有一点关系. 这么说可能比较绝对, 但是为了便于读者区分, 建议读者也这么来理解. `inline` 的作用是告诉编译器, 这个符号允许被多次定义, 即在多个编译单元中出现.
+
+这里首先要铺垫一下, 编译单元是什么. 在传统的算法竞赛题里面, 只有一个 `main.cpp`, 那么编译单元就只有这一个 `main.cpp`. 其他的文件都是被 `#include` 加进来的, 而众所周知, `#include` 其实就是文本替换, 把代码里面的文本复制了进来. 而一般大一点的 C++ 项目, 我们往往会看到一个 `CMakeLists.txt`, 其中经常会列出若干 `cpp` 文件, 例如 `src/1.cpp, src/2.cpp`. 这时候, 其中每个 `.cpp` 都是一个独立的编译单元, 在处理不同的单元的时候, 编译器可以并行编译, 这样在一个多核心的服务器上并行编译可以大大的减少编译的时间. 在多文件编译的时候, 往往编译器先会编译到 `.o` 文件, 然后把多个编译单元生成的多个 `.o` 文件链接为一个二进制可执行文件例如 `.exe`, `.out`. 在这个过程中, 每一个全局变量/函数都会生成一个符号, 其他的编译单元如果调用了一个声明的符号, 需要在链接期间找到符号对应的变量/函数的地址.
+
+如果多个编译单元都看到了某个函数的声明和定义, 那么在编译到 `.o` 的过程中, 这些单元都会把这个函数的符号记下来, 读者可以认为是每个单元都维护了一个符号表 `map`, 而 `map` 里面 `key` 为这个函数名字的一项记录了这个函数的地址 (这是一个不严谨的说法, 请不要细究细节). 而在链接的阶段, 不同的编译单元的符号表需要合并, 但如果合并的时候发现某一个 `key` 有两个对应的记录, 那么就会报错. 事实上, C/C++ 要求最后所有编译单元的结果中, 每个符号 (包括全局变量/函数) 只有一处定义, 这也就是所谓的 **One Definition Rule** (ODR), 即一个函数只能有一个定义.
+
+然而, 很多时候, 对于一些简单的函数, 比如 `int add_1(int x) { return x + 1; }`, 我们想把它放到头文件里面, 而不是某个 `.cpp` 里面. 一般情况下, 当多个编译单元包含了这个文件的时候, 这会违反 ODR. 这时候, 我们就需要用到 `inline` 关键词. `inline` 关键词的作用是, 在一个符号在多个编译单元里面出现时, 编译器随机保留其中的一份, 丢弃其他的. 因为多个编译单元中包括的是同一个头文件, 看到的也是同一个函数的实现 (比如上述例子中的 `add_1`), 因此保留哪一份不会影响正确性. 特别地, C++ 默认类内提供实现的成员函数都是 `inline` 的, ~~所以大家多用面向对象 `struct` 吧~~.
+
+```cpp
+struct MyStructTest {
+    void func() {} // default set as inline, safe to be included in a header.
+    void func2();
+};
+
+// if in .h/.hpp, need to manually add `inline` here, because definition is out of the class
+// if in .cpp, we shouldn't add inline here!
+inline void MyStructTest::func2() {}
+```
+
+`static` 修饰一个 `class` 成员函数/变量比较特殊, 这里讨论的是 `static` 修饰一个全局变量/函数. `static` 要求修饰的这个符号变成内部符号, 即最终这个符号不会对外暴露, 当前编译单元内所有用到这个符号的地方, 都会变成对内部符号的调用. 换句话说, 它不会在最终 `.o` 里面的符号表里面出现. 因此, 别的编译单元无论如何都无法直接调用这一个函数.
+
+总结一下, `inline` 是允许多个定义, 编译器保留其中任意一份, 而 `static` 是让符号变成内部符号, 类似 private, 不再对外暴露. 对于在头文件中提供了定义的全局函数, 笔者建议使用 `inline`. 对于没有在 `.h` 中声明, 仅仅用于当前编译单元 (`.cpp`) 的一些内部辅助函数, 笔者建议使用 `static`. 当然, 同样的概念不仅仅适用于函数, 同样也适用于变量 (需要 C++17). 以下是一些样例代码.
+
+```cpp
+// test.h
+#pragma once
+
+namespace dark {
+
+void func();
+inline void short_func() {};
+
+// declare and define constexpr value in header
+// highly recommended in C++, maybe best practice
+inline constexpr int kZero = 0;
+
+struct Test {
+    // this static just means not a member variable,
+    // but shared by the class `Test`
+    inline static constexpr int kon = 1;
+};
+
+} // namespace dark
+```
+
+```cpp
+// test.cpp
+#include "test.h"
+namespace dark {
+
+static void internal_helper() {}
+
+// do not add static or inline here
+void func() {
+    short_func();
+    internal_helper();
+}
+
+} // namespace dark
+```
+
+```cpp
+// main.cpp
+#include "test.h"
+int main() {
+    dark::func();
+    dark::short_func();
+}
+```
+
+感兴趣的读者可以再自行去了解一下匿名 `namespace` 的概念, 详情请参考 [cppreference](https://en.cppreference.com/w/cpp/language/namespace). 简单来说, 它让其中的所有符号都变成 `static` 的, 非常适合放在 `.cpp` 文件中.
+
+```cpp
+namespace {
+void no_need_to_mark_static() {}
+}
+```
 
 ### for range loop
 
