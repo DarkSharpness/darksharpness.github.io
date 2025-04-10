@@ -338,9 +338,7 @@ void no_need_to_mark_static() {}
 }
 ```
 
-### for range loop
-
-在 C++11 中,
+### using
 
 ### 结构化绑定
 
@@ -356,7 +354,7 @@ struct MyStruct {
 auto [a, b] = tmp; // must use auto
 ```
 
-### C++ if/switch
+### if/switch
 
 ### constexpr/consteval/constinit
 
@@ -653,13 +651,7 @@ Modern C++ 一个突出的特点是, 我们要保证类型安全, 避免危险�
 
 > Remark: 需要 C++17
 
-### 现代的 range 库
-
-> Remark: 需要 C++20
-
-### 直观的 format 库
-
-> Remark: 需要 C++20
+### C++20 speed run
 
 ## 类型和模板的魔法
 
