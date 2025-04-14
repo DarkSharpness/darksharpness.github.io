@@ -40,7 +40,7 @@ code_blocks:
   theme: darker
   macStyle: true
   # Code block height limit (unit: px)
-  height_limit: 400
+  height_limit: 1000
   word_wrap: false
 
   # Toolbar
