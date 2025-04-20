@@ -11,6 +11,20 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法, 最后一段可能会附带对未来几天的日程规划.
 
+## 04/20
+
+11:00 起床. 早上起来先去办信用卡, 出国要用. 下午把 hicache 的 kernel rebuild 了并且把实验跑起来了, 同时稍微研究并配置了 windows terminal. 晚上修了下 xgrammar 那个 PR.
+
+办信用卡搞了半天, 发现银行一个比一个慢, 至少都要 1 个月, 感觉有点来不及了. 最后还是忘带户口本了...
+
+flashinfer 的 kernel 在 loogle 数据集上似乎表现还行, 没有之前笔者测 mooncake trace 的时候那么糟糕, 可能是目前对 prefill kernel 优化的力度还不够 (loogle 的特点是 prefill extend 的 token 非常少, 访存 pattern 类似 decode kernel)?
+
+sharegpt 上的跑了很多测试, 用到了 pensieve 中的一个神奇技巧, 但是实际跑下来并没有想象中效果那么好, 笔者暂时没搞明白原因, 怀疑是自己的 benchmark 代码出锅了, 明天再看看.
+
+晚上在跑实验的时候, 顺便把 xgrammar 那边的 PR 跟进了, 之前已经被催过了, 再咕咕要出事了. 但是遇到了一些非常 tricky 的 bug, 暂时先搁置了.
+
+下午还配了一下 windows terminal, 学到了很多快捷键的使用, 并且安装了 omposh 以及相关字体. 现在远程 linux 中 omz 的主题 p10k 的字体显示也正常了, 可以显示一些特殊的 icon, 非常舒适. 最重要的是可以背景图放可爱的小姐姐了 (笑).
+
 ## 04/19
 
 11:00 起床. 早上起来在床上玩了很久手机. 中午吃好午饭出去散步一圈, 发现家附近的学校正在举行招生活动, 经打听似乎是小升初. 下午回来后先在 nv_h100_2 的机器上重新配置了一套 conda 环境, 因为机器上没有 cuda toolkit. 然后把 hicache 相关的实验跑起来了, 试图验证一下自己的猜想. 同时 xgrammar 那边有人在催 serialize 的进度了, 于是把代码 rebase + 小修改了一波. 晚上弹琴 + 看着跑实验.
