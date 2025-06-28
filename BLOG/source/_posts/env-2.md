@@ -31,7 +31,9 @@ In docker, we need to update and change to first.
 # Now in docker
 apt update
 apt install zsh tmux git ccache ninja-build cmake curl wget vim python3 pip lsb-release software-properties-common gnupg -y
-chsh $USER -s $(which zsh)
+chsh $(whoami) -s $(which zsh)
+# for ubuntu 24.04 image, you may need:
+apt install python3.12-venv
 ```
 
 To use VSCode tunnel, we will need to download VScode and run `./code tunnel` in a seperate terminal.
@@ -75,6 +77,11 @@ code ~/.zshrc
 My python environment.
 
 ```bash
+
+# only on ubuntu 24.04, we can't install in system pip
+python3 -m venv .venv
+source .venv/bin/activate
+
 # Now we need to restart zsh (or source ~/.zshrc)
 # we need to configure p10k...
 # after that, configure python
@@ -101,4 +108,5 @@ wget https://apt.llvm.org/llvm.sh
 chmod +x llvm.sh
 ./llvm.sh 19
 rm llvm.sh
+update-alternatives --install /usr/bin/clangd llvm /usr/bin/clangd-19 100
 ```
