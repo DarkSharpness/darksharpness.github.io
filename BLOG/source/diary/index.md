@@ -13,6 +13,8 @@ generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法,
 
 ## 07/10
 
+> 后补: 以后还是不要拖着消息不回, 拖延逃避问题是不行的, 要么就不看, 要么就看了立刻回.
+
 OSDI/ATC 结束了. 三天的时间, 匆匆忙忙的去了, 又匆匆忙忙的回来了. 在开会期间, 现场听了不少的 talk, 不仅看了 MLsys 的 paper 也把其他 OS 领域的 paper 也浏览了不少. 笔者虽然在熟人中比较 open, 但是遇到不熟的人还是没有足够的勇气. 本来就没有自信, 而且也基本不认识几个人, 导致社交方面几乎 0 进展. 只能说感谢身边的同学属于是那种百科全书般的人物, 带着笔者认识了非常多厉害的人. 笔者加到一半的的微信, 估计都是靠这位同学的功劳.
 
 笔者来参加这个会议, 似乎并不像同学那样比较有目的的社交, 感觉自己反而和各种奇怪的人有交际, 比如认识了旁边调音台的小姐姐和控制录制的大叔, 甚至还学到了在现场调音的时候, 可以通过拧大音量后听 resonance 的点来调整. 虽然 MLsys 是笔者最感兴趣的 topic, 但笔者自己去聊的时候反而是各种 static analysis 聊的最多, 比如和 [OSDI 一篇 best paper](https://www.usenix.org/conference/osdi25/presentation/schuermann) 的作者在第一天 poster night 的各种讨论, 还有和一篇笔者觉得 "这也能中" 的 [ATC paper](https://www.usenix.org/conference/atc25/presentation/landsberg) 作者和其他人的讨论.
