@@ -169,7 +169,7 @@ subtitle:
   # Choose: false/1/2/3
   # false - disable the function
   # 1 - hitokoto.cn
-  # 2 - yijuzhan.com
+  # 2 - https://api.aa1.cn/doc/yiyan.html
   # 3 - jinrishici.com
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
@@ -406,6 +406,9 @@ rightside_item_order:
   hide:
   # Default: toc,chat,comment
   show:
+
+# Animation for the bottom right config button
+rightside_config_animation: true
 
 # --------------------------------------
 # Global Settings
@@ -704,6 +707,12 @@ umami_analytics:
     # Umami Cloud (API key) / self-hosted Umami (token)
     token:
 
+# https://www.googletagmanager.com/
+google_tag_manager:
+  tag_id:
+  # optional
+  domain:
+
 # --------------------------------------
 # Advertisement
 # --------------------------------------
@@ -991,17 +1000,12 @@ snackbar:
 # https://instant.page/
 instantpage: true
 
-# Pangu - Insert a space between Chinese character and English character
-# https://github.com/vinta/pangu.js
-pangu:
-  enable: false
-  # Specify the field to use pangu (site or post)
-  field: site
-
 # Lazyload
 # https://github.com/verlok/vanilla-lazyload
 lazyload:
   enable: true
+  # Use browser's native lazyload instead of vanilla-lazyload
+  native: true
   # Specify the field to use lazyload (site or post)
   field: site
   placeholder:
@@ -1030,6 +1034,10 @@ Open_Graph_meta:
     # google_plus:
     # fb_admins:
     # fb_app_id:
+
+# Structured Data
+# https://developers.google.com/search/docs/guides/intro-structured-data
+structured_data: true
 
 # Add the vendor prefixes to ensure compatibility
 css_prefix: true
