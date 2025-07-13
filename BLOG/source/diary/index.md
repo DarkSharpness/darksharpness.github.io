@@ -11,6 +11,14 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法, 最后一段可能会附带对未来几天的日程规划.
 
+## 07/12
+
+今天 11 点其, 下午去 lab, 看了点 RL 的东西, 把自己关于 fault tolerance 的全部 idea 都 dump 出来了. 晚上同学来玩, 逛了逛 lab, 去找了家中餐馆吃了一顿.
+
+fault tolerance 笔者感觉能想到基本都已经 dump 出来了, 剩下的就是一些 modeling 了. RL 那边还需要更多的 profiling, 主要是不清楚 gain 从哪里来, 可能还需要多思考一点.
+
+观后感又忘记写了, 今天先开一个 post 吧 lol.
+
 ## 07/11
 
 今天 11 点起, 下午把 RL 的东西正确性调过了, TP 输出的 logits 暂时是没问题了, 一个 all_reduce 漏了恶心了笔者半天.

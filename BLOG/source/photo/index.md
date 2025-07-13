@@ -56,6 +56,8 @@ top_img: https://s3.bmp.ovh/imgs/2023/12/22/3ab69aa9e9b64942.jpg
 
 {% pixiv 105205295 かめぱすた <https://s2.loli.net/2025/07/11/54pNUfdTJlqFnxL.jpg> %}
 
+{% pixiv 107608833 彩咲れいか <https://s2.loli.net/2025/07/13/EWPTKHYAu3XvaIk.jpg> %}
+
 {% pixiv 108108616 かららげつね@FANBOX <https://s2.loli.net/2025/06/27/MW5js87vLXJgklo.png> %}
 
 {% pixiv 108970342 Primavista <https://s3.bmp.ovh/imgs/2023/12/22/403f04fec31e5b99.jpg> %}
