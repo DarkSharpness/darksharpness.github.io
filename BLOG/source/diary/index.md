@@ -11,6 +11,12 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法, 最后一段可能会附带对未来几天的日程规划.
 
+## 07/16
+
+今天 11 点起. 下午把 balance TP 写了. 晚上把 cuda-graph 支持了, 调过了 TP=1 的正确性, 性能目前看起来有点高的不太对劲.
+
+明天计划研究 dp-attn 啥的, 睡前做了一个小实验, 发现 fa 并不要求 kv cache 是 contigious 的, 后续可以直接尝试在这上面实现 dp-attn 以及 backup attn.
+
 ## 07/15
 
 今天 11 点起. 下午在 lab 研究了 non-uniform TP, 并且实现了相关的代码. 晚上调好了相关的性能问题, 并且修好了正确性问题.
