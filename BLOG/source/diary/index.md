@@ -11,6 +11,30 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法, 最后一段可能会附带对未来几天的日程规划.
 
+## 07/28
+
+两周过去了. 经过不懈的努力, 笔者完成了一个 mini sglang 的框架. 目前支持 feature:
+
+1. Normal TP
+2. Non-uniform TP
+3. cuda graph
+4. Paged KV Cache (but size = 1)
+5. overlap schedule
+6. continuous batching
+7. paged attention (use fa3 backend)
+8. chunked prefill
+9. OpenAI frontend
+10. dp-attention
+11. custom all reduce
+
+第一次体验到了自己写框架的快感, 算是对于过去一年 MLsys 所学的总结. 虽然笔者还是不会写 cuda kernel (至少写不出 fa 那种级别的), 但是至少简单的通信算子, 还有 C++ 层对 PyTorch 的 hacking 都已经了如执掌了. 真的自己写一遍, 才能加深对于各个 feature 的理解, 也才能体会到原来各种开山之作, 方法其实无比简单, 这也更加体现了 writing 的重要性.
+
+今天突然机器挂了, 正好有点时间来补日记 lol. 后面日记会恢复更新了.
+
+突然发现有想法还是得赶紧记录下来, 当时从 OSDI 回来, 突然有写关于 Ave Mujica 的日记的冲动, 但是现在那份情绪完全消失了... 当时只觉得这个片子虽然做的不是很完美, 但是笔者依然从角色的身上看到了自己的影子, 一股说不上来的既视感. 一个作品, 最终还是要传达作者的想法, 而每个人也终归是要从中获取一些什么的.
+
+无论如何, 这周得把年度总结开始写起来了, 如果有空的话, 可以写一些自己的 mini LLM 的心路历程. 在过去两周的疯狂之前被忘却之前, 用文字把它记录下来吧. 今天的话, 笔者还是想早点睡觉吧. 过去两周作息过于不健康了, 还是应该中和一下了, 多活几年总是好的.
+
 ## 07/16
 
 今天 11 点起. 下午把 balance TP 写了. 晚上把 cuda-graph 支持了, 调过了 TP=1 的正确性, 性能目前看起来有点高的不太对劲.
