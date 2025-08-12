@@ -64,7 +64,7 @@ y = F.embedding(x, weight)
 return y
 ```
 
-在 TP 的时候, 我们的做法是吧不同的 index 的 vector 分配到不同的机器上. 比如 TP=2 的时候, 我们会把前一半的 embedding vector 放在第一个 GPU 上, 后一半的 embedding vector 放在第二个 GPU 上. 假如我们要的 token id 比 $\frac{\text{vocab-size}}{2}$ 要小, 那么我们会从第一个 GPU 上取, 否则我们会从第二个 GPU 上取. 需要注意的是, 我们并没有切开 weight 的 $d$ 维度, 这也意味着每一个 vector 要么不在机器上, 要么就是完整的在一台机器上, 不会存在某个 token id 对应的 vector 横跨两台机器. 一个参考实现如下:
+在 TP 的时候, 我们的做法是把不同的 index 的 vector 分配到不同的机器上. 比如 TP=2 的时候, 我们会把前一半的 embedding vector 放在第一个 GPU 上, 后一半的 embedding vector 放在第二个 GPU 上. 假如我们要的 token id 比 $\frac{\text{vocab-size}}{2}$ 要小, 那么我们会从第一个 GPU 上取, 否则我们会从第二个 GPU 上取. 需要注意的是, 我们并没有切开 weight 的 $d$ 维度, 这也意味着每一个 vector 要么不在机器上, 要么就是完整的在一台机器上, 不会存在某个 token id 对应的 vector 横跨两台机器. 一个参考实现如下:
 
 ```python
 mask = (x >= vocab_start_idx) & (x < vocab_end_idx)
@@ -78,6 +78,31 @@ return y
 在这段代码中, 每个 TP rank 存的是 $[\text{vocab-start-idx}, \text{vocab-end-idx})$ 这一段的 vector, 因此我们会 mask 掉其他的 embedding 操作, 对于不在当前 rank 的 indexing, 我们会将值 mask 为 0. 最后, 我们会对输出做 all reduce. 因此最后我们要的值一定存在且只存在于其中某个 rank 上, 所以最后的加和就是正确的 embedding 的值.
 
 ### FFN
+
+FFN 本质就是两个 linear 操作加上一个激活函数, 激活函数大部分也都是线性的, 所以这里仅讨论 linear 部分的处理, 即矩阵乘法. 在使用了摊平 batch 的方法后, 输入部分就是一个 $[n, d]$ 的二维矩阵. 对于非 TP 的情况, 我们直接用 torch 自带的 linear 函数即可.
+
+```bash
+import torch.nn.functional as F
+# shape info:
+# x: [n, d]
+# up_proj [D, d]
+# down_proj [d, D]
+# y: [n, D]
+# z: [n, d]
+y = F.linear(x, up_proj)
+z = F.linear(y, down_proj)
+return y
+```
+
+需要注意的是, `F.linear` 传入的 weight 是一个事先就已经转置好的矩阵, 这样矩乘效率会更高一点.
+
+在 TP 的时候, 我们每一层的输入输出在每个 TP rank 上都是一样且完整的 $[n, d]$. 在过 FFN 的时候, 我们会把 intermediate dimension $D$ 拆开 (一般来说 $D > d$, 所以叫做 `up_projection` 和 `down_projection`). 对于正常的 TP, 我们都会要求 GPU 总数量 $N$ 可以整除 $D$. 此时, 每个 $TP_rank$ 会持有一部分 `up_proj` $[\frac{D}{N}, d]$ 以及 `down_proj` $[d, \frac{D}{N}]$.
+
+在经过 `up_proj` 之后, 每个 rank 只会持有一部分权重 $y_i$, 维度 $[n, \frac{D}{N}]$, 需要将所有 $GPU$ 的 $y$ 拼起来才能得到完整的 $y$. 但是, 为了减少通信次数, 我们可以将不完整的权重先过完 `down_proj`. 此时, 所有 rank 上得到的 $z_i$ 维度都是 $[n, d]$, 而根据分块矩阵乘法的知识可知, 此时完整的 $z$ 应该是所有的 $z_i$ 的和, 因此我们需要经过 all-reduce 操作. 这里的 all-reduce 是常见 collective operation 的一种, 详情可见 [NCCL 对于 collective operation 的介绍](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html).
+
+下面是从 PyTorch 教程里面偷来的 Megatron 关于 TP 的 MLP (也就是 FFN) 的分析, 图比较直观, 读者可以自行用 $N = 2$ 的例子来验证最后输出的值 $Z$ 确实应该是 $\sum Z_i$.
+
+![TP from megatron](https://docs.pytorch.org/tutorials/_images/megatron_lm.png)
 
 ## Backend engine
 
