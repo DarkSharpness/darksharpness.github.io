@@ -25,3 +25,5 @@ description: Lily White in U.S.
 ![My home on 07/11](https://s2.loli.net/2025/07/11/jICRHXxUeuam37v.jpg)
 
 ![Lily in sky lab on 08/12](https://s2.loli.net/2025/08/13/5fKeY96SwOGqgiM.jpg)
+
+![Lily in sky lab on 08/12](https://s2.loli.net/2025/08/13/KBfCsdrk39bZhyi.jpg)
