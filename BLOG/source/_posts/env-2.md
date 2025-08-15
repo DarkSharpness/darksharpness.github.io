@@ -63,15 +63,18 @@ git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerl
 code ~/.zshrc
 
 # find and set as following:
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-# plugins=(
-#  git
-#  gitfast
-#  zsh-autosuggestions
-#  zsh-syntax-highlighting
-#  z
-#  uv
-#)
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(
+  git
+  gitfast
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  z
+  uv
+)
+
+# For a colorful terminal, you might need:
+export TERM="xterm-256color"
 ```
 
 My python environment.
@@ -106,7 +109,14 @@ My C++ environment (no need to set up things like `--query-driver` in docker).
 # we need to set up clangd for C++ development
 wget https://apt.llvm.org/llvm.sh
 chmod +x llvm.sh
-./llvm.sh 19
+./llvm.sh 19 all # add all if u just want all llvm packages
 rm llvm.sh
-update-alternatives --install /usr/bin/clangd llvm /usr/bin/clangd-19 100
+update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-19 100 \
+    --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-19
+```
+
+For sglang, you might need:
+
+```bash
+apt install libnuma-dev libnuma1 -y
 ```
