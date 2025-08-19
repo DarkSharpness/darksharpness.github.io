@@ -45,10 +45,13 @@ mkdir vscode
 cd vscode
 curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz
 tar -xf vscode_cli.tar.gz
+
+# Before tmux, we may set up ~/.tmux.conf
+set -g mouse on
+
 # Now in tmux, we set up VSCode tunnel :)
 tmux
 ./code tunnel
-# Ctrl + B and then D, we leave tmux
 ```
 
 This is my customized zsh.
@@ -75,6 +78,9 @@ plugins=(
 
 # For a colorful terminal, you might need:
 export TERM="xterm-256color"
+
+# Bind ctrl + backspace to kill one word
+bindkey '^\b' vi-backward-kill-word
 ```
 
 My python environment.
@@ -119,4 +125,44 @@ For sglang, you might need:
 
 ```bash
 apt install libnuma-dev libnuma1 -y
+```
+
+My vimrc (stolen from [this link](https://github.com/hnyls2002/setup/blob/master/.vimrc)).
+
+```bash
+set cindent
+set number
+set autoindent
+set smartindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set backspace=2
+set mouse=a
+set cursorline
+set cursorcolumn
+set clipboard=unnamed
+set hlsearch
+set wrap
+
+" Make the search case insensitive
+set ignorecase
+" But make them case-sensitive if they include capitals
+set smartcase
+
+map <C-h> 5h
+map <C-j> 5j
+map <C-k> 5k
+map <C-l> 5l
+imap jk <Esc>
+
+map <C-a> ggVG
+imap <C-a> ggVG
+
+map <F3> : w<CR>:!python3 %<CR>
+
+let g:powerline_loaded=1
+
+" Use Ctrl-H to delete the previous word in insert mode
+inoremap <C-H> <C-W>
 ```
