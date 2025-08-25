@@ -11,6 +11,14 @@ top_img: https://s3.bmp.ovh/imgs/2025/01/25/d7b288b3d680c345.png
 
 generally, 每天的第一段是笔者做了什么, 后面都是笔者的想法, 最后一段可能会附带对未来几天的日程规划.
 
+## 08/24
+
+两周过去了. 在 21 号激烈的肝完了 hicache paper 的实验后, 暂时可以喘一口气了.
+
+似乎没有太多的想法可以宣泄. 本来这里很适合自闭的笔者发牢骚, 但最近似乎真的已经没有什么想法了. 或者说, 算是人麻了. 可能是一个人在这种鬼环境呆太久了, 已经失去想要改变生活的动力了, 确实有点自闭... 稍微有点悲哀.
+
+今天混进去了 HotChips, 听了 3 个 talk. 第一位是做 ML compiler 的老哥 Fredrik Kjolstad, 介绍了一下 ML compiler 的一些设计理念, 比如 algorithm 与调度的分离, 然后也拿经典 Halide 作为 case study 分析了一些代码. 第二位是大名鼎鼎的 Flash Attention 的作者 Tri Dao, 今天主要介绍的 CuTeDSL, 介绍了 CuTeDSL 实现的 softmax, GEMM, attention 等 kernel 的 performance, 看起来还是非常诱人的. 不过笔者感觉 CuTeDSL 只是 cuda programming 的一些封装, 把之前很多必须用 cuda C++ 甚至汇编写的常见 intrinsics 封装成了函数. 不过如果能让代码更加容易编译运行 (比起愚蠢的 C++), 用 Python 中的 DSL 的方式来呈现, 也算是帮 kernel 工程师省去了不少的功夫, 还是非常有实用价值的, 只是感觉没有什么特别的创新. 有意思的是, 在演讲中, Tri Dao 在分析 attention 的时候拿出了 FA4 的性能图, 看来这玩意应该也是快发布了. 最后是老熟人 Zhihao Jia. 上次在 OSDI 就见过一面, 这次还是介绍一些老工作. 前半段讲的是 inter-device parallism 的部分, 用的是 flexflow 来自动探索并行方案, 思路大致是提出方案 + 模拟器 feedback. 后半段是 intra-device parallism, 介绍的是 Mirage, method 是 fuse 成巨大的 mega kernel, 在一个 kernel (其中的一部分 warp) 内完成调度, 将复杂的 ML pipeline 融合到一个 kernel 里面. 演讲的时候介绍的是用 event 表示依赖关系节点 (event-driven), 不过笔者在想这样是否能够 handle 一些复杂的 case 比如 communication 和 computation 的 fusing, 以及笔者也比较好奇这样 fuse 成为一个巨大的 kernel 会不会给 register 和 shared memory 带来一些巨大的压力, 导致性能 degrade (参考 FA3 有很多 tuning), 当然这只是工程实现上的一些考量.
+
 ## 08/12
 
 今天去 Berkley 玩了.
