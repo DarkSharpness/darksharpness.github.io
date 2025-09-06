@@ -40,17 +40,17 @@ description: sglang, 但是极简版.
 
 我们可以简单的把 LLM 看作一个 function $f$, 那么实际上我们输入就是 $x$, 输出 $y=f(x)$. 其中 $x$ 的维度是 $[\text{seq-len}]$, 每个元素的取值范围是 $0 \sim \text{vocab-size}$, $y$ 的维度是 $[1]$, 每个元素的取值范围同 $x$. 下一轮的输入就是把 $y$ 拼接到 $x$ 的后面, 维度是 $\text{seq-len} + 1$.
 
-在有 batching 的时候, 传统 DL model 的做法是新增一个维度, 在我们的例子里就是输入 $x$ 的维度变成 $[2, \text{seq-len}]$. 但是在 LLM serving 中, 不同请求的输入的长度是不一样的. 这时候, 一个比较暴力的做法就是 padding, 即我们取输入长度为 $\max(\text{seq-len})$, 但这样几乎不可避免会带来一些计算上的浪费.
+在有 batching 的时候, 传统 DL model 的做法是新增一个维度, 在我们的例子里就是输入 $x$ 的维度变成 $[2, \text{seq-len}]$. 但是在 LLM serving 中, 不同请求的输入的长度是不一样的. 这时候, 一个比较暴力的做法就是 padding, 即我们取输入长度为 $\max(\text{seq-len})$, 维度就是 $[2, \max(\text{seq-len})]$, 但这样几乎不可避免会带来一些计算上的浪费, 尤其是一些动态性非常强的 workload (既有长输入的请求, 也有短输入的请求).
 
 这时候, 一个比较优雅的 solution 是: 我们把输入摊平. 假设输入有 $x_1, \cdots, x_n$, 他们的长度分别是 $l_1, \cdots, l_n$, 那么我们把它拼起来, 直接合成一个大 $X$, 它的长度是 $\sum_{i=1}^{n} l_i$. 这样, 我们就没有一点计算是多余的.
 
-这个方法看起来很简单, 实际上会有一些工程上的 trick. 幸运的是, LLM 常见的 kernel, 大部分很容易就能支持这个操作. 比如矩阵乘法操作 $A \times B$, 本质上是对于 $A$ 的行向量和 $B$ 的每个列向量做内积. 这时候, 你把不同请求的矩阵 $A_i$, 沿着列的维度拼接起来得到形如 $[A_1^T, \cdots, A_n^T]^T$ 的 $A$, 那么 $A \times B$. 此时等价于对于每个 $A_i$ 分别做乘法.
+这个方法看起来很简单, 实际上会有一些工程上的 trick. 幸运的是, LLM 常见的 kernel, 大部分很容易就能支持这个操作. 比如矩阵乘法操作 $A \times B$, 本质上是对于 $A$ 的行向量和 $B$ 的每个列向量做内积. 这时候, 你把不同请求的矩阵 $A_i$, 沿着列的维度拼接起来得到形如 $[A_1^T, \cdots, A_n^T]^T$ 的 $A$, 那么 $A \times B$. 此时等价于对于每个 $A_i$ 分别做乘法, 即 $[A_1^T B, \cdots, A_n^T B]$, 这是分块举证告诉我们的.
 
-唯一比较 tricky 的部分是 attention kernel. 它是一个取决于每个请求 tokens 数量的 kernel, 并不像 linear kernel, 没有良好的线性性质. 不过幸运的是, 伟大的 flash attention 和 flashinfer 都提供了类似 `flash_attn_with_varlen` 的接口, 支持直接用拼接起来的 $q, k, v$ 计算.
+唯一比较 tricky 的部分是 attention kernel. 它是一个取决于每个请求 tokens 数量的 kernel, 并不像 linear kernel, 没有良好的线性性质. 不过幸运的是, 伟大的 flash attention 和 flashinfer 都提供了类似 `flash_attn_with_varlen` 的接口, 支持直接用拼接起来的 $q, k, v$ 计算. 具体来说, 我们把沿着 $\text{seq-len}$ 维度拼起来的 $q, k, v$, 以及每一段的长度以特定格式喂给 flash attention 或者 flashinfer 的接口, 即可得到每个 query 对应的输出了.
 
 因此, 我们的 batching 思路就非常简单: 首先选出一些请求, 然后把这些请求的 tokens 拼接起来, 直接作为模型的输入, 最后得到输出后再把结果拆开来. (当然实际上我们有 KV Cache, 因此我们只需要把每个请求不在 KVCache 中的那部分后缀 tokens, 对于 decode 每个请求的这部分 tokens 长度是 1).
 
-### Embedding layer
+### Embedding Layer
 
 首先分析单机的 Embedding layer. Embedding layer 的作用是, 把 tokenize 后的 ID (可以理解为 list of int) 转换为 embedding vector. 在单机上, 这其实就是一个根据 token ID 的值, 从一个 embedding vector list 中索引并且复制到输出的 tensor 里面.
 
@@ -100,9 +100,56 @@ return y
 
 在经过 `up_proj` 之后, 每个 rank 只会持有一部分权重 $y_i$, 维度 $[n, \frac{D}{N}]$, 需要将所有 $GPU$ 的 $y$ 拼起来才能得到完整的 $y$. 但是, 为了减少通信次数, 我们可以将不完整的权重先过完 `down_proj`. 此时, 所有 rank 上得到的 $z_i$ 维度都是 $[n, d]$, 而根据分块矩阵乘法的知识可知, 此时完整的 $z$ 应该是所有的 $z_i$ 的和, 因此我们需要经过 all-reduce 操作. 这里的 all-reduce 是常见 collective operation 的一种, 详情可见 [NCCL 对于 collective operation 的介绍](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html).
 
-下面是从 PyTorch 教程里面偷来的 Megatron 关于 TP 的 MLP (也就是 FFN) 的分析, 图比较直观, 读者可以自行用 $N = 2$ 的例子来验证最后输出的值 $Z$ 确实应该是 $\sum Z_i$.
+下面是从 PyTorch 教程里面偷来的 Megatron 关于 TP 的 MLP (也就是 FFN) 的分析, 图比较直观, 读者可以自行用 $N = 2$ 的例子来验证最后输出的值 $Z$ 确实应该是 $\sum Z_i$, 这也是分块矩阵乘法告诉我们的.
 
 ![TP from megatron](https://docs.pytorch.org/tutorials/_images/megatron_lm.png)
+
+### Attention Layer
+
+Attention 正如前面讲过的, 我们可以把 batch 里面的 $q, k, v$ 一起喂给对应的 flash attention 或 flashinfer 实现的 kernel, 这里我们把具体 kernel 实现叫做 attention backend.
+
+#### KVCache
+
+在 LLM serving 中, 一个重要的优化是 KV-Cache, 这是因为 causal masking 使得每个 token 的 $K$ 和 $V$ 只和过去的 token 有关.
+
+具体来说, 为了生成第 $i$ 个 token, 我们需要过去的 $[q_i k_1, q_i k_2, \cdots, q_i k_i]$, 对它做 softmax 后, 再和 $[v_1, \cdots, v_i]$ 做内积. 实际我们依赖的是 $q_i$ 和 $k_1, \cdots k_n$ 和 $v_1 \cdots v_n$, 在这个过程中 $q_i, k_i, v_i$ 都是根据这轮输入新生成的. $k_i$ 和 $v_i$ 只会依赖过去的 token (i.e. 下标不超过 $i$ 的结果的影响), 因此我们可以把对应的 $k_i$ 和 $v_i$ 给 cache 起来.
+
+这么讲可能会非常抽象, 笔者在这里强烈建议读者手推一下 KVCache 的原理, 本文就不过多赘述了.
+
+如果你暂时不理解, 那也没关系. 作为一个 system 人, 你只需要知道: 完整的计算第 $i$ 个 token, 需要过去前 $i - 1$ 轮的 $k$ 和 $v$ 向量, 以及这一轮根据输入 token 新生成的 $k_i$ 和 $v_i$ 和 $q_i$. 因此, 一个 naive 的 idea 就是: 我们可以把过去的 $k$ 和 $v$ 全部都收集起来. 在第一次收到一个长度为 $n$, 我们可以一口气生成 $k_1, \cdots, k_n$ 以及 $v_1, \cdots, v_n$. 在生成完第 $n$ 个 token, 开始生成第 $n + 1$ 个 token 的时候, 因为过去的 $k$ 和 $v$ 我们都 cache 住了, 我们只需要重新生成 $k_{n+1}$, $q_{n+1}$ 和 $v_{n+1}$, 然后计算 attention.
+
+可以看到, 我们现在计算 attention 分为了两个阶段:
+
+1. 预处理前 $n$ 个 token 的 $k$ 和 $v$, 同时生成第 $n$ 个 token.
+2. 生成新的 $k_{n + 1}$ 和 $v_{n+1}$, 同时生成第 $n + 1$ 个 token.
+
+第一阶段就被称作 **Prefill**, 而第二个阶段被称作 **Decode**. 很显然, 第二个阶段的计算量要远远小于第一个阶段.
+
+#### Paged KVCache
+
+根据前文分析, 我们利用了 causal mask + attention 的数学性质, 可以用 KVCache 来加速生成 $token$. 我们也因此分成了 Prefill 和 Decode 两个阶段.
+
+然而, 这带来了一些新的问题: decode 的时候, 常规的 attention 实现, 比如 `flash_attn_with_varlen`, 要求 $k$ 和 $v$ 存储是连续的. 但是我们 $k_i$ 和 $v_i$ 的时候都是一个一个生成的. 类比 C++, 我们每次会新增一个元素, 并且我们要求元素连续存储. 你会想到什么: `std::vector`! 只要用倍增的方法, 我们就可以解决了, 至多一倍的浪费.
+
+但是呢, 事情并没有这么简单, 管理内存, 一个逃不开的问题就是: 内存碎片化. 一旦运行久了, 就容易出现碎片空余总和可能有 $n$ 那么多, 但你找不到一块连续的 $n$... 传统算法中有数不尽的相关 memory management 的 paper, 开源社区也有各种 malloc 实现, 问题看起来陷入死局.
+
+事实上, 类似的 memory management 难题不仅在用户态程序存在, 对于操作系统 OS 也是存在的. 那么, OS 是怎么缓解这个问题的呢? 答案是 paging. 在通常的操作系统中, 我们给每个 4096 byte 对齐的连续空间称作一个 page, 然后会用页表来管理内存. 这样的好处是, 任何是 4096 整数倍的资源分配, 我们都可以保障 0 内存浪费. 同时, 页表也保证了 virtual address 看起来是连续的, 即使实际读写的 physical page 大概率并不连续.
+
+> 笔者注: 实际维护 $N$ 个页的页表还有一个 O(N) 的表的开销, 但是它的开销反比于 page size, 因此服务器内存管理有时候也会借助 huge page, 一个 page 占 2M 甚至 1G, 来减小页表管理的 memory 和 TLB overhead.
+
+这对我们的启发是, 我们也可以用 paging 的思想来节约显存 (GPU 的内存). 从硬件的角度, 我们可以修改 GPU 的 page table 实现. 当然, 调用硬件底层 API 很多时候相比软件方法还是会过于晦涩, 且不具有可拓展性. 在经典的 MLsys paper vLLM 中, 我们使用的就是软件管理的 paged KVCache. 具体来说, 我们一开始开好一个 memory pool, 在 attention kernel 里面读取 $k_i$ 和 $v_i$ 的值的时候, 先通过一个 table $t$ 查找真实的 $k$ 和 $v$ 在 memory pool 中真实的位置, 这类似于一个二级索引操作, 即 $k_{t[i]}$ 和 $v_{t[i]}$.
+
+当然, 我们也可以自主调节 page size. 在 LLM serving 中, page size = $n$ 意味着对于任意 $n \cdot k, n \cdot k + 1, \cdots, n \cdot k + n - 1$, 这些 token 真实存储的位置必须是连续的. 不过, 在 LLM inference kernel 高度优化过的今天, paging 带来的 overhead 以及可以几乎忽略不计了, 不同 page size 之间的性能差异已经很小了.
+
+#### Radix KVCache
+
+我们已经讨论了 KVCache, 以及 paged KVCache. 重新回顾一下 KVCache, 对于每个 $k_i$ 和 $v_i$, 它只会依赖于过去的 $k$ 和 $v$, 也就是由过去 $i$ 个 token 生成的 $k$ 和 $v$. 也就是说, 第 $i$ 个 $k_i, v_i$ 会依赖于第 $1, \cdots, i$ 个token.
+
+那么, 我们是不是可以复用一些缓存呢? 既然每个 $k$ 和 $v$ 都是 condition on 它的前缀, 那么只要两个请求, 它们的前缀是一样的, 那么它们生成的 $k$ 和 $v$ 也一定是一样的. (不过输出之前, 需要 sampling, 会引入一些随机性, 导致生成的第 $i$ 个 token 对两个请求可能是不一样的). 这就是 Prefix Caching.
+
+实际上, 我们都不需要前缀完全 match, 只要我们输入的前缀有一部分匹配到了过去某个请求前缀 tokens, 那我们就可以复用这部分. 例如, 假如一个请求前缀 tokens 是 $[0, 1, 2, 3]$, 过去某个请求的前缀 tokens 是 $[0, 1, 2, 4, 3]$, 那我们可以复用其中 $[0, 1, 2]$ 的部分, 从而尽可能减少计算量.
+
+关于这一个优化, 一个比较著名的工作是 SGLang, 可惜居然没中 OSDI, 有点可惜.
 
 ## Backend engine
 
