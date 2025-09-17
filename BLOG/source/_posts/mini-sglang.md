@@ -137,9 +137,9 @@ Attention 正如前面讲过的, 我们可以把 batch 里面的 $q, k, v$ 一�
 
 > 笔者注: 实际维护 $N$ 个页的页表还有一个 O(N) 的表的开销, 但是它的开销反比于 page size, 因此服务器内存管理有时候也会借助 huge page, 一个 page 占 2M 甚至 1G, 来减小页表管理的 memory 和 TLB overhead.
 
-这对我们的启发是, 我们也可以用 paging 的思想来节约显存 (GPU 的内存). 从硬件的角度, 我们可以修改 GPU 的 page table 实现. 当然, 调用硬件底层 API 很多时候相比软件方法还是会过于晦涩, 且不具有可拓展性. 在经典的 MLsys paper vLLM 中, 我们使用的就是软件管理的 paged KVCache. 具体来说, 我们一开始开好一个 memory pool, 在 attention kernel 里面读取 $k_i$ 和 $v_i$ 的值的时候, 先通过一个 table $t$ 查找真实的 $k$ 和 $v$ 在 memory pool 中真实的位置, 这类似于一个二级索引操作, 即 $k_{t[i]}$ 和 $v_{t[i]}$.
+这对我们的启发是, 我们也可以用 paging 的思想来节约显存 (GPU 的内存). 从硬件的角度, 我们可以修改 GPU 的 page table 实现. 当然, 调用硬件底层 API 很多时候相比软件方法还是会过于晦涩, 且不具有可拓展性. 在经典的 MLsys paper vLLM 中, 我们使用的就是软件管理的 paged KVCache. 具体来说, 我们一开始开好一个 memory pool, 在 attention kernel 里面读取 $k_i$ 和 $v_i$ 的值的时候, 先通过一个 table $t$ 查找的 $k$ 和 $v$ 在 memory pool 中真实存储的位置, 这类似于一个二级索引操作, 即 $k_{t[i]}$ 和 $v_{t[i]}$.
 
-当然, 我们也可以自主调节 page size. 在 LLM serving 中, page size = $n$ 意味着对于任意 $n \cdot k, n \cdot k + 1, \cdots, n \cdot k + n - 1$, 这些 token 真实存储的位置必须是连续的. 不过, 在 LLM inference kernel 高度优化过的今天, paging 带来的 overhead 以及可以几乎忽略不计了, 不同 page size 之间的性能差异已经很小了.
+当然, 我们也可以自主调节 page size. 在 LLM serving 中, page size = $n$ 意味着对于任意 $n \cdot k, n \cdot k + 1, \cdots, n \cdot k + n - 1$, 这些 token 真实存储的位置必须是连续的. 不过, 在 LLM inference kernel 高度优化的今天, paging 带来的 overhead 以及可以几乎忽略不计了, 不同 page size 之间的性能差异已经很小了.
 
 #### Radix KVCache
 
@@ -151,7 +151,19 @@ Attention 正如前面讲过的, 我们可以把 batch 里面的 $q, k, v$ 一�
 
 关于这一个优化, 一个比较著名的工作是 SGLang, 可惜居然没中 OSDI, 有点可惜.
 
+#### TP attention
+
+在标准的 TP 中, attention 的计算类似 FFN, 也会拆分到不同 rank 上. attention 的操作比较简单, 它的结果类似 FFN, 也是不同的部分和做 reduce (求和) 操作. 在这里, 我们是对不同的 attention head 计算出来的值作 reduce. 对于 GQA 的模型, 这里就要拆分 key-value head. 比如 Llama-3.1-70B 的模型有 8 个 key-value head, GQA ratio 是 8, 那么开启 TP=4, 就是每个 rank 负责 2 个 key-value attention 的计算 (GQA ratio 不会改变, 依然是每个 key-value attention 对应 8 个 query). 最后在每个 rank 都计算完后, 我们会执行 all-reduce, 把不同 rank 上的部分和都加起来.
+
 ## Backend engine
+
+后端的 engine, 对应的是 sglang 中的 TP worker. 一个 engine, 它需要做的事情就是执行 forward 操作. 当然, 现代的 LLM 往往还需要支持一些更加复杂的操作, 比如 cuda graph, 又比如 TP 的通信的初始化和管理, 还有 attention metadata 的处理, 以及模型权重的加载等杂七杂八的东西.
+
+这里主要讨论两个, 一个是 attention metadata 的处理, 另一个是 cuda graph.
+
+### Attention Metadata
+
+### CUDA Graph
 
 ## Overlap Scheduler
 
