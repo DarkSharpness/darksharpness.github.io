@@ -16,6 +16,8 @@ Recently, I frequently setup my environment on different cuda machines. Therefor
 2. C++ & cuda develop environement (with clangd)
 3. Python develop environement (uv + pip)
 
+## Docker
+
 First, we need to start from a docker image. I like the image from nvidia. It's clean.
 
 ```bash
@@ -23,6 +25,8 @@ First, we need to start from a docker image. I like the image from nvidia. It's 
 docker pull nvidia/cuda:12.8.0-devel-ubuntu22.04
 docker run -itd --shm-size 32g --gpus all --ipc=host --network=host --privileged --name cuda_dark nvidia/cuda:12.8.0-devel-ubuntu22.04 /usr/bin/bash
 docker exec -it cuda_dark /usr/bin/bash
+# my own cuda docker image
+docker run -itd --shm-size 32g --gpus all --ipc=host --pid=host --network=host --privileged --name cuda_dark darksharpness/cuda_12_9 zsh
 ```
 
 In docker, we need to update and change to first.
@@ -34,7 +38,13 @@ apt install zsh tmux git ccache ninja-build cmake curl wget vim python3 pip lsb-
 chsh $(whoami) -s $(which zsh)
 # for ubuntu 24.04 image, you may need:
 apt install python3.12-venv
+# for sglang development
+apt install libnuma-dev libnuma1
+# force to update system pip
+/usr/bin/pip install pip uv nvitop --break-system-packages
 ```
+
+## VSCode
 
 To use VSCode tunnel, we will need to download VScode and run `./code tunnel` in a seperate terminal.
 
@@ -54,6 +64,8 @@ tmux
 ./code tunnel
 ```
 
+## Shell config
+
 This is my customized zsh.
 
 ```bash
@@ -64,8 +76,11 @@ git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerl
 
 # We now open zshrc in VSCode
 code ~/.zshrc
+```
 
-# find and set as following:
+Then set zshrc as following (you need to override `ZSH_THEME` and `plugins`):
+
+``` bash
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   git
@@ -83,51 +98,7 @@ export TERM="xterm-256color"
 bindkey '^\b' vi-backward-kill-word
 ```
 
-My python environment.
-
-```bash
-
-# only on ubuntu 24.04, we can't install in system pip
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Now we need to restart zsh (or source ~/.zshrc)
-# we need to configure p10k...
-# after that, configure python
-pip install uv
-
-# then add the following in ~/.zshrc
-# alias pip="uv pip"
-# alias pip3="uv pip3"
-
-# When creating a venv
-uv venv
-source .venv/bin/activate
-uv pip install uv pip
-
-# Some other things i may need
-pip install nvitop
-```
-
-My C++ environment (no need to set up things like `--query-driver` in docker).
-
-```bash
-# we need to set up clangd for C++ development
-wget https://apt.llvm.org/llvm.sh
-chmod +x llvm.sh
-./llvm.sh 19 all # add all if u just want all llvm packages
-rm llvm.sh
-update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-19 100 \
-    --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-19
-```
-
-For sglang, you might need:
-
-```bash
-apt install libnuma-dev libnuma1 -y
-```
-
-My vimrc (stolen from [this link](https://github.com/hnyls2002/setup/blob/master/.vimrc)).
+My vimrc (stolen from [hnyls2002](https://github.com/hnyls2002/setup/blob/master/.vimrc)).
 
 ```bash
 set cindent
@@ -165,4 +136,81 @@ let g:powerline_loaded=1
 
 " Use Ctrl-H to delete the previous word in insert mode
 inoremap <C-H> <C-W>
+```
+
+My tmux.conf (actually, [zellij](#zellij) can be a better tmux):
+
+```bash
+set -g mouse on
+```
+
+## Python env
+
+My python environment.
+
+```bash
+
+# only on ubuntu 24.04, we can't install in system pip
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Now we need to restart zsh (or source ~/.zshrc)
+# we need to configure p10k...
+# after that, configure python
+pip install uv
+
+# then add the following in ~/.zshrc
+# alias pip="uv pip"
+# alias pip3="uv pip3"
+
+# When creating a venv
+uv venv
+source .venv/bin/activate
+uv pip install uv pip
+
+# Some other things i may need
+pip install nvitop
+```
+
+## C++ env
+
+My C++ environment (no need to set up things like `--query-driver` in docker).
+
+```bash
+# we need to set up clangd for C++ development
+wget https://apt.llvm.org/llvm.sh
+chmod +x llvm.sh
+./llvm.sh 21 all # add all if u just want all llvm packages
+rm llvm.sh
+update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-21 100 \
+    --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-21
+```
+
+## zellij
+
+Optional: A modern shell (zellij) configuration (no conflict with zsh):
+
+```bash
+curl -LO https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz
+tar -xzf zellij-x86_64-unknown-linux-musl.tar.gz
+mkdir -p "$HOME/.local/bin/"
+mv zellij "$HOME/.local/bin/zellij"
+```
+
+Then write the following to your zshrc (not execute it in terminal)
+
+```bash
+if [ -z $SHELL ]; then
+  export SHELL=$(which zsh)
+fi
+
+# export ZELLIJ_AUTO_ATTACH="true"
+export ZELLIJ_AUTO_EXIT="true"
+
+alias zellij="$HOME/.local/bin/zellij"
+
+# don't auto-start zellij if we're in VSCode's integrated terminal or inside tmux
+if [ -z "$VSCODE_INJECTION" ] && [ -z "$TMUX" ]; then
+    eval "$(zellij setup --generate-auto-start zsh)"
+fi
 ```
