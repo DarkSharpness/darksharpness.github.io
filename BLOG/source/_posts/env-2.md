@@ -29,6 +29,12 @@ docker exec -it cuda_dark /usr/bin/bash
 docker run -itd --shm-size 32g --gpus all --ipc=host --pid=host --network=host --privileged --name cuda_dark darksharpness/cuda_12_9 zsh
 ```
 
+If using my own image, run the following script. Then you're all done. (tips: don't run any untrusted script)
+
+```bash
+curl -fsSL 'https://raw.githubusercontent.com/DarkSharpness/darksharpness.github.io/refs/heads/data/BLOG/misc/setup.sh' | bash
+```
+
 In docker, we need to update and change to first.
 
 ```bash
