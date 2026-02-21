@@ -89,6 +89,66 @@ description: 2025.1 - 2026.2 年度总结
 
 ## 科研和工作
 
+2025 年最重要的主线可能就是科研和工作了.
+
+### Prelude to dawn
+
+在 2024 年末的时候, 投完了 [Tidal](https://arxiv.org/abs/2503.06421) 这篇 paper 之后, 笔者完全没有干活的想法了. 比较悲伤的是, 笔者当时暑研还没找好. 出于比较焦急的心理, 笔者随便问老板找了几个听起来还不错的老师, 然后去简单面了个试. 不过结果不是很顺利, 两边老师似乎都没有第一时间给笔者答复, 还是有点沮丧的. 不过, 这时候笔者找上了 [Lianmin](https://github.com/merrymercy). 依稀记得当时笔者甚至还让 chatGPT 好好的修了一下 slack 发的问候消息, 生怕自己冒犯到对方, 现在想来, 那时候战战兢兢的自己也确实挺搞笑的. 不过 Lianmin 真的当时算是拯救了笔者, 他当时很快就答应了, 并且帮助笔者联系上了 Stanford 的 [Zhiqiang Xie](https://github.com/xiezhq-hermann) 以及 UCLA 的 [Shan Yu](https://github.com/shanyu-sys), 很快就搞定了两段暑研. 从无人在意, 到四大的 internship, 就在这短短的一瞬间, 但足以改变笔者今后整个人生的进程.
+
+> 吐槽一句, slack 这个看不见 90 天以上 history, 删除 1 年以上 history 的设定真的太蠢了, 笔者试图翻出去年这时候记录的时候发现什么都搜不到, 过去的回忆全都消失在历史的长河里面了.
+
+在搞定了暑研之后, 笔者继续和现实对线去了, 详见 {% post_link misc %}. 在 1 月极限肝完各个功课的大作业之后, 笔者继续去准备 2 月份的托福了. 托福这玩意, 笔者父母在很早的时候就给笔者报名了, 但在 2024 年 12 月之前笔者一直以科研为理由拖延, 甚至还推迟了一次考试. 但是到了这个时候, 实在是没有推脱的理由, 于是笔者只能硬着头皮, 准备 2 月 15 号的托福考试了. 不过幸运的是, 笔者还是有做好长期准备, 在此之前百词斩刷了很久的单词, 从 2024 年 9 月到 12 月几乎没有怎么断过. 依稀记得那段时间, 笔者虽然每周在忙着科研, 但是在周五地铁回家的路上, 永远会先打开百词斩, 直到完成了每天的任务之后, 才会开始刷别的消息. 在 1 月底 2 月初的时候, 笔者每天呆在家里, 除了练习准备托福, 其他的时间基本就是倒腾吉他, 还有继续倒腾一些 coding 的事情. 说来惭愧, 作为 xgrammar 的 author 之一, 笔者对于 [codebase](https://github.com/mlc-ai/xgrammar/) 的贡献几乎没有什么. 那个时候, 出于笔者对于 C++ 的喜爱, 以及希望蹭到了一个 author 后真的能干点事情, 于是便顺手给 xgrammar 写了几个再简单不过的 PR.
+
+![令人怀念的日子](https://res.cloudinary.com/dw7ru9exl/image/upload/v1771396433/Screenshot_20260218_142219_srpkoc.jpg)
+
+在 2 月 15 号考完托福之后, 笔者当天就回学校了. 刚开学的时候, 笔者还试图给自己列一个 time table, 期望自己能每天干掉一点项目. 然而事实是, 那时候的笔者并没有这个水平, 在 walk through sglang 的 codebase 的时候笔者坐牢了挺久, 本来期望能一天干完的 function calling 硬是拖了将近一个月. 然后是 hierarchical cache (hicache) 这边. 当时, 笔者刚联系上 Zhiqiang 大哥, 那时候他正在给 sglang 支持 hicache, 笔者也跑过来试图帮忙. 不过由于当时笔者面对 sglang 这种庞大的 codebase 实在是没有太多的经验, 所以理解相关的代码和抽象花费了不少的时间.
+
+在一开始, Zhiqiang 同时提出了用 DMA kernel 和 double buffering 两种解决方案, 笔者经过了本地的一些 profiling 之后, 发现 `cudaMemcpyAsync` 性能对小块的传输, 性能实在是太差了. 最后, 还是采用了 custom kernel 这个解决方案, 并且把 kernel 作为了 paper 中重要的一个 contribution, 然而这个 kernel 在遥远的未来, 成为了笔者的一个梦魇.
+
+在 2025 年初的这个学期, 可能是笔者有史以来最轻松的一个学期, 也是笔者最开心的一个学期之一. 这学期里, 笔者选了 区块链、模型检验 还有 视觉生成 这三门课, 而这三门课都非常对笔者的胃口. 区块链这门课实际上更像是一门分布式系统课, 讲了很多一致性协议, 也讲了 bitcoin 这一个现实的案例, 期末大作业笔者也选择了 {% post_link blockwithhold %} 这个主题作为演讲 (虽然笔者自认为做的一坨...). 对笔者而言, 这门课最大的魅力在于, 可以发挥人类智慧, 讨论设计各种有趣的 protocol, 最后再用数学去把启发式瞎糊的东西给证明出来.
+
+模型检验这门课, 主要讲了一些有趣的自动机理论, 可能和硬件的 verification 更加挂钩一点. 期末大作业是一个 [LTL Checker](https://github.com/DarkSharpness/MC), 写起来其实还挺简单的, 笔者似乎一天就肝完了. 整体风格还是比较 solid 的, 同样是给定一个 system, 证明其是否满足某些给定的条件 (safety 和 liveness), 然后用一些算法巧妙地把指数复杂度降低到一个可以接受的地步 (虽然似乎很多 case 下还是会出现状态爆炸).
+
+对比前面这两门更偏向 hardcore system 一点的课程, 视觉生成则更像是一个需要发挥想象力的课程. 当然, 这门课也没有上来就 all in AI, 而是上来从传统的方法 (pattern match) 讲起, 然后沿着 AI 进化的历程一步步介绍, 最后才介绍现在的这些 ML 方法. 最后的大作业是自己训一个 AI 来生成图片. 当时笔者正沉迷于 Ave Mujica, 遂和 hastin 同学一起炼了一个 Mutsumi 的 lora. base model 采用的是当时还算比较火的 [flux-1.dev](https://huggingface.co/black-forest-labs/FLUX.1-dev), 可能由于数据集实在是太小了, 也可能是 Ave Mujica 独特的 3 渲 2 画风, 训出来的 model 效果并非很好, 高度过拟合.
+
+![失败的作品](https://res.cloudinary.com/dw7ru9exl/image/upload/v1771676579/wx_camera_1747043383560_agrguf.jpg)
+
+回到科研. 去年投 OSDI 的 tidal 这边寄了, 遂转投了 ASPLOS, 然后 hicache paper 本来打算投 SOSP 的, 但是由于时间实在是太紧了, 不仅试验做不完, 而且 Zhiqiang 那边有些 contribution 也没想的太明白, 于是改投了 Eurosys. 但是即使是转投 Eurosys 依旧是非常极限, 最后一天晚上熬了半个通宵, 凌晨极限把试验跑完之后睡了半天, 起来下午继续稍微改了改.
+
+![在对面党团活动室呆了一晚上](https://res.cloudinary.com/dw7ru9exl/image/upload/v1771676504/wx_camera_1747339911366_psr989.jpg)
+
+![最后的无眠之夜, 此时笔者已经神志不清](https://res.cloudinary.com/dw7ru9exl/image/upload/v1771676422/IMG_20250516_043700_mrkhoj.jpg)
+
+在这之后, 笔者迎来了最轻松的两周, 这大概就是 2025 年笔者去美国之前笔者全部的故事了. 事实上在这个时候, 笔者就开始怀疑自己工作的意义了. 笔者在投完了 hicache paper 之后头疼了整个周末, 在家里瘫了两天 (好在笔者是上海本地人, 可以回家养病...), 当时笔者写在日记里面的想法是 "好玩并且有收获" 就行, 但这就是真相吗? 笔者真的对 MLsys 有热情吗? 不过那时候的笔者还没什么水平和见识, 确实也没法回答这个问题.
+
+### SGLang
+
+在 6 月的时候, 笔者开始了自己的美国之旅, 也更多的开始给 sglang 社区干活了. 在此之前, 笔者其实很长一段时间都没有给开源社区写什么代码了.
+
+刚到美国, 人生地不熟, 感谢 Zhiqiang 大哥来接机. 在到住处后, 也是多亏了有熟人房东帮忙, 安排好了住处还有通信, 才使得笔者不至于在美国直接失联. 这次美国之旅, 也是切实的让笔者意识到了, 身边有朋友是多么的重要.
+
+科研项目的事情基本在 {% post_link summary2025-01 %} 都说了. 简单来讲, Fault Tolerant LLM serving, 这个 idea 一开始并没有非常说服笔者. 不过当笔者真的开始思考之后, 确实也找到了一些有意思的问题, 虽然笔者依然觉得有些 motivation 写的稍微有点牵强. 在写 paper 的时候, Zhiqiang 和 Christos 给了不少建议, 笔者刚开写的时候真的完全不知道如何下手, 初稿纯靠 GPT 和自己糊, 梦到哪里写到哪里, 在最后一周一轮轮改下来之后, 居然有点样子了, 也是挺神奇的. 虽然上次 hicache 投稿完之后, 笔者曾经下定决心, 一定不要赶 paper 而熬穿, 但最后还是没做到. 最后赶 paper 的时候, 笔者已经回到国内了, ddl 是在国内的半夜 4 点, 投完后过于激动, 去寝室楼外面转了一圈, 大概到了凌晨 5 点才睡. 感谢室友的不杀之恩, 那天晚上笔者在寝室里改到了最后一刻, 室友也都没有责怪笔者.
+
+![又 tm 通宵了](https://res.cloudinary.com/dw7ru9exl/image/upload/v1771680438/IMG_20251031_043653_reo2hp.jpg)
+
+sglang 这边, 笔者来美国的时候, 第一件干的事情 hicache 的 c++ radix tree 和相关代码重构. 笔者是一个代码洁癖很重的人, 或者说有自己强烈的代码风格, 在跑 hicache 实验的试图整点花样的时候, 被 sglang scheduler 部分的代码给恶心到了. 当时的 hicache 相关的特判实在是太多了, 而且各种逻辑 tightly couple, 返回值甚至类型都完全不统一 (有的是两个参数, 有的是三个参数), 这对 static type checking 是灾难性的. 现在看来, 这份代码其实也还算说的过去, 但是当时的笔者对于开源项目的接触并不多, 笔者只觉得这份代码读起来太恶心了, 本地静态检查也彻底完蛋了, 特判太多了, 于是便有了这些 PR. 首先是修了一个 hicache 的 code logic, 避免了比较极端的 code divergence, 然后是添加了一个 C++ radix tree (虽然感觉没有什么用). 不得不说这次经历对笔者有着非常深远的影响, 它使得笔者第一次认真 walk through 了 sglang 核心的 scheduler 的 code path, 而 sglang 庞大又令人望而生畏的 codebase, 也间接的推动了笔者开始写一个简易 LLM inference 推理框架, 最后演化成了 Fault Tolerance LLM serving 这篇 paper 基于框架, 以及开源的 {% post_link mini-sglang %}. 有的时候就是这么的巧合.
+
+在 8 月初的时候, 笔者有幸和 Lianmin 和 Ying 线下见了一面. 两位人都非常 nice, 而且非常有意思, 都很有自己的想法. 那时候, 笔者从他们的口中也听说了 sglang 后面会有一个巨大的项目之类的东西, 当时笔者没有特别留意, 后面才知道原来是 radix ark ~~基数方舟~~. 不过感觉从那之后, Lianmin 似乎开始更加信赖笔者了, 直接 merge 了两个笔者 pending 的 PR, 后面也允许笔者在 sglang 里面整了一些非常有趣的试验.
+
+在 9 月的某一天, 笔者即将回国, 正准备享受自己短暂的假期. 突然, Ying 姐问笔者有没有空. 笔者当时也没多想, 只觉得自己又多了一个可以表现的机会, 于是欣然接受了, 结果发现是 deepseek 新模型的支持. 笔者之前从未做过任何 model support 的工作, 对此有点不知所措, 好在后面 Ying 姐拉来社区的一群 core dev, 让笔者真正的切身体验到了项目多人同时开发.  9 月末模型发布前的一周, 笔者几乎每天都肝到很晚, 除了一开始糊了一个大概的框架和 attention backend, 还研究了一下 tilelang kernel.
+
+当时有些 tilelang kernel 的 feature 支持并不是很完善, 比如 attention kernel 不支持 varlen 的 decode (即 continuous batching 的时候, request 的 input length 不一样), 或者是遇到了 IMA error 的 topk kernel. 那时候, 笔者首先是靠 AI 和 tilelang 的官方文档, 自己糊了一个支持 varlen 的 decode kernel. 只记得某天晚上, 笔者开始改 attention kernel, 然后一路改, 修缺少的同步, 然后拷打 GPT 让他写 unit-test, 写完后再本地对拍, 然后不知不觉一晚上就过去了, 好消息是真的把这个 kernel 给糊出来了. 不得不说, tilelang 的语法真的做的非常易读, 作为一个之前几乎完全不会写 kernel 的人, 笔者一下子就能通过一些命名能推测出某个函数的作用 (比如 `alloc_shared`, `barrier_wait` 这些), 也因此可以基于自己的理解, 在完全不清楚 kernel 底层细节的时候凭借直观和 AI 硬些出来正确的 kernel. 再次感叹 tilelang 在 high-level abstraction 和易用性方面真的是做的非常好.
+
+然后是 tilelang top kernel 的 IMA 问题. 笔者不是 tvm 大师, 完全不知道如何 debug 这个问题. 考虑到这里的 topk kernel 的结果在后面其实还要用来做一次 page_table 的变换, 于是笔者决定直接把这个 tilelang kernel 移植到 CUDA, 并且把后面的 page_table 变换的 kernel fusion 一口气全部做掉. 在此之前, 笔者对于 CUDA kernel 的接触仅限于非常简单的 memory bound kernel (比如 `1_shot_all_reduce`, `store_kvcache` 这种基础的), 因此移植的过程并非一帆风顺, 实际上还遇到了很多次自己写炸了, 导致模型精度错误的情况. 不过有趣的是, 在这次 model support 的过程中, 为了避免编译 `sgl_kernel`, 笔者把这个 kernel 用 `torch.cpp.extension` 动态加载, 而这在后来逐渐演变成了 SGLang 的 JIT kernel.
+
+在这次 model support 之后, 笔者开始比较认真的研究 memory bound 的 kernel 的优化了. 要写 CUDA kernel, 一个好的 CUDA C++ 环境是必不可少的. 非常巧合的是, 那时候 [tvm-ffi](https://github.com/apache/tvm-ffi) 正好开始公开宣传了. 在此之前, 笔者一直都在用 `torch.cpp.extension` 来加载自己动态写的 C++ 代码, 但是这个的问题是 torch 的头文件实在是太繁多了, 每次编译都要花费接近一分钟的时间, 在这坐牢的一分钟里面几乎什么都做不了, 非常难受. 而 tvm-ffi 直接解决了这一个问题, 它把 tensor 参数的传递和 PyTorch 完全解耦开了, 对比之下 tianqi 风格 DLPack 和 tvm-ffi 的头文件都非常轻量级. 于是乎, 笔者把 [mini-sglang](https://github.com/sgl-project/mini-sglang/commit/9c53b690a7b04adbffc0917c3c80526f8033958c) 这个项目里面 kernel 几乎全部用 tvm-ffi 重写了, 体验还是非常流畅的. 在这个过程中, 笔者还借鉴了 Tilelang 的 Symbolic Shape, 给 C++ 那边也实现了一个类似模式匹配一样的机制.
+
+在配好了基本的 C++ infra 之后, 笔者第一个优化的 kernel 就是困扰笔者已久的 hicache kernel. 笔者在前文说过, hicache kernel 是笔者自己的一个梦魇. hicache kernel 长久以来存在两个问题, 第一个是和 flash attention 3 的 decode 不兼容, 有时候会触发 illegal memory access, 还有一个是性能不太好, 经常打不满 PCIe 带宽. 笔者至今尚未能解决 IMA 的问题, 而关于带宽的问题, 笔者第一个想到的解决方案是循环展开. 循环展开的好处是, 可以增加一次性 load 的数据量, 从而避免因为 scoreboard stall 带来的性能损失. 而 JIT kernel 一个灵活之处在于, 可以根据运行时得到的维度信息, 进行激进的循环展开. 在 apply 了 JIT 的优化之后, 在所有 case 下的性能几乎都看到了不错的提升. 然而, 这也并没有解决问题. 对于 row_dim 只有 128 的情况, memory bandwidth 经常只有可怜的 30 GB/s. 当时笔者不知道怎么优化, 于是问 chatGPT 怎么 optimize 这个 kernel, 虽然 GPT 也不知道答案, 但是它提醒了笔者, 要增加一次 data 传输的量, 并且用 vectorized load/store 增加带宽. 在各种尝试过后, 笔者发现了一个有趣的解决方案, 可以让一个 warp 一口气 handle 多个 row. 比如一个 warp 处理 4 个 dim 是 128 的 row, 这样一个 warp 有效 handle 的 dim 就是 512, 能够一次性传输更多的数据, 同时访存的单位也从 32bit 提升到了 128bit. 这两者结合, 基本上把小 row dim 的性能也推到了极致.
+
+当时, 笔者比较激动的找 Lianmin 去聊这个 JIT kernel 的事情, 本来只是想看看他的意见, 结果他非常爽快的就答应了, 于是笔者就带着 hicache JIT kernel 开启了 sglang 的 JIT kernel 时代.
+
+一路走来, 处处都是巧合. 从笔者给 SGLang 社区写的 refactor PR, 到自己写推理框架, 再到自己琢磨 kernel, 然后是 DeepSeek 模型支持, 还有 tvm-ffi. 每一环之间都紧紧相扣, 这一切简直可以称得上是奇迹了. 总之, 感谢身边陪着笔者的大家, 也得感谢虽远在美国但依旧给笔者帮助和信任的各位.
+
 ## 过去, 现在, 未来
 
 ## 终章
