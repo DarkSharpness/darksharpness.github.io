@@ -15,10 +15,10 @@ echo "VSCode setup done"
 # clangd
 wget https://apt.llvm.org/llvm.sh
 chmod +x llvm.sh
-./llvm.sh 21 all # add all if u just want all llvm packages
+./llvm.sh 22 all # add all if u just want all llvm packages
 rm llvm.sh
-update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-21 100 \
-    --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-21
+update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-22 100 \
+    --slave /usr/bin/clang-format clang-format /usr/bin/clang-format-22
 
 # zellij
 curl -LO https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz
