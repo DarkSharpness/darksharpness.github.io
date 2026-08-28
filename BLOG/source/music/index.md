@@ -10,11 +10,17 @@ top_img: https://f4.bcbits.com/img/a0826808361_10.jpg
 
 ## 置顶板块
 
-本页会记录些 DarkSharpness 关于音乐的一些看法与研究(应该是不会有啥作品的). 头图来自一个目前不活跃的乐队, [bandcamp 链接](https://kuroganelab.bandcamp.com/album/lightning-mirage-ii)
+本页会记录些 DarkSharpness 关于音乐的一些看法与研究(应该是不会有啥作品的). 头图来自一个笔者高中非常喜欢, 但是目前不活跃的乐队, [bandcamp 链接](https://kuroganelab.bandcamp.com/album/lightning-mirage-ii)
 
 ![Lightning Mirage II](https://f4.bcbits.com/img/a0826808361_10.jpg)
 
 笔者初/高中的时候曾经想过学习制作音乐, 虽然最后因为学业问题搁置了, 但是确实学到了不少的乐理知识以及音频处理的知识. 上大学以后学了琴, 但是技术不佳, 仍在练习. 最初的那份热情似乎还没有燃尽, 希望以后还能一直热爱音乐, 梦想是组一辈子的乐队, 当然一人全役也不是不行.
+
+## 2026-07-11
+
+毕业歌. 将近三年没有认真学习任何混音理论了, 做的有点生疏, 但也算是给笔者的大学生涯一个交代. 编曲/作曲真的很棒, 旋律很好听, 词也挺感人的.
+
+{%bilibili bvid=BV1AiN46wELb %}
 
 ## 2023-10-04
 
