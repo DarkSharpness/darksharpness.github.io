@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>終わりなき、この詩 | DarkSharpness's Dungeon</title><meta name="author" content="DarkSharpness"><meta name="copyright" content="DarkSharpness"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="我好像真的有点累了.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="終わりなき、この詩">
+<meta property="og:url" content="http://darksharpness.github.io/owarinaki-konouta/index.html">
+<meta property="og:site_name" content="DarkSharpness&#39;s Dungeon">
+<meta property="og:description" content="我好像真的有点累了.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://res.cloudinary.com/dw7ru9exl/image/upload/v1787931408/kon_rxa8zk.png">
+<meta property="article:published_time" content="2026-06-28T08:59:04.000Z">
+<meta property="article:modified_time" content="2026-10-24T15:56:35.983Z">
+<meta property="article:author" content="DarkSharpness">
+<meta property="article:tag" content="DarkSharpness">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/dw7ru9exl/image/upload/v1787931408/kon_rxa8zk.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "終わりなき、この詩",
+  "url": "http://darksharpness.github.io/owarinaki-konouta/",
+  "image": "https://res.cloudinary.com/dw7ru9exl/image/upload/v1787931408/kon_rxa8zk.png",
+  "datePublished": "2026-06-28T08:59:04.000Z",
+  "dateModified": "2026-10-24T15:56:35.983Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "DarkSharpness",
+      "url": "http://DarkSharpness.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png"><link rel="canonical" href="http://darksharpness.github.io/owarinaki-konouta/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":1000,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '終わりなき、この詩',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/user.css"><link rel="stylesheet" href="/css/font.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="DarkSharpness's Dungeon" type="application/atom+xml">
+</head><body><div id="web_bg" style="background: black;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">27</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-ellipsis-h"></i><span> 杂物</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photo/"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" href="/diary/"><i class="fa-fw fas fa-book"></i><span> 日记</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://res.cloudinary.com/dw7ru9exl/image/upload/v1787931408/kon_rxa8zk.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png" alt="Logo" loading='lazy'><span class="site-name">DarkSharpness's Dungeon</span></a><a class="nav-page-title" href="/"><span class="site-name">終わりなき、この詩</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-ellipsis-h"></i><span> 杂物</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/photo/"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" href="/diary/"><i class="fa-fw fas fa-book"></i><span> 日记</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">終わりなき、この詩</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-28T08:59:04.000Z" title="发表于 2026-06-28 16:59:04">2026-06-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-10-24T15:56:35.983Z" title="更新于 2026-10-24 23:56:35">2026-10-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">5.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>标题 neta 了笔者大学最喜欢的乐队 GALNERYUS 的一首曲子. 这张专辑是乐队前主唱的告别专, 而这首曲子也算是吉他手写给前主唱的告别曲.</p>
+<!-- ![cover of that album](https://www.metal-archives.com/images/2/0/4/0/204046.jpg?3245) -->
+<h2 id="毕业"><a href="#毕业" class="headerlink" title="毕业"></a>毕业</h2><p>四年就这么过去了. 2026 年 6 月 27 号, 熟悉的中午, 又一次被 kupi 同学叫醒. 一看时间, 原来已经 10 点 40 了. 看向身旁空荡荡的床位, 再也没有了熟悉的人的气息. 学长约了市中心的饭, 于是和 kupi 两人便向着市中心赶过去了. 吃完饭, 已经一点多了. 回到交大, 刚过了三点. 就这样, 又错过了和另一位室友告别的最后机会, 只留下笔者孤身一人在寝室发呆. 晚上, 和一些还在校的同学吃完了最后一段饭, 就匆匆忙忙的被家长接走了.</p>
+<p>痛苦袭来, 四年来结下的羁绊, 在这个夏天碎的稀烂. 一切都结束了, 伴随着本科生涯的落幕, 笔者的 “学生” 之旅也到此为止了. 无论是未来的 PhD 还是工作, 再也不会有像现在这样的 “大班级” 概念的团体, 也再也不会有 “寒暑假” 这样的休息了.</p>
+<p>这份情感在笔者身上从来没有这么强烈, 无论是之前寒暑假回家, 还是出国暑研整整 3 个月, 笔者从来没有这么悲伤过. 或许因为这次, 可能是几乎永远的分别了. 之前初中同学聚会, 曾经的班主任说过, 毕业之后, 就很难再把所有人都聚在一起了. 是啊, 下一次再见面, 就不知道又是什么时候了.</p>
+<p>这样的结局其实笔者早已预料到了. 从这一个学期开始甚至是年初的时候, 笔者就在害怕着这个时刻的到来, 也在各种聊天中和朋友透露出来一点相关的情绪. 无数个夜晚, 躺在 D19 的床上, 分别的瞬间在脑中无数次上演, 笔者无数次幻想如何欢笑着告别, 然后各自走向自己的未来. 但是真正的分别, 比预想中的还要令人猝不及防而. 在两年前, 笔者曾经亲自送最好的朋友去了机场, 也一大早赶过地铁, 只为见同学最后一面. 但是今年, 笔者不知为何, 几乎什么都没做出来, 最多也只是默默陪伴、拍照留念后, 目送离开. 明明比当时还是放不下, 但是却做不出同样疯狂的举措, 现在想来真的是超级后悔, 我居然什么都没做. 但是事实就是如此, 在无声无息中, 我们走上了分歧的十字路口.</p>
+<div class="gallery-container" data-type="data" data-button="" data-limit="10" data-first="10">
+    <div class="gallery-items">[{"url":"https://res.cloudinary.com/dw7ru9exl/image/upload/v1787932419/109-1_degp7k.jpg","alt":"最后的照片-1","title":""},{"url":"https://res.cloudinary.com/dw7ru9exl/image/upload/v1787932422/109-2_yuhiei.jpg","alt":"最后的照片-2","title":""}]</div>
+  </div>
+<p>笔者真的变了. 在一系列事情之后, 笔者开始逐渐意识到朋友的重要性. 朋友并不是一个衬托出自己的背景板, 大家都是活生生的人. 过去和朋友在一起可能只是因为好玩自己开心, 但是大学这几年让笔者意识到, 没有了身边的朋友, 自己真的什么都不是. 也是因为这个, 在大四最后的一个学期, 笔者基本没有回家几次, 大部分时间都留在了学校里, 这样可以更多的见到身边的同学, 哪怕只是再多一秒钟. 不知道是何时开始的, 笔者有了一种感觉, 要在大学最后这一个学期尽可能去做一点事情, 不然总觉得有些遗憾. 可能是抱着 “每天都是最后一天” 的想法, 笔者度过了自己本科生涯的最后一个学期.</p>
+<p>全身心的投入, 也留下了不少刻骨铭心的回忆. 最近半年, 笔者做的最大的一件事情可能就是 dsv4 的 <a target="_blank" rel="noopener" href="https://www.lmsys.org/blog/2026-04-25-deepseek-v4/">day-0 support</a>. 它占据了相当大的一部分事情, 甚至挤压了笔者日常的生活, 也带来了不少的遗憾. 但是笔者也并不后悔, 因为这是笔者过去两年以来最喜欢的做的事情, 写框架以及写 CUDA kernel. 在这次 day-0 里面, 笔者 kernel 真的是写爽了, 短短几天时间内也把各个重要的边角料 kernel 几乎都优化到了笔者当时能做到的 optimal, 也和 team 里面的人一起 deliver 了一个非常 high performance 的结果. 能够为自己喜欢的事情全力以赴, 不被任何非自身的因素所困扰, 是笔者最大的快乐.</p>
+<p>除了开源社区的支持之外, 最令笔者难忘的事情是最后的毕业歌. 笔者其实一直和毕业歌制作团队走的很近, 只是之前忙着做 day-0 support, 而且编曲一直没有结束. 直到 6 月份, 笔者才第一次听到最终编曲版本. 作为一个曾经的音乐爱好者, 笔者自然希望在最后的时候也能留下一点自己的努力, 于是便自告奋勇担任了混音的职责. 在此之前, 笔者因为科研已经几乎放弃了副业混音, 已经有很长一段时间除了练琴没有碰过 Cubase. 打开混音台, 生疏的记忆开始涌上心头的, 那是曾经高中时候令笔者无比的兴奋的事情, 笔者永远无法忘记自己捣鼓各种插件的一个个夜晚… 这是笔者第一次走进录音棚, 第一次处理这么多轨道人声, 也是自己第一次录自己弹的稀烂的电吉他. 无数个小时, 笔者坐在电脑屏幕面前, 一遍又一遍的播放这段音乐, 只是希望能再改进一点. 一次又一次, 笔者重新按下 “录制” 按钮, 一边自嘲着自己的稀烂吉他技术, 一边开始第 n + 1 遍录音. 但是笔者毫无怨言, 因为这个是我喜欢的事情, 也可能是毕业前最后的一份回忆. 笔者完全沉浸在其中, 甚至意识不到时间的流逝, 直到日出的晨光再次照耀着 321 <del>工作室</del> 寝室 的地板.</p>
+<p><img src="https://res.cloudinary.com/dw7ru9exl/image/upload/v1787926727/copy_of_321_rgtbzj.jpg" alt="D19 321 的日出" loading='lazy'></p>
+<p>在毕业歌 mixing 完成之后, 笔者又继续了邦多利的冲榜. BanG Dream 手游作为笔者大四最后一年玩的最多的游戏, 在经历了这么多提升了水平后, 也算是有了一个结果. 这次冲榜大概持续了两周. 在刚起步的时候, 笔者还没有意识到萝符号的疯狂, 前几天甚至没有清火. 大概是第三天看分数的时候, 才发现这 1500 的 bar 已经到了非常恐怖的地步. 后面也是每天清火 + 主动打 50+ 的火, 才勉强把分数打上来了. 在这过程中打的人都已经麻木了, 从一开始的满怀热情, 到最后熟练选择效率曲, 大 E, Jumpin, 这些曲子听的耳朵都起茧子了. 曾经一直抱怨为什么大家选来选去总喜欢那几首曲子, 直到自己也开始冲榜, 才真正的理解了. 直到最后一天, 笔者才把分数打过了 1500 的线. 最后几天顶着感冒的 debuf, 依然坚持每天打了两个小时以上, 在意识模糊中冲完了人生的第一个榜. 冲完之后整个人还是非常激动的, 虽然不知道有什么意义, 但是过程的体验还是很不错的.</p>
+<p><img src="https://res.cloudinary.com/dw7ru9exl/image/upload/v1787926942/rinrin_rxllgq.png" alt="感谢 hsfzLZH1 帮忙" loading='lazy'></p>
+<p>在最后一段时间, 笔者还和身边某同学去杭州逛了一圈. 虽然是带着任务去的, 但还是顺路参观了几个著名景点, 其中就包含了 MyGO 爱好者最喜欢的祥睦桥. 在前往那边的途中, 还特地购买了青柠味薯片 (蓝色) 和黄瓜味薯片 (绿色), 以及蓝色/绿色尖叫饮料, 对应了祥子/睦子米的代表色 #7799CC 和 #779977 . 走之前匆匆品鉴了一下西湖醋鱼, 感觉尝起来还算不错, 没有想象中那么糟糕, 还打包回来给同学带了一点.</p>
+<p><img src="https://res.cloudinary.com/dw7ru9exl/image/upload/v1787926497/saki-mutsumi_il0bde.jpg" alt="祥睦桥" loading='lazy'></p>
+<p>在最后的几天, 也和同学一起看完了轻音 II 和剧场版. 在去年回国的飞机上, 笔者补完了轻音 I. 对于轻音 II, 由于之前云的一些经历, 其实笔者大致已经知道结局大致是和毕业相关的了. 一直没有去补, 一部分原因就是想把它留到最后时候, 再去认真品鉴, 才能体会对应的心境. 在交代轻音全员除了梓喵都高三的时候, 笔者就已经感觉到了氛围开始微妙起来. 作品中花了浓重的笔墨, 描写了少女之间轻松的日常生活, 塑造了一个亲密无间的 “放学后茶会”, 虽然绕不开乐队的主题, 但主线依然是吃吃喝喝玩玩为主. 在这个过程中, 众人也结下了深厚的友谊, 越是这样, 就越是害怕分别那一天的降临. 在一切的铺垫都到位之后, 以伦敦旅行 (番外篇) 和 《相遇天使》这首曲子收尾. 当时听到献给阿梓喵的曲子的时候, 笔者是真的没忍住, 哭的稀里哗啦的. 哪怕已经在网易云音乐听过无数遍, 在看完第二季所有剧情后, 依然会忍不住落下眼泪.</p>
+<p><img src="https://res.cloudinary.com/dw7ru9exl/image/upload/v1787931408/kon_rxa8zk.png" alt="完结" loading='lazy'></p>
+<p>但是, 故事就到此为止了. 都结束了. 如果有人问笔者 “尽力了吗?”, 那么笔者一定会坚定的回答道: 尽力了. 吗? 就当时那种每天都睡不够的状态, 可能确实是做到能做到的最好了吧. 笔者真的有在最后一个月把每天都当作人生的最后一天来干, 音乐也帮着制作了, 冲榜也大胜利了, 开源社区这边也没有搞砸, 和同学也玩爽了.</p>
+<h2 id="我-还剩下些什么"><a href="#我-还剩下些什么" class="headerlink" title="我, 还剩下些什么"></a>我, 还剩下些什么</h2><p>毕业了, 但是收获了些什么呢? 可能在大部分人看来, 笔者算是度过了一个还算比较成功的四年, 但这些日子其实并不是那么开心.</p>
+<p>大概是从两年前最开始搞科研的时候, 笔者就逐渐放下了自己的爱好. 2024 年最后和下一届的几个小朋友一起去逛了最后一次 THO, 在那个之后, 笔者似乎就和东方渐行渐远了. 曾经的笔者对 Toho 也算是半个狂热分子了, 也在各种地方不遗余力的宣传自己的这份热爱, 至今 github 首页的 Bio 还是 Toho forever, 从高中保存至今. 可惜的是, 这份情感并没能 last forever, 那次 THO 可能是笔者和东方在一起最后的时光. 在那之后, 可能是因为忙于科研, 也可能是因为有了其他的爱好, 笔者对这个圈子的关注开始减少.</p>
+<p>细细想来, 笔者真的称得上是有什么爱好呢? 又有什么东西能够坚持很久呢. 事实上, 在进入大学之后, 除了玩 mc、东方、还有刷手机之外, 笔者几乎没有其他 “玩” 的时间. 大学四年过去了, 除了学习/工作, 真的有学到/体验到很多新东西吗? 吉他, 音游, 看番, 漫展. 笔者似乎就想不到其他别的东西了. 如此一想, 笔者其实也算是一个非常空洞的人. 一旦失去了为数不多的几个爱好, 甚至可能除了干活就找不到能做的事情.</p>
+<p>究竟是为何, 走到了今天的这一步. 笔者很想知道这一点. 说到底, 还是放不下自己的 ego 吧. 在 <a href="/summary2025-full/" title="分歧路口, 前途漫漫">分歧路口, 前途漫漫</a> 里面, 笔者也已经意识到了自己正在被 “希望证明自己” 这一执念所裹挟: 大一大二卷绩点、大作业, 大三大四卷科研. 一路走来, 又有多少东西是出于自己的爱好而做的? 自然, 在经历了很多的痛苦之后, 确实收获了非常多, 也真正的爱上了 “system design”, 笔者不应该欺骗自己真实的情感, 看到自己的付出有回报之后, 当然是非常开心的. 但与此同时, 为了表面上的 “面子”, 或者满足自己内心的 ego, 笔者会去主动放弃自己的一些 “爱好”. 那么, 这些所谓的 “爱好”, 于笔者而言真的还算是爱好吗? 或者说, 想要出风头, 被别人看到, 迎合周围的人, 这个才是笔者真正的 “爱好” 吧.</p>
+<p>这么看来, 笔者其实也并不是一个那么有个性的人, 至少不是自己认为的那样. 虽然笔者从小到大, 一直看起来是一个 “问题学生”, 但实际上老师只要骂两句, 就不敢吱神了. 所谓 “反抗”, 不过是在被允许的范围内试探别人的边界罢了, 或者对于比自己弱小者的某种意义上的霸凌. 若自己真的受到了不公的待遇, 虽然心有不甘, 大概率也是只能吞声忍气. 印象非常深刻的一件事情是, 之前在面试某家公司的时候, HR 问了笔者一个问题, 意思大概是: 你从小到大做过最疯狂的一件事情是什么? 笔者当时想了半天, 也不知道该怎么回答. 要说疯狂, 赶大作业可能算的上, 其他最极端也就逃几节课, 翻墙进入寝室. 但是可能也就仅此而已了. 它们完全算不上是刻板意义中疯狂. 从小到大, 笔者甚至从来没有过通宵打游戏, 为数不多的几次通宵, 要么是为了大作业, 要么是为了赶论文. 但是为了 “自己”, 笔者真的有主动牺牲过什么吗? 似乎没有那么多. 可能高中的时候会有, 为了自己喜欢的东方同人, 翻越了各个网站, 甚至是半夜偷家长手机上 twitter (说起来, 最初上 twitter 纯粹就是关注一些喜欢的东方同人乐队), 只为了找到了一些冷门的资源和信息. 为了研究音乐, 到处找各种盗版学习软件 <del>黑历史了</del>, 找各种电子书籍, 笔者至今为数不多的乐理知识, 几乎全都是在高中阶段获取的. 笔者在曾经的自己身上, 看到生生不息的活力, 那份对于自己热爱的事物的坚持. 但是进入了大学之后呢? 笔者认为大学后的自己, 背叛了曾经那个满怀热情的少年.</p>
+<p>那究竟是为什么会变成这样的呢? 为什么会变成一副自己都无法理解的样子? 可能是更久远之前埋下的一些种子吧. from long long ago, 笔者并非现在这种抽象样子, 只能说一个比较顽皮的孩子. 但是呢, 笔者似乎并不是非常合群. 笔者很长一段时间一直没有什么稳定的朋友, 于是特别希望能被别人看到、被别人关注到, kirakira dokidoki 的种子大概就是在那个时候埋下的吧. 在这个过程中, 笔者逐渐发现 “抽象”, 即做出一些超出常理的事情, 非常容易吸引其他人的目光. 当时受到一些 b 站视频的影响, 也可能是出于好玩, 笔者做了很多逆天的事情, 比如把开水倒进氯化铵和生石灰混合的瓶子里丢到学校厕所水箱里 (qwq 之前面试的时候太紧张了, 忘记了这个了). 在上了高中之后, 笔者则收敛了许多, 至少危险的行为已经不太敢做了, 但是取而代之的则是其他方面的抽象, 比如说一些非常离谱的话, 以及尝试接触一些小众的东西, 给自己打上独特的标签. 笔者在很长一段时间都很讨厌 “合群”, 因为这会让自己显得很 “普通”. 这份心理其实挺微妙的, 笔者并非真的希望远离人, 反而是离不开身边的人, 变得 “特立独行” 只是一个标签, 而真正的动机是笔者太害怕变得普通而被别人忘记了. 但是, 这份 “特立独行”, 也改变了笔者的人生. 笔者接触到了东方同人, 接触到了更多的 anime, 接触到了音乐. 最初虽然是为了有一项值得炫耀的技能而去接触的, 但是社区的热情, 以及笔者本身的兴趣, 在后来远远超越了最初的动机, 也支持着笔者保持了很久的爱好. 同样的, “抽象” 也开始逐渐改变笔者的想法, 即使上了大学, 也经常说逆天不过脑子的话, 甚至还带坏了纯良室友 (罪大恶极). 很多时候, 笔者自己都没意识到自己说错话了, 因为不过脑子说话这一行为习惯已经几乎刻入了 DNA, 除非能时刻保证清醒.</p>
+<!-- 
+这一切的根源, 可能还是应试教育和优绩主义. 虽然嘴上说着反卷, 讨厌应试教育, 但实际行为却在践行着它, 用死板的方式刷题, 投入巨量的时间只为换取一些微不足道的分数, 何其可笑. 至少, 以分数评定一切的观点, 或多或少的也渗透了笔者的思想. 要真正放下这个, 也并不简单. 笔者已经一万次和别人说, 绝对不能陷入应试教育的陷阱, 但是实际就是做不到. 要从根本改变自己的观点, 是一件非常困难的事情, 笔者也很早就观察到了, 即使是有意识的去改变, 一旦脑子不清醒, 就依然可能按照过去长期养成的行为习惯而行动.
+
+以客观的 "分数" 评定一切, 那么就避不开比不过 "别人" 的时候, 很难有人能在一个领域一直领先, 除非付出数倍于常人的努力. 对笔者来说, 做 LLM serving engine, 写 CUDA kernel, 算的上是现阶段的 "客观分数". 过去的一年里面, 笔者几乎把所有时间都花在上面了, 经常会为了一些 "性能指标" 想尽各种办法去优化, 甚至不惜挤压出生活中全部的空闲时间. 在最初的时候, 笔者还是挺乐在其中的, 自己一点点翻阅代码, 排布 pipeline, 然后读反汇编出来的 SASS, 看 ncu 推测是哪里出了问题. -->
+<p>过去的很多事情, 笔者的很多行为几乎都是由 “与众不同” 这份想法驱动的, 其本质是一种深层的自恋, 毕竟要是连自己都不在乎, 那么 “与众不同” 也没有什么意义了. 笔者虽然可能会试图表现得比较 “崇高”, 但是本质还是自私的, “崇高” 只是一种自我的感动罢了, 把自己试图与更高的道德、特殊的个体绑定. 从根本上来说, 笔者没有一个 motivation 能支持笔者去做很多事情, 于是很多事情也就逐渐沦为了一种无意识的表演, 目的就是图自己一个心安. 这也算是一些很悲哀的事情, 虽然想被别人关注是人之常情, 但是被这份念想裹挟而去做让自己感到痛苦的事情, 这让笔者度过了一些很糟糕的时间. 直到毕业了, 笔者都没想明白自己喜欢什么. 给 SGLang 做 day-0 支持? 得了吧, 笔者在乎的只不过是能写点 kernel 证明一下自己的小聪明, 顺便幻想自己的 code 能帮到别人. 对于这种成千上万行的大系统, 搞一个干净而又实用的 design 是一个非常困难的, 很多时候为了加 feature 只能往 codebase 里面填屎, 写这种 code 真的会给笔者带来巨大的精神痛苦. 搞科研? 那还是算了. 笔者可能永远无法忘记无数个为了投 paper 干到凌晨的夜晚, 以及对着自己都觉得拉稀的 idea 硬做的无奈. 除去名利和潜在的金钱, 这些给笔者带来的正反馈实在是太少了. 过去的一次次纯功利的经历, 或是为了证明自己, 或是为了升学, 这些很多都留下了非常糟糕的创伤. 笔者更加怀念的是自己在研究 C++ 特性、PyTorch 源码、CUDA ptx、探索 hardware architecture 的那些日子, 没有任何的杂念, 纯粹的是想知道为什么.</p>
+<p>当然, 在 agent 面前, 这些都显得格外的苍白无力. “怎么做” 可能是以后最没用的东西了, 毕竟同样的目标 AI 大人能又快又好地执行出来. 笔者大学四年死磕的各种细节, 似乎都没有了意义. 在旧的秩序被摧毁, 但是新的秩序尚未到来的时候, 就会陷入迷茫. 在过去很长一段时间, anime 拯救了笔者. anime 让笔者看到了自己的异时空同构体, 那个上台演出就害怕的躲到箱子里的 bochi, 为了捍卫自己的理论而逃学向世界竖起中指的 nina, 笔者在她们身上看到了曾经的自己的影子 (顺带一提, 笔者毕业前后相关的照片, 有不少都偷偷竖起了小指, 也算是一种精神上的致敬吧 lol). 但是这也成为了笔者长期以来, 逃避现实的一个地方. anime 并不会给予现实的动力, 现实也不是 anime, 很难遇到那种能够包容自己任性和犯错的队友.</p>
+<p>“与众不同” 和 “被注意到”, 这个可能是笔者一直以来最渴望得到的. 但是离开了学校这个保护平台之后, 再也没有那种周围人目光了. 在脱离了外部的评价体系之后, 笔者需要找到新的归宿, 哪怕身为一条做题区无比怀念过去的那种简单线性的生活, the past is the past.</p>
+<h2 id="终章"><a href="#终章" class="headerlink" title="终章"></a>终章</h2><p>这次总结其实拖了很久, 一直想要写点什么, 但是一直写不出来. 说到底, 笔者也并没有太多的感悟和想写的, 之前的文章也基本把笔者想说的都记录下来了, 多余的文字都只会显得矫情而又刻意. 这次文章可能唯一的感悟是, 笔者需要去理解自己为什么会这么做, 最重要的是找到自己真的喜欢做的事情, 否则永远会陷入自身关于 “意义” 的拷问.</p>
+<p>毕业典礼也已经过去挺久了, 一切都应该画上句号了. 虽然笔者过去很长一段时间都沉溺在痛苦中, 但这一切终究是要过去的. 不放下过去, 就无法创造未来. 这里再次感谢在笔者最孤单的时候陪伴着笔者的同学, 你们是笔者灰暗的大学生涯中的一缕星光.</p>
+<p>当告别结束之后，就让我们忘记那份告别吧.</p>
+</article><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://res.cloudinary.com/dw7ru9exl/image/upload/v1787931408/kon_rxa8zk.png" data-sites="facebook,twitter,wechat,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://vdse.bdstatic.com//192d9a98d782d9c74c96f09db9378d93.mp4" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2023/02/17/bNFrOglBCW6ZaUq.png" alt="Wechat"/ loading='lazy'></a><div class="post-qr-code-desc">Wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/summary2025-full/" title="分歧路口, 前途漫漫"><img class="cover" src="https://res.cloudinary.com/dw7ru9exl/image/upload/v1770906708/kon_swzsgi.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" loading='lazy'><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">分歧路口, 前途漫漫</div></div><div class="info-2"><div class="info-item-1">2025.1 - 2026.2 年度总结</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://s2.loli.net/2023/01/28/SnEi2v9sdczUuyG.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">DarkSharpness</div><div class="author-info-description">逸一时，误一世!</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">27</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/DarkSharpness" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/396961987" target="_blank" title="Bilibili"><i class="iconfont icon-bilibili"></i></a><a class="social-icon" href="https://www.zhihu.com/people/darksharpness" target="_blank" title="Zhihu"><i class="iconfont icon-zhihu"></i></a><a class="social-icon" href="https://music.163.com/#/user/home?id=8335592513" target="_blank" title="Cloudmusic"><i class="fa-solid fa-music"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">星の鼓動感じて</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%95%E4%B8%9A"><span class="toc-number">1.</span> <span class="toc-text">毕业</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91-%E8%BF%98%E5%89%A9%E4%B8%8B%E4%BA%9B%E4%BB%80%E4%B9%88"><span class="toc-number">2.</span> <span class="toc-text">我, 还剩下些什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">终章</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/owarinaki-konouta/" title="終わりなき、この詩"><img src="https://res.cloudinary.com/dw7ru9exl/image/upload/v1787931408/kon_rxa8zk.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="終わりなき、この詩"/ loading='lazy'></a><div class="content"><a class="title" href="/owarinaki-konouta/" title="終わりなき、この詩">終わりなき、この詩</a><time datetime="2026-06-28T08:59:04.000Z" title="发表于 2026-06-28 16:59:04">2026-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/summary2025-full/" title="分歧路口, 前途漫漫"><img src="https://res.cloudinary.com/dw7ru9exl/image/upload/v1770906708/kon_swzsgi.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分歧路口, 前途漫漫"/ loading='lazy'></a><div class="content"><a class="title" href="/summary2025-full/" title="分歧路口, 前途漫漫">分歧路口, 前途漫漫</a><time datetime="2026-02-12T14:11:55.000Z" title="发表于 2026-02-12 22:11:55">2026-02-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/mini-sglang/" title="mini-sglang"><img src="https://raw.githubusercontent.com/sgl-project/mini-sglang/main/assets/logo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mini-sglang"/ loading='lazy'></a><div class="content"><a class="title" href="/mini-sglang/" title="mini-sglang">mini-sglang</a><time datetime="2025-07-28T15:44:08.000Z" title="发表于 2025-07-28 23:44:08">2025-07-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/summary2025-01/" title="少女乐队和我的大三下"><img src="https://s2.loli.net/2025/07/13/EWPTKHYAu3XvaIk.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="少女乐队和我的大三下"/ loading='lazy'></a><div class="content"><a class="title" href="/summary2025-01/" title="少女乐队和我的大三下">少女乐队和我的大三下</a><time datetime="2025-07-12T16:18:26.000Z" title="发表于 2025-07-13 00:18:26">2025-07-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/lily/" title="Lily White 在美国"><img src="https://s2.loli.net/2025/07/11/54pNUfdTJlqFnxL.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lily White 在美国"/ loading='lazy'></a><div class="content"><a class="title" href="/lily/" title="Lily White 在美国">Lily White 在美国</a><time datetime="2025-07-10T16:26:11.000Z" title="发表于 2025-07-11 00:26:11">2025-07-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/env-2/" title="My environment config v2.0"><img src="https://s2.loli.net/2025/06/27/MW5js87vLXJgklo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="My environment config v2.0"/ loading='lazy'></a><div class="content"><a class="title" href="/env-2/" title="My environment config v2.0">My environment config v2.0</a><time datetime="2025-06-23T08:38:25.000Z" title="发表于 2025-06-23 16:38:25">2025-06-23</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By DarkSharpness</span></div><div class="footer_custom_text">DarkSharpness welcomes you!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="blur_toggle" type="button" title="切换背景模糊"><i class="fas fa-cloud"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'DarkSharpness/DarkSharpness.github.io',
+      'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzNDE1Nzc5NDY=',
+      'data-category-id': 'DIC_kwDOFFwQ2s4CT2jG',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script src="/js/meting.min.js"></script><script src="/js/user.js"></script><div class="aplayer no-destroy" data-volume="0.1" data-id="8149615949" data-autoplay="false" data-server="netease" data-type="playlist" data-loop="all" data-order="random" data-fixed="true" mutex="true"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:description\"]","link[rel=\"canonical\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      true
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
